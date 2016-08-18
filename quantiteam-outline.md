@@ -14,6 +14,7 @@
     - Realisation that A) there is no way to verify your school achievements/completed tasks in general (-> no incentive to commit) B) there is no way to demonstrate one's participation in work as a team, which is not only socially rewarding/engaging, but also provides a critical professional skill which is of interest to employers
 - Goals/Scope
     - Blurb
+        - Two targets: broadly, provide technical groundwork for the use of blockchains as ledgers for social activity/action. Concretely, aiming to provide high school/university students an opportunity to re-engage with their work in a communal way and focus on a target ahead of them.
     - Specifics:
         - Working public API interface & file upload for blockchain via Node server
         - iOS client-side app for basic task/user/team management
@@ -25,22 +26,16 @@
 - Approach to Project/Project Management/Project Overview
     - **waterfall dev?** (include a figure)
     - Project required an initial proof-of-concept regarding the API interface and whether the whole thing was even doable
+    - Proof-of-concept with the chain running on single node on localhost
+    - Experimentation with low-level features of chain & solidity via cURL requests
+    - Static mockup of the React Native components initially, linked up with a Redux store once API bridge was established
     - Familiarity with React/JSX & Node as my primary languages and tools in previous projects allowed me to plan everything bar the blockchain itself carefully beforehand, minimising risk of critical failure at a late stage from the waterfall model, to a subsection of the system.
     - Following the PoC, it made more sense to gradually scale each domain of the system (tasks -> users -> teams), as having users without the ability to link tasks to them (i.e. do anything with them) is pretty pointless, having teams before users even more so.
-
-<<<<<<<<<<<<<<<<<<<<<<<<   
-(Probably belongs in main body)
-- Proof-of-concept with the chain running on single node on localhost
-- Experimentation with low-level features of chain & solidity via cURL requests
-- Static mockup of the React Native components initially, linked up with a Redux store once API bridge was established
-
-/(Probably belongs in main body)  
-<<<<<<<<<<<<<<<<<<<<<<<<   
-
 - Report Overview
 
 ## Background Information & Related Applications/Work (~8-10 pages)
-- Basis of design **_(put these points in Aims instead?)_**
+- Basis of design
+    - Talk about the SocialX paper as a major influence on this work
     - Blockchains as commonplace novel application for financial auditing/smart contracts
     - Taking blockchains and smart contracts beyond finance: verifiability & incorruptibility of team work metadata
     - Possible application domain: Create opportunity for open-source version of HaikuLearning or WikiSpaces
