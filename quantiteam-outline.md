@@ -7,15 +7,26 @@
 - Abbreviations  
 
 ## Introduction (~2-4 pages)
-- Problem Outline/Problem Domain/Challenges
-    - Learn how to write smart contracts (Solidity)
-    - Experiment with native dev via React Native after using React and Cordova heavily previously, to provide the simplest but powerful UX possible for a complex backend
+- Problem Outline
+    - Personal frustration with non-engaging educational contexts as a youth
+    - Interest in why students drop out and how this could be prevented
+    - Investigated student engagement via social peers (SocialX, Wikispaces etc)
+    - Realisation that A) there is no way to verify your school achievements/completed tasks in general (-> no incentive to commit) B) there is no way to demonstrate one's participation in work as a team, which is not only socially rewarding/engaging, but also provides a critical professional skill which is of interest to employers
 - Goals/Scope
-    - Working public API interface for blockchain via Node server
-    - iOS client-side app for basic task/user/team management
-    - Basic deployment of distributed validator nodes
+    - Blurb
+    - Specifics:
+        - Working public API interface & file upload for blockchain via Node server
+        - iOS client-side app for basic task/user/team management
+        - Basic deployment of distributed validator nodes
+- Personal Aims
+    - Learn how to write smart contracts (Solidity)
+    - Gain hands-on familiarity with blockchain technology (in this case proof-of-stake), and how a chain is set up, run & maintained proficiently
+    - Experiment with native dev via React Native after using React and Cordova heavily previously, to provide the simplest but powerful UX possible for a complex backend
 - Approach to Project/Project Management/Project Overview
-    - waterfall dev?
+    - **waterfall dev?** (include a figure)
+    - Project required an initial proof-of-concept regarding the API interface and whether the whole thing was even doable
+    - Familiarity with React/JSX & Node as my primary languages and tools in previous projects allowed me to plan everything bar the blockchain itself carefully beforehand, minimising risk of critical failure at a late stage from the waterfall model, to a subsection of the system.
+    - Following the PoC, it made more sense to gradually scale each domain of the system (tasks -> users -> teams), as having users without the ability to link tasks to them (i.e. do anything with them) is pretty pointless, having teams before users even more so.
 
 <<<<<<<<<<<<<<<<<<<<<<<<   
 (Probably belongs in main body)
