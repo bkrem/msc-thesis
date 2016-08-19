@@ -59,7 +59,7 @@ This project began as an attempt to address this phenomenon of student disengage
 _(/placement?)_
 
 ## 1.2 Project Goals
-
+The major goals of the project are thus twofold: firstly, to show how the properties of a blockchain can be leveraged in a social, communal context, rather than the financial contexts they are usually applied to, and secondly, to create a free, open & extensible platform for students of all ages to re-engage with their peers in a productive, educational manner, underpinned by a model of motivation which rewards collaborative work as a team.
 
 ## 1.3 Personal Aims
 
