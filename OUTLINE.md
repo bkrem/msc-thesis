@@ -23,8 +23,12 @@
     - Learn how to write smart contracts (Solidity)
     - Gain hands-on familiarity with blockchain technology (in this case proof-of-stake), and how a chain is set up, run & maintained proficiently
     - Experiment with native dev via React Native after using React and Cordova heavily previously, to provide the simplest but powerful UX possible for a complex backend
+
 - Approach to Project/Project Management/Project Overview
-    - **waterfall dev?** (include a figure)
+    - **UP design** (include a figure)
+    - MoSCoW, based on MVP use cases from a client-side perspective
+    - Importance of API testing (Testing against an API not an implementation)(Writing an interface not an implementation)
+
     - Project required an initial proof-of-concept regarding the API interface and whether the whole thing was even doable
     - Proof-of-concept with the chain running on single node on localhost
     - Experimentation with low-level features of chain & solidity via cURL requests
@@ -43,11 +47,12 @@
     - _(((Agile, Scrum, Kanban (justify why I ended up with simple Kanban board) )))_
     - Blockchain:
         - OpenChain (contract chaining, but documentation/implementation sucked) vs MultiChain vs Eris+TenderMint
-        - Smart contract design & Soliditys capabilities (Eris Tutorials, Solidity docs)
+        - Smart contract design & Solidity's capabilities (Eris Tutorials, Solidity docs)
     - Databases: SQL vs NoSQL vs Blockchain
         - Ease of data structuring/scalability vs. no central point of failure but less storage efficiency and more complex integrity maintenance compared to SQL. Favourable in comparison to noSQL?
     - Server-side:
         - Express as useful abstraction from raw Node server+routing
+        - Functional principle from GC16: stateless server architecture
     - Client-side:
         - React Native vs WebView implementations (i.e. Cordova), React: DRY, modularity, encapsulation, composable
         - MVC vs Unidirectional dataflow: Advantages of Redux, single source of truth, easy to reason
