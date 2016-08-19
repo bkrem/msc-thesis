@@ -54,15 +54,26 @@ September 2016
 ## 1.1 Problem Outline
 Motivation is the key to human action. Without it, the source of any action performed is likely to be grounded in external pressures rather than the actor’s desire to act. In adolescents and young adults, this situation frequently arises within a key element affecting their future: their education.  
 **...TODO...**  
-_(placement?)_  
-This project began as an attempt to address this phenomenon of student disengagement and, over time, developed into a wholly larger investigation of whether it is possible to utilise blockchain technology not just to form a network of re-engaged students, but as a tool for the verification of group-based work at large.  
-_(/placement?)_
+**...specific reasoning for WHY a blockchain...***
+
 
 ## 1.2 Project Goals
-The major goals of the project are thus twofold: firstly, to show how the properties of a blockchain can be leveraged in a social, communal context, rather than the financial contexts they are usually applied to, and secondly, to create a free, open & extensible platform for students of all ages to re-engage with their peers in a productive, educational manner, underpinned by a model of motivation which rewards collaborative work as a team.
+_(placement?)_  
+This project began as an attempt to address this phenomenon of student disengagement and, over time, developed into a wholly larger investigation of whether it is possible to utilise blockchain technology not just to form a network of re-engaged students, but as a tool for the verification of group-based work at large.  
+_(/placement?)_  
+The major goals of the project are thus twofold: in a broader sense, to demonstrate how the properties of a blockchain can be leveraged in a social, communal context, rather than the financial contexts they are usually applied to, and more concretely, to create a free, open & extensible platform for students of all ages to re-engage with their peers in a productive, educational manner, underpinned by a model of motivation which rewards collaborative work as a team.  
+
+Working from this technological and philosophical objective, respectively, the following specific goals for the project were established:
+- Create a public API - built on a NodeJS server - to interface between users and a blockchain, independent of a chosen client-side implementation.
+- _/Offer a straightforward upload functionality to the blockchain for task-related files via said NodeJS server./_
+- Provide an iOS client-side app for basic task/user/team management to provide maximum accessibility and familiarity for users.
+- Establish a basic deployment of at least 4 distributed validator nodes to provide a true proof-of-stake consensus mechanism [**define**] for the platform.
 
 ## 1.3 Personal Aims
-
+**TODO: Blurb**
+- Learn how to write smart contracts (Solidity)
+- Gain hands-on familiarity with blockchain technology (in this case proof-of-stake), and how a chain is set up, run & maintained proficiently
+- Experiment with native dev via React Native after using React and Cordova heavily previously, to provide the simplest but powerful UX possible for a complex backend
 
 ## 1.4 Project Management
 
