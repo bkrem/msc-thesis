@@ -70,13 +70,15 @@ Working from this technological and philosophical objective, respectively, the f
 - Establish a basic deployment of at least 4 distributed validator nodes to provide a true proof-of-stake consensus mechanism _[REF]()_ for the platform.
 
 ## 1.3 Personal Aims
-**TODO: Blurb**
+**TODO: Blurb**  
 *Talk about following the bitcoin movement since before I even started coding.*  
-*Maybe talk about Golang-Docker relationship and how this initially piqued my interest in Docker*
-Choice to use React Native after using React and Cordova heavily previously, to provide the simplest but powerful UX possible for a complex backend.
+*Maybe talk about Golang-Docker relationship and how this initially piqued my interest in Docker*  
+Having been a follower of the bitcoin _[REF]()_ movement for more than two years, the author has been looking for an appropriate opportunity to apply the blockchain data structure, which underpins bitcoin's public ledger, to a project of his own. This project's partial goal of verifiability of team work fits a blockchain's ability to provide a pseudo-anonymous public ledger of transactions or events.  
 
+*(Facebook's React Native _[REF]()_ was chosen for client-side development after using React _[REF]()_ and Cordova _[REF]()_ heavily in a previous MSc project to provide a mobile application, but being unsatisfied with both the stability and interactive feel of the final product. to provide the simplest but powerful UX possible for a complex backend.)*
 
-- Gain familiarity with native app development by utilising existing JavaScript knowledge via React Native _[REF]()_.
+The following points provide an overview of the author's personal aims for the project:
+- Gain familiarity with native app development by utilising existing JavaScript knowledge via React Native.
 - Learn how to write smart contracts in Solidity _[REF]()_ that are useful in the context of the project and for existing platforms such as Ethereum _[REF]()_.
 - Implementing a form of blockchain technology (in this case proof-of-stake), by learning how to set up, run & maintain a a blockchain proficiently.
 - Gain a fundamental understanding of Docker _[REF]()_ and how it leverages _"containerisation"_ to provide ease of environment deployment.
