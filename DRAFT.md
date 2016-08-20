@@ -97,7 +97,7 @@ As the API continued to grow laterally, adding an array of endpoints for each ne
 
 
 ## 1.5 Report Overview
-*TODO*
+**TODO**
 
 
 ***
@@ -106,9 +106,15 @@ As the API continued to grow laterally, adding an array of endpoints for each ne
 # Chapter 2
 # Background Information and Related Applications
 
-## 2.1 Context
+## 2.1 Blockchains & Dropouts
+(__intro is suboptimal__) A 2004 study by the National Research Council showed that upwards of 40% of high school students feel disengaged from learning and exert little effort on school work [(Center on Education Policy 2012)](http://cep-dc.org/displayDocument.cfm?DocumentID=405 ). More worryingly still, 70% of dropouts stated lack of motivation, in a 2006 study, as the key reason for their departure from school [(Bridgeland, J.M. et al., 2006. The Silent Epidemic: Perspectives of High School Dropouts)](). In liaison with these findings, a study which tracked the educational careers of a group of individuals found that 23% of those who dropped out cited a sense of not belonging as the reason for their departure from school [(Berktold et al., 1998, Table 6)]().  
+While the factors for a student's motivation (or lack of it) regarding their education may stem from a myriad of factors, engaging the individual on a social level may be thus be posited as a key driver in motivating them to remain engaged in the process [((Johnson et al., 2001; Newmann, Wehlage, and Lamborn, 1992; Tinto, 1993; Wehlage, Rutter, Smith, Lesko, and Fernandez, 1989))](). Of course, simply being bound into a social context does not mean that the student will make meaningful progress regarding their work, as attendance does not constitute attention to what is being taught [(_ibid_)]().  
+Whereas there is little school staff can do to ensure the attention of a student within a physical school, supplementing the educational process with blockchain-based technology may provide a solution to this impasse between the individual student's aims and that of the educator.
 
 ## 2.2 Previous Work/Existing Applications
+- SocialX
+- WikiSpaces
+- HaikuLearning
 
 ## 2.3 Programming Languages and Libraries
 ### 2.3.1 Blockchain
