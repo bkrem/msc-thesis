@@ -29,15 +29,24 @@
     - MoSCoW, based on MVP use cases from a client-side perspective
     - Importance of API testing (Testing against an API not an implementation)(Writing an interface not an implementation)
 
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     - Project required an initial proof-of-concept regarding the API interface and whether the whole thing was even doable
     - Proof-of-concept with the chain running on single node on localhost
     - Experimentation with low-level features of chain & solidity via cURL requests
     - Static mockup of the React Native components initially, linked up with a Redux store once API bridge was established
     - Familiarity with React/JSX & Node as my primary languages and tools in previous projects allowed me to plan everything bar the blockchain itself carefully beforehand, minimising risk of critical failure at a late stage from the waterfall model, to a subsection of the system.
     - Following the PoC, it made more sense to gradually scale each domain of the system (tasks -> users -> teams), as having users without the ability to link tasks to them (i.e. do anything with them) is pretty pointless, having teams before users even more so.
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 - Report Overview
 
 ## Background Information & Related Applications/Work (~8-10 pages)
+- Blockchains & Dropouts (blurb)
+- Existing applications
+    - SocialX
+    - WikiSpaces
+    - HaikuLearning
+    - **TODO 1-2 more**
+
 - Basis of design
     - Talk about the SocialX paper as a major influence on this work
     - Blockchains as commonplace novel application for financial auditing/smart contracts
