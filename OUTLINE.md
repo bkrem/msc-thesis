@@ -56,7 +56,7 @@
     - _(((Agile, Scrum, Kanban (justify why I ended up with simple Kanban board) )))_
     - Blockchain:
         - OpenChain (contract chaining, but documentation/implementation sucked) vs MultiChain vs Eris+TenderMint
-        - Smart contract design & Solidity's capabilities (Eris Tutorials, Solidity docs)
+        - Smart contract design & Solidity's capabilities (Eris Tutorials, Solidity docs), effectively forced to use solidity as it's "state of the art" for blockchain dev compared to other langs
     - Databases: SQL vs NoSQL vs Blockchain
         - Ease of data structuring/scalability vs. no central point of failure but less storage efficiency and more complex integrity maintenance compared to SQL. Favourable in comparison to noSQL?
     - Server-side:
