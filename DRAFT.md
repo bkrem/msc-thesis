@@ -140,9 +140,23 @@ At the outset of the project, a key choice which had to be made was the choice o
 The author's initial experimentation with OpenChain<sup>[(OpenChain)](https://www.openchain.org/)</sup>, which seemed to offer the possibly useful ability to chain contracts (i.e. tasks) to each other, was quickly abandoned as the available documentation was insufficiently detailed and partially ambiguous. This would have left the project open to a lot of "stabbing in the dark"**(<--rephrase)** and thus the above mentioned risk of deadlock.  
 MultiChain<sup>[(MultiChain)](http://www.multichain.com/)</sup>, on the other hand, was an implementation which had well-defined documentation, but it assumed a level of pre-existing familiarity with the API of a blockchain, as well as providing preciously little context as to how smart contracts could be developed for the platform in an effective way.  
 The apparent drawbacks of the two mentioned blockchain implementations therefore led the author to the Eris<sup>[(Eris)](https://erisindustries.com/)</sup> platform. Eris itself provides a suite of tools which wrap and augment a Tendermint<sup>[(Tendermint)](http://tendermint.com/)</sup> blockchain implementation. Eris's wealth of documentation and its well-structured command line interface (henceforth CLI) were the deciding factor in it being the blockchain implementation of choice. The documentation provided not only step-by-step examples of how a developer could configure and deploy a blockchain, but also provided in-depth tutorials and examples on how to write & deploy Solidity<sup>[(Solidity)](http://solidity.readthedocs.io/en/latest/)</sup> smart contracts for the platform, highly valuable for a smart contract novice such as the author. Furthermore, the fact that Tendermint is an entirely separate software project meant that there was also an entire repository of documentation for this specific type of blockchain and the computer science theory backing it.  
+
 **mention that Solidity was basically the only contract lang choice?**
 
 ### 2.3.2 Server-side
+Considering the author's background as a JavaScript developer, the natural choice for a web server for the project was NodeJS<sup>[(NodeJS)](https://nodejs.org/en/)</sup>. NodeJS provides a great level of flexibility and extensibility thanks to its huge ecosystem of open-source libraries available through its package manager, NPM<sup>[(npm)](https://www.npmjs.com/)</sup>, thus providing an essential basis to help mitigate the possibly complicated technical details of interfacing with a low-level blockchain.  
+As JavaScript is an ever-evolving language, a choice had to be made as to whether the commonly supported ECMAScript<sup>[(ECMAScript)](http://www.ecma-international.org/)</sup> 5 (ES5) specification should be used or the modern standard, ES6. ES5 was selected to provide the maximum level of compatibility for wherever the server is being deployed, as native support for ES6 is not wide-spread as of the point of writing and transpiling the server's code from ES6 to ES5 for each deployment would have been a lot more trouble than help for a regular web server.  
+
+The server-side implementation makes use of a handful of key libraries:
+
+#### Express
+
+
+#### eris-wrapper & eris-logger
+
+#### Async
+
+#### bcrypt
 
 
 ### 2.3.3 Client-side
