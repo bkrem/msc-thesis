@@ -57,24 +57,28 @@
     - Blockchain:
         - OpenChain (contract chaining, but documentation/implementation sucked) vs MultiChain vs Eris+TenderMint => Eris-Tendermint was way better solution tooling-wise => saved valuable time
         - Smart contract design & Solidity's capabilities (Eris Tutorials, Solidity docs), effectively forced to use solidity as it's "state of the art" for blockchain dev compared to other langs
-    - Databases: SQL vs NoSQL vs Blockchain
-        - Ease of data structuring/scalability vs. no central point of failure but less storage efficiency and more complex integrity maintenance compared to SQL. Favourable in comparison to noSQL?
     - Server-side:
-        - Express as useful abstraction from raw Node server+routing
-        - Functional principle from GC16: stateless server architecture
+        - ES5 + Node
+        - Libs:
+            - Express as useful abstraction from raw Node server+routing
+            - `eris-logger` + `eris-wrapper`
+            - `async`
+            - `bcrypt` (?)
     - Client-side:
         - React Native vs WebView implementations (i.e. Cordova), React: DRY, modularity, encapsulation, composable
         - MVC vs Unidirectional dataflow: Advantages of Redux, single source of truth, easy to reason
-    - _(((Redux vs Flow vs Reflux etc.)))_
-    - Smart components vs Dumb components
-- Programming Languages/Technologies/Libraries/Software Tools Selected
-    - React Native (incorporates HTML5, CSS/Flexbox, AsyncStorage(?)
-    - Redux
-    - Node
-    - Docker/Docker-Machine
-    - Kanban board (GH issues + waffle.io)
+        - _(((Redux vs Flow vs Reflux etc.)))_
+        - Smart components vs Dumb components
+    - Databases: SQL vs NoSQL vs Blockchain
+        - Ease of data structuring/scalability vs. no central point of failure but less storage efficiency and more complex integrity maintenance compared to SQL. Favourable in comparison to noSQL?
+- Software Tools Selected
+    - Requirements/Design tools
+        - Kanban board (GH issues + waffle.io)
+    - Development Tools
+        - Docker/Docker-Machine
+        - Dev tools: Version control (Git), Code hosting (Github), Editor (Atom+Nuclide+ESLint), Flow (ES6 static type analyser),
     - Testing frameworks: Mocha, Chai (TDD with `assert`), Istanbul (code coverage)
-    - Dev tools: Version control (Git), Code hosting (Github), Editor (Atom+Nuclide+ESLint), Flow (ES6 static type analyser), `envsetup.sh` & `simplechain.sh` scripts
+     `envsetup.sh` & `simplechain.sh` scripts
     - Debugging: Redux logger+Chrome console, Log4JS+erisLogger, raw logs from the TenderMint chain
 
 ## Requirements & Analysis (~5-6 pages)
@@ -119,6 +123,7 @@
     - `actions/util.js`
     - `TabsView`
 - Server side architecture
+    - Functional principle from GC16: stateless server architecture
     - `server` - server startup, endpoint resolution & route handling
     - `auth` - user signup/login authentication
     - API
