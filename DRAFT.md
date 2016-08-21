@@ -121,13 +121,13 @@ Using a blockchain as a data structure – in this case one which is built on a 
 ## 2.2 Previous Work/Existing Applications
 This section gives an overview of related work within the context of heightening student engagement described above.**(review this, maybe mention how there doesn't seem to be a blockchain-based collab tool => none of the related work has data security via distributed network)**
 
-#### SocialX<sup>[(Learning from peers: motivating students through reputation systems )](), [(Collaborative projects and self evaluation within a social reputation-based exercise-sharing system )]()</sup>
+#### SocialX<sup>[(Learning from peers: motivating students through reputation systems )](#needsLink), [(Collaborative projects and self evaluation within a social reputation-based exercise-sharing system )](#needsLink)</sup>
 SocialX is an exercise sharing tool which enables students to earn reputation points, which are visible to their peers and the given subject's teacher, by submitting solutions to exercises. A further source of reputation are endorsements, which a student may receive from their peers if they were inspired to reuse the student's solution. SocialX differs to QuantiTeam in three key ways: firstly, reputation within SocialX is calculated according to factors which involve the judgment of each other's work, whereas in QuantiTeam's reputation is a function of team size and is either rewarded in full to all team members or not at all, depending on whether the task/exercise in question was completed. Secondly, QuantiTeam has no teacher role, and is therefore able to avoid a bottleneck SocialX suffers from. Thirdly, SocialX defines the term "global ranking" as a measurement of student reputation across subjects/courses, whereas QuantiTeam strives for a truly global, decentralised ranking system.
 
-#### WikiSpaces
+#### WikiSpaces<sup>[(WikiSpaces)](https://www.wikispaces.com/content/classroom/about)</sup>
 **TODO**
 
-#### HaikuLearning
+#### HaikuLearning<sup>[(HaikuLearning)](https://www.haikulearning.com/)</sup>
 **TODO**
 
 ## 2.3 Programming Languages and Libraries
