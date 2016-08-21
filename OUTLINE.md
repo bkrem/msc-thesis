@@ -55,7 +55,7 @@
 - Background Research (investigation) - Software engineering methodologies and technology stack
     - _(((Agile, Scrum, Kanban (justify why I ended up with simple Kanban board) )))_
     - Blockchain:
-        - OpenChain (contract chaining, but documentation/implementation sucked) vs MultiChain vs Eris+TenderMint
+        - OpenChain (contract chaining, but documentation/implementation sucked) vs MultiChain vs Eris+TenderMint => Eris-Tendermint was way better solution tooling-wise => saved valuable time
         - Smart contract design & Solidity's capabilities (Eris Tutorials, Solidity docs), effectively forced to use solidity as it's "state of the art" for blockchain dev compared to other langs
     - Databases: SQL vs NoSQL vs Blockchain
         - Ease of data structuring/scalability vs. no central point of failure but less storage efficiency and more complex integrity maintenance compared to SQL. Favourable in comparison to noSQL?
@@ -67,7 +67,6 @@
         - MVC vs Unidirectional dataflow: Advantages of Redux, single source of truth, easy to reason
     - _(((Redux vs Flow vs Reflux etc.)))_
     - Smart components vs Dumb components
-- Existing Related Applications
 - Programming Languages/Technologies/Libraries/Software Tools Selected
     - React Native (incorporates HTML5, CSS/Flexbox, AsyncStorage(?)
     - Redux
