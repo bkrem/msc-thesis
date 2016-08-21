@@ -119,7 +119,9 @@ Whereas there is little school staff can do to ensure the attention of a student
 Using a blockchain as a data structure – in this case one which is built on a proof-of-stake consensus algorithm – to register, manage and save school-related educational tasks, along with a reward & ranking scheme linked to the blockchain, would enable students to reap immediate rewards from their individual & collaborative efforts. Furthermore, a blockchain's ability to as a pseudo-anonymous public ledger of events, in this case school-related tasks, would provide students with the ability to refer back to said tasks at a later point in time to demonstrate their teamwork skills, therefore making a previous scarcely confirmable skill set auditable.
 
 ## 2.2 Previous Work/Existing Applications
-This section gives an overview of related work within the context of heightening student engagement described above.**(review this, maybe mention how there doesn't seem to be a blockchain-based collab tool => none of the related work has data security via distributed network)**
+This section gives an overview of related work within the context of heightening student engagement described above.
+- **(review this, maybe mention how there doesn't seem to be a blockchain-based collab tool => none of the related work has data security via distributed network)**
+- **closed vs open stance, i.e. licensing?**
 
 #### SocialX<sup>[(Learning from peers: motivating students through reputation systems )](#needsLink), [(Collaborative projects and self evaluation within a social reputation-based exercise-sharing system )](#needsLink)</sup>
 SocialX is an exercise sharing tool which enables students to earn reputation points, which are visible to their peers and the given subject's teacher, by submitting solutions to exercises. A further source of reputation are endorsements, which a student may receive from their peers if they were inspired to reuse the student's solution. SocialX differs to QuantiTeam in three key ways: firstly, reputation within SocialX is calculated according to factors which involve the judgment of each other's work, whereas in QuantiTeam's reputation is a function of team size and is either rewarded in full to all team members or not at all, depending on whether the task/exercise in question was completed. Secondly, QuantiTeam has no teacher role, and is therefore able to avoid a bottleneck SocialX suffers from. Thirdly, SocialX defines the term "global ranking" as a measurement of student reputation across subjects/courses, whereas QuantiTeam strives for a truly global, decentralised ranking system.
@@ -133,6 +135,11 @@ SocialX is an exercise sharing tool which enables students to earn reputation po
 ## 2.3 Programming Languages and Libraries
 ### 2.3.1 Blockchain
 
+
 ### 2.3.2 Server-side
 
 ### 2.3.3 Client-side
+
+## 2.4 Tooling
+### 2.4.1 Requirements and Design Tools
+### 2.4.2 Development Tools
