@@ -65,10 +65,16 @@
             - `async`
             - `bcrypt` (?)
     - Client-side:
-        - React Native vs WebView implementations (i.e. Cordova), React: DRY, modularity, encapsulation, composable
-        - MVC vs Unidirectional dataflow: Advantages of Redux, single source of truth, easy to reason
-        - _(((Redux vs Flow vs Reflux etc.)))_
-        - Smart components vs Dumb components
+        - Blurb
+            - React Native vs WebView implementations (i.e. Cordova), React: DRY, modularity, encapsulation, composable
+            - MVC vs Unidirectional dataflow: Advantages of Redux, single source of truth, easy to reason
+            - _(((Redux vs Flow vs Reflux etc.)))_
+            - Smart components vs Dumb components
+        - Libs
+            - React
+            - Redux
+            - redux-thunk
+            - tcomb-form-native
     - Databases: SQL vs NoSQL vs Blockchain
         - Ease of data structuring/scalability vs. no central point of failure but less storage efficiency and more complex integrity maintenance compared to SQL. Favourable in comparison to noSQL?
 - Software Tools Selected
