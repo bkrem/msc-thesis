@@ -164,16 +164,27 @@ Async<sup>[(Async)](https://caolan.github.io/async/)</sup> is a utility library 
 **TODO (?)**
 
 ### 2.3.3 Client-side
-**TODO blurb**  
 During the MSc's GC02 "App Design" course, the author and his team had the opportunity to build a React web application which was also required to run as a mobile application. This was achieved by wrapping the web app with the Apache Cordova<sup>[(Cordova)](https://cordova.apache.org/)</sup> mobile development framework. This experience revealed two key insights regarding the intersection between web- and mobile-based client-side development:  
 Firstly, that Facebook's React<sup>[(React)](https://facebook.github.io/react/)</sup> web development library, in liaison with Dan Abramov's Redux<sup>[(Redux)](http://redux.js.org/)</sup> library for data management, could be applied almost seamlessly to the context of a mobile application. React's philosophy of thinking in terms of individual view components, together with Redux's implementation-agnostic approach to managing the application's state, largely abstracted away the conceptual differences between building an HTML document and building a mobile app view.  
 Secondly, that porting a web app to a mobile app simply does not provide an authentic native experience on a mobile device, as it is almost impossible to account for and implement all the differences and individual nuances in, for example, animation styles between mobile operating systems. This resulted in the look & feel of the application being closer to that of a mobile browser rather than a native mobile app.
 
 Based on these two lessons learnt, the decision was made to use Facebook's React Native<sup>[(React Native)](https://facebook.github.io/react-native/)</sup> for the project, which grafts a truly native mobile development framework on top of the outstanding React library, along with the now familiar Redux library.  
 React Native offers all the benefits of React (high levels of modularity & encapsulation, composability) while allowing the developer to hook into events and effects of the native mobile operating system. This means that transitioning between views smoothly or sending a push notification, for example, becomes a trivial undertaking.  
-Redux provides a well-defined interface to manage
+Redux provides a well-defined interface to manage the state of the application's data by managing all of it through a centralised `store` object, the contents of which can be altered exclusively by a set of actions previously defined by the developer. This provides a level of clarity of how the application's state mutates over time that is hard to achieve in a traditional Model-View-Controller (henceforth MVC) approach, in which many controllers have access to the application's state simultaneously.
 
-**TODO libraries**
+Further libraries which play a key role within the client-side application are the following:
+
+#### redux-thunk
+redux-thunk<sup>[(redux-thunk)](https://github.com/gaearon/redux-thunk)</sup> is a small library which enables the use of asynchronous functions as the aforementioned actions, which affect the application's state. This is essential to allow control over how and when the client application sends data to the blockchain, and how it fetches data from the blockchain to then integrates it into its local state.
+
+#### redux-persist (?)
+**TODO (?)**
+
+#### redux-logger
+redux-logger<sup>[(redux-logger)](https://github.com/evgenyrodionov/redux-logger)</sup> supplements Redux itself by automatically logging actions the state changes they trigger to the development console. This meant a significant amount of time could be saved in avoiding a custom implementation of a logger, or worse yet, littering the codebase with sporadic logging statements.
+
+#### tcomb-form-native
+tcomb-form-native<sup>[(tcomb-form-native)](https://github.com/gcanti/tcomb-form-native)</sup> provides a framework for forms and form validation in React Native. As form validation in particular can take up an inordinate amount of development time, this library was essential in order to keep the project on track given the severe time constraints relation to its size.
 
 ### 2.3.4 Databases: SQL vs NoSQL vs Blockchain
 
