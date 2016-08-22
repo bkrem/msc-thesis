@@ -161,12 +161,19 @@ eris-wrapper provides a convenient abstraction of low-level bindings that have t
 Async<sup>[(Async)](https://caolan.github.io/async/)</sup> is a utility library which helps manage the flow of asynchronous functions, which are a common occurrence in NodeJS. Within the scope of the server, Async was primarily used to chain together multiple sequential interactions with the blockchain.
 
 #### bcrypt
-**TODO**
+**TODO (?)**
 
 ### 2.3.3 Client-side
-**TODO blurb**
+**TODO blurb**  
+During the MSc's GC02 "App Design" course, the author and his team had the opportunity to build a React web application which was also required to run as a mobile application. This was achieved by wrapping the web app with the Apache Cordova<sup>[(Cordova)](https://cordova.apache.org/)</sup> mobile development framework. This experience revealed two key insights regarding the intersection between web- and mobile-based client-side development:  
+Firstly, that Facebook's React<sup>[(React)](https://facebook.github.io/react/)</sup> web development library, in liaison with Dan Abramov's Redux<sup>[(Redux)](http://redux.js.org/)</sup> library for data management, could be applied almost seamlessly to the context of a mobile application. React's philosophy of thinking in terms of individual view components, together with Redux's implementation-agnostic approach to managing the application's state, largely abstracted away the conceptual differences between building an HTML document and building a mobile app view.  
+Secondly, that porting a web app to a mobile app simply does not provide an authentic native experience on a mobile device, as it is almost impossible to account for and implement all the differences and individual nuances in, for example, animation styles between mobile operating systems. This resulted in the look & feel of the application being closer to that of a mobile browser rather than a native mobile app.
 
+Based on these two lessons learnt, the decision was made to use Facebook's React Native<sup>[(React Native)](https://facebook.github.io/react-native/)</sup> for the project, which grafts a truly native mobile development framework on top of the outstanding React library, along with the now familiar Redux library.  
+React Native offers all the benefits of React (high levels of modularity & encapsulation, composability) while allowing the developer to hook into events and effects of the native mobile operating system. This means that transitioning between views smoothly or sending a push notification, for example, becomes a trivial undertaking.  
+Redux provides a well-defined interface to manage
 
+**TODO libraries**
 
 ### 2.3.4 Databases: SQL vs NoSQL vs Blockchain
 
