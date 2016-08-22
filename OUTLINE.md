@@ -69,14 +69,16 @@
             - React Native vs WebView implementations (i.e. Cordova), React: DRY, modularity, encapsulation, composable
             - MVC vs Unidirectional dataflow: Advantages of Redux, single source of truth, easy to reason
             - _(((Redux vs Flow vs Reflux etc.)))_
-            - Smart components vs Dumb components
+            - _(((Smart components vs Dumb components)))_
         - Libs
-            - React
-            - Redux
             - redux-thunk
+            - redux-persist (?)
+            - redux-logger
             - tcomb-form-native
+
     - Databases: SQL vs NoSQL vs Blockchain
         - Ease of data structuring/scalability vs. no central point of failure but less storage efficiency and more complex integrity maintenance compared to SQL. Favourable in comparison to noSQL?
+
 - Software Tools Selected
     - Requirements/Design tools
         - Kanban board (GH issues + waffle.io)
