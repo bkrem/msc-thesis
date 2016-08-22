@@ -150,16 +150,22 @@ As JavaScript is an ever-evolving language, a choice had to be made as to whethe
 The server-side implementation makes use of a handful of key libraries:
 
 #### Express
-
+Express<sup>[(Express)](https://expressjs.com/)</sup> is a minimalist framework for NodeJS web servers which provides a powerful layer of abstraction on top of NodeJS's raw server interface. Express helped accelerate the development of the API, while leaving the possibility of fine-tuning the NodeJS server itself intact.
 
 #### eris-wrapper & eris-logger
+The eris-wrapper & eris-logger modules were adopted from a "Hello World"-style example Eris provides to showcase how a NodeJS server implementing their platform could be structured<sup>[(Hello Eris)](https://github.com/eris-ltd/hello-eris)</sup>.  
+eris-wrapper provides a convenient abstraction of low-level bindings that have to take place between the NodeJS server and the Tendermint blockchain, while eris-logger simply sets up a simple logger with different levels of urgency, such as `ERROR`, `INFO` and `DEBUG`.  
+
 
 #### Async
+Async<sup>[(Async)](https://caolan.github.io/async/)</sup> is a utility library which helps manage the flow of asynchronous functions, which are a common occurrence in NodeJS. Within the scope of the server, Async was primarily used to chain together multiple sequential interactions with the blockchain.
 
 #### bcrypt
-
+**TODO**
 
 ### 2.3.3 Client-side
+**TODO blurb**
+
 
 
 ### 2.3.4 Databases: SQL vs NoSQL vs Blockchain
