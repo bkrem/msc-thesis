@@ -175,7 +175,7 @@ Redux provides a well-defined interface to manage the state of the application's
 Further libraries which play a key role within the client-side application are the following:
 
 #### redux-thunk
-redux-thunk<sup>[(redux-thunk)](https://github.com/gaearon/redux-thunk)</sup> is a small library which enables the use of asynchronous functions as the aforementioned actions, which affect the application's state. This is essential to allow control over how and when the client application sends data to the blockchain, and how it fetches data from the blockchain to then integrates it into its local state.
+redux-thunk<sup>[(redux-thunk)](https://github.com/gaearon/redux-thunk)</sup> is a helper library which enables the use of asynchronous functions as the aforementioned actions, which affect the application's state. This is essential to allow control over how and when the client application sends data to the blockchain, and how it fetches data from the blockchain to then integrates it into its local state.
 
 #### redux-persist (?)
 **TODO (?)**
@@ -186,8 +186,10 @@ redux-logger<sup>[(redux-logger)](https://github.com/evgenyrodionov/redux-logger
 #### tcomb-form-native
 tcomb-form-native<sup>[(tcomb-form-native)](https://github.com/gcanti/tcomb-form-native)</sup> provides a framework for forms and form validation in React Native. As form validation in particular can take up an inordinate amount of development time, this library was essential in order to keep the project on track given the severe time constraints relation to its size.
 
-### 2.3.4 Databases: SQL vs NoSQL vs Blockchain
 
+### 2.3.4 Databases: SQL vs NoSQL vs Blockchain
+Using a blockchain as the pivotal data structure backing the system evoked an interesting question: could the entire system be built in a way that did not, at any point, rely on a traditional database to store data? Beyond being the more cohesive approach in terms of system architecture, this would automatically provide the ability to have a distributed database, avoiding any central point of failure and thus the potential for catastrophic data loss.  
+Yet, this approach could have a significant impact on the size efficiency **(?)** and integrity of the stored data. Unlike with a typical SQL or noSQL database, there was no well-defined interface present to structure the data...
 
 ## 2.4 Tooling
 ### 2.4.1 Requirements and Design Tools
