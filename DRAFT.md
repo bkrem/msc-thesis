@@ -189,8 +189,10 @@ tcomb-form-native<sup>[(tcomb-form-native)](https://github.com/gcanti/tcomb-form
 
 ### 2.3.4 Databases: SQL vs NoSQL vs Blockchain
 Using a blockchain as the pivotal data structure backing the system evoked an interesting question: could the entire system be built in a way that did not, at any point, rely on a traditional database to store data? Beyond being the more cohesive approach in terms of system architecture, this would automatically provide the ability to have a distributed database, avoiding any central point of failure and thus the potential for catastrophic data loss.  
-Yet, this approach could have a significant impact on the size efficiency **(?)** and integrity of the stored data. Unlike with a typical SQL or noSQL database, there was no well-defined interface present to structure the data...
+Yet, this approach could have a significant impact on the size efficiency **(?)** and integrity of the stored data. Unlike with a typical SQL or noSQL database, there is – to my knowledge **(review this)** – no commonly accepted approach as to how data should be structured in terms of smart contracts for persistent storage in a Tendermint blockchain. This meant an initial attempt at implementing an interface to do so would possibly contain inefficiencies and anti-patterns in terms of data relations.
 
 ## 2.4 Tooling
 ### 2.4.1 Requirements and Design Tools
+
+
 ### 2.4.2 Development Tools
