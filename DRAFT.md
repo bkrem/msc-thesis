@@ -212,17 +212,33 @@ After weighing up the above-mentioned points, the choice was made to go ahead an
 
 ## 2.4 Tooling
 ### 2.4.1 Requirements and Design Tools
+#### GanttPro
+
+
+#### draw.io
+
+
+#### waffle.io
 
 
 ### 2.4.2 Development Tools
 #### Editor
 In order to avoid switching between editors to get the best development support for disparate parts of the project's code, Github's Atom<sup>[(Atom)](https://atom.io/)</sup> editor was chosen due to its level of customisability and huge selection of plugins. Atom was particularly suited for writing React Native code thanks to Facebook's Nuclide<sup>[(Nuclide)](https://nuclide.io/)</sup> plugin, which enables Atom to approximate the richness of features that is typically only offered by Integrated Development Environments (IDEs) by offering an in-built debugger, code snippets, and Facebook's own static type analyser which is discussed below.
 
-#### Static Type Analysis
+#### Static Type Analyser
 Flowtype<sup>[(Flowtype)](https://www.flowtype.org/)</sup>, a static type analyser for JavaScript, is a further in-built feature of the Nuclide plugin. Flowtype enables the developer to define a type for a variable, a type signature for a function, and even to create custom union & intersection types. Flowtype then checks whether the defined type specifications are adhered to and warns if it detects a TypeError. This is an incredibly useful tool for a dynamically-typed language such as JavaScript, where unintended type coercion is a common ailment.
+
+#### Linters
+**Define term "linter"?**  
+ESLint<sup>[(ESLint)](http://eslint.org/)</sup> was chosen as the linter for both the React Native app and the NodeJS server, due to its support for detecting semantic & stylistic errors in both regular JavaScript and JSX, a mix of JavaScript and HTML used by Facebook for React.  
+For the smart contracts, written in Solidity, the `solidity-linter`<sup>[(solidity-linter)](https://atom.io/packages/linter-solidity)</sup> Atom plugin was used, which avoided a significant amount of frustration in comparison to waiting for errors to be detected at compile-time by the Solidity compiler built into Eris's tooling.
 
 
 #### Debugging
+Debugging within the project was performed in three different ways due to the variability of environments within the technology stack. For the React Native app, Google Chrome's DevTools<sup>[()]()</sup> were utilised alongside the Xcode iOS simulator<sup>[()]()</sup> in order to interact with the app and receive log outputs side-by-side in realtime.  
+For the NodeJS server, the aforementioned `eris-logger` module was used to log API-related logging statements to the terminal.  
+At the bare-metal level, Eris provided a way of continuously logging the activity of the Tendermint blockchain. Due to all operations approximating those of assembly language and thus being represented in hexadecimal, this was not useful in terms of locating bugs, but it provided a sanity check to ensure that the chain was performing the expected operations when instructed to do so by the NodeJS server, excluding a possible cause if a bug was being looked for.
 
 
 #### Version Control
+The `git`<sup>[(git)](https://git-scm.com/)</sup> command line utility was used to manage the codebase's development over time, in conjunction with GitHub<sup>[(GitHub)](https://github.com/)</sup> to provide a remote backup. For more involved `git` operations, such as merging branches, Atlassian's SourceTree<sup>[(SourceTree)](https://www.atlassian.com/software/sourcetree)</sup> GUI was used to avoid typing complex terminal commands and thus potentially performing unwanted changes to the version history.
