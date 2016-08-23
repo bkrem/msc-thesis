@@ -76,6 +76,12 @@
             - redux-logger
             - tcomb-form-native
 
+    - Testing frameworks:
+        - Blurb: test against public functions
+        - Mocha
+        - Chai (TDD with `assert`)
+        - Istanbul (code coverage)
+
     - Databases: SQL vs NoSQL vs Blockchain
         - Ease of data structuring/scalability vs. no central point of failure but less storage efficiency and more complex integrity maintenance compared to SQL. Favourable in comparison to noSQL?
 
@@ -87,8 +93,7 @@
     - Development Tools
         - Docker/Docker-Machine
         - Dev tools: Version control (Git), Code hosting (Github), Editor (Atom+Nuclide+ESLint), Flow (ES6 static type analyser),
-    - Testing frameworks: Mocha, Chai (TDD with `assert`), Istanbul (code coverage)
-     `envsetup.sh` & `simplechain.sh` scripts
+         - `envsetup.sh` & `simplechain.sh` scripts
     - Debugging: Redux logger+Chrome console, Log4JS+erisLogger, raw logs from the TenderMint chain
 
 ## Requirements & Analysis (~5-6 pages)
@@ -173,7 +178,7 @@
 ## Bibliography
 
 ## Appendices
-- High-Fi Sketches (given)
+- Sketches (given)
 - List of Requirements
 - Use Cases
 - User Stories
