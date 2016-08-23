@@ -92,6 +92,8 @@ The system was at first modeled with a theoretical deployment diagram in order t
 
 As the API continued to grow laterally, adding an array of endpoints for each new domain, unit testing the API's public functions became an essential part of the project workflow. Due to the primitive error handling of the still very young language Solidity (used to construct smart contracts for blockchains), any responses coming from the blockchain had to be rigorously tested server-side in order avoid silent breakages and regressions.
 
+**TODO: Github Isses + waffle.io**
+
 **TODO: add UP diagram**  
 **TODO: add Gantt chart?**
 
@@ -212,13 +214,8 @@ After weighing up the above-mentioned points, the choice was made to go ahead an
 
 ## 2.4 Tooling
 ### 2.4.1 Requirements and Design Tools
-#### GanttPro
-
-
-#### draw.io
-
-
-#### waffle.io
+GanttPro<sup>[(GanttPro)](https://ganttpro.com/)</sup>, an online creator and editor for Gantt charts, was used to create a timeline for the project, while Google Docs<sup>[(GoogleDocs)](https://www.google.com/docs/about/)</sup> in conjunction with draw.io<sup>[(draw.io)](https://www.draw.io/)</sup> were used to capture requirements and create UML diagrams.  
+This document was written in markdown and transpiled to Latex format using pandoc<sup>[(pandoc)](http://pandoc.org/)</sup>.
 
 
 ### 2.4.2 Development Tools
