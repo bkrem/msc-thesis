@@ -235,7 +235,7 @@ For the smart contracts, written in Solidity, the `solidity-linter`<sup>[(solidi
 
 
 #### Debugging
-Debugging within the project was performed in three different ways due to the variability of environments within the technology stack. For the React Native app, Google Chrome's DevTools<sup>[()]()</sup> were utilised alongside the Xcode iOS simulator<sup>[()]()</sup> in order to interact with the app and receive log outputs side-by-side in realtime.  
+Debugging within the project was performed in three different ways due to the variability of environments within the technology stack. For the React Native app, Google Chrome's DevTools<sup>[(devTools)](https://developers.google.com/web/tools/chrome-devtools/?hl=en)</sup> were utilised alongside the Xcode iOS simulator<sup>[(iOS Simulator)](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/Introduction/Introduction.html)</sup> in order to interact with the app and receive log outputs side-by-side in realtime.  
 For the NodeJS server, the aforementioned `eris-logger` module was used to log API-related logging statements to the terminal.  
 At the bare-metal level, Eris provided a way of continuously logging the activity of the Tendermint blockchain. Due to all operations approximating those of assembly language and thus being represented in hexadecimal, this was not useful in terms of locating bugs, but it provided a sanity check to ensure that the chain was performing the expected operations when instructed to do so by the NodeJS server, excluding a possible cause if a bug was being looked for.
 
