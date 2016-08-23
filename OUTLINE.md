@@ -93,12 +93,12 @@
     - Development Tools
         - Editor (Atom+Nuclide)
         - static type analysis
-        - Debugging (ESLint, solc)
+        - Linters (ESLint, solidity-linter)
+        - Debugging: Redux logger+Chrome console, Log4JS+erisLogger, raw logs from the TenderMint chain
         - Version control
         - Docker/Docker-Machine
         - Dev tools: Version control (Git), Code hosting (Github), Flow (ES6 static type analyser),
          - `envsetup.sh` & `simplechain.sh` scripts
-    - Debugging: Redux logger+Chrome console, Log4JS+erisLogger, raw logs from the TenderMint chain
 
 ## Requirements & Analysis (~5-6 pages)
 - Problem Statement
