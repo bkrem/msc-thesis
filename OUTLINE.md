@@ -81,6 +81,8 @@
 
 - Software Tools Selected
     - Requirements/Design tools
+        - GanttPro
+        - draw.io
         - Kanban board (GH issues + waffle.io)
     - Development Tools
         - Docker/Docker-Machine
