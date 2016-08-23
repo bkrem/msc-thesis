@@ -215,3 +215,14 @@ After weighing up the above-mentioned points, the choice was made to go ahead an
 
 
 ### 2.4.2 Development Tools
+#### Editor
+In order to avoid switching between editors to get the best development support for disparate parts of the project's code, Github's Atom<sup>[(Atom)](https://atom.io/)</sup> editor was chosen due to its level of customisability and huge selection of plugins. Atom was particularly suited for writing React Native code thanks to Facebook's Nuclide<sup>[(Nuclide)](https://nuclide.io/)</sup> plugin, which enables Atom to approximate the richness of features that is typically only offered by Integrated Development Environments (IDEs) by offering an in-built debugger, code snippets, and Facebook's own static type analyser which is discussed below.
+
+#### Static Type Analysis
+Flowtype<sup>[(Flowtype)](https://www.flowtype.org/)</sup>, a static type analyser for JavaScript, is a further in-built feature of the Nuclide plugin. Flowtype enables the developer to define a type for a variable, a type signature for a function, and even to create custom union & intersection types. Flowtype then checks whether the defined type specifications are adhered to and warns if it detects a TypeError. This is an incredibly useful tool for a dynamically-typed language such as JavaScript, where unintended type coercion is a common ailment.
+
+
+#### Debugging
+
+
+#### Version Control
