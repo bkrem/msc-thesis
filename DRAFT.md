@@ -11,7 +11,7 @@
 ## MSc Summer Project Report
 
 # QuantiTeam: Blockchain architecture as a medium to verify collaborative work
-## A Feasibility Study?
+## A Feasibility Study
 </p>
 
 _Author:_ Benjamin Kremer  
@@ -245,40 +245,7 @@ The `git`<sup>[(git)](https://git-scm.com/)</sup> command line utility was used 
 Docker<sup>[(Docker)](https://www.docker.com/)</sup> is a platform which allows the creation of a standardised images for software development to mitigate arbitrary local differences between development environments. It was an essential part of the development process as Eris's tooling leverages Docker heavily to deploy blockchain instances.  
 In order to automate the process of booting the Docker virtual machine and the local blockchain instance, the required sequence of commands was packaged into a Bash shell script, `envsetup.sh`, shown below.
 
-```bash
-#!/usr/bin/env bash
-
-# This script should be run to configure `docker-machine`'s environment within the
-# terminal session, as well as to set up local environment variables which
-# simplify the usage of `eris` drastically, such as the chain directory ($chain_dir)
-# and the address of the contract owner ($addr) if a contract is to be deployed onto the chain.
-
-echo "Running eduChain environment setup..."
-
-# Set references to the chain & account
-chain_dir=$HOME/.eris/chains/simplechain
-chain_dir_this=$chain_dir/simplechain_full_000
-echo "chain_dir: ${chain_dir}"
-echo "chain_dir_this: ${chain_dir_this}"
-
-# Isolate the account address into a variable
-addr=$(cat $chain_dir/addresses.csv|grep simplechain_full_000|cut -d ',' -f 1)
-echo "addr: ${addr}"
-
-# Set up local variables for `docker-machine`
-eval $(docker-machine env)
-# Set the $host variable to the IP of the running docker-machine container
-host=$(docker-machine ip)
-echo "'host' set to docker-machine IP: ${host}"
-
-# Get the IP address for the local compiler
-compiler_addr=$(eris services inspect compilers NetworkSettings.IPAddress)
-echo "compiler_addr: ${compiler_addr}"
-
-# Set the port for the node app to listen to for requests by querying the eris service for the port
-export IDI_PORT=$( eris services ports idi|cut -d ":" -f 2 )
-echo "IDI_PORT set to ${IDI_PORT}"
-```
+**TODO: insert envsetup.sh**
 
 
 ***
@@ -288,3 +255,11 @@ echo "IDI_PORT set to ${IDI_PORT}"
 # Requirements and Analysis
 
 ## 3.1 Problem Statement
+**TODO: reiterate from Ch.1?**
+
+
+## 3.2 Requirements
+In a typical software engineering project, there is a need for strong levels of communication between all the stakeholders involved in the endeavour, in order to ensure all the needs the software should meet are in fact met _[(REF)]()_. A frequent phenomenon within these interactions is that requirements are revealed to the development team in a haphazard way or are simply misinterpreted by the team _[(REF?)]()_.  
+Fortunately these common pitfalls were a moot point within this project, as the act of establishing requirements was entirely focused around the question: "What functionality does the system require, at a minimum, to fulfill its stated aims?". This provided a clear focus on what was absolutely needed for a minimum viable product (henceforth MVP)<sup>[(MVP)](https://www.techopedia.com/definition/27809/minimum-viable-product-mvp)</sup> that an individual and/or group of individuals could use in a meaningful way. This meant both functional and non-functional requirements were focused around three domains: tasks, users, and teams. The requirements were prioritised according to the MoSCoW system<sup>[(MoSCoW)](https://www.dsdm.org/content/moscow-prioritisation)</sup>, with requirements being ranked from "Must Have" through "Should Have" and "Could Have", with the final category being "Won't Have (in this development cycle)". The project's "Must Have" requirements had to be strictly limited to what was  as there was a large number of known unknowns (e.g. the Solidity language) and unknown unknowns (unforeseeable issues with the API, blockchain or development environment). The "Should Have" and "Could Have" categories therefore largely express targets for more sophisticated future iterations of the system.  
+
+**TODO: include functional & non-functional requirements tables **
