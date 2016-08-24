@@ -108,8 +108,16 @@
     - Required some flexibility due to too many known unknowns & unknown unknowns
     - Prioritised with MoSCoW
 - Use Cases **TODO**
+- Wireframes **TODO**
 - Analysis & Data Modelling
     - Initial Deployment diagram
+    - client-side:
+        - 
+    - server-side:
+        -
+    - Blockchain:
+        - ActionEvents
+
     - Development of SQL/noSQL-free data structure with blockchain as verifier and store simultaneously (add updated deployment diagram)
     - PK/FK simulation via the `linker` and on-chain addresses
     - UML class diagrams
