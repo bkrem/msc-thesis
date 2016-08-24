@@ -102,8 +102,12 @@
 
 ## Requirements & Analysis (~5-6 pages)
 - Problem Statement
-- Requirements/Requirements Gathering/Functional requirements vs Non-functional requirements
-- Use Cases
+- Requirements
+    - no client to report to => no issue of shifting reqs _(REF)_
+    - Requirements were written and ordered along lines of an MVP implementation: what was the min viable system to fulfill the stated purpose? => 3 primary domains: tasks, users, teams
+    - Required some flexibility due to too many known unknowns & unknown unknowns
+    - Prioritised with MoSCoW
+- Use Cases **TODO**
 - Analysis & Data Modelling
     - Initial Deployment diagram
     - Development of SQL/noSQL-free data structure with blockchain as verifier and store simultaneously (add updated deployment diagram)
