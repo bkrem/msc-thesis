@@ -111,12 +111,18 @@
 - Wireframes **TODO**
 - Analysis & Data Modelling
     - Initial Deployment diagram
+    - Blockchain:
+        - Data structure/model
+            - SequenceList contract
+            - Domain Type contracts
+            - Manager contracts
+            - Linker contract
+        - ActionEvents
+
     - client-side:
-        - 
+        -
     - server-side:
         -
-    - Blockchain:
-        - ActionEvents
 
     - Development of SQL/noSQL-free data structure with blockchain as verifier and store simultaneously (add updated deployment diagram)
     - PK/FK simulation via the `linker` and on-chain addresses
@@ -124,11 +130,7 @@
     - Blockchain analysis:
         - _(((ERD)))_
         - Docker/Docker-Machine
-        - Data structure/model
-            - SequenceList contract
-            - Type contracts
-            - Manager contracts
-            - Linker contract
+
     - Pipeline server analysis:
         - data relay/transformer
         - (almost?) stateless
