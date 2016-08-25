@@ -117,7 +117,7 @@
             - Domain Type contracts
             - Manager contracts
             - Linker contract
-        - ActionEvents
+        - ActionEvents + Eris diagram
 
     - client-side:
         -
@@ -185,7 +185,7 @@
 - Feedback
 
 ## Conclusions & Evaluation (~2-4 pages)
-- Achievement of Goals/Aims/Fulfilment aims
+- Achievement of Goals/Aims/Fulfillment aims
 - Critical Evaluation
     - Technology
     - Object Oriented Design
