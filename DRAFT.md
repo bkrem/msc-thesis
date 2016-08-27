@@ -273,7 +273,6 @@ Fortunately these common pitfalls were a moot point within this project, as the 
 **TODO**
 
 ## 3.5 System Design
-**Norman design principles ref?**  
 The design of the system's architecture started with creating a simple deployment diagram **(fig X)**, which provided a high-level view of the system's required components and the roles they would play.  
 Establishing a high-level understanding of what the system required to provide an API for proficient communication between any client application and the Tendermint blockchain.
 
@@ -315,6 +314,8 @@ Source: https://docs.erisindustries.com/tutorials/solidity/solidity-2/
 
 
 ### 3.5.2 Server-side Analysis
+Once the structure of the smart contracts had been established, the analysis of the server-side implementation quickly revealed that the server's structure would largely mirror that of the smart contracts. This was the case partially due to the way Eris's JavaScript library was implemented, but largely due to the fact that this would keep the the final API succinct and free of unnecessary cognitive load for the author and for any future developers.  
+The server would therefore simply act as a relay and transformer for data travelling between the client-side application and the blockchain, acting as a _de facto_ middleman. In more concrete terms, this would involve calling relevant contract methods on the blockchain when a certain API endpoint was requested and transforming data between hexadecimal and UTF-8, for example. This is necessary due to Solidity's poor support for strings at the time of writing, meaning that all strings would have to be encoded into 32-byte fields of hexadecimal, known in Solidity as the `bytes32` type.
 
 
 ### 3.5.3 Client-side Analysis
