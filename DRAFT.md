@@ -64,7 +64,7 @@ _(/placement?)_
 The major goals of the project were thus twofold: in a broader sense, to demonstrate how the properties of a blockchain can be leveraged in a social, communal context, rather than the financial contexts they are usually applied to, and more concretely, to create a free, open and extensible platform for students of all ages to re-engage with their peers in a productive, educational manner, underpinned by a model of motivation which rewards collaborative work as a team.  
 
 Working from this technological and philosophical objective, respectively, the following specific goals for the project were established:
-- Create a public API - built on a NodeJS server - to interface between users and a blockchain, independent of a chosen client-side implementation.
+- Create a public Application Programming Interface (henceforth API) - built on a NodeJS server - to interface between users and a blockchain, independent of a chosen client-side implementation.
 - _/Offer a straightforward upload functionality to the blockchain for task-related files via said NodeJS server./_
 - Provide an iOS client-side app for basic task/user/team management to provide maximum accessibility and familiarity for users.
 - Establish a basic deployment of at least 4 distributed validator nodes to provide a true proof-of-stake consensus mechanism _[REF]()_ for the platform.
@@ -299,7 +299,7 @@ UC16  |  DeleteAccount        |  User           |  System
 
 ## 3.5 System Design
 The design of the system's architecture started with creating a simple deployment diagram **(fig X)**, which provided a high-level view of the system's required components and the roles they would play.  
-Establishing a high-level understanding of what the system required to provide an API for proficient communication between any client application and the Tendermint blockchain.
+Establishing a high-level understanding of what the system required to provide proficient communication between any client application and the Tendermint blockchain was an essential aspect of the initial design phase. Decoupling the system's functionality from the specific implementation with which the system may be represented to a user was a crucial provision to ensure maximum reusability and compatibility of the system, therefore following the common software engineering mantra of _"program to an interface, not an implementation"_<sup>[(REF)]()</sup>. Within the context of the web, the most appropriate form to follow this approach was by developing a RESTful<sup>[(REF)]()</sup> API, thus providing a uniform interface of data endpoints, regardless of the client requesting said data.  
 
 ![deployment diagram](./diagrams/deploymentDiagram.png)
 _Figure x_
@@ -332,7 +332,7 @@ Solidity's lack of any real logging capabilities meant there needed to be consid
 **-/BEGIN relevant?/-**  
 The diagram below shows how smart contract actions could be structured. Within this initial iteration of the project, contracts like the `UserManager` were themselves responsible for dispatching action events related to their methods, as the level of abstraction shown would only become useful once the API grew to a larger scale, enabling actions to be centrally processed by an `ActionManager` and then cascading to their relevant Manager contracts.
 
-![Action-driven smart contract architecture](./diagrams/actionEventArchitecture.png)
+![Action-driven smart contract architecture](./diagrams/actionEventArchitecture.png)  
 Source: https://docs.erisindustries.com/tutorials/solidity/solidity-2/
 
 **-/END relevant?/-**  
@@ -346,11 +346,24 @@ The server would therefore simply act as a relay and transformer for data travel
 
 
 ### 3.5.3 Client-side Analysis
-
+**TODO**
 
 ***
 ***
 
 # Chapter 4
 # Design and Implementation
-_"Program to an interface not an implementation."_
+
+## 4.1 System Architecture
+QuantiTeam broadly follows the three-tier architecture of a typical Model-View-Controller<sup>_[(REF)]()_</sup> (henceforth MVC) application with the important distinction that the roles within the MVC pattern are applied to an entire system of various applications, rather than a single application. In concrete terms, this means that blockchain represents the Model element by establishing the system's data model through the smart contracts applied to it, while the NodeJS server represents the Controller element, providing a public interface for client applications to issue requests to the blockchain and handling raw responses from the blockchain. The "View" element of the implementation is therefore interchangeable, as the RESTful API formed by the web server and the blockchain provides a uniform set of endpoints to communicate with, tying no special or unique value to the client, in this case a mobile app.
+
+**TODO MVC diagram**
+**TODO add basic file tree**
+
+## 4.2 Blockchain Architecture
+
+
+## 4.3 Server-side Architecture
+
+
+## 4.4 Client-side Architecture
