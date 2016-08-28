@@ -266,7 +266,10 @@ Fortunately these common pitfalls were a moot point within this project, as the 
 
 
 ## 3.3 Use Cases
-**TODO**
+To remain realistic in regards to the allotted time for the project, use cases were aimed at providing a full exploration of the API rather than a rich user experience within the first iteration of the system, therefore ensuring that the API could remain agnostic regarding any particular client-side context.  
+Use cases for the client-side application and the API itself were therefore straightforward, as the only actors within the initial scope of the system were the individual user and the user as part of a team, meaning there was no need for elevated permissions within the API or specialised UI interactions, as one might see with an administrative dashboard in other applications.
+
+Use cases were constructed in parallel with the initial UI sketches, thus helping to visualise the flow of user-system interactions.
 
 
 ## 3.4 Sketches & Wireframes
@@ -317,6 +320,8 @@ Source: https://docs.erisindustries.com/tutorials/solidity/solidity-2/
 Once the structure of the smart contracts had been established, the analysis of the server-side implementation quickly revealed that the server's structure would largely mirror that of the smart contracts. This was the case partially due to the way Eris's JavaScript library was implemented, but largely due to the fact that this would keep the the final API succinct and free of unnecessary cognitive load for the author and for any future developers.  
 The server would therefore simply act as a relay and transformer for data travelling between the client-side application and the blockchain, acting as a _de facto_ middleman. In more concrete terms, this would involve calling relevant contract methods on the blockchain when a certain API endpoint was requested and transforming data between hexadecimal and UTF-8, for example. This is necessary due to Solidity's poor support for strings at the time of writing, meaning that all strings would have to be encoded into 32-byte fields of hexadecimal, known in Solidity as the `bytes32` type.
 
+**TODO 2-3 sequence diagrams**
+
 
 ### 3.5.3 Client-side Analysis
 
@@ -326,3 +331,4 @@ The server would therefore simply act as a relay and transformer for data travel
 
 # Chapter 4
 # Design and Implementation
+_"Program to an interface not an implementation."_
