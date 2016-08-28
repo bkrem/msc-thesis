@@ -269,7 +269,29 @@ Fortunately these common pitfalls were a moot point within this project, as the 
 To remain realistic in regards to the allotted time for the project, use cases were aimed at providing a full exploration of the API rather than a rich user experience within the first iteration of the system, therefore ensuring that the API could remain agnostic regarding any particular client-side context.  
 Use cases for the client-side application and the API itself were therefore straightforward, as the only actors within the initial scope of the system were the individual user and the user as part of a team, meaning there was no need for elevated permissions within the API or specialised UI interactions, as one might see with an administrative dashboard in other applications.
 
-Use cases were constructed in parallel with the initial UI sketches, thus helping to visualise the flow of user-system interactions.
+Use cases were constructed in parallel with the initial UI sketches, thus helping to visualise the flow of user-system interactions.  
+**Figure xx** below represents an overview of the uses cases that were constructed, while the detailed use cases can be reviewed in **Appendix X**.  
+
+**TODO ref for use case template, Arlow & Neustedt**  
+
+ID    |  Use Case             |  Primary Actor  |  Secondary Actor
+------|-----------------------|-----------------|-----------------
+UC1   |  Signup               |  User           |  System         
+UC2   |  Login                |  User           |  System         
+UC3   |  AddTask              |  User           |  System         
+UC4   |  ViewTasks            |  User           |  System         
+UC5   |  TaskComment          |  User           |  System         
+UC6   |  OptOutOfTask         |  User           |  System         
+UC7   |  CheckTaskCompletion  |  User           |  System         
+UC8   |  ExternalLinkToTask   |  User           |  System         
+UC9   |  CreateTeam           |  User           |  System         
+UC10  |  CheckTeamScore       |  User           |  System         
+UC11  |  RequestHelp          |  User           |  System         
+UC12  |  OfferHelp            |  User           |  System         
+UC13  |  MuteNotifications    |  User           |  System         
+UC14  |  EditAccount          |  User           |  System         
+UC15  |  SetProfilePicture    |  User           |  System         
+UC16  |  DeleteAccount        |  User           |  System         
 
 
 ## 3.4 Sketches & Wireframes
