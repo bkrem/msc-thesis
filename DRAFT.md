@@ -301,7 +301,7 @@ UC16  |  DeleteAccount        |  User           |  System
 The design of the system's architecture started with creating a simple deployment diagram **(fig X)**, which provided a high-level view of the system's required components and the roles they would play.  
 Establishing a high-level understanding of what the system required to provide an API for proficient communication between any client application and the Tendermint blockchain.
 
-![deployment diagram](./diagrams/deploymentdiagram.png)
+![deployment diagram](./diagrams/deploymentDiagram.png)
 _Figure x_
 
 ### 3.5.1 Smart Contract Analysis
