@@ -141,6 +141,7 @@
         - Unidirectional data flow (dispatcher, stores, actions etc.)
 
 ## Design & Implementation (~10+ pages)
+- General high-level blurb
 - Source code structure
     - `chain`
         - Solidity contracts
@@ -148,15 +149,10 @@
         - Node server as pipeline
     - `app`
         - Example implementation in React Native
-- Client side architecture
-    - `Flow` static typing
-    - UI: React components: template design (abstraction with `common` components), component lifecycle, composing in React
-    - Client side data: Redux actions, stores, reducers, `types.js`
-    - `Navigator`
-    - `actions/util.js`
-    - `TabsView`
+- Solidity architecture architecture
 - Server side architecture
     - Functional principle from GC16: stateless server architecture
+    - REST principles
     - `server` - server startup, endpoint resolution & route handling
     - `auth` - user signup/login authentication
     - API
@@ -169,6 +165,13 @@
     - Library modules
         - `eris-logger` - better stack traces, clearer control flow post-mortems
         - `eris-wrapper` - significantly abstracts fiddly low-level setup for the eris-blockchain JS lib
+- Client side architecture
+    - `Flow` static typing
+    - UI: React components: template design (abstraction with `common` components), component lifecycle, composing in React
+    - Client side data: Redux actions, stores, reducers, `types.js`
+    - `Navigator`
+    - `actions/util.js`
+    - `TabsView`
 
 ## Testing (~2-4 pages)
 **TODO complete me**
