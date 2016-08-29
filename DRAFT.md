@@ -88,9 +88,11 @@ The following points provide an overview of the author's personal aims for the p
 The project followed the methodology of the Unified Process (henceforth UP) framework _[REF]()_. Given the circumstances of two-thirds of the technologies being familiar to the author, whereas the blockchain aspect was almost entirely new ground, implementing **TODO: model x** made the most sense for the project.  
 Given the limited amount of time available for a project of these dimensions, along with the research and experimentation required to validate whether the described goals were even achievable, user requirements were captured using a heuristic of what the essential functionality would be for the client-side application, and thus the API in general, in order for a user to create, manage and discuss their open tasks with their team. This was done by utilising the MoSCoW categorisation scheme _[REF]()_.  
 
-The system was at first modeled with a theoretical deployment diagram in order to gain an understanding of which technological entities were required to neatly encapsulate responsibilities. Sequence diagrams were then used for more complex client-server-blockchain interactions at each new stage of the UP, where a new stage usually took the form of defining and implementing a new domain of the API, e.g. task management or user management.
+The system was at first modeled with a theoretical deployment diagram in order to gain an understanding of which technological entities were required to neatly encapsulate responsibilities. Sequence diagrams were then used for more complex client-server-blockchain interactions at each new stage of the UP, where a new stage usually took the form of defining and implementing a new domain of the API, e.g. task management or user management.  
 
-As the API continued to grow laterally, adding an array of endpoints for each new domain, unit testing the API's public functions became an essential part of the project workflow. Due to the primitive error handling of the still very young language Solidity (used to construct smart contracts for blockchains), any responses coming from the blockchain had to be rigorously tested server-side in order avoid silent breakages and regressions.
+During the implementation stage of the project, a daily log was kept of the key advances and issues encountered during that day of development. This served as a useful tool to summarise the progress made, as well as providing an immediate opportunity to document issues that were encountered.
+
+As the API continued to grow laterally, adding an array of endpoints for each new domain, unit testing the API's public functions became an essential part of the project workflow. Due to the primitive error handling of the still very young Solidity programming language (used to construct smart contracts for blockchains), any responses coming from the blockchain had to be rigorously tested server-side in order avoid silent breakages and regressions.
 
 **TODO: Github Isses + waffle.io**
 
@@ -357,13 +359,58 @@ The server would therefore simply act as a relay and transformer for data travel
 ## 4.1 System Architecture
 QuantiTeam broadly follows the three-tier architecture of a typical Model-View-Controller<sup>_[(REF)]()_</sup> (henceforth MVC) application with the important distinction that the roles within the MVC pattern are applied to an entire system of various applications, rather than a single application. In concrete terms, this means that blockchain represents the Model element by establishing the system's data model through the smart contracts applied to it, while the NodeJS server represents the Controller element, providing a public interface for client applications to issue requests to the blockchain and handling raw responses from the blockchain. The "View" element of the implementation is therefore interchangeable, as the RESTful API formed by the web server and the blockchain provides a uniform set of endpoints to communicate with, tying no special or unique value to the client, in this case a mobile app.
 
-**TODO MVC diagram**
-**TODO add basic file tree**
+![A typical MVC Model](./diagrams/mvc.png)  
+Source: https://developer.chrome.com/apps/app_frameworks
+
+In order to mirror the described approach of creating a standalone unit out of the Model and Controller aspects of the system's architecture, the project's source code was structured into two directories at the highest level. As represented by the shallow file tree below, the `app` directory contains the React Native client-side application, while the `chain` directory holds configurations and environment variables to run the Tendermint blockchain via the `eris` CLI, and provides the REST API server in its `js` subdirectory.  
+
+```
+.
+├── app
+│   ├── android
+│   ├── index.android.js
+│   ├── index.ios.js
+│   ├── ios
+│   ├── js
+│   ├── node_modules
+│   └── package.json
+├── LICENSE
+├── README.md
+├── chain
+│   ├── Dockerfile
+│   ├── abi
+│   ├── accounts.json
+│   ├── app.js
+│   ├── config
+│   ├── contracts
+│   ├── envsetup.sh
+│   ├── epm.json
+│   ├── epm.yaml
+│   ├── js
+│   ├── logs
+│   ├── node_modules
+│   ├── package.json
+│   ├── simplechain.sh
+│   └── test
+├── log.md
+└── npm-debug.log
+```
 
 ## 4.2 Blockchain Architecture
+**TODO**
 
 
 ## 4.3 Server-side Architecture
+As touched upon in the server-side analysis, the REST API server's role is first and foremost that of a data transformer and relay, forming a bridge between the blockchain and any given client-side implementation. The following subsections initially present how the server was designed to adhere to principles of both the MVC and REST design patterns, followed by an exploration how the server performs its bridging responsibilities in concrete terms.
 
+### 4.3.1 The Controller
+The server is able to fulfill its role as a Controller component within the system's MVC architecture, by virtue of being the deciding factor concerning the logic executed between a an HTTP request being received and a response issued within the API.
+
+
+### 4.3.2 RESTfulness
+In this role the server adheres to the principle of statelessness, a key component of a RESTful server architecture<sup>[(REF)]()</sup>, as well as being a cornerstone of the functional programming paradigm<sup>[(REF)]()</sup>.
+
+
+## 4.3.3 Structure 
 
 ## 4.4 Client-side Architecture
