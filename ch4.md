@@ -45,7 +45,9 @@ In order to mirror the described approach of creating a standalone unit out of t
 ### 4.2.1 The Model
 **TODO**
 
+_-/placement?/-_
 As was briefly touched upon in chapter 3, the Solidity programming language for smart contracts is still in its infancy. This meant that some data types, such as strings, had to be translated into fields of 32 byte arrays in hexadecimal when fed into the blockchain and translated vice versa when being retrieved from the blockchain.
+_-/placement?/-_
 
 ## 4.3 Server-side API Architecture
 As touched upon in the server-side analysis, the REST API server's role is first and foremost that of a data transformer and relay, forming a bridge between the blockchain and any given client-side implementation. The following subsections initially present how the server was designed to adhere to principles of both the MVC and REST design patterns, followed by an exploration how the server performs its bridging responsibilities in concrete terms.
@@ -100,11 +102,12 @@ This URI template declares that the first path segment is mandatory and shall be
 The second segment may be composed of a further specification within the data domain, such as `/profile` for `/user`, thus forming the path `/user/profile`.  
 The third and final segment consists of an optional request parameter, such as `:username` which may be used to pass a parameter to the API in a HTTP GET request. Building on the previous example, we may therefore be able to request the profile data for user `foo` by issuing a request to the API via the path `/profile/user/foo`.
 
-By requiring all interactions with the API to take place in this form, the system is thus able to guarantee a high level of independence from concrete implementation details as the requirements and formatting of HTTP do not vary across implementation contexts.
+By requiring all interactions with the API to take place in this form, the system is thus able to guarantee a high level of independence from concrete implementation details, as the requirements and formatting of HTTP do not vary across implementation contexts.
 
 
 #### Layered System
-
+The final constraint within the REST pattern concerns composability. A RESTful implementation should allow for intermediate layers, commonly known as middleware, to be inserted into the service without affecting the interface for communication in any way<sup>[(layered system)](http://whatisrest.com/rest_constraints/layered_system)</sup>.  
+QuantiTeam meets this constraint through its HTTP URI interface, which enables middleware to implement the same interface and forward a given request to the service itself using the same exact URI once it has completed its part of processing the request.
 
 
 ## 4.3.3 Structure
