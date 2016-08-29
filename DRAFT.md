@@ -398,8 +398,10 @@ In order to mirror the described approach of creating a standalone unit out of t
 ```
 
 ## 4.2 Blockchain Architecture
+### 4.2.1 The Model
 **TODO**
 
+As was briefly touched upon in chapter 3, the Solidity programming language for smart contracts is still in its infancy. This meant that some data types, such as strings, had to be translated into fields of 32 byte arrays in hexadecimal when fed into the blockchain and translated vice versa when being retrieved from the blockchain.
 
 ## 4.3 Server-side API Architecture
 As touched upon in the server-side analysis, the REST API server's role is first and foremost that of a data transformer and relay, forming a bridge between the blockchain and any given client-side implementation. The following subsections initially present how the server was designed to adhere to principles of both the MVC and REST design patterns, followed by an exploration how the server performs its bridging responsibilities in concrete terms.
@@ -410,20 +412,41 @@ The server is able to fulfill its role as a Controller component within the syst
 
 
 ### 4.3.2 RESTfulness
-REST, which is an acronym for Representational State Transfer, is a commonly used web development pattern which attempts to ensure reliability and scalability of the web service implementing it<sup>[(REF)]()</sup>. Within the context of QuantiTeam, achieving RESTfulness was key for the system's API, as this would help ensure the system's usefulness to any context of client-side implementation, rather than specifically a mobile paradigm.  
+REST, which is an acronym for Representational State Transfer, is a commonly used web development pattern which attempts to ensure reliability and scalability of the web service implementing it<sup>[(REST)](http://whatisrest.com/rest_constraints/index)</sup>. Within the context of QuantiTeam, achieving RESTfulness was key for the system's API, as this would help ensure the system's usefulness to any context of client-side implementation, rather than specifically a mobile paradigm.  
 This subsection therefore describes the properties of a RESTful service and how each applies to QuantiTeam's server-side architecture.
 
 #### Client-Server Dichotomy
-Crucial to the creation of an implementation-agnostic REST interface is a separation of concerns between the client and server. Strictly separating client and the server roles from each other provides portability and replaceability, as the underlying implementation of either may change without affecting the standardised form of communication established by the REST interface.  
+Crucial to the creation of an implementation-agnostic REST interface is a separation of concerns between the client and server<sup>[(client-server)](http://whatisrest.com/rest_constraints/client_server)</sup>. Strictly separating client and the server roles from each other provides portability and replaceability, as the underlying implementation of either may change without affecting the standardised form of communication established by the REST interface.  
 Within QuantiTeam, there is a clear client-server dichotomy between the server which is solely concerned with handling incoming requests, and the React Native client app, which requests data from the server and then decides how to represent said data to the user within its local state.
 
+
+#### Stateless
+Statelessness is a key constraint within the REST design, which holds that each request should contain all information required by the service to process the request, and the service's response should contain all the required data to fulfill said request<sup>[(statelessness)](http://whatisrest.com/rest_constraints/stateless)</sup>.  
+Applied to QuantiTeam, the REST pattern's property of statelessness not only helped to decouple the system's architecture by avoiding the need for managing state across different applications, it was also the most feasible approach to enable a straightforward way of communicating with the Tendermint blockchain, due to the previously described frequent requirement to transform data as it travelled to and from the blockchain. Statelessness, in this context, meant that there was no need to worry about intermediate representations of the data being stored and inappropriately forwarded to either the client or the blockchain at a later point in time.
+
+A simple example of how the server remains stateless while fulfilling its function as an API interface is shown in the following snippet, taken from the `server.js` module:
+
+```js
+app.post('/user/taken', function (req, res) {
+    var username = req.body.username;
+
+    log.info("POST /user/taken: ", username);
+    userManager.isUsernameTaken(username, function (err, isTaken) {
+        _handleErr(err, res);
+        res.json({isTaken: isTaken});
+    });
+});
+```
+
+This example shows the `/user/taken` API endpoint, which is responsible for validating the availability of usernames. When a user tries to sign up in the client-side app, the server receives the proposed username in the request body (the only piece of information required for the API to fulfill the request), with which it calls the `userManager`'s `isUsernameTaken()` method. The method returns an `isTaken` boolean which is written to the `res` response object, thus providing all data necessary for the client to make a decision regarding the availability of the proposed username.
+
+
 #### Cacheable
-Responses from the REST service being implicitly or explicitly declared as cacheable or non-cacheable is a further component of a RESTful service.
+Responses from the REST service being implicitly or explicitly declared as cacheable or non-cacheable is a further component of a RESTful service<sup>[(cache)](http://whatisrest.com/rest_constraints/cache)</sup>, as cacheable responses provide an opportunity to to optimise the amount of client-server communication that is needed.  
+QuantiTeam's API currently does not provide explicit cache labels in its responses and is therefore implicitly cacheable on the client side. While cacheability is key to scaling a developed API, investing significant amounts of time to implement explicit cache invalidation within QuantiTeam's first iteration was outside of the project's scope. Implicit caching takes place within the React Native client-side app, which retrieves and then locally retains static information such as the user's profile data, for example.
 
 #### Layered System
 
-#### Stateless
-In this role the server adheres to the principle of statelessness, a key component of a RESTful server architecture, as well as being a cornerstone of the functional programming paradigm<sup>[(REF)]()</sup>.
 
 #### Uniformity of Interface
 
@@ -431,3 +454,4 @@ In this role the server adheres to the principle of statelessness, a key compone
 ## 4.3.3 Structure
 
 ## 4.4 Client-side Architecture
+### 4.4.1 The View
