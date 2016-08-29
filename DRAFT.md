@@ -275,6 +275,7 @@ Use cases were constructed in parallel with the initial UI sketches, thus helpin
 **Figure xx** below represents an overview of the uses cases that were constructed, while the detailed use cases can be reviewed in **Appendix X**.  
 
 **TODO ref for use case template, Arlow & Neustedt**  
+**TODO more use cases, i.e. file uploads etc**
 
 ID    |  Use Case             |  Primary Actor  |  Secondary Actor
 ------|-----------------------|-----------------|-----------------
@@ -400,7 +401,7 @@ In order to mirror the described approach of creating a standalone unit out of t
 **TODO**
 
 
-## 4.3 Server-side Architecture
+## 4.3 Server-side API Architecture
 As touched upon in the server-side analysis, the REST API server's role is first and foremost that of a data transformer and relay, forming a bridge between the blockchain and any given client-side implementation. The following subsections initially present how the server was designed to adhere to principles of both the MVC and REST design patterns, followed by an exploration how the server performs its bridging responsibilities in concrete terms.
 
 ### 4.3.1 The Controller
@@ -409,11 +410,15 @@ The server is able to fulfill its role as a Controller component within the syst
 
 
 ### 4.3.2 RESTfulness
-REST, which is an acronym for Representational State Transfer, is a commonly used web development pattern which attempts to ensure reliability and scalability of the web service implementing it<sup>[(REF)]()</sup>
+REST, which is an acronym for Representational State Transfer, is a commonly used web development pattern which attempts to ensure reliability and scalability of the web service implementing it<sup>[(REF)]()</sup>. Within the context of QuantiTeam, achieving RESTfulness was key for the system's API, as this would help ensure the system's usefulness to any context of client-side implementation, rather than specifically a mobile paradigm.  
+This subsection therefore describes the properties of a RESTful service and how each applies to QuantiTeam's server-side architecture.
 
-#### Client-Server Relation
+#### Client-Server Dichotomy
+Crucial to the creation of an implementation-agnostic REST interface is a separation of concerns between the client and server. Strictly separating client and the server roles from each other provides portability and replaceability, as the underlying implementation of either may change without affecting the standardised form of communication established by the REST interface.  
+Within QuantiTeam, there is a clear client-server dichotomy between the server which is solely concerned with handling incoming requests, and the React Native client app, which requests data from the server and then decides how to represent said data to the user within its local state.
 
 #### Cacheable
+Responses from the REST service being implicitly or explicitly declared as cacheable or non-cacheable is a further component of a RESTful service.
 
 #### Layered System
 
