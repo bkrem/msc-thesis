@@ -146,6 +146,7 @@
 - Blockchain architecture
     - `Eris` configs for deployment, eris CLI
     - Solidity contracts (reiterate from ch.3 & expand)
+        - Started with IDs in contract schema, didn't really need them -> addresses double as unique IDs
 - Server side architecture
     - Functional principle from GC16: stateless server architecture
     - REST principles
@@ -168,11 +169,13 @@
     - `Navigator`
     - `actions/util.js`
     - `TabsView`
+    - Trickiness involved in getting ListViews right in RN -> FB's `PureListView` helped a lot here to understand optimal structuring and mapping of data flow
 
 ## Testing (~2-4 pages)
 **TODO complete me**
 - Testing phases/strategy
 - Unit Testing
+- Didn't make my unit tests atomic enough -> cascading failures if one test breaks -> lesson for next time
 - API endpoint testing (?)
 - Testing libraries/frameworks: mocha, chai `assert`, istanbul
 
