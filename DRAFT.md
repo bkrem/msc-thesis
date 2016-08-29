@@ -404,13 +404,25 @@ In order to mirror the described approach of creating a standalone unit out of t
 As touched upon in the server-side analysis, the REST API server's role is first and foremost that of a data transformer and relay, forming a bridge between the blockchain and any given client-side implementation. The following subsections initially present how the server was designed to adhere to principles of both the MVC and REST design patterns, followed by an exploration how the server performs its bridging responsibilities in concrete terms.
 
 ### 4.3.1 The Controller
-The server is able to fulfill its role as a Controller component within the system's MVC architecture, by virtue of being the deciding factor concerning the logic executed between a an HTTP request being received and a response issued within the API.
+The server is able to fulfill its role as a Controller component within the system's MVC architecture, by virtue of being the deciding factor concerning the logic executed between a an HTTP request being received and a response issued within the API.  
+**TODO more**
 
 
 ### 4.3.2 RESTfulness
-In this role the server adheres to the principle of statelessness, a key component of a RESTful server architecture<sup>[(REF)]()</sup>, as well as being a cornerstone of the functional programming paradigm<sup>[(REF)]()</sup>.
+REST, which is an acronym for Representational State Transfer, is a commonly used web development pattern which attempts to ensure reliability and scalability of the web service implementing it<sup>[(REF)]()</sup>
+
+#### Client-Server Relation
+
+#### Cacheable
+
+#### Layered System
+
+#### Stateless
+In this role the server adheres to the principle of statelessness, a key component of a RESTful server architecture, as well as being a cornerstone of the functional programming paradigm<sup>[(REF)]()</sup>.
+
+#### Uniformity of Interface
 
 
-## 4.3.3 Structure 
+## 4.3.3 Structure
 
 ## 4.4 Client-side Architecture
