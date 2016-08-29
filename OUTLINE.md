@@ -143,13 +143,9 @@
 ## Design & Implementation (~10+ pages)
 - General high-level blurb
 - Source code structure
-    - `chain`
-        - Solidity contracts
-        - `Eris` configs for deployment
-        - Node server as pipeline
-    - `app`
-        - Example implementation in React Native
-- Solidity architecture architecture
+- Blockchain architecture
+    - `Eris` configs for deployment, eris CLI
+    - Solidity contracts (reiterate from ch.3 & expand)
 - Server side architecture
     - Functional principle from GC16: stateless server architecture
     - REST principles
