@@ -143,6 +143,9 @@
 ## Design & Implementation (~10+ pages)
 - General high-level blurb
 - Source code structure
+- Demonstrate system at scale
+    - Sequence diagrams for an API call example
+    -
 - Blockchain architecture
     - `Eris` configs for deployment, eris CLI
     - Solidity contracts (reiterate from ch.3 & expand)
