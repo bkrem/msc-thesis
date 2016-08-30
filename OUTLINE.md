@@ -114,7 +114,7 @@
     - Blockchain:
         - PoW vs PoS **TODO**
         - Data structure/model
-            - SequenceList contract
+            - SequenceArray contract
             - Domain Type contracts
             - Manager contracts
             - Linker contract
