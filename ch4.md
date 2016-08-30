@@ -2,7 +2,7 @@
 # Design and Implementation
 
 ## 4.1 System Architecture
-QuantiTeam broadly follows the three-tier architecture of a typical Model-View-Controller<sup>_[(REF)]()_</sup> (henceforth MVC) application with the important distinction that the roles within the MVC pattern are applied to an entire system of various applications, rather than a single application. In concrete terms, this means that blockchain represents the Model element by establishing the system's data model through the smart contracts applied to it, while the NodeJS server represents the Controller element, providing a public interface for client applications to issue requests to the blockchain and handling raw responses from the blockchain. The "View" element of the implementation is therefore interchangeable, as the RESTful API formed by the web server and the blockchain provides a uniform set of endpoints to communicate with, tying no special or unique value to the client, in this case a mobile app.
+QuantiTeam broadly follows the three-tier architecture of a typical Model-View-Controller<sup>[(Krasner, Glenn E., and Stephen T. Pope. "A description of the model-view-controller user interface paradigm in the smalltalk-80 system." Journal of object oriented programming 1.3 (1988): 26-49.)](http://heaveneverywhere.com/stp/PostScript/mvc.pdf)</sup> (henceforth MVC) application with the important distinction that the roles within the MVC pattern are applied to an entire system of various applications, rather than a single application. In concrete terms, this means that blockchain represents the Model element by establishing the system's data model through the smart contracts applied to it, while the NodeJS server represents the Controller element, providing a public interface for client applications to issue requests to the blockchain and handling raw responses from the blockchain. The "View" element of the implementation is therefore interchangeable, as the RESTful API formed by the web server and the blockchain provides a uniform set of endpoints to communicate with, tying no special or unique value to the client, in this case a mobile app.
 
 ![A typical MVC Model](./diagrams/mvc.png)  
 Source: https://developer.chrome.com/apps/app_frameworks
@@ -43,7 +43,10 @@ In order to mirror the described approach of creating a standalone unit out of t
 
 ## 4.2 Blockchain Architecture
 ### 4.2.1 The Model
-**TODO**
+Within the MVC paradigm, models represent the central structure of the application and "are concerned with neither the user-interface nor presentation layers but instead represent unique forms of data that an application may require"<sup>[(Learning JS Design Patterns)](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailmvc)</sup>.  
+The Tendermint blockchain serves as a model by defining the system's domain through the collection of smart contracts it holds, thus setting the boundaries for what kinds of data the system is able to store and what kind of operations can be performed on the data.
+
+
 
 
 ### 4.2.2 Working with Solidity
@@ -56,20 +59,13 @@ A conscious decision was therefore made to encode all values – aside from bool
 
 _Predictability_ - Transforming all data associated with the blockchain in a regular manner enhances the testability of the API by fixing the data's representation, both when it is entered into and retrieved from the chain. This increases the API's level testability by making expected outputs for a given input more uniform and free of special circumstances.  
 
-_Simplicity_ - Establishing a standardised format for any data to be entered into the blockchain helped keep the API straightforward to work with, as any numeric or string data could be handled by a single pipeline function.  
-
-`marshalForChain()`, responsible for preparing the data to be entered
-
-In order to keep the initial iteration of the API as straightforward to manage as possible mitigate the inevitable
-
-in a regular and predictable manner.
-
-with the `eris-wrapper` module's string-to-hex (`str2hex()`) and hex-to-string (`hex2str()`)
+_Simplicity_ - Establishing a standardised format for any data to be entered into the blockchain helped keep the API straightforward to work with. Any numeric or string data could be encoded for the chain by the NodeJS server using the `eris-wrapper` library module's `str2hex()` (string-to-hex) function, and decoded using its `hex2str()` (hex-to-string) function.  
 
 #### Arrays and Objects
+A further hindrance imposed by Solidity was its poor support for arrays and its lack of objects, also known as lists and dictionaries, respectively.
 
-- point about arrays being shit too, -> need for sequenceList contract
-- `mapping` type insufficient for CRUD ops -> sequenceList
+While JavaScript is composed entirely of objects, Solidity provides structs; a data structure familiar from the C programming language. This would have provided a sufficient parallel to translate data formatted in JavaScript Object Notation<sup>[(JSON)](http://www.json.org/)</sup> (henceforth JSON) into a format digestible by Solidity contracts, were it not for the fact that Solidity's ability to store and perform operations on its structs and arrays is limited at best. For example, storing user profiles (i.e. structs) as a list of profiles (i.e. an array) would have been possible, but editing and retrieving specific entries in the list would be impossible, as neither Solidity's arrays nor its structs are iterable data structures. This would have meant retrieving the entire data structure from the blockchain, simply to then extract a single user profile; clearly an unfeasible proposition at any non-trivial scale.  
+To mitigate this functional bottleneck in Solidity, the author adopted an implementation of a SequenceArray<sup>[(_Data Structures And Algorithm Analysis in Java, p. 97_)]()</sup>, which became the `SequenceArray.sol` contract. Referring back to the previous example, retrieving the profile for an individual user was now a simple task: user profiles could be initially entered into the SequenceArray by using the username as a key, and later retrieved by iterating through the array and comparing keys until a match was found.
 
 ### 4.2.3 Smart Contracts
 
@@ -85,7 +81,7 @@ with the `eris-wrapper` module's string-to-hex (`str2hex()`) and hex-to-string (
 ### 4.2.4 Eris CLI
 
 
-## 4.3 Server-side API Architecture
+## 4.3 Server Architecture
 As touched upon in the server-side analysis, the REST API server's role is first and foremost that of a data transformer and relay, forming a bridge between the blockchain and any given client-side implementation. The following subsections initially present how the server was designed to adhere to principles of both the MVC and REST design patterns, followed by an exploration how the server performs its bridging responsibilities in concrete terms.
 
 ### 4.3.1 The Controller
@@ -146,7 +142,11 @@ The final constraint within the REST pattern concerns composability. A RESTful i
 QuantiTeam meets this constraint through its HTTP URI interface, which enables middleware to implement the same interface and forward a given request to the service itself using the same exact URI once it has completed its part of processing the request.
 
 
-## 4.3.3 Structure
+## 4.3.3 Data Handling
+...  
+Said pipeline function was defined within the utility module `chainUtils.js` as `marshalForChain(<data-object>)`. The function takes  it's `<data-object>` parameter, identifies the original type which initially identified the  utilised the `eris-wrapper` library module's `str2hex()` (string-to-hex)
+, responsible for preparing the data to be entered,  
+...
 
 ## 4.4 Client-side Architecture
 ### 4.4.1 The View
