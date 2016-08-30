@@ -45,9 +45,45 @@ In order to mirror the described approach of creating a standalone unit out of t
 ### 4.2.1 The Model
 **TODO**
 
-_-/placement?/-_
-As was briefly touched upon in chapter 3, the Solidity programming language for smart contracts is still in its infancy. This meant that some data types, such as strings, had to be translated into fields of 32 byte arrays in hexadecimal when fed into the blockchain and translated vice versa when being retrieved from the blockchain.
-_-/placement?/-_
+
+### 4.2.2 Working with Solidity
+To put a number of the design decisions made during the construction of the blockchain's smart contracts into perspective, some context regarding the current capabilities of the Solidity programming language is required.  
+
+#### Strings and Numbers
+As was briefly touched upon in chapter 3, Solidity is still in its infancy. This meant that some data types such as strings, had to be translated into fields of 32 byte arrays in hexadecimal when fed into the blockchain and translated vice versa when being retrieved from the blockchain.  
+Furthermore, translating numeric values from a dynamically-typed language such as JavaScript to a strict, statically-typed one such as Solidity without side effects or data corruption is also no trivial task. A point which illustrates these possibly unpredictable side effects is the possibility of an unusually large integer being fed into the API by a client application, which is then translated to an 8-bit unsigned integer (`uint8`) field within a Solidity contract, thus writing an irreparably truncated and corrupted value to the blockchain.  
+A conscious decision was therefore made to encode all values – aside from booleans which are able to move across the API unaltered – in hexadecimal before they are fed into the blockchain, regardless of initial type, to utilise Solidity's `bytes32` type. This approach provided two important advantages:
+
+_Predictability_ - Transforming all data associated with the blockchain in a regular manner enhances the testability of the API by fixing the data's representation, both when it is entered into and retrieved from the chain. This increases the API's level testability by making expected outputs for a given input more uniform and free of special circumstances.  
+
+_Simplicity_ - Establishing a standardised format for any data to be entered into the blockchain helped keep the API straightforward to work with, as any numeric or string data could be handled by a single pipeline function.  
+
+`marshalForChain()`, responsible for preparing the data to be entered
+
+In order to keep the initial iteration of the API as straightforward to manage as possible mitigate the inevitable
+
+in a regular and predictable manner.
+
+with the `eris-wrapper` module's string-to-hex (`str2hex()`) and hex-to-string (`hex2str()`)
+
+#### Arrays and Objects
+
+- point about arrays being shit too, -> need for sequenceList contract
+- `mapping` type insufficient for CRUD ops -> sequenceList
+
+### 4.2.3 Smart Contracts
+
+#### Data: Factory Contracts
+
+#### Operations: Manager Contracts
+
+#### Relations: Linker Contract
+- Started with IDs in contract schema, didn't really need them -> addresses double as unique IDs
+
+**TODO Class diagram for contracts**
+
+### 4.2.4 Eris CLI
+
 
 ## 4.3 Server-side API Architecture
 As touched upon in the server-side analysis, the REST API server's role is first and foremost that of a data transformer and relay, forming a bridge between the blockchain and any given client-side implementation. The following subsections initially present how the server was designed to adhere to principles of both the MVC and REST design patterns, followed by an exploration how the server performs its bridging responsibilities in concrete terms.
