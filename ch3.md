@@ -4,6 +4,7 @@
 ## 3.1 Problem Statement
 **TODO: reiterate from Ch.1?**
 
+![Concept Diagram](./diagrams/conceptDiagram.png)
 
 ## 3.2 Requirements
 In a typical software engineering project, there is a need for strong levels of communication between all the stakeholders involved in the endeavour, in order to ensure all the needs the software should meet are in fact met _[(REF)]()_. A frequent phenomenon within these interactions is that requirements are revealed to the development team in a haphazard way or are simply misinterpreted by the team _[(REF?)]()_.  
