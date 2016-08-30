@@ -107,11 +107,12 @@
     - Requirements were written and ordered along lines of an MVP implementation: what was the min viable system to fulfill the stated purpose? => 3 primary domains: tasks, users, teams
     - Required some flexibility due to too many known unknowns & unknown unknowns
     - Prioritised with MoSCoW
-- Use Cases **TODO**
+- Use Cases
 - Wireframes **TODO**
 - Analysis & Data Modelling
     - Initial Deployment diagram
     - Blockchain:
+        - PoW vs PoS **TODO**
         - Data structure/model
             - SequenceList contract
             - Domain Type contracts
@@ -124,8 +125,8 @@
     - server-side:
         -
 
-    - Development of SQL/noSQL-free data structure with blockchain as verifier and store simultaneously (add updated deployment diagram)
-    - PK/FK simulation via the `linker` and on-chain addresses
+     (add updated deployment diagram)
+
     - UML class diagrams
     - Blockchain analysis:
         - _(((ERD)))_
@@ -147,9 +148,12 @@
     - Sequence diagrams for an API call example
     -
 - Blockchain architecture
+    - Development of SQL/noSQL-free data structure with blockchain as verifier and store simultaneously
     - `Eris` configs for deployment, eris CLI
     - Solidity contracts (reiterate from ch.3 & expand)
         - Started with IDs in contract schema, didn't really need them -> addresses double as unique IDs
+    - Linker
+        - PK/FK simulation via the `linker` and on-chain addresses
 - Server side architecture
     - Functional principle from GC16: stateless server architecture
     - REST principles
