@@ -171,7 +171,7 @@
         - `eris-wrapper` - significantly abstracts fiddly low-level setup for the eris-blockchain JS lib
 - Client side architecture
     - `Flow` static typing
-    - UI: React components: template design (abstraction with `common` components), component lifecycle, composing in React
+    - UI: React components: template design (abstraction with `common` components -> use `Loader` as simple example), component lifecycle, composing in React
     - Client side data: Redux actions, stores, reducers, `types.js`
     - `Navigator`
     - `actions/util.js`
@@ -213,4 +213,7 @@
 - User Manual (derive from Help/FAQ page)
 - Code Examples/Snippets
 
-## Glossary
+**Key points that need to be covered**
+- Why blockchain? -> distributed, incorruptible, irreversible "proof" of event
+- why only iOS? -> scope didn't reach
+- is the server not a central point of failure? -> blockchain does not rely on API server to run, non-trivial deployment would have many server instances with a load balancer
