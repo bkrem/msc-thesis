@@ -99,4 +99,8 @@ The server would therefore simply act as a relay and transformer for data travel
 
 
 ### 3.5.4 Client-side Analysis
-**TODO**
+While considering the responsibilities a client-side implementation would have to fulfill to meet the established requirements, it became clear that even for a simple implementation there was a considerable amount of application state that would have to be managed by the client.
+
+- considerable amount of state to manage on the client side
+- Redux as the de facto approach in React Native
+- provides unidirectional data flow -> simplifies process of data mutation and API calls

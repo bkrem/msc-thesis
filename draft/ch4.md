@@ -64,14 +64,17 @@ _Simplicity_ - Establishing a standardised format for any data to be entered int
 #### Arrays and Objects
 A further hindrance imposed by Solidity was its poor support for arrays and its lack of objects, also known as lists and dictionaries, respectively.
 
-While JavaScript is composed entirely of objects, Solidity provides structs; a data structure familiar from the C programming language. This would have provided a sufficient parallel to translate data formatted in JavaScript Object Notation<sup>[(JSON)](http://www.json.org/)</sup> (henceforth JSON) into a format digestible by Solidity contracts, were it not for the fact that Solidity's ability to store and perform operations on its structs and arrays is limited at best. For example, storing user profiles (i.e. structs) as a list of profiles (i.e. an array) would have been possible, but editing and retrieving specific entries in the list would be impossible, as neither Solidity's arrays nor its structs are iterable data structures. This would have meant retrieving the entire data structure from the blockchain, simply to then extract a single user profile; clearly an unfeasible proposition at any non-trivial scale.  
-To mitigate this functional bottleneck in Solidity, the author adopted an implementation of a SequenceArray<sup>[(_Data Structures And Algorithm Analysis in Java, p. 97_)]()</sup>, which became the `SequenceArray.sol` contract. Referring back to the previous example, retrieving the profile for an individual user was now a simple task: user profiles could be initially entered into the SequenceArray by using the username as a key, and later retrieved by iterating through the array and comparing keys until a match was found.
+While JavaScript is composed entirely of objects, Solidity provides the `mapping` type; a data structure similar to what is commonly known as a HashMap<sup>[(REF)]()</sup>. This would have provided a sufficient parallel to translate data formatted in JavaScript Object Notation<sup>[(JSON)](http://www.json.org/)</sup> (henceforth JSON) into a format digestible by Solidity contracts, were it not for the fact that Solidity's ability to store and perform operations on its mappings and arrays is limited at best. For example, storing user profiles (i.e. structs) in a dictionary (i.e. a mapping) would have been possible, but retrieving a collection of dictionary entries would have been impossible, as neither Solidity's arrays nor its `mapping` type are iterable data structures by themselves. More specifically, a `mapping` can only be "probed" for a specific value, making it impossible to iterate over the structure and retrieve a subset of its properties which match a given criteria. This would have meant searching the blockchain in any non-trivial manner would have been highly unfeasible.
+**TODO make sense of the paragraph below**
+To mitigate this functional bottleneck in Solidity, the author adopted an implementation of a SequenceArray<sup>[(_Data Structures And Algorithm Analysis in Java, p. 97_)]()</sup>, which became the `SequenceArray.sol` contract. The SequenceArray provided a well-defined interface on top of Solidity's native array and `mapping` types, significantly simplified and abstracted data operations such as search
 
 ### 4.2.3 Smart Contracts
 
 #### Data: Factory Contracts
 
 #### Operations: Manager Contracts
+- Manager only uses required SequenceArray methods, Strategy pattern?
+- Shape of the Factory and Manager contracts determined the Node server's structuring almost entirely
 
 #### Relations: Linker Contract
 - Started with IDs in contract schema, didn't really need them -> addresses double as unique IDs
