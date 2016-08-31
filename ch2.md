@@ -59,6 +59,12 @@ Async<sup>[(Async)](https://caolan.github.io/async/)</sup> is a utility library 
 **TODO (?)**
 
 ### 2.3.3 Client-side
+The platform chosen for the client-side representation of the system was that of a mobile application. While building a web application would have been just as feasible in conjunction with the system's API, mobile development was chosen as the preferred paradigm in order to maximise the potential for the project's author to gain new skills, as well as two important usability properties:
+
+_Location independence_ - Users are able to check the status of tasks, communicate with team members and receive notifications regardless of their current surroundings.
+
+_Familiarity_ -  Packaging the API's graphical representation into a mobile app provides an already familiar UI framework which users are accustomed to, whereas a web apps often have a large degree of variance in appearance, structure and behaviour.
+
 During the MSc's GC02 "App Design" course, the author and his team had the opportunity to build a React web application which was also required to run as a mobile application. This was achieved by wrapping the web app with the Apache Cordova<sup>[(Cordova)](https://cordova.apache.org/)</sup> mobile development framework. This experience revealed two key insights regarding the intersection between web- and mobile-based client-side development:  
 Firstly, that Facebook's React<sup>[(React)](https://facebook.github.io/react/)</sup> web development library, in liaison with Dan Abramov's Redux<sup>[(Redux)](http://redux.js.org/)</sup> library for data management, could be applied almost seamlessly to the context of a mobile application. React's philosophy of thinking in terms of individual view components, together with Redux's implementation-agnostic approach to managing the application's state, largely abstracted away the conceptual differences between building an HTML document and building a mobile app view.  
 Secondly, that porting a web app to a mobile app simply does not provide an authentic native experience on a mobile device, as it is almost impossible to account for and implement all the differences and individual nuances in, for example, animation styles between mobile operating systems. This resulted in the look & feel of the application being closer to that of a mobile browser rather than a native mobile app.
