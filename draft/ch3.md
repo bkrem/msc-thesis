@@ -95,10 +95,45 @@ Source: https://docs.erisindustries.com/tutorials/solidity/solidity-2/
 Once the structure of the smart contracts had been established, the analysis of the server-side implementation quickly revealed that the server's structure would largely mirror that of the smart contracts. This was the case partially due to the way Eris's JavaScript library was implemented, but largely due to the fact that this would keep the the final API succinct and free of unnecessary cognitive load for the author and for any future developers.  
 The server would therefore simply act as a relay and transformer for data travelling between the client-side application and the blockchain, acting as a _de facto_ middleman. In more concrete terms, this would involve calling relevant contract methods on the blockchain when a certain API endpoint was requested and transforming data between hexadecimal and UTF-8, for example. This is necessary due to Solidity's poor support for strings at the time of writing, meaning that all strings would have to be encoded into 32-byte fields of hexadecimal, known in Solidity as the `bytes32` type.
 
+**TODO quick blurb about how it needed to double as a simple file upload**
 **TODO 2-3 sequence diagrams**
 
 
 ### 3.5.4 Client-side Analysis
-While considering the responsibilities a client-side implementation would have to fulfill to meet the established requirements, it became clear that even for a simple implementation there was a considerable amount of application state that would have to be managed by the client. Besides being the most common choice within React Native applications, the Redux library provides a well-structured approach to state management, derived from the philosophy behind the Elm programming language. Redux ensures that events which mutate state are well-defined and that they may only take place in a single direction (unidirectionally).
+#### Abstracting view components with React
+**TODO**
+- React champions approach of component-based views to achieve DRY code with maximum reusability
+- `common`
+    - `Header` as example of cross-platform reusable abstraction
+    - Globals (GlobalStyles); RN uses component-based hyper-modular CSS, GlobalStyles provided nice way to mix in common styling (e.g. view margins)
+
+#### Managing state with Redux
+While considering the responsibilities a client-side implementation would have to fulfill to meet the established requirements, it also became clear that even for a simple implementation there was a considerable amount of application state that would have to be managed by the client. Besides being the most common choice within React Native applications, the Redux library provides a well-structured approach to state management, derived from the philosophy behind the Elm programming language. Redux ensures that events which mutate state are well-defined and that they may only take place in a single direction (unidirectionally).  
+In concrete terms, Redux achieves these orderly state mutations by following three interdependent principles<sup>[(three principles)](http://redux.js.org/docs/introduction/ThreePrinciples.html)</sup>:
+
+_Single source of truth_ - All of the application's state is stored in a single object tree known as the `store`
+
+_State is read-only_ - Actions, which are objects describing a possible state mutation, are the only way to modify the store and are therefore its only source of information
+
+_Mutation through pure functions_ - Reducers, a type of pure function, are used to take the application's current state object in conjunction with an action describing a state mutation, to return a new state object
+
+Based on these 3 principles which impose the need for a `store` object tree, actions and reducers, state mutations within Redux can be visualised in the following manner:
 
 **TODO redux diagram**
+
+
+To apply the Redux philosophy to QuantiTeam, actions and reducers were modularised into a schema which follows the system's data domain (users, teams, and tasks) as shown below:
+
+```
+...
+├── reducers
+│   ├── rootReducer.js
+│   ├── tasks.js
+│   ├── team.js
+│   └── user.js
+...
+```
+
+Splitting reducers in this manner ensured that the reasoning involved in managing the client application's state could be broken down into its constituent parts, providing minimal cognitive load when processing data coming from the system's API.
+
+- Flow made specifying actionTypes even more effective and stringent
