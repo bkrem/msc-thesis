@@ -101,21 +101,21 @@ The server would therefore simply act as a relay and transformer for data travel
 
 ### 3.5.4 Client-side Analysis
 #### Abstracting view components with React
-**TODO**
-- React champions approach of component-based views to achieve DRY code with maximum reusability
-- `common`
-    - `Header` as example of cross-platform reusable abstraction
-    - Globals (GlobalStyles); RN uses component-based hyper-modular CSS, GlobalStyles provided nice way to mix in common styling (e.g. view margins)
+React takes markedly different approach to view templating compared to the other major web development frameworks such as Google's AngularJS<sup>[(AngularJS)](https://angularjs.org/)</sup>. React's philosophy focuses on breaking a view down into its constituent parts to form reusable components. These components can then be composed in whichever way the developer sees fit. This level of composability comes to its full potential in React Native, as it enables the abstraction of common UI components within a mobile app, providing ample opportunity to even reuse said components across different platforms. The decision to abstract a given component was therefore made according to the following criteria, ordered by highest weighting first:
+
+_Frequency & variability of use_ - How sensible it was to abstract a specific component into a more generic one heavily depended on the range of use cases it could be applied to. For example, creating a generic navigation bar component which could contain different buttons for different views made sense, whereas creating an abstract component for the user's profile summary did not, since it would only be used a single time, in a single place within the app.
+
+_Cross-platform potential_ - A secondary consideration was whether the abstraction would be useful across platforms, i.e. between iOS and Android. For the initial iteration of QuantiTeam which would only focus on iOS this aspect was less significant than the frequency of use, but it played a significant role in keeping the client-side application open to extension at a later point nonetheless.
 
 #### Managing state with Redux
 While considering the responsibilities a client-side implementation would have to fulfill to meet the established requirements, it also became clear that even for a simple implementation there was a considerable amount of application state that would have to be managed by the client. Besides being the most common choice within React Native applications, the Redux library provides a well-structured approach to state management, derived from the philosophy behind the Elm programming language. Redux ensures that events which mutate state are well-defined and that they may only take place in a single direction (unidirectionally).  
 In concrete terms, Redux achieves these orderly state mutations by following three interdependent principles<sup>[(three principles)](http://redux.js.org/docs/introduction/ThreePrinciples.html)</sup>:
 
-_Single source of truth_ - All of the application's state is stored in a single object tree known as the `store`
+_Single source of truth_ - All of the application's state is stored in a single object tree known as the `store`.
 
-_State is read-only_ - Actions, which are objects describing a possible state mutation, are the only way to modify the store and are therefore its only source of information
+_State is read-only_ - Actions, which are objects describing a possible state mutation, are the only way to modify the store and are therefore its only source of information.
 
-_Mutation through pure functions_ - Reducers, a type of pure function, are used to take the application's current state object in conjunction with an action describing a state mutation, to return a new state object
+_Mutation through pure functions_ - Reducers, a type of pure function, are used to take the application's current state object in conjunction with an action describing a state mutation, to return a new state object.
 
 Based on these 3 principles which impose the need for a `store` object tree, actions and reducers, state mutations within Redux can be visualised in the following manner:
 
@@ -136,5 +136,3 @@ To apply the Redux philosophy to QuantiTeam, actions and reducers were modularis
 ```
 
 Splitting reducers in this manner ensured that the reasoning involved in managing the client application's state could be broken down into its constituent parts, providing minimal cognitive load when processing data coming from the system's API.
-
-- Flow made specifying actionTypes even more effective and stringent
