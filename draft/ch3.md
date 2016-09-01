@@ -119,7 +119,8 @@ _Mutation through pure functions_ - Reducers, a type of pure function, are used 
 
 Based on these 3 principles which impose the need for a `store` object tree, actions and reducers, state mutations within Redux can be visualised in the following manner:
 
-**TODO redux diagram**
+![Redux Behaviour](../diagrams/redux.png)  
+Source: http://www.ibm.com/developerworks/library/wa-manage-state-with-redux-p1-david-geary/
 
 
 To apply the Redux philosophy to QuantiTeam, actions and reducers were modularised into a schema which follows the system's data domain (users, teams, and tasks) as shown below:
