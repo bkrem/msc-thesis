@@ -55,7 +55,7 @@ _Figure x_
 
 
 ### 3.5.1 Consensus Algorithm Analysis
-**TODO**
+**TODO maybe**
 
 ### 3.5.2 Smart Contract Analysis
 The concept of a smart contract is usually evoked in terms of a digital protocol which enforces and/or verifies the performance of a contract between two or more parties<sup>[(smart_contracts_idea)](http://szabo.best.vwh.net/smart_contracts_idea.html)</sup>. Within the context of this project the role of the smart contracts played was more closely related to that of typical classes in object-oriented programming _[(REF?)]()_, with the majority of the contracts either acting as factories<sup>[(factory pattern)](http://www.oodesign.com/factory-pattern.html)</sup> for composite types or implementing operations on these types as "manager" contracts.
@@ -92,11 +92,20 @@ Source: https://docs.erisindustries.com/tutorials/solidity/solidity-2/
 
 
 ### 3.5.3 Server-side Analysis
+#### API Router
 Once the structure of the smart contracts had been established, the analysis of the server-side implementation quickly revealed that the server's structure would largely mirror that of the smart contracts. This was the case partially due to the way Eris's JavaScript library was implemented, but largely due to the fact that this would keep the the final API succinct and free of unnecessary cognitive load for the author and for any future developers.  
 The server would therefore simply act as a relay and transformer for data travelling between the client-side application and the blockchain, acting as a _de facto_ middleman. In more concrete terms, this would involve calling relevant contract methods on the blockchain when a certain API endpoint was requested and transforming data between hexadecimal and UTF-8, for example. This is necessary due to Solidity's poor support for strings at the time of writing, meaning that all strings would have to be encoded into 32-byte fields of hexadecimal, known in Solidity as the `bytes32` type.
 
-**TODO quick blurb about how it needed to double as a simple file upload**
-**TODO 2-3 sequence diagrams**
+#### Uploader
+Meeting the requirement of letting task participants attach files related to the their tasks was trickier than anticipated, as choosing to develop the system's client-side as a mobile application came with a key drawback: file management. Mobile operating systems provide only limited capabilities to edit and manage even simple text files, meaning that the platform was suboptimal for attaching files related to a task. For example, if the task involves writing a report, task participants may want to attach the final report to the task in the blockchain, thus further corroborating their participation in it.  
+
+To resolve this usability bottleneck, the author decided to utilise the server not just as a headless API router, but also as an uploader, composed of a single web page, to attach files to tasks present in the blockchain. To implement the uploader effectively, two key aspects had to be considered:
+
+_UX consistency_ From a usability perspective, the transition between the mobile app interface and the browser-based uploader should be as seamless as possible. To avoid disorienting the user, the uploader was therefore kept as straightforward as possible; a single page with a form and a submit button.
+
+_Security_ - The user would have to enter a token – issued by the mobile app when a new task is created – to confirm that the upload has a legitimate task associated to it. The use of tokens therefore prevents automated spam and enables the identification of users uploading material which may be malicious or illegal in nature.
+
+**TODO 2-3 sequence diagrams: example API call, uploader**
 
 
 ### 3.5.4 Client-side Analysis
