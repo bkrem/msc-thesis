@@ -11,6 +11,8 @@ Whereas there is little school staff can do to ensure the attention of a student
 
 > “Rewarding specific actions that students can control, such as completing homework, yields better results than rewarding accomplishments that may seem beyond their reach or out of their control” [(Usher, Kober; Student Motivation - An overlooked piece of school reform)]() **TODO confirm this quote, is this the full sentence?**
 
+**TODO paragraph reference "Hooked"**
+
 Using a blockchain as a data structure – in this case one which is built on a proof-of-stake consensus algorithm – to register, manage and save school-related educational tasks, along with a reward & ranking scheme linked to the blockchain, would enable students to reap immediate rewards from their individual & collaborative efforts. Furthermore, a blockchain's ability to as a pseudo-anonymous public ledger of events, in this case school-related tasks, would provide students with the ability to refer back to said tasks at a later point in time to demonstrate their teamwork skills, therefore making a previous scarcely confirmable skill set auditable.
 
 ## 2.2 Previous Work/Existing Applications
@@ -26,6 +28,10 @@ SocialX is an exercise sharing tool which enables students to earn reputation po
 
 #### HaikuLearning<sup>[(HaikuLearning)](https://www.haikulearning.com/)</sup>
 **TODO**
+
+#### Bitcoin
+**TODO**  
+key ref: Mastering Bitcoin, Antonopoulous
 
 ## 2.3 Programming Languages and Libraries
 ### 2.3.1 Blockchain
