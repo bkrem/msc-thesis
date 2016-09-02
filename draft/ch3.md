@@ -43,8 +43,8 @@ UC15  |  SetProfilePicture    |  User           |  System
 UC16  |  DeleteAccount        |  User           |  System         
 
 
-## 3.4 Sketches & Wireframes
-**TODO**
+## 3.4 Sketches
+To get a sense of a viable layout and structure for the client-side app, the author used rough sketches **(see Appendix X)** to visualise each view that was needed to meet the requirements. Once a convincing layout had been established for a view, the author created a static mockup in React's JSX, which could then be broken down into separate components and given dynamic properties, such as data retrieval methods, at a later point.
 
 ## 3.5 System Design
 The design of the system's architecture started with creating a simple deployment diagram **(fig X)**, which provided a high-level view of the system's required components and the roles they would play.  
@@ -117,7 +117,7 @@ _Frequency & variability of use_ - How sensible it was to abstract a specific co
 _Cross-platform potential_ - A secondary consideration was whether the abstraction would be useful across platforms, i.e. between iOS and Android. For the initial iteration of QuantiTeam which would only focus on iOS this aspect was less significant than the frequency of use, but it played a significant role in keeping the client-side application open to extension at a later point nonetheless.
 
 #### Managing state with Redux
-While considering the responsibilities a client-side implementation would have to fulfill to meet the established requirements, it also became clear that even for a simple implementation there was a considerable amount of application state that would have to be managed by the client. Besides being the most common choice within React Native applications, the Redux library provides a well-structured approach to state management, derived from the philosophy behind the Elm programming language. Redux ensures that events which mutate state are well-defined and that they may only take place in a single direction (unidirectionally).  
+While considering the responsibilities that a client-side implementation would have to fulfill to meet the established requirements, it also became clear that even for a simple implementation there was a considerable amount of application state that would have to be managed by the client. Besides being the most common choice within React Native applications, the Redux library provides a well-structured approach to state management, derived from the philosophy behind the Elm programming language. Redux ensures that events which mutate state are well-defined and that they may only take place in a single direction (unidirectionally).  
 In concrete terms, Redux achieves these orderly state mutations by following three interdependent principles<sup>[(three principles)](http://redux.js.org/docs/introduction/ThreePrinciples.html)</sup>:
 
 _Single source of truth_ - All of the application's state is stored in a single object tree known as the `store`.
