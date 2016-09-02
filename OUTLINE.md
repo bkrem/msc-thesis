@@ -150,6 +150,8 @@
 - Blockchain architecture
     - Development of SQL/noSQL-free data structure with blockchain as verifier and store simultaneously
     - `Eris` configs for deployment, eris CLI
+    - **!Issue!** Eris online compiler broke --> took forever to figure out that port `10113` was viable option because no goddamn documentation of it
+    - **!Issue!** Eris local compiler Docker image did not do anything basically, TOTAL FAIL
     - Solidity contracts (reiterate from ch.3 & expand)
         - Started with IDs in contract schema, didn't really need them -> addresses double as unique IDs
     - Linker
@@ -182,6 +184,8 @@
 **TODO complete me**
 - Testing phases/strategy
 - Unit Testing
+- Integration Testing -> API endpoints
+- Functional testing
 - Didn't make my unit tests atomic enough -> cascading failures if one test breaks -> lesson for next time
 - API endpoint testing (?)
 - Testing libraries/frameworks: mocha, chai `assert`, istanbul
