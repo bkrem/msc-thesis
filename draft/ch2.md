@@ -149,6 +149,4 @@ The `git`<sup>[(git)](https://git-scm.com/)</sup> command line utility was used 
 
 #### Docker & Shell Scripts
 Docker<sup>[(Docker)](https://www.docker.com/)</sup> is a platform which allows the creation of a standardised images for software development to mitigate arbitrary local differences between development environments. It was an essential part of the development process as Eris's tooling leverages Docker heavily to deploy blockchain instances.  
-In order to automate the process of booting the Docker virtual machine and the local blockchain instance, the required sequence of commands was packaged into a Bash shell script, `envsetup.sh`, shown below.
-
-**TODO: insert envsetup.sh**
+Bash shell scripts were constructed by the author in order to automate processes such as hydrating the local terminal environment with variables required to run the blockchain, or booting the Docker virtual machine and the local blockchain instance.
