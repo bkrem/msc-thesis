@@ -47,8 +47,6 @@ Within the MVC paradigm, models represent the central structure of the applicati
 The Tendermint blockchain serves as a model by defining the system's domain through the collection of smart contracts it holds, thus setting the boundaries for what kinds of data the system is able to store and what kind of operations can be performed on the data.
 
 
-
-
 ### 4.2.2 Working with Solidity
 To put a number of the design decisions made during the construction of the blockchain's smart contracts into perspective, some context regarding the current capabilities of the Solidity programming language is required.  
 
@@ -64,31 +62,104 @@ _Simplicity_ - Establishing a standardised format for any data to be entered int
 #### Arrays and Objects
 A further hindrance imposed by Solidity was its poor support for arrays and its lack of objects, also known as lists and dictionaries, respectively.
 
-While JavaScript is composed entirely of objects, Solidity provides the `mapping` type; a data structure similar to what is commonly known as a HashMap<sup>[(REF)]()</sup>. This would have provided a sufficient parallel to translate data formatted in JavaScript Object Notation<sup>[(JSON)](http://www.json.org/)</sup> (henceforth JSON) into a format digestible by Solidity contracts, were it not for the fact that Solidity's ability to store and perform operations on its mappings and arrays is limited at best. For example, storing user profiles (i.e. structs) in a dictionary (i.e. a mapping) would have been possible, but retrieving a collection of dictionary entries would have been impossible, as neither Solidity's arrays nor its `mapping` type are iterable data structures by themselves. More specifically, a `mapping` can only be "probed" for a specific value, making it impossible to iterate over the structure and retrieve a subset of its properties which match a given criteria. This would have meant searching the blockchain in any non-trivial manner would have been highly unfeasible.
-**TODO make sense of the paragraph below**
-To mitigate this functional bottleneck in Solidity, the author adopted an implementation of a SequenceArray<sup>[(_Data Structures And Algorithm Analysis in Java, p. 97_)]()</sup>, which became the `SequenceArray.sol` contract. The SequenceArray provided a well-defined interface on top of Solidity's native array and `mapping` types, significantly simplified and abstracted data operations such as search
+While JavaScript is composed entirely of objects, Solidity provides the `mapping` type; a data structure similar to what is commonly known as a hash map<sup>[(REF)]()</sup>. This would have provided a sufficient parallel to translate data formatted in JavaScript Object Notation<sup>[(JSON)](http://www.json.org/)</sup> (henceforth JSON) into a format digestible by Solidity contracts, were it not for the fact that Solidity's ability to store and perform operations on its mappings and arrays is limited at best. For example, storing user profiles (i.e. `struct`s) in a dictionary (i.e. a `mapping`) would have been possible, but retrieving a particular collection of dictionary entries would have been impossible, as neither Solidity's arrays nor its `mapping` type are iterable data structures by themselves. More specifically, a `mapping` can only be "probed" for a specific value, making it impossible to iterate over the structure and retrieve a subset of its properties which match a given criteria. This would have meant searching the blockchain in any non-trivial manner would have been highly unfeasible.  
+To mitigate this functional bottleneck in Solidity, the author adopted an implementation of a SequenceArray<sup>[(_Data Structures And Algorithm Analysis in Java, p. 97_)]()</sup>, which became the `SequenceArray.sol` contract. The SequenceArray provided a well-defined interface of methods on top of Solidity's native array and `mapping` types, allowing the author to focus on _when_ and _why_ data should be manipulated or searched, rather than _how_ these operations are performed.
 
 ### 4.2.3 Smart Contracts
-
 #### Data: Factory Contracts
+The blockchain's factory contracts were a straightforward undertaking, both in regards of design and implementation, as their only role was to return a new instance of the contract, which would then be handled by the associated manager contracted. This meant the factory contract, in its simplest form, would contain its required fields and a constructor, as shown below:
+
+```js
+contract Task {
+
+    bytes32 public id; // immutable
+    bytes32 public title; // mutable
+    bytes32 public desc; // mutable
+    bytes32 public status; // mutable
+    bytes32 public complete; // mutable
+    bytes32 public reward; // immutable
+    bytes32 public participants; // mutable
+    bytes32 public creator; // immutable
+
+    // Constructor
+    function Task(
+        bytes32 _id,
+        bytes32 _title,
+        bytes32 _desc,
+        bytes32 _status,
+        bytes32 _complete,
+        bytes32 _reward,
+        bytes32 _participants,
+        bytes32 _creator
+        ) {
+        id = _id;
+        title = _title;
+        desc = _desc;
+        status = _status;
+        complete = _complete;
+        reward = _reward;
+        participants = _participants;
+        creator = _creator;
+    }
+}
+```
+
+Solidity's inability to process an externally passed JavaScript object is nicely exemplified here, due to the sheer verbosity of the constructor function. While a task could be encapsulated as a single object and therefore passed as a single parameter within the client- and server-side JavaScript applications, the object had to be split into its constituent fields by the NodeJS server before it could be handed to the blockchain. This created what is commonly referred to as a "code smell"<sup>[(Tufano, Michele, et al. "When and why your code starts to smell bad." Proceedings of the 37th International Conference on Software Engineering-Volume 1. IEEE Press, 2015.)](http://www.cs.wm.edu/~denys/pubs/ICSE'15-BadSmells-CRC.pdf)</sup>, by forcing the author to implement an excessively large amount of parameters. This made the both the factory contracts themselves and the server's methods that deconstructed the initial JavaScript object for the blockchain brittle, as any change to a factory contract's fields had cascading effects throughout the API, thus creating an unnecessary opportunity for bugs to appear if refactoring was not done in a meticulous manner.
+
 
 #### Operations: Manager Contracts
-- Manager only uses required SequenceArray methods, Strategy pattern?
+As a contract type, Manager contracts are chiefly responsible for indexing and modifying instances of data domain contracts, returned to them by their respective factory contract. How a Manager-type contract fulfills this role is exemplified with the code snippet below, which is an extract from the `UserManager` contract's `addUser()` method:
+
+```js
+// ...
+if (isOverwrite) {
+    return 0x0;
+} else {
+    User u = new User(_id, _username, _email, _name, _password);
+    userList.insert(_username, u);
+    return u;
+}
+// ...
+```
+
+The method previously checks whether the username already exists in the `userList` sequence array and writes the result to the `isOverwrite` variable, indicating that this would be an "overwrite" rather than a "create" operation. If the username already exists `addUser()` returns `0x0`, a null pointer address, thus indicating to the NodeJS server that adding the user failed. This again exemplifies the rather primitive state of the Solidity language at the time of writing, as the null address has to serve as an implicit error due to the absence of an error type within the language.  
+If `isOverwrite` is false on the other hand, the `UserManager` contract creates a new instance of the `User` factory contract by invoking `new User(...)`, returning a pointer address which indicates the position of the newly created `User` contract in the blockchain. This address is then inserted into `userList`, where entries are indexed by using the passed `_username` variable as a key, to facilitate later retrieval.
+
+Furthermore, the flexibility provided by the data structure contract – in this case a sequence array – became especially clear during the implementation of the Manager contracts. A Manager contract could simply instantiate a `SequenceArray.sol` contract for its own purposes and use only the minimum amount of SequenceArray methods it required to fulfill its functions, by creating a wrapper function around the method, and adding additional context as required, such as logging an event:
+
+```js
+contract UserManager {
+    SequenceArray userList = new SequenceArray();
+
+    // other methods...
+
+    function isUsernameTaken(bytes32 _username) constant returns (bool) {
+        registerActionEvent("IS USERNAME TAKEN");
+        return userList.exists(_username);
+    }
+    // ...
+}
+```
+
 - Shape of the Factory and Manager contracts determined the Node server's structuring almost entirely
 
 #### Relations: Linker Contract
-- Started with IDs in contract schema, didn't really need them -> addresses double as unique IDs
+- Addresses as unique identifiers: Started with IDs in contract schema to follow PK/FK relational principle, didn't really need them -> addresses double as unique IDs
+- PK/FK simulation via the `linker` and on-chain addresses
+- `User` and `Team` contracts contain a SequenceArray to track associated tasks
 
 **TODO Class diagram for contracts**
 
-### 4.2.4 Eris CLI
-
+### 4.2.4 Tendermint and Eris
+- `Eris` configs for deployment, eris CLI
+- **!Issue!** Eris online compiler broke --> took forever to figure out that port `10113` was viable option because no goddamn documentation of it
+- **!Issue!** Eris local compiler Docker image did not do anything basically, TOTAL FAIL
 
 ## 4.3 Server Architecture
 As touched upon in the server-side analysis, the REST API server's role is first and foremost that of a data transformer and relay, forming a bridge between the blockchain and any given client-side implementation. The following subsections initially present how the server was designed to adhere to principles of both the MVC and REST design patterns, followed by an exploration how the server performs its bridging responsibilities in concrete terms.
 
 ### 4.3.1 The Controller
-The server is able to fulfill its role as a Controller component within the system's MVC architecture, by virtue of being the deciding factor concerning the logic executed between a an HTTP request being received and a response issued within the API.  
+The server is able to fulfill its role as a Controller component within the system's MVC architecture, by virtue of being the deciding factor concerning the logic executed between an HTTP request being received and a response issued within the API.  
 **TODO more**
 
 
@@ -146,6 +217,7 @@ QuantiTeam meets this constraint through its HTTP URI interface, which enables m
 
 
 ## 4.3.3 Data Handling
+**TODO**
 ...  
 Said pipeline function was defined within the utility module `chainUtils.js` as `marshalForChain(<data-object>)`. The function takes  it's `<data-object>` parameter, identifies the original type which initially identified the  utilised the `eris-wrapper` library module's `str2hex()` (string-to-hex)
 , responsible for preparing the data to be entered,  
@@ -153,3 +225,18 @@ Said pipeline function was defined within the utility module `chainUtils.js` as 
 
 ## 4.4 Client-side Architecture
 ### 4.4.1 The View
+
+
+### 4.4.x Common Components
+Within the context of QuantiTeam, a good example of how common UI components were identified is the `Header` component.
+
+- `common`
+    - `Header` as example of cross-platform reusable abstraction
+    - Globals (GlobalStyles); RN uses component-based hyper-modular CSS, GlobalStyles provided nice way to mix in common styling (e.g. view margins)
+
+### 4.4.x Flowtype
+Furthermore, the Flowtype static type analyser elevated the ability to define actions and the expected types of their payloads in a more fine-grained manner compared to regular JavaScript, by enabling the author to add type constraints to variables and functions where needed. The following extract demonstrates the usefulness of additional static typing:
+
+`{ type: 'FETCH_TASKS_SUCCESS', tasks: Array<Task>, receivedAt: number }`
+
+The action above is triggered upon successfully fetching the user's tasks from from the blockchain via the API. The payload includes a `tasks` property, which is expected to be an array of `Task` type objects, and a `receivedAt` property, which should be a Unix timestamp and is therefore expected to be of the type `number`.
