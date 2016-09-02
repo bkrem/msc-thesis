@@ -101,7 +101,7 @@ Meeting the requirement of letting task participants attach files related to the
 
 To resolve this usability bottleneck, the author decided to utilise the server not just as a headless API router, but also as an uploader, composed of a single web page, to attach files to tasks present in the blockchain. To implement the uploader effectively, two key aspects had to be considered:
 
-_UX consistency_ From a usability perspective, the transition between the mobile app interface and the browser-based uploader should be as seamless as possible. To avoid disorienting the user, the uploader was therefore kept as straightforward as possible; a single page with a form and a submit button.
+_UX consistency_ - From a usability perspective, the transition between the mobile app interface and the browser-based uploader should be as seamless as possible. To avoid disorienting the user, the uploader was therefore kept as straightforward as possible; a single page with a form and a submit button.
 
 _Security_ - The user would have to enter a token – issued by the mobile app when a new task is created – to confirm that the upload has a legitimate task associated to it. The use of tokens therefore prevents automated spam and enables the identification of users uploading material which may be malicious or illegal in nature.
 
