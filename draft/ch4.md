@@ -141,17 +141,23 @@ contract UserManager {
 }
 ```
 
-- Shape of the Factory and Manager contracts determined the Node server's structuring almost entirely
+- **Shape of the Factory and Manager contracts determined the Node server's structuring almost entirely**
 
 #### Relations: Linker Contract
-- Addresses as unique identifiers: Started with IDs in contract schema to follow PK/FK relational principle, didn't really need them -> addresses double as unique IDs
-- PK/FK simulation via the `linker` and on-chain addresses
-- `User` and `Team` contracts contain a SequenceArray to track associated tasks
+The Linker contract, which is best described as a utility contract, is responsible for linking together instances of factory contracts. As one of the blockchain's primary purposes within QuantiTeam is to act as persistent storage layer, this type of functionality was required in order to emulate the entity integrity provided by primary key/foreign key relations between tables in a relational database<sup>[(primaryKey/foreignKey)](https://msdn.microsoft.com/en-GB/library/ms179610.aspx)</sup>.  
+For example, when a user creates a new task, thus spawning a new `Task` contract via the `TaskManager`, the system should be able to later identify the creator of said task. A possible solution would have been to simply let the `TaskManager` contract establish the link itself. Although being the most obvious solution to the issue, it would not have scaled well across the suite of Manager-type contracts. As the author was aware that a similar need for linkage would arise again between `Team` and `Task` contracts, allowing each Manager-type contract to implement its own linking mechanism was a notion which seemed to call for a layer of abstraction. A separate `Linker` contract was therefore established, whose sole responsibility is to create relational links between different types of factory contract instances. To achieve this, each new instance of a `User` or `Team` contract also contains a `taskAddressList` sequence array. This list is used to hold addresses (i.e. pointers) of tasks related to this instance of a user or team within the system. The `Linker` contract is then responsible for adding relevant addresses to the `taskAddressList`, an action which is performed whenever a new task is created.  
+The following sequence diagram illustrates how the system processes a user attempting to add a task to the blockchain, exemplifying how and when the `Linker` contract is invoked.
+
+!["Add Task" sequence diagram](../diagrams/addTaskSeqDiagram.png)
+**Figure x - Sequence of events for an "Add Task" action**
 
 **TODO Class diagram for contracts**
 
-### 4.2.4 Tendermint and Eris
+### 4.2.4 Tendermint and Eris **TODO**
 - `Eris` configs for deployment, eris CLI
+    - eris chains -> simplechain.sh
+    - eris services -> npm build
+    -
 - **!Issue!** Eris online compiler broke --> took forever to figure out that port `10113` was viable option because no goddamn documentation of it
 - **!Issue!** Eris local compiler Docker image did not do anything basically, TOTAL FAIL
 
@@ -217,15 +223,21 @@ QuantiTeam meets this constraint through its HTTP URI interface, which enables m
 
 
 ## 4.3.3 Data Handling
-**TODO**
-...  
-Said pipeline function was defined within the utility module `chainUtils.js` as `marshalForChain(<data-object>)`. The function takes  it's `<data-object>` parameter, identifies the original type which initially identified the  utilised the `eris-wrapper` library module's `str2hex()` (string-to-hex)
-, responsible for preparing the data to be entered,  
-...
+An essential function of the NodeJS server is to act as data handler, thus defining the way data has to be formatted to flow between the React Native client app and the blockchain. As the server implements an API interface which should be suitable for any client-side implementation, the data transformations required took the form of translating JavaScript objects coming from the client to a hexadecimal format in order to adhere to Solidity's `bytes32` type, for the reasons that were laid out in chapter 3.
+This was achieved by use of a "pipeline" function.  
+The pipeline function was defined within the utility module `chainUtils.js` as `marshalForChain(<data-object>)`, which can be reviewed in full in **Appendix X**. The function takes its `<data-object>` parameter, identifies the type of each object property (e.g. `Array.isArray(<property>)`) and transforms it into a string representation of itself. Representing all of the `<data-object>`s properties as strings in an intermediate step is necessary in order to utilise the `eris-wrapper` library module's `str2hex(<string>)` (string-to-hex) function, which accepts a string as a parameter and transforms it into a 32-byte hexadecimal string. `str2hex` is therefore the final step in the `marshalForChain` function, preparing each of the object's properties to be fed into the blockchain.
+
+When retrieving data from the blockchain, the transformations are reversed via `eris-wrapper`'s `convertibleCallback()` function, which the author modified to accept an array of transformation functions, rather than a single function. This enables a similar pipeline effect to that of the `marshalForChain` function, as a property that is known to be an array can therefore be transformed back to this representation after it has been decoded from hexadecimal to a string via the `hex2str` (hex-to-string) function.
+
+`contract.participants( eris.convertibleCallback(callback, [eris.hex2str, JSON.parse]) )`
+
+The snippet above shows `convertibleCallback` is invoked on a `Task` contract's `participants` field. Aside from being passed the `callback` parameter which will receive the transformation's result, the function also receives an array of transformation functions; in this case `hex2str` to decode the hexadecimal string, followed by `JSON.parse` to convert the string back into its original form: a JavaScript array.
+
 
 ## 4.4 Client-side Architecture
 ### 4.4.1 The View
-
+- blurb on View in MVC
+- Parallel to MVC somewhat breaks down here, as React Native app has its own local state.
 
 ### 4.4.x Common Components
 Within the context of QuantiTeam, a good example of how common UI components were identified is the `Header` component.
