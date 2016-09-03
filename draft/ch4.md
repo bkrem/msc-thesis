@@ -156,9 +156,9 @@ The following sequence diagram illustrates how the system processes a user attem
 ## 4.3 Server Architecture
 As touched upon in the server-side analysis, the REST API server's role is first and foremost that of a data transformer and relay, forming a bridge between the blockchain and any given client-side implementation. The following subsections initially present how the server was designed to adhere to principles of both the MVC and REST design patterns, followed by an exploration how the server performs its bridging responsibilities in concrete terms.
 
+
 ### 4.3.1 The Controller
-The server is able to fulfill its role as a Controller component within the system's MVC architecture, by virtue of being the deciding factor concerning the logic executed between an HTTP request being received and a response issued within the API.  
-**TODO more**
+Controllers can be regarded as an intermediary which sit between models and views, and are typically responsible for updating the model when changes in the view take place<sup>[(Learning JS Design Patterns)](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailmvc)</sup>. Within QuantiTeam, the server is able to fulfill its role as a Controller component within the system's overarching MVC architecture, by being the deciding factor concerning the logic executed between the moment an HTTP request is received and the moment a response issued from the API. Furthermore, the server is also responsible for piping any changes in data in the client-side application to the blockchain. For example, the event of a user marking a task as "Completed" is persisted by the server forwarding this change to the blockchain and altering the relevant `Task` contract accordingly.
 
 
 ### 4.3.2 RESTfulness
