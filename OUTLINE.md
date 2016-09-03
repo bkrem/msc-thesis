@@ -212,9 +212,9 @@
 - Sketches (given)
 - List of Requirements
 - Use Cases
-- User Stories
 - System Manual (README from Github)
 - User Manual (derive from Help/FAQ page)
+- List of API endpoints
 - Code Examples/Snippets
 
 **Key points that need to be covered**
