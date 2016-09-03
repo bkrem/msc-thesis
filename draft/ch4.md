@@ -1,5 +1,5 @@
 # Chapter 4
-# Design and Implementation
+# Design & Implementation
 
 ## 4.1 System Architecture
 QuantiTeam broadly follows the three-tier architecture of a typical Model-View-Controller<sup>[(Krasner, Glenn E., and Stephen T. Pope. "A description of the model-view-controller user interface paradigm in the smalltalk-80 system." Journal of object oriented programming 1.3 (1988): 26-49.)](http://heaveneverywhere.com/stp/PostScript/mvc.pdf)</sup> (henceforth MVC) application with the important distinction that the roles within the MVC pattern are applied to an entire system of various applications, rather than a single application. In concrete terms, this means that blockchain represents the Model element by establishing the system's data model through the smart contracts applied to it, while the NodeJS server represents the Controller element, providing a public interface for client applications to issue requests to the blockchain and handling raw responses from the blockchain. The "View" element of the implementation is therefore interchangeable, as the RESTful API formed by the web server and the blockchain provides a uniform set of endpoints to communicate with, tying no special or unique value to the client, in this case a mobile app.
@@ -41,7 +41,7 @@ In order to mirror the described approach of creating a standalone unit out of t
 └── npm-debug.log
 ```
 
-## 4.2 Blockchain Architecture
+## 4.2 Blockchain Design & Implementation
 ### 4.2.1 The Model
 Within the MVC paradigm, models represent the central structure of the application and "are concerned with neither the user-interface nor presentation layers but instead represent unique forms of data that an application may require"<sup>[(Learning JS Design Patterns)](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailmvc)</sup>.  
 The Tendermint blockchain serves as a model by defining the system's domain through the collection of smart contracts it holds, thus setting the boundaries for what kinds of data the system is able to store and what kind of operations can be performed on the data.
@@ -153,7 +153,7 @@ The following sequence diagram illustrates how the system processes a user attem
 
 **TODO Class diagram for contracts**
 
-## 4.3 Server Architecture
+## 4.3 Server Design & Implementation
 As touched upon in the server-side analysis, the REST API server's role is first and foremost that of a data transformer and relay, forming a bridge between the blockchain and any given client-side implementation. The following subsections initially present how the server was designed to adhere to principles of both the MVC and REST design patterns, followed by an exploration how the server performs its bridging responsibilities in concrete terms.
 
 
@@ -226,7 +226,7 @@ When retrieving data from the blockchain, the transformations are reversed via `
 The snippet above shows `convertibleCallback` is invoked on a `Task` contract's `participants` field. Aside from being passed the `callback` parameter which will receive the transformation's result, the function also receives an array of transformation functions; in this case `hex2str` to decode the hexadecimal string, followed by `JSON.parse` to convert the string back into its original form: a JavaScript array.
 
 
-## 4.4 Client-side Architecture
+## 4.4 Client-side Design & Implementation
 ### 4.4.1 The View
 Within the MVC pattern, views are the component responsible for the graphical representation of the application's – or in this case the system's – data models<sup>[(Krasner, Glenn E., and Stephen T. Pope. "A description of the model-view-controller user interface paradigm in the smalltalk-80 system." Journal of object oriented programming 1.3 (1988): 26-49.)](http://heaveneverywhere.com/stp/PostScript/mvc.pdf)</sup>. Although a view may also be described as "a visual representation of models that present a filtered view of the current state"<sup>[(Learning JS Design Patterns)](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailmvc)</sup>, the parallels between the MVC pattern and QuantiTeam's structure become somewhat less applicable. While the client-side React Native app does of course act as a filtered graphical representation of the blockchain's models, it also contains its own local state and therefore deviates from the typical description of an MVC view somewhat. **TODO is this worth arguing?**
 
@@ -234,16 +234,42 @@ Within the MVC pattern, views are the component responsible for the graphical re
 - Parallel to MVC somewhat breaks down here, as React Native app has its own local state.
 
 ### 4.4.x Emulating Strict Typing
-One of the key elements in designing and implementing a well-defined client-side application for this system was the ability to define types in a static manner and composing union and intersection types with Facebook's Flowtype. The author found that having to think in terms of explicit, strict type constraints made the React Native app's code more robust and helped create better abstractions, as JavaScript's dynamically-typed nature seemed more of a hindrance rather than a tool when the goal was to enforce types between the client-side and the system's API.
+One of the key elements in designing and implementing a well-defined client-side application for this system was the ability to define types in a static manner and compose union and intersection types with Facebook's Flowtype. The author found that having to think in terms of explicit, strict type constraints made the React Native app's code more robust and helped create better abstractions, as JavaScript's dynamically-typed nature seemed more of a hindrance rather than a tool when the goal was to enforce types between a client and the system's API.  
+A pertinent example of how Flowtype helped define more robust React components is the `Tab` type:
 
-**TODO example code with Tab, User...**
+```js
+type Tab =
+    'tasks'
+  | 'team'
+  | 'me'
+  ;
+```
 
+Here Flowtype allows the definition of a `Tab` enum by using literal types<sup>[(Flowtype:literal types)](https://flowtype.org/docs/builtins.html#literal-types)</sup>. The `Tab` enum was useful to specify which string identifiers, each associated with a given view, were legal values in the `TabsView` component, which renders the navigation bar at the bottom of the app's viewport.
 
-Furthermore, the Flowtype static type analyser elevated the ability to define actions and the expected types of their payloads in a more fine-grained manner compared to regular JavaScript, by enabling the author to add type constraints to variables and functions where needed. The following extract demonstrates the usefulness of additional static typing:
+While the ability to define enums was certainly handy, Flowtype's true usefulness is revealed when looking at one of the system's key data types, the `User` type:
+
+```js
+type User = {
+    id: number;
+    name: string;
+    username: string;
+    score: number;
+    teamname?: string;
+    email?: string;
+    address?: string;
+}
+```
+
+The snippet above shows how Flowtype enabled the author to define what type primitives a `User` object's fields should adhere to. This significantly reduced bug frequency, both within the app and the API itself, by catching inadvertent type coercions or possibly undefined values before the app's runtime environment was even entered.  
+Furthermore, the `User` type exemplifies how Flowtype allows a differentiation between mandatory (`username`) and optional (`teamname?`) fields, adding an element of flexibility where needed. For example, the `address?` field cannot be defined at the time a `User`-type object is instantiated in the client-side application, as the hexadecimal address for the User contract can only be returned to the client once the user has been registered in the blockchain post-instantiation.  
+**TODO rephrase**
+
+Finally, Flowtype elevated the ability to define actions and the expected types of their payloads in a more fine-grained manner compared to regular JavaScript, by enabling the author to add type constraints to variables and functions where needed. The following action demonstrates the usefulness of additional static typing:
 
 `{ type: 'FETCH_TASKS_SUCCESS', tasks: Array<Task>, receivedAt: number }`
 
-The action above is triggered upon successfully fetching the user's tasks from from the blockchain via the API. The payload includes a `tasks` property, which is expected to be an array of `Task` type objects, and a `receivedAt` property, which should be a Unix timestamp and is therefore expected to be of the type `number`.
+The action above is triggered upon successfully fetching a user's tasks from from the blockchain via the API. The payload includes a `tasks` property, which is expected to be an array of `Task` type objects, and a `receivedAt` property, which should be a Unix timestamp and is therefore expected to be of the type `number`.
 
 ### 4.4.x Common Components
 Within the context of QuantiTeam, a good example of how common UI components were identified is the `Header` component.
