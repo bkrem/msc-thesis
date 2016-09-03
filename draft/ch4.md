@@ -230,8 +230,6 @@ The snippet above shows `convertibleCallback` is invoked on a `Task` contract's 
 ### 4.4.1 The View
 Within the MVC pattern, views are the component responsible for the graphical representation of the application's – or in this case the system's – data models<sup>[(Krasner, Glenn E., and Stephen T. Pope. "A description of the model-view-controller user interface paradigm in the smalltalk-80 system." Journal of object oriented programming 1.3 (1988): 26-49.)](http://heaveneverywhere.com/stp/PostScript/mvc.pdf)</sup>. Although a view may also be described as "a visual representation of models that present a filtered view of the current state"<sup>[(Learning JS Design Patterns)](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailmvc)</sup>, the parallels between the MVC pattern and QuantiTeam's structure become somewhat less applicable. While the client-side React Native app does of course act as a filtered graphical representation of the blockchain's models, it also contains its own local state and therefore deviates from the typical description of an MVC view somewhat. **TODO is this worth arguing?**
 
-- blurb on View in MVC
-- Parallel to MVC somewhat breaks down here, as React Native app has its own local state.
 
 ### 4.4.x Emulating Strict Typing
 One of the key elements in designing and implementing a well-defined client-side application for this system was the ability to define types in a static manner and compose union and intersection types with Facebook's Flowtype. The author found that having to think in terms of explicit, strict type constraints made the React Native app's code more robust and helped create better abstractions, as JavaScript's dynamically-typed nature seemed more of a hindrance rather than a tool when the goal was to enforce types between a client and the system's API.  
@@ -272,8 +270,29 @@ Finally, Flowtype elevated the ability to define actions and the expected types 
 The action above is triggered upon successfully fetching a user's tasks from from the blockchain via the API. The payload includes a `tasks` property, which is expected to be an array of `Task` type objects, and a `receivedAt` property, which should be a Unix timestamp and is therefore expected to be of the type `number`.
 
 ### 4.4.x Common Components
-Within the context of QuantiTeam, a good example of how common UI components were identified is the `Header` component.
+As explained in chapter 3, React's approach towards view components aims at enabling the developer to achieve a high level of reusability and adaptability from said components. The following section therefore shows how the two component attributes discussed in chapter 3, namely frequency/variability of use and cross-platform potential, were applied to QuantiTeam's React components.
+
+#### Frequency & Variability of Use
+A component which encapsulates both these attributes is the `Header` component. The `Header` component creates a generic framework for the app's header which usually contains navigation and action buttons, such as "Go Back" or "Add Task". This means it has to appear within almost all of the app's views, clearly meeting the frequency of use attribute. From a variability perspective, the `Header` component is high-level and agnostic to specific implementation details. For example, the header's `leftItem` and `rightItem` attributes, representing placeholders for specific buttons, can be implemented by using a text-based or icon-based button, as shown in (**TODO shown in appendix X**). This permits for concrete instances of the `Header` component to apply the button layout most suitable for a given situation. For example, a "Settings" button is commonly identifiable as a cog icon, whereas the "Add Task" action button has no commonly identifiable icon, and therefore benefits from simply displaying text to disambiguate what action the button will perform if tapped.
+
+#### Cross-Platform Potential
+The flexibility of the app header's button layouts also comes into play regarding the component's potential for reuse across differing mobile platforms. If neither a text- nor icon-option is specified in an instance of the `Header` component, React Native is able to identify the current device's platform via its `Platform.OS` variable and can thus resort to the current platform's defaults (text buttons on iOS, icon buttons on Android). This enhanced the flexibility and robustness of the app overall, as the header would always be able to render its button elements, instead of simply throwing an error due to lack of a defined layout on one platform or another. Furthermore, the aforementioned `Platform.OS` variable provided the opportunity to define standard behaviour for whichever platform the `Header` component was to be rendered on, as shown here:
+
+```js
+let STATUS_BAR_HEIGHT = Platform.OS === 'ios' ? 20 : 25;
+let HEADER_HEIGHT = Platform.OS === 'ios' ? 44 + STATUS_BAR_HEIGHT : 56 + STATUS_BAR_HEIGHT;
+```
+
+Here the header's height is automatically determined according to the current operating system's defaults, providing a clean high-level abstraction that avoided the need for multiple `HEADER_HEIGHT` definitions. Applied to only this single instance this may seems like a trivial abstraction, but it provided the author with a useful mechanism to avoid unnecessary code reuse and redefinition in a number of cases, keeping the `Header` component more transparent and less verbose.
+
+cross-platform:
+- Android header not implemented as not in scope, but ability to define different classes within single `Header.js` and apply depending on `Platform.OS` incredibly straightforward and powerful
+- minor differences e.g. statusbar offset via `Platform.OS`
 
 - `common`
     - `Header` as example of cross-platform reusable abstraction
     - Globals (GlobalStyles); RN uses component-based hyper-modular CSS, GlobalStyles provided nice way to mix in common styling (e.g. view margins)
+
+
+### 4.4.x Redux
+- Move diagram down from ch3?
