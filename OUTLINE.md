@@ -187,9 +187,8 @@
 - Testing phases/strategy
 - Unit Testing
 - Integration Testing -> API endpoints
-- Functional testing
+- Functional/blackbox testing
 - Didn't make my unit tests atomic enough -> cascading failures if one test breaks -> lesson for next time
-- API endpoint testing (?)
 - Testing libraries/frameworks: mocha, chai `assert`, istanbul
 
 ### Deployment
