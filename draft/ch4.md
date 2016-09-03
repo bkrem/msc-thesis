@@ -153,14 +153,6 @@ The following sequence diagram illustrates how the system processes a user attem
 
 **TODO Class diagram for contracts**
 
-### 4.2.4 Tendermint and Eris **TODO**
-- `Eris` configs for deployment, eris CLI
-    - eris chains -> simplechain.sh
-    - eris services -> npm build
-    -
-- **!Issue!** Eris online compiler broke --> took forever to figure out that port `10113` was viable option because no goddamn documentation of it
-- **!Issue!** Eris local compiler Docker image did not do anything basically, TOTAL FAIL
-
 ## 4.3 Server Architecture
 As touched upon in the server-side analysis, the REST API server's role is first and foremost that of a data transformer and relay, forming a bridge between the blockchain and any given client-side implementation. The following subsections initially present how the server was designed to adhere to principles of both the MVC and REST design patterns, followed by an exploration how the server performs its bridging responsibilities in concrete terms.
 
@@ -236,8 +228,22 @@ The snippet above shows `convertibleCallback` is invoked on a `Task` contract's 
 
 ## 4.4 Client-side Architecture
 ### 4.4.1 The View
+Within the MVC pattern, views are the component responsible for the graphical representation of the application's – or in this case the system's – data models<sup>[(Krasner, Glenn E., and Stephen T. Pope. "A description of the model-view-controller user interface paradigm in the smalltalk-80 system." Journal of object oriented programming 1.3 (1988): 26-49.)](http://heaveneverywhere.com/stp/PostScript/mvc.pdf)</sup>. Although a view may also be described as "a visual representation of models that present a filtered view of the current state"<sup>[(Learning JS Design Patterns)](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailmvc)</sup>, the parallels between the MVC pattern and QuantiTeam's structure become somewhat less applicable. While the client-side React Native app does of course act as a filtered graphical representation of the blockchain's models, it also contains its own local state and therefore deviates from the typical description of an MVC view somewhat. **TODO is this worth arguing?**
+
 - blurb on View in MVC
 - Parallel to MVC somewhat breaks down here, as React Native app has its own local state.
+
+### 4.4.x Emulating Strict Typing
+One of the key elements in designing and implementing a well-defined client-side application for this system was the ability to define types in a static manner and composing union and intersection types with Facebook's Flowtype. The author found that having to think in terms of explicit, strict type constraints made the React Native app's code more robust and helped create better abstractions, as JavaScript's dynamically-typed nature seemed more of a hindrance rather than a tool when the goal was to enforce types between the client-side and the system's API.
+
+**TODO example code with Tab, User...**
+
+
+Furthermore, the Flowtype static type analyser elevated the ability to define actions and the expected types of their payloads in a more fine-grained manner compared to regular JavaScript, by enabling the author to add type constraints to variables and functions where needed. The following extract demonstrates the usefulness of additional static typing:
+
+`{ type: 'FETCH_TASKS_SUCCESS', tasks: Array<Task>, receivedAt: number }`
+
+The action above is triggered upon successfully fetching the user's tasks from from the blockchain via the API. The payload includes a `tasks` property, which is expected to be an array of `Task` type objects, and a `receivedAt` property, which should be a Unix timestamp and is therefore expected to be of the type `number`.
 
 ### 4.4.x Common Components
 Within the context of QuantiTeam, a good example of how common UI components were identified is the `Header` component.
@@ -245,10 +251,3 @@ Within the context of QuantiTeam, a good example of how common UI components wer
 - `common`
     - `Header` as example of cross-platform reusable abstraction
     - Globals (GlobalStyles); RN uses component-based hyper-modular CSS, GlobalStyles provided nice way to mix in common styling (e.g. view margins)
-
-### 4.4.x Flowtype
-Furthermore, the Flowtype static type analyser elevated the ability to define actions and the expected types of their payloads in a more fine-grained manner compared to regular JavaScript, by enabling the author to add type constraints to variables and functions where needed. The following extract demonstrates the usefulness of additional static typing:
-
-`{ type: 'FETCH_TASKS_SUCCESS', tasks: Array<Task>, receivedAt: number }`
-
-The action above is triggered upon successfully fetching the user's tasks from from the blockchain via the API. The payload includes a `tasks` property, which is expected to be an array of `Task` type objects, and a `receivedAt` property, which should be a Unix timestamp and is therefore expected to be of the type `number`.
