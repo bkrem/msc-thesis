@@ -231,7 +231,7 @@ The snippet above shows `convertibleCallback` is invoked on a `Task` contract's 
 Within the MVC pattern, views are the component responsible for the graphical representation of the application's – or in this case the system's – data models<sup>[(Krasner, Glenn E., and Stephen T. Pope. "A description of the model-view-controller user interface paradigm in the smalltalk-80 system." Journal of object oriented programming 1.3 (1988): 26-49.)](http://heaveneverywhere.com/stp/PostScript/mvc.pdf)</sup>. Although a view may also be described as "a visual representation of models that present a filtered view of the current state"<sup>[(Learning JS Design Patterns)](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailmvc)</sup>, the parallels between the MVC pattern and QuantiTeam's structure become somewhat less applicable. While the client-side React Native app does of course act as a filtered graphical representation of the blockchain's models, it also contains its own local state and therefore deviates from the typical description of an MVC view somewhat. **TODO is this worth arguing?**
 
 
-### 4.4.x Emulating Strict Typing
+### 4.4.2 JavaScript: Emulating Strict Typing
 One of the key elements in designing and implementing a well-defined client-side application for this system was the ability to define types in a static manner and compose union and intersection types with Facebook's Flowtype. The author found that having to think in terms of explicit, strict type constraints made the React Native app's code more robust and helped create better abstractions, as JavaScript's dynamically-typed nature seemed more of a hindrance rather than a tool when the goal was to enforce types between a client and the system's API.  
 A pertinent example of how Flowtype helped define more robust React components is the `Tab` type:
 
@@ -269,7 +269,7 @@ Finally, Flowtype elevated the ability to define actions and the expected types 
 
 The action above is triggered upon successfully fetching a user's tasks from from the blockchain via the API. The payload includes a `tasks` property, which is expected to be an array of `Task` type objects, and a `receivedAt` property, which should be a Unix timestamp and is therefore expected to be of the type `number`.
 
-### 4.4.x Common Components
+### 4.4.3 React: Common Components
 As explained in chapter 3, React's approach towards view components aims at enabling the developer to achieve a high level of reusability and adaptability from said components. The following section therefore shows how the two component attributes discussed in chapter 3, namely frequency/variability of use and cross-platform potential, were applied to QuantiTeam's React components.
 
 #### Frequency & Variability of Use
@@ -285,14 +285,35 @@ let HEADER_HEIGHT = Platform.OS === 'ios' ? 44 + STATUS_BAR_HEIGHT : 56 + STATUS
 
 Here the header's height is automatically determined according to the current operating system's defaults, providing a clean high-level abstraction that avoided the need for multiple `HEADER_HEIGHT` definitions. Applied to only this single instance this may seems like a trivial abstraction, but it provided the author with a useful mechanism to avoid unnecessary code reuse and redefinition in a number of cases, keeping the `Header` component more transparent and less verbose.
 
-cross-platform:
-- Android header not implemented as not in scope, but ability to define different classes within single `Header.js` and apply depending on `Platform.OS` incredibly straightforward and powerful
-- minor differences e.g. statusbar offset via `Platform.OS`
 
-- `common`
-    - `Header` as example of cross-platform reusable abstraction
-    - Globals (GlobalStyles); RN uses component-based hyper-modular CSS, GlobalStyles provided nice way to mix in common styling (e.g. view margins)
+### 4.4.4 Redux: UI and I/O
+To apply the Redux philosophy to QuantiTeam, actions and reducers were modularised into a schema which follows the system's data domain (users, teams, tasks) as shown below:
 
+```
+...
+├── reducers
+│   ├── rootReducer.js
+│   ├── tasks.js
+│   ├── team.js
+│   └── user.js
+...
+```
 
-### 4.4.x Redux
-- Move diagram down from ch3?
+Splitting reducers in this manner ensured that the reasoning involved in managing the client application's state could be broken down into its constituent parts, providing minimal cognitive load when processing data coming from the system's API.
+
+The client-side application's actions were broadly split along the lines of UI-based and I/O-based interactions, representing synchronous and asynchronous actions, respectively. During this first iteration of QuantiTeam the author was focused on providing a useful graphical representation of the system's API, the vast majority of actions were of the more complex asynchronous I/O-bound type, required to interact with the HTTP API.
+
+#### Synchronous UI Actions
+UI actions within QuantiTeam are utilised to regulate animations and transitions within the application's UI and are limited to manipulating the application's local state only.  
+A useful example of a UI action that is frequently invoked is the `REFRESH_TASKLIST` action. This action is triggered when a user pulls down on their screen to refresh their list of tasks, thus setting the `didRefresh` boolean flag in the app's state (the `store`) to `true`, which in turn causes a loading icon to be shown to the user. As the `didRefresh` flag can only be reset by the asynchronous `FETCH_TASKS_SUCCESS` action, indicating that the tasks have been retrieved from the blockchain, the loading icon is displayed until this action is triggered. This exemplifies how Redux imbues the application's UI state with precise controls and succinct behaviour if actions are used effectively.
+
+#### Asynchronous I/O Actions
+I/O actions within QuantiTeam are structured to enable reliable communication with the system's API. In abstract terms, any event within the client-side application which required data from or sent data to the blockchain, follows a pattern involving three types of Redux actions<sup>[(Redux:AsyncActions)](http://redux.js.org/docs/advanced/AsyncActions.html)</sup>:
+
+_Request_ - A Request action is dispatched the moment the client-side application registers an event that requires an API interaction to be completed, indicating that either a Success or Failure action should soon follow. Using a user signup event as an example, the `SIGNUP_REQUEST` action is dispatched along with the data from the signup form filled in by the user.
+
+_Success_ - If the request issued to the API succeeds and receives a valid response, a Success action is dispatched with said response, which is in turn handled by its associated reducer, thus incorporating the new data into the application's state. Within a user signup event flow, this would dispatch the `SIGNUP_SUCCESS` action to the `user` reducer, along with the new `User` contract's blockchain address pointer as its payload.
+
+_Failure_ - If the request issued to the API fails for any reason, a Failure action is dispatched, which includes the error message returned by the failed attempt to communicate with the API. In the context of a user's signup, this scenario would dispatch the `SIGNUP_FAIL` action, logging the associated error the console.
+
+By combining these three action types, the application's I/O-bound interactions with the API follow a standardised sequence, thus providing clear and deterministic behaviour, as the methodology of retrieving data remains the same while the underlying data being operated upon may change.

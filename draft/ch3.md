@@ -130,18 +130,3 @@ Based on these 3 principles which impose the need for a `store` object tree, act
 
 ![Redux Behaviour](../diagrams/redux.png)  
 Source: http://www.ibm.com/developerworks/library/wa-manage-state-with-redux-p1-david-geary/
-
-
-To apply the Redux philosophy to QuantiTeam, actions and reducers were modularised into a schema which follows the system's data domain (users, teams, and tasks) as shown below:
-
-```
-...
-├── reducers
-│   ├── rootReducer.js
-│   ├── tasks.js
-│   ├── team.js
-│   └── user.js
-...
-```
-
-Splitting reducers in this manner ensured that the reasoning involved in managing the client application's state could be broken down into its constituent parts, providing minimal cognitive load when processing data coming from the system's API.
