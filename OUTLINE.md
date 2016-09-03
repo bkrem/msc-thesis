@@ -173,9 +173,11 @@
         - `eris-wrapper` - significantly abstracts fiddly low-level setup for the eris-blockchain JS lib
 - Client side architecture
     - `Flow` static typing
+        - `types.js`
     - UI: React components: template design (abstraction with `common` components -> use `Loader` as simple example), component lifecycle, composing in React
-    - Client side data: Redux actions, stores, reducers, `types.js`
     - `Navigator`
+        - push/pop view stack
+    - Client side data: Redux actions, stores, reducers
     - `actions/util.js`
     - `TabsView`
     - Trickiness involved in getting ListViews right in RN -> FB's `PureListView` helped a lot here to understand optimal structuring and mapping of data flow
