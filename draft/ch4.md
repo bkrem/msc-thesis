@@ -141,8 +141,6 @@ contract UserManager {
 }
 ```
 
-- **Shape of the Factory and Manager contracts determined the Node server's structuring almost entirely**
-
 #### Relations: Linker Contract
 The Linker contract, which is best described as a utility contract, is responsible for linking together instances of factory contracts. As one of the blockchain's primary purposes within QuantiTeam is to act as persistent storage layer, this type of functionality was required in order to emulate the entity integrity provided by primary key/foreign key relations between tables in a relational database<sup>[(primaryKey/foreignKey)](https://msdn.microsoft.com/en-GB/library/ms179610.aspx)</sup>.  
 For example, when a user creates a new task, thus spawning a new `Task` contract via the `TaskManager`, the system should be able to later identify the creator of said task. A possible solution would have been to simply let the `TaskManager` contract establish the link itself. Although being the most obvious solution to the issue, it would not have scaled well across the suite of Manager-type contracts. As the author was aware that a similar need for linkage would arise again between `Team` and `Task` contracts, allowing each Manager-type contract to implement its own linking mechanism was a notion which seemed to call for a layer of abstraction. A separate `Linker` contract was therefore established, whose sole responsibility is to create relational links between different types of factory contract instances. To achieve this, each new instance of a `User` or `Team` contract also contains a `taskAddressList` sequence array. This list is used to hold addresses (i.e. pointers) of tasks related to this instance of a user or team within the system. The `Linker` contract is then responsible for adding relevant addresses to the `taskAddressList`, an action which is performed whenever a new task is created.  
@@ -152,6 +150,11 @@ The following sequence diagram illustrates how the system processes a user attem
 **Figure x - Sequence of events for an "Add Task" action**
 
 **TODO Class diagram for contracts**
+
+
+### 4.2.4 Deploying Validator Nodes
+**TODO**
+
 
 ## 4.3 Server Design & Implementation
 As touched upon in the server-side analysis, the REST API server's role is first and foremost that of a data transformer and relay, forming a bridge between the blockchain and any given client-side implementation. The following subsections initially present how the server was designed to adhere to principles of both the MVC and REST design patterns, followed by an exploration how the server performs its bridging responsibilities in concrete terms.
