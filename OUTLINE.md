@@ -194,12 +194,16 @@
 ### Deployment
 - MVP 4-validator-node deployment to DigitalOcean
 
-### Results
-- Launch
-- Feedback
-
 ## Conclusions & Evaluation (~2-4 pages)
-- Achievement of Goals/Aims/Fulfillment aims
+- Project Goals
+    - Project began from a concrete use case and expanded to a general attempt at showing feasibility
+    - API: From perspective of API, project is able to establish a naive implementation of the proposed verification, but a lot of work required to make it a realistic, trustworthy system.
+        - Con: Focus on student engagement specifically had to be eased to construct a system which could be adapted to a variety of use case scenarios rather than just the single scenario which inspired the original concept.
+    - app: Pretty smooth overall due to previous experience with JS and React, provides an MVP framework for future client-side applications to build and improve upon
+    - Deployment: experimental deployment of validator nodes achieved with docker-machine and AWS free tier
+
+- Personals Aims Achieved
+    -
 - Critical Evaluation
     - Technology
     - Object Oriented Design
@@ -210,6 +214,7 @@
 ## Bibliography
 
 ## Appendices
+- Gantt chart
 - Sketches (given)
 - List of Requirements
 - Use Cases
