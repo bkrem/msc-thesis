@@ -16,3 +16,4 @@ UC13  |  MuteNotifications    |  User           |  System
 UC14  |  EditAccount          |  User           |  System         
 UC15  |  SetProfilePicture    |  User           |  System         
 UC16  |  DeleteAccount        |  User           |  System         
+UC17  |  AttachTaskFile       |  User           |  System         
