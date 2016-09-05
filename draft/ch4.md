@@ -67,50 +67,15 @@ To mitigate this functional bottleneck in Solidity, the author adopted an implem
 
 ### 4.2.3 Smart Contracts
 #### Data: Factory Contracts
-The blockchain's factory contracts were a straightforward undertaking, both in regards of design and implementation, as their only role was to return a new instance of the contract, which would then be handled by the associated manager contracted. This meant the factory contract, in its simplest form, would contain its required fields and a constructor, as shown below:
+The blockchain's factory contracts were a straightforward undertaking, both in regards of design and implementation, as their only role was to return a new instance of the contract, which would then be handled by the associated manager contracted. This meant the factory contract would simply contain its required fields and a constructor, as shown in **Appendix X**.
 
-```js
-contract Task {
-
-    bytes32 public id; // immutable
-    bytes32 public title; // mutable
-    bytes32 public desc; // mutable
-    bytes32 public status; // mutable
-    bytes32 public complete; // mutable
-    bytes32 public reward; // immutable
-    bytes32 public participants; // mutable
-    bytes32 public creator; // immutable
-
-    // Constructor
-    function Task(
-        bytes32 _id,
-        bytes32 _title,
-        bytes32 _desc,
-        bytes32 _status,
-        bytes32 _complete,
-        bytes32 _reward,
-        bytes32 _participants,
-        bytes32 _creator
-        ) {
-        id = _id;
-        title = _title;
-        desc = _desc;
-        status = _status;
-        complete = _complete;
-        reward = _reward;
-        participants = _participants;
-        creator = _creator;
-    }
-}
-```
-
-Solidity's inability to process an externally passed JavaScript object is nicely exemplified here, due to the sheer verbosity of the constructor function. While a task could be encapsulated as a single object and therefore passed as a single parameter within the client- and server-side JavaScript applications, the object had to be split into its constituent fields by the NodeJS server before it could be handed to the blockchain. This created what is commonly referred to as a "code smell"<sup>[(Tufano, Michele, et al. "When and why your code starts to smell bad." Proceedings of the 37th International Conference on Software Engineering-Volume 1. IEEE Press, 2015.)](http://www.cs.wm.edu/~denys/pubs/ICSE'15-BadSmells-CRC.pdf)</sup>, by forcing the author to implement an excessively large amount of parameters. This made the both the factory contracts themselves and the server's methods that deconstructed the initial JavaScript object for the blockchain brittle, as any change to a factory contract's fields had cascading effects throughout the API, thus creating an unnecessary opportunity for bugs to appear if refactoring was not done in a meticulous manner.
+Solidity's inability to process an externally passed JavaScript object is nicely exemplified here, due to the sheer verbosity of the constructor function. While a task could be encapsulated as a single object and therefore passed as a single parameter within the client- and server-side JavaScript applications, the object had to be split into its constituent fields by the NodeJS server before it could be handed to the blockchain. This created what is commonly referred to as a "code smell"<sup>[(Tufano, Michele, et al. "When and why your code starts to smell bad." Proceedings of the 37th International Conference on Software Engineering-Volume 1. IEEE Press, 2015.)](http://www.cs.wm.edu/~denys/pubs/ICSE'15-BadSmells-CRC.pdf)</sup>, by forcing the author to implement an excessively large amount of parameters. This made both the factory contracts themselves and the server's methods that deconstructed the initial JavaScript object for the blockchain brittle, as any change to a factory contract's fields had cascading effects throughout the API, thus creating an unnecessary opportunity for bugs to appear if refactoring was not done in a meticulous manner.
 
 
 #### Operations: Manager Contracts
 As a contract type, Manager contracts are chiefly responsible for indexing and modifying instances of data domain contracts, returned to them by their respective factory contract. How a Manager-type contract fulfills this role is exemplified with the code snippet below, which is an extract from the `UserManager` contract's `addUser()` method:
 
-```js
+```
 // ...
 if (isOverwrite) {
     return 0x0;
@@ -127,7 +92,7 @@ If `isOverwrite` is false on the other hand, the `UserManager` contract creates 
 
 Furthermore, the flexibility provided by the data structure contract – in this case a sequence array – became especially clear during the implementation of the Manager contracts. A Manager contract could simply instantiate a `SequenceArray.sol` contract for its own purposes and use only the minimum amount of SequenceArray methods it required to fulfill its functions, by creating a wrapper function around the method, and adding additional context as required, such as logging an event:
 
-```js
+```
 contract UserManager {
     SequenceArray userList = new SequenceArray();
 
@@ -179,7 +144,7 @@ Applied to QuantiTeam, the REST pattern's property of statelessness not only hel
 
 A simple example of how the server remains stateless while fulfilling its function as an API interface is shown in the following snippet, taken from the `server.js` module:
 
-```js
+```
 app.post('/user/taken', function (req, res) {
     var username = req.body.username;
 
@@ -238,7 +203,7 @@ Within the MVC pattern, views are the component responsible for the graphical re
 One of the key elements in designing and implementing a well-defined client-side application for this system was the ability to define types in a static manner and compose union and intersection types with Facebook's Flowtype. The author found that having to think in terms of explicit, strict type constraints made the React Native app's code more robust and helped create better abstractions, as JavaScript's dynamically-typed nature seemed more of a hindrance rather than a tool when the goal was to enforce types between a client and the system's API.  
 A pertinent example of how Flowtype helped define more robust React components is the `Tab` type:
 
-```js
+```
 type Tab =
     'tasks'
   | 'team'
@@ -250,7 +215,7 @@ Here Flowtype allows the definition of a `Tab` enum by using literal types<sup>[
 
 While the ability to define enums was certainly handy, Flowtype's true usefulness is revealed when looking at one of the system's key data types, the `User` type:
 
-```js
+```
 type User = {
     id: number;
     name: string;
@@ -280,7 +245,7 @@ A component which encapsulates both these attributes is the `Header` component. 
 #### Cross-Platform Potential
 The flexibility of the app header's button layouts also comes into play regarding the component's potential for reuse across differing mobile platforms. If neither a text- nor icon-option is specified in an instance of the `Header` component, React Native is able to identify the current device's platform via its `Platform.OS` variable and can thus resort to the current platform's defaults (text buttons on iOS, icon buttons on Android). This enhanced the flexibility and robustness of the app overall, as the header would always be able to render its button elements, instead of simply throwing an error due to lack of a defined layout on one platform or another. Furthermore, the aforementioned `Platform.OS` variable provided the opportunity to define standard behaviour for whichever platform the `Header` component was to be rendered on, as shown here:
 
-```js
+```
 let STATUS_BAR_HEIGHT = Platform.OS === 'ios' ? 20 : 25;
 let HEADER_HEIGHT = Platform.OS === 'ios' ? 44 + STATUS_BAR_HEIGHT : 56 + STATUS_BAR_HEIGHT;
 ```
