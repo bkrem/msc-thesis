@@ -149,11 +149,11 @@ The following sequence diagram illustrates how the system processes a user attem
 !["Add Task" sequence diagram](../diagrams/addTaskSeqDiagram.png)
 **Figure x - Sequence of events for an "Add Task" action**
 
-**TODO Class diagram for contracts**
-
+![Contracts Class Diagram](../diagrams/contractsClassDiagram.png)
+**Figure x - Full Class diagram for the system's smart contracts**
 
 ### 4.2.4 Deploying Validator Nodes
-**TODO**
+**TODO: will be added upon deployment of the system this week**
 
 
 ## 4.3 Server Design & Implementation
@@ -231,8 +231,7 @@ The snippet above shows `convertibleCallback` is invoked on a `Task` contract's 
 
 ## 4.4 Client-side Design & Implementation
 ### 4.4.1 The View
-Within the MVC pattern, views are the component responsible for the graphical representation of the application's – or in this case the system's – data models<sup>[(Krasner, Glenn E., and Stephen T. Pope. "A description of the model-view-controller user interface paradigm in the smalltalk-80 system." Journal of object oriented programming 1.3 (1988): 26-49.)](http://heaveneverywhere.com/stp/PostScript/mvc.pdf)</sup>. Although a view may also be described as "a visual representation of models that present a filtered view of the current state"<sup>[(Learning JS Design Patterns)](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailmvc)</sup>, the parallels between the MVC pattern and QuantiTeam's structure become somewhat less applicable. While the client-side React Native app does of course act as a filtered graphical representation of the blockchain's models, it also contains its own local state and therefore deviates from the typical description of an MVC view somewhat.
-**TODO is this worth arguing?**
+Within the MVC pattern, views are the component responsible for the graphical representation of the application's – or in this case the system's – data models<sup>[(Krasner, Glenn E., and Stephen T. Pope. "A description of the model-view-controller user interface paradigm in the smalltalk-80 system." Journal of object oriented programming 1.3 (1988): 26-49.)](http://heaveneverywhere.com/stp/PostScript/mvc.pdf)</sup>. Although a view may also be described as "a visual representation of models that present a filtered view of the current state"<sup>[(Learning JS Design Patterns)](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailmvc)</sup>, the parallels between the MVC pattern and QuantiTeam's structure become somewhat less applicable. While the client-side React Native app does of course act as a filtered graphical representation of the blockchain's models, it also contains its own local state and therefore deviates from the typical description of an MVC pattern's view.
 
 
 ### 4.4.2 JavaScript: Emulating Strict Typing
@@ -265,9 +264,8 @@ type User = {
 
 The snippet above shows how Flowtype enabled the author to define what type primitives a `User` object's fields should adhere to. This significantly reduced bug frequency, both within the app and the API itself, by catching inadvertent type coercions or possibly undefined values before the app's runtime environment was even entered.  
 Furthermore, the `User` type exemplifies how Flowtype allows a differentiation between mandatory (`username`) and optional (`teamname?`) fields, adding an element of flexibility where needed. For example, the `address?` field cannot be defined at the time a `User`-type object is instantiated in the client-side application, as the hexadecimal address for the User contract can only be returned to the client once the user has been registered in the blockchain post-instantiation.  
-**TODO rephrase**
 
-Finally, Flowtype elevated the ability to define actions and the expected types of their payloads in a more fine-grained manner compared to regular JavaScript, by enabling the author to add type constraints to variables and functions where needed. The following action demonstrates the usefulness of additional static typing:
+Finally, Flowtype elevated the ability to define actions and the expected types of their payloads in a more fine-grained manner compared to regular JavaScript, by enabling the author to add type constraints to variables and functions where needed.
 
 `{ type: 'FETCH_TASKS_SUCCESS', tasks: Array<Task>, receivedAt: number }`
 
