@@ -2,13 +2,10 @@
 # Introduction
 
 ## 1.1 Problem Outline
-Motivation is the key to human action. Without it, the source of any action performed is likely to be grounded in external pressures rather than the actor’s desire to act. In adolescents and young adults, this situation frequently arises within a key element affecting their future: their education.  
+Motivation is the key to human action. Without it, the source of any action performed is likely to be grounded in external pressures rather than the actor’s desire to act. In adolescents and teenagers, this situation frequently arises within a key element affecting their future: their education.  
+This observation stems from the author's personal experiences during his youth and, more recently, from experiences as a voluntary English language teacher. To the author, there were two clearly identifiable steps which could lessen the amount of disengagement from school-related matters that is often observed in adolescents and teenagers. Firstly, providing a way for students to quantify their achievements could drive re-engagement with the learning material, by breaking it into manageable chunks with clearly defined rewards for each chunk.  
+Secondly, adding an explicitly social aspect to this quantification process by focusing on collaborative work could further drive motivation and re-engagement, by creating a social net for students to feel valued and as carriers of responsibility towards others. Beyond achieving a greater sense of purpose for each individual, this quantification of collaborative work could also double as a useful metric of team work skills to refer back to at a later point in time, filling a gap for a skill that is currently not quantifiable or verifiable on paper.
 
-
-This observation stems from the author's personal experiences during his youth and, more recently, from experiences as a voluntary English language teacher,
-
-
-    - Realisation that A) there is no way to verify your school achievements/completed tasks in general (-> no incentive to commit) B) there is no way to demonstrate one's participation in work as a team, which is not only socially rewarding/engaging, but also provides a critical professional skill which is of interest to employers
 
 ## 1.2 Project Goals
 This project began as an attempt to address this phenomenon of student disengagement and, over time, developed into a wholly larger investigation of whether it is possible to utilise blockchain technology not just to form a network of re-engaged students, but as a tool for the verification of group-based work at large.  
@@ -18,6 +15,7 @@ Working from this technological and philosophical objective, respectively, the f
 - Create a public Application Programming Interface (henceforth API) to allow users to interact with a blockchain in a well-defined manner, independent of a chosen client-side implementation.
 - Provide an iOS client-side app for basic task/user/team management to offer a graphical representation of the API in a format familiar to users.
 - Establish a basic deployment of at least 4 distributed validator nodes to implement a true proof-of-stake consensus mechanism<sup>[PoW vs PoS](http://bitfury.com/content/5-white-papers-research/pos-vs-pow-1.0.2.pdf)</sup> for the platform.
+
 
 ## 1.3 Personal Aims
 Having been a follower of the bitcoin<sup>[(Bitcoin)](https://bitcoin.org/en/)</sup> movement for more than two years, the author has been looking for an appropriate opportunity to apply the blockchain data structure, which is a key part of the technology underlying bitcoin, to a project of his own. This project's goal of verifiability of team work fits a blockchain's ability to provide a distributed ledger of transactions or events.  
