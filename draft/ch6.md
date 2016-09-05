@@ -25,26 +25,22 @@ Working with the `docker-machine` CLI to run and manage virtual operating system
 
 
 ## 6.3 Critical Evaluation
-### 6.3.1 Suitability of Chosen Technologies
+### 6.3.1 Scope Feasibility
+The author feels that the project's scope was challenging but appropriate overall for the timeframe available, considering that the project's goals were intentionally set to a high level. A realisation which began to materialise during the final weeks of the project's implementation stage was that it may have been more pertinent to focus efforts entirely on the API, meaning the design and implementation of the server and blockchain, rather than additionally providing an example client-side implementation. While building a mobile app in React Native was undoubtedly a useful learning experience, creating client-side features for each feature of the API added significant time costs, meaning a number of "Should Have" and "Could Have" requirements which would have enhanced the API's capabilities significantly had to be omitted due to time constraints.
 
 
-### 6.3.2 Design & Implementation Scope
-- should've focused on API only, not done client-side
-- Requirements: must haves were implemented, number of shoulds still outstanding
+### 6.3.2 Suitability of Chosen Technologies
+#### Solidity Contracts & Eris Tooling
+It took the author a considerable amount of time to become accustomed with how to write idiomatic Solidity contracts, as the programming style required is similar to that of typical object-oriented languages, but deviates in a number of significant ways. Despite this, Solidity's extensive levels of documentation, along with the Eris platform's Solidity tutorials, enabled the author to utilise the language to meet the needs of the project.  
+The well-defined Eris CLI provided a smooth learning curve regarding how to create, run and deploy Tendermint blockchain instances, allowing the author to avoid significant amounts of time being wasted by the amount of trial-and-error experimentation that would have been required to run a Tendermint blockchain from scratch.
 
-### 6.3.3 Key Issues
+#### NodeJS & Express
+NodeJS in combination with the Express framework, which added a powerful level of abstraction, were the perfect choice to build the system's API router. The author's level of familiarity with both of these technologies, as well as JavaScript as a whole, allowed the author to immediately mock up some functionality for the server and refactor in confidence until a suitable production-level implementation was established.
 
-
-- State of Solidity as a bottleneck
-- Didn't make my tests atomic enough -> cascading failures if one test breaks -> lesson for next time
-- Trickiness involved in getting ListViews right in RN -> FB's `PureListView` helped a lot here to understand optimal structuring and mapping of data flow
-- Started with IDs in contract schema, didn't really need them -> addresses double as unique IDs
-- Should've only done quick mocks of views as sketches and then implemented statically ad-hoc, too much time wasted on now not-implemented views
-
-- [Chain] **!Issue!** Had to find a workaround for the `library` keyword bug in the eris platform --> simply turned it into a contract --> less flexible than an actual library type though.
-- [Chain] **!Issue!** Tested out the LinkedList implementation and replaced it with the SequenceArray implementation after running into retrieval issues
-- **!Issue!** Eris online compiler broke --> took forever to figure out that port `10113` was viable option because no goddamn documentation of it
-- **!Issue!** Eris local compiler Docker image did not do anything basically, TOTAL FAIL
+#### React Native, Redux & Flowtype
+React Native was as effective as the author had hoped within the scope of the project. Breaking views down into their constituent components not only helped to enforce better design, it also aided in breaking down data requirements within the client-side app, as each component is only responsible for the data it actually requires. Prior knowledge of the React library avoided a lengthy learning phase for the client-side implementation, as the few concepts React Native adds are well documented by its team at Facebook.  
+Redux was a solid choice for state management, as it ensured a level of control and transparency out-of-the-box which is usually only achievable through careful engineering in other libraries focused on state- and data-management.  
+Flowtype was a powerful addition to the client-side app, allowing the author to reason about the app's data domain in a more explicit, type-safe manner. 
 
 
 ## 6.4 Future Work
