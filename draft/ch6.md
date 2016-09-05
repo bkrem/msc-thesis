@@ -55,3 +55,4 @@ From a perspective of extensibility, QuantiTeam could be expanded to include geo
 
 
 ## 6.5 Final Thoughts
+The significant challenges of this project - both anticipated and unanticipated – were clear to the author from the outset, making the above assessment of the QuantiTeam's shortcomings in comparison to its requirements somewhat less painful. While the system this project has birthed still requires significant work to fulfill its theoretical aims, the author feels that new ground has been broken in regards to personal programming skills and knowledge, while also hoping that this exploration of a blockchain's capabilities in a social application context will inspire further endeavours along these lines in the future.
