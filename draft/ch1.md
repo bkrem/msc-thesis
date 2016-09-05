@@ -3,9 +3,12 @@
 
 ## 1.1 Problem Outline
 Motivation is the key to human action. Without it, the source of any action performed is likely to be grounded in external pressures rather than the actor’s desire to act. In adolescents and young adults, this situation frequently arises within a key element affecting their future: their education.  
-**...TODO...**  
-**...specific reasoning for WHY a blockchain...***
 
+
+This observation stems from the author's personal experiences during his youth and, more recently, from experiences as a voluntary English language teacher,
+
+
+    - Realisation that A) there is no way to verify your school achievements/completed tasks in general (-> no incentive to commit) B) there is no way to demonstrate one's participation in work as a team, which is not only socially rewarding/engaging, but also provides a critical professional skill which is of interest to employers
 
 ## 1.2 Project Goals
 This project began as an attempt to address this phenomenon of student disengagement and, over time, developed into a wholly larger investigation of whether it is possible to utilise blockchain technology not just to form a network of re-engaged students, but as a tool for the verification of group-based work at large.  
@@ -40,4 +43,20 @@ Additionally, a Gantt chart (**see Appendix X**) was established at the outset o
 
 
 ## 1.5 Report Overview
-**TODO**
+#### Chapter 1
+This chapter outlines the problem addressed by the project, as well as stating its goals, the author's personal aims, and the approach to managing the project.
+
+#### Chapter 2
+This chapter establishes context for the stated problem domain, surveys previous work either directly or tangentially related to the project, and provides an overview of the programming languages, libraries and development tools used within the project.
+
+#### Chapter 3
+This chapter specifies the project's requirements and their associated use cases, whilst also assessing the system's architecture by analysing each major component of the its technology stack.
+
+#### Chapter 4
+This chapter details the key features and patterns that make up QuantiTeam's implementation, assessing the blockchain, the server and the client-side app in turn.
+
+#### Chapter 5
+This chapter explains the approach of test-driven development used for the project, as well as outlining how the system was tested at different levels of granularity, using unit tests, integration tests, and functional testing.
+
+#### Chapter 6
+This chapter assesses to what extent the project's goals and the author's personal aims were achieved, provides a critical review of the system as a whole, and offers pointers for possible future work.
