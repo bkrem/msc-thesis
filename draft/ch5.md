@@ -16,7 +16,7 @@ Within QuantiTeam, unit tests are focused on providing extensive coverage for al
 
 The Mocha test framework – in combination with the Chai assertion library's `assert` function – were used to compare a function's returned result to an expected value:
 
-```js
+```
 describe("addTask", function () {
     it("adds the given task object to the chain and returns the registered task's hex address", function(done) {
         taskManager.addTask(testTask, function (error, address) {
