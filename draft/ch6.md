@@ -40,16 +40,18 @@ NodeJS in combination with the Express framework, which added a powerful level o
 #### React Native, Redux & Flowtype
 React Native was as effective as the author had hoped within the scope of the project. Breaking views down into their constituent components not only helped to enforce better design, it also aided in breaking down data requirements within the client-side app, as each component is only responsible for the data it actually requires. Prior knowledge of the React library avoided a lengthy learning phase for the client-side implementation, as the few concepts React Native adds are well documented by its team at Facebook.  
 Redux was a solid choice for state management, as it ensured a level of control and transparency out-of-the-box which is usually only achievable through careful engineering in other libraries focused on state- and data-management.  
-Flowtype was a powerful addition to the client-side app, allowing the author to reason about the app's data domain in a more explicit, type-safe manner. 
+Flowtype was a powerful addition to the client-side app, allowing the author to reason about the app's data domain in a more explicit, type-safe manner.
 
 
 ## 6.4 Future Work
-- why naive
-- Security (GPG)
-- Ranking
-- GPS
-- Plagiarism detection
-- Smart contract architecture
+#### Verifiability
+In Section 6.1, the author referred to the system's current implementation as being naïve in its current state. This attribution stems from the fact that the system currently has no means of providing true of verifiability for collaborative work in the way, for example, a cryptographic hash may verify an entity or individual. While QuantiTeam hashes new text files and compares them to the ones already present in the blockchain, a coercive user simply has the ability to upload an unrelated file and mark the associated task as completed. The system is therefore naïve in the sense of being unaware of the possibility of coercive agents interacting with it. QuantiTeam therefore lays the groundwork for a system maintaining verified data on collaborative work in a distributed manner, but has a long way to go to truly achieve this ideal.
+
+#### Ranking
+In order to drive motivation to engage with the system on a continual basis, providing a global ranking system in future iterations as described in the requirements is crucial. This would significantly aid driving a sense of achievement in task participants, as resolving a task would immediately feed back into a virtual reward scheme. Similar to StackOverflow's reputation scheme<sup>[(StackOverflow reputation)](http://stackoverflow.com/help/whats-reputation)</sup>, QuantiTeam scores could become more meaningful the more people use the system, by acting as an abstract representation of participation in one's team to help get collaborative work done.
+
+#### Location Data
+From a perspective of extensibility, QuantiTeam could be expanded to include geolocation data related to users and tasks, thus providing a further possibility to corroborate the occurrence of collaborative work between team members at a certain point in time, in a certain place. Yet, this brings with it its own complications regarding data privacy and security, as the ability to identify an individual's location at a given moment in time can easily be utilised in malicious ways.
 
 
 ## 6.5 Final Thoughts
