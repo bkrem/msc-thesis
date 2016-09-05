@@ -60,7 +60,6 @@ Async<sup>[(Async)](https://caolan.github.io/async/)</sup> is a utility library 
 
 
 ### 2.3.3 Client-side
-**TODO add iOS only due to scope**
 The platform chosen for the client-side representation of the system was that of a mobile application. While building a web application would have been just as feasible in conjunction with the system's API, mobile development was chosen as the preferred paradigm in order to maximise the potential for the project's author to gain new skills, as well as two important usability properties:
 
 _Location independence_ - Users are able to check the status of tasks, communicate with team members and receive notifications regardless of their current surroundings.
