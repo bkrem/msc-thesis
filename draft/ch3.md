@@ -10,7 +10,47 @@
 In a typical software engineering project, there is a need for strong levels of communication between all the stakeholders involved in the endeavour, in order to ensure all the needs the software should meet are in fact met _[(REF)]()_. A frequent phenomenon within these interactions is that requirements are revealed to the development team in a haphazard way or are simply misinterpreted by the team _[(REF?)]()_.  
 Fortunately these common pitfalls were a moot point within this project, as the act of establishing requirements was entirely focused around the question: "What functionality does the system require, at a minimum, to fulfill its stated aims?". This provided a clear focus on what was absolutely needed for a minimum viable product (henceforth MVP)<sup>[(MVP; better ref)](https://www.techopedia.com/definition/27809/minimum-viable-product-mvp)</sup> that an individual and/or group of individuals could use in a meaningful way. This meant both functional and non-functional requirements were focused around three domains: tasks, users, and teams. The requirements were prioritised according to the MoSCoW system<sup>[(MoSCoW)](https://www.dsdm.org/content/moscow-prioritisation)</sup>, with requirements being ranked from "Must Have" through "Should Have" and "Could Have", with the final category being "Won't Have (in this development cycle)". The project's "Must Have" requirements had to be strictly limited to what was  as there was a large number of known unknowns (e.g. the Solidity language) and unknown unknowns (unforeseeable issues with the API, blockchain or development environment). The "Should Have" and "Could Have" categories therefore largely express targets for more sophisticated future iterations of the system.  
 
-**TODO: include functional & non-functional requirements tables**
+ID     |  Functional Requirements                                                                                                                                                          |  Category              |  MoSCoW Priority
+-------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|-----------------
+FRQ1   |  Users should be able to sign up by providing simply a username, password and, optionally, an email address                                                                       |  Account registration  |  Must           
+FRQ2   |  Users should be able to login using a username and password                                                                                                                      |  Login                 |  Must           
+FRQ3   |  Any team member should be able to register a task for their team on the network, by specifying team members involved                                                             |  Tasks                 |  Must           
+FRQ4   |  Any team member is able to view both outstanding and completed tasks                                                                                                             |  Tasks                 |  Must           
+FRQ5   |  If user is not a member of a team, they should be able to start a new team by adding other members via their usernames                                                           |  Team                  |  Must           
+FRQ6   |  Upon resolution the task reward should be added to the participants’ scores automatically and immediately                                                                        |  Tasks                 |  Must           
+FRQ7   |  Users should be able to issue a request to join an existing team or create a new one upon signup                                                                                 |  Account registration  |  Should         
+FRQ8   |  Users should receive sign up confirmation to verify email address                                                                                                                |  Account registration  |  Should         
+FRQ9   |  Any team member should be able to opt out of a task they were entered for if they are not in fact involved                                                                       |  Tasks                 |  Should         
+FRQ10  |  Each team member can see how many other members have completed a given task without identities being revealed in the process (i.e. by simply showing a count or percentage)      |  Tasks                 |  Should         
+FRQ11  |  Individuals should be able to provide public links to their completed tasks and general profile                                                                                  |  Tasks                 |  Should         
+FRQ12  |  Users should be able to see their team’s current global ranking                                                                                                                  |  Team                  |  Should         
+FRQ13  |  Users should be able to recover their password if they have forgotten it                                                                                                         |  Login                 |  Should         
+FRQ14  |  Users should be able to view incomplete tasks their involved in and past completed tasks                                                                                         |  Tasks                 |  Should         
+FRQ15  |  Users should be able to upload attachments related to their tasks                                                                                                                |  Tasks                 |  Should         
+FRQ16  |  Tasks should automatically resolve to status “Complete” once all participants have completed them                                                                                |  Tasks                 |  Should         
+FRQ17  |  Users should be able to edit their account details after signing up (email address, password);                                                                                   |  User                  |  Should         
+FRQ18  |  Users should be able to delete their account                                                                                                                                     |  Settings              |  Should         
+FRQ19  |  An individual can request help for a task from other task participants                                                                                                           |  Team                  |  Could          
+FRQ20  |  Members may offer help to the rest of the team without a specific request being present, to speed up any potential rendez-vous (i.e. set a flag on that user for a given task)   |  Team                  |  Could          
+FRQ21  |  Once a rendez-vous occurs, the parties involved should be able to chat with each other                                                                                           |  Team                  |  Could          
+FRQ22  |  Team members should be notified via a mobile alert if a help request affects them                                                                                                |  Team                  |  Could          
+FRQ23  |  Users could be able to upload a profile picture                                                                                                                                  |  User                  |  Could          
+FRQ24  |  Users should be able to mute help request and help offer notifications                                                                                                           |  Settings              |  Could          
+
+**Figure X: Functional Requirements**  
+
+ID     |  Non-Functional Requirements                                                                                                                                                     |  Category     |  MoSCoW Priority
+-------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|-----------------
+NFRQ1  |  A User who is not logged in is prevented from accessing the app                                                                                                                 |  Security     |  Must           
+NFRQ2  |  The system shall store all user passwords in the blockchain in an encrypted format                                                                                              |  Security     |  Must           
+NFRQ3  |  The app should provide offline sync, meaning that any state changes made during a period of no-connection should be saved and synced with the DB at the next possible instance  |  Persistence  |  Should         
+NFRQ4  |  A team member should be able to signal a task as complete within a maximum of 1~2 UI interactions                                                                               |  Tasks        |  Should         
+NFRQ5  |  The system should accomodate for at least 1,000 teams                                                                                                                           |  Capacity     |  Should         
+NFRQ6  |  The system should accomodate for at least 100,000 tasks                                                                                                                         |  Capacity     |  Should         
+NFRQ7  |  The system should log in a user within approximately 5 seconds                                                                                                                  |  UX           |  Should         
+NFRQ8  |  The system shall respond to any interaction in no more than 10 seconds                                                                                                          |  UX           |  Should         
+
+**Figure X: Non-Functional Requirements**
 
 
 ## 3.3 Use Cases
@@ -19,9 +59,6 @@ Use cases for the client-side application and the API itself were therefore stra
 
 Use cases were constructed in parallel with the initial UI sketches, thus helping to visualise the flow of user-system interactions.  
 **Figure xx** below represents an overview of the uses cases that were constructed, while the detailed use cases can be reviewed in **Appendix X**.  
-
-**TODO ref for use case template, Arlow & Neustedt**  
-**TODO more use cases, i.e. file uploads etc**
 
 ID    |  Use Case             |  Primary Actor  |  Secondary Actor
 ------|-----------------------|-----------------|-----------------
@@ -41,7 +78,9 @@ UC13  |  MuteNotifications    |  User           |  System
 UC14  |  EditAccount          |  User           |  System         
 UC15  |  SetProfilePicture    |  User           |  System         
 UC16  |  DeleteAccount        |  User           |  System         
+UC17  |  AttachTaskFile       |  User           |  System         
 
+**Figure X: Use Case Overview**
 
 ## 3.4 Sketches
 To get a sense of a viable layout and structure for the client-side app, the author used rough sketches **(see Appendix X)** to visualise each view that was needed to meet the requirements. Once a convincing layout had been established for a view, the author created a static mockup in React's JSX, which could then be broken down into separate components and given dynamic properties, such as data retrieval methods, at a later point.
