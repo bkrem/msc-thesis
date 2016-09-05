@@ -45,7 +45,9 @@
     - SocialX
     - WikiSpaces
     - HaikuLearning
-    - **TODO 1-2 more**
+    #### Bitcoin
+    **TODO**  
+    key ref: Mastering Bitcoin, Antonopoulous
 
 - Basis of design
     - Talk about the SocialX paper as a major influence on this work
