@@ -8,7 +8,7 @@
 
 ## 3.2 Requirements
 In a typical software engineering project, there is a need for strong levels of communication between all the stakeholders involved in the endeavour, in order to ensure all the needs the software should meet are in fact met _[(REF)]()_. A frequent phenomenon within these interactions is that requirements are revealed to the development team in a haphazard way or are simply misinterpreted by the team _[(REF?)]()_.  
-Fortunately these common pitfalls were a moot point within this project, as the act of establishing requirements was entirely focused around the question: "What functionality does the system require, at a minimum, to fulfill its stated aims?". This provided a clear focus on what was absolutely needed for a minimum viable product (henceforth MVP)<sup>[(MVP)](https://www.techopedia.com/definition/27809/minimum-viable-product-mvp)</sup> that an individual and/or group of individuals could use in a meaningful way. This meant both functional and non-functional requirements were focused around three domains: tasks, users, and teams. The requirements were prioritised according to the MoSCoW system<sup>[(MoSCoW)](https://www.dsdm.org/content/moscow-prioritisation)</sup>, with requirements being ranked from "Must Have" through "Should Have" and "Could Have", with the final category being "Won't Have (in this development cycle)". The project's "Must Have" requirements had to be strictly limited to what was  as there was a large number of known unknowns (e.g. the Solidity language) and unknown unknowns (unforeseeable issues with the API, blockchain or development environment). The "Should Have" and "Could Have" categories therefore largely express targets for more sophisticated future iterations of the system.  
+Fortunately these common pitfalls were a moot point within this project, as the act of establishing requirements was entirely focused around the question: "What functionality does the system require, at a minimum, to fulfill its stated aims?". This provided a clear focus on what was absolutely needed for a minimum viable product (henceforth MVP)<sup>[(MVP; better ref)](https://www.techopedia.com/definition/27809/minimum-viable-product-mvp)</sup> that an individual and/or group of individuals could use in a meaningful way. This meant both functional and non-functional requirements were focused around three domains: tasks, users, and teams. The requirements were prioritised according to the MoSCoW system<sup>[(MoSCoW)](https://www.dsdm.org/content/moscow-prioritisation)</sup>, with requirements being ranked from "Must Have" through "Should Have" and "Could Have", with the final category being "Won't Have (in this development cycle)". The project's "Must Have" requirements had to be strictly limited to what was  as there was a large number of known unknowns (e.g. the Solidity language) and unknown unknowns (unforeseeable issues with the API, blockchain or development environment). The "Should Have" and "Could Have" categories therefore largely express targets for more sophisticated future iterations of the system.  
 
 **TODO: include functional & non-functional requirements tables**
 
@@ -54,11 +54,8 @@ Establishing a high-level understanding of what the system required to provide p
 _Figure x_
 
 
-### 3.5.1 Consensus Algorithm Analysis
-**TODO maybe**
-
-### 3.5.2 Smart Contract Analysis
-The concept of a smart contract is usually evoked in terms of a digital protocol which enforces and/or verifies the performance of a contract between two or more parties<sup>[(smart_contracts_idea)](http://szabo.best.vwh.net/smart_contracts_idea.html)</sup>. Within the context of this project the role of the smart contracts played was more closely related to that of typical classes in object-oriented programming _[(REF?)]()_, with the majority of the contracts either acting as factories<sup>[(factory pattern; find better source)](http://www.oodesign.com/factory-pattern.html)</sup> for composite types or implementing operations on these types as "manager" contracts.
+### 3.5.1 Smart Contract Analysis
+The role of the smart contracts played in this project – rather than attempting to literally track and enforce contractual obligations between multiple parties – was more closely related to that of typical classes in object-oriented programming _[(REF?)]()_, with the majority of the contracts either acting as factories<sup>[(factory pattern; find better source)](http://www.oodesign.com/factory-pattern.html)</sup> for composite types or implementing operations on these types as "manager" contracts.
 
 #### Factory Contracts
 In order to define composite types, known in Solidity as `struct`s, a contract was defined for each domain of the system as revealed by the requirements. This meant there was a need for `User`, `Team` and `Task` contracts.
@@ -82,16 +79,8 @@ Simplified class diagram to illustrate the relationships between Factory, Manage
 #### Action Events
 Solidity's lack of any real logging capabilities meant there needed to be consideration in regard to how function calls within contracts could be observed from the outside. Solidity does, fortunately, provide an `event` type, which opened up the possibility of triggering such an `event` where required and listening for it server-side, where logging the events was a trivial matter.
 
-**-/BEGIN relevant?/-**  
-The diagram below shows how smart contract actions could be structured. Within this initial iteration of the project, contracts like the `UserManager` were themselves responsible for dispatching action events related to their methods, as the level of abstraction shown would only become useful once the API grew to a larger scale, enabling actions to be centrally processed by an `ActionManager` and then cascading to their relevant Manager contracts.
 
-![Action-driven smart contract architecture](../diagrams/actionEventArchitecture.png)  
-Source: https://docs.erisindustries.com/tutorials/solidity/solidity-2/
-
-**-/END relevant?/-**  
-
-
-### 3.5.3 Server-side Analysis
+### 3.5.2 Server-side Analysis
 #### API Router
 Once the structure of the smart contracts had been established, the analysis of the server-side implementation quickly revealed that the server's structure would largely mirror that of the smart contracts. This was the case partially due to the way Eris's JavaScript library was implemented, but largely due to the fact that this would keep the the final API succinct and free of unnecessary cognitive load for the author and for any future developers.  
 The server would therefore simply act as a relay and transformer for data travelling between the client-side application and the blockchain, acting as a _de facto_ middleman. In more concrete terms, this would involve calling relevant contract methods on the blockchain when a certain API endpoint was requested and transforming data between hexadecimal and UTF-8, for example. This is necessary due to Solidity's poor support for strings at the time of writing, meaning that all strings would have to be encoded into 32-byte fields of hexadecimal, known in Solidity as the `bytes32` type.
@@ -105,10 +94,8 @@ _UX consistency_ - From a usability perspective, the transition between the mobi
 
 _Security_ - The user would have to enter a token – issued by the mobile app when a new task is created – to confirm that the upload has a legitimate task associated to it. The use of tokens therefore prevents automated spam and enables the identification of users uploading material which may be malicious or illegal in nature.
 
-**TODO 2-3 sequence diagrams: example API call, uploader**
 
-
-### 3.5.4 Client-side Analysis
+### 3.5.3 Client-side Analysis
 #### Abstracting view components with React
 React takes markedly different approach to view templating compared to the other major web development frameworks such as Google's AngularJS<sup>[(AngularJS)](https://angularjs.org/)</sup>. React's philosophy focuses on breaking a view down into its constituent parts to form reusable components. These components can then be composed in whichever way the developer sees fit. This level of composability comes to its full potential in React Native, as it enables the abstraction of common UI components within a mobile app, providing ample opportunity to even reuse said components across different platforms. The decision to abstract a given component was therefore made according to the following criteria, ordered by highest weighting first:
 
