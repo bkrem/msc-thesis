@@ -229,3 +229,17 @@
 - Why blockchain? -> distributed, incorruptible, irreversible "proof" of event
 - why only iOS? -> scope didn't reach
 - is the server not a central point of failure? -> blockchain does not rely on API server to run, non-trivial deployment would have many server instances with a load balancer
+
+
+
+TODOS
+- Front matter
+- References & Bibliography (references are currently inline in the original markdown file)
+- Appendices
+- Subsections (pending due to final implementation details):
+	- Deployment
+	- Testing: Code Coverage
+- Fix formatting in Latex:
+	- Tables
+	- Code snippets
+	- Figures
