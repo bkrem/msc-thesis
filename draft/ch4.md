@@ -7,39 +7,8 @@ QuantiTeam broadly follows the three-tier architecture of a typical Model-View-C
 ![A typical MVC Model](../diagrams/mvc.png)  
 Source: https://developer.chrome.com/apps/app_frameworks
 
-In order to mirror the described approach of creating a standalone unit out of the Model and Controller aspects of the system's architecture, the project's source code was structured into two directories at the highest level. As represented by the shallow file tree below, the `app` directory contains the React Native client-side application, while the `chain` directory holds configurations and environment variables to run the Tendermint blockchain via the `eris` CLI, and provides the REST API server in its `js` subdirectory.  
+In order to mirror the described approach of creating a standalone unit out of the Model and Controller aspects of the system's architecture, the project's source code was structured into two directories at the highest level. The `app` directory contains the React Native client-side application, while the `chain` directory holds configurations and environment variables to run the Tendermint blockchain via the `eris` CLI, and provides the REST API server in its `js` subdirectory.  
 
-```
-.
-├── app
-│   ├── android
-│   ├── index.android.js
-│   ├── index.ios.js
-│   ├── ios
-│   ├── js
-│   ├── node_modules
-│   └── package.json
-├── LICENSE
-├── README.md
-├── chain
-│   ├── Dockerfile
-│   ├── abi
-│   ├── accounts.json
-│   ├── app.js
-│   ├── config
-│   ├── contracts
-│   ├── envsetup.sh
-│   ├── epm.json
-│   ├── epm.yaml
-│   ├── js
-│   ├── logs
-│   ├── node_modules
-│   ├── package.json
-│   ├── simplechain.sh
-│   └── test
-├── log.md
-└── npm-debug.log
-```
 
 ## 4.2 Blockchain Design & Implementation
 ### 4.2.1 The Model
