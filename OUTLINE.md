@@ -222,6 +222,7 @@
 - Use Cases
 - System Manual (README from Github)
 - User Manual (derive from Help/FAQ page)
+- test results
 - List of API endpoints
 - Code Examples/Snippets
 
@@ -232,15 +233,18 @@
 
 
 
-TODOS
+## TODOS
 - Front matter
     - Abstract
     - Acknowledgements
 - References & Bibliography (references are currently inline in the original markdown file)
 - Appendices
+
 - Subsections (pending due to final implementation details):
 	- Deployment
 	- Testing: Code Coverage
+	- Sketches, what to do
+
 - Fix formatting in Latex:
 	- Tables
 	- Code snippets
