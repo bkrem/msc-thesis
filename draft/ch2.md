@@ -13,7 +13,7 @@ Whereas there is little school staff can do to ensure the attention of a student
 
 **Figure X** visualises a widely held theory regarding educational conditions that promote intellectual engagement<sup>[(Committee on Increasing High School Students’ Engagement and Motivation to Learn & National Research Council 2003)]()</sup>. The proposed system would thus provide a shift in the educational context, providing a sense of control (teams register their own tasks), values & goals (wanting to help each other and/or earn a higher ranking) and social connectedness (forming and maintaining teams, reaching out for and offering help).
 
-![Figure X - A theory on educational conditions that promote intellectual engagement](../diagrams/educationalConditions.png)
+![A theory on educational conditions that promote intellectual engagement](../diagrams/educationalConditions.png)
 
 Using a blockchain as a data structure – in this case one which is built on a proof-of-stake consensus algorithm – to register, manage and save school-related educational tasks, along with a reward & ranking scheme linked to the blockchain, would enable students to reap immediate rewards from their individual & collaborative efforts. Furthermore, a blockchain's ability to act as a pseudo-anonymous public ledger of events, in this case school-related tasks, would provide students with the ability to refer back to said tasks at a later point in time to demonstrate their teamwork skills, therefore making a scarcely confirmable skill set auditable.
 
@@ -23,21 +23,21 @@ This section gives an overview of related work within the context of heightening
 #### SocialX<sup>[(Learning from peers: motivating students through reputation systems )](#needsLink), [(Collaborative projects and self evaluation within a social reputation-based exercise-sharing system )](#needsLink)</sup>
 SocialX is an exercise sharing tool which enables students to earn reputation points, which are visible to their peers and the given subject's teacher, by submitting solutions to exercises. A further source of reputation are endorsements, which a student may receive from their peers if they were inspired to reuse the student's solution.
 
-![Figure X - SocialX's reputation overview](../screenshots/socialx.png)
+![SocialX's reputation overview](../screenshots/socialx.png)
 
 SocialX differs to QuantiTeam in three key ways: firstly, reputation within SocialX is calculated according to factors which involve the judgment of each other's work, whereas in QuantiTeam's reputation is a function of team size and is either rewarded in full to all team members or not at all, depending on whether the task/exercise in question was completed. Secondly, QuantiTeam has no teacher role, and is therefore able to avoid a bottleneck SocialX suffers from. Thirdly, SocialX defines the term "global ranking" as a measurement of student reputation across subjects/courses, whereas QuantiTeam strives for a truly global, decentralised ranking system.
 
 #### WikiSpaces Classroom<sup>[(WikiSpaces)](https://www.wikispaces.com/content/classroom/about)</sup>
 WikiSpaces is a web app which provides a virtual classroom workspace in which teachers and students can work on written projects individually or in teams. Features include a social media-like feed, collaborative writing and commenting tools, and a project management system.
 
-![Figure X - The WikiSpaces Classroom dashboard](../screenshots/wikispaces.png)
+![The WikiSpaces Classroom dashboard](../screenshots/wikispaces.png)
 
 #### HaikuLearning<sup>[(HaikuLearning)](https://www.haikulearning.com/)</sup>
 HaikuLearning, similarly to WikiSpaces, is a web app which attempts to emulate and enhance the classroom experience for both school teachers and students. It offer a unified environment to hand in assignments and to receive feedback & grades, as well as enabling integrations with Google Apps<sup></sup> for extensibility.
 
 A notion which provides a key separation between QuantiTeam and these services is that both WikiSpaces and HaikuLearning place the metaphorical ball firmly in the court of teaching staff, as teachers still decide what material is worked on and how, even providing the ability to monitor students’ progress. Within QuantiTeam, tasks are set by team members themselves and contextual information regarding the progress or completion of a user's tasks cannot be monitored by any other individual.
 
-![Figure X - The HaikuLearning dashboard](../screenshots/haikulearning.jpg)
+![The HaikuLearning dashboard](../screenshots/haikulearning.jpg)
 
 ## 2.3 Programming Languages and Libraries
 ### 2.3.1 Blockchain
