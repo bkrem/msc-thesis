@@ -221,6 +221,12 @@
 - List of Requirements
 - Use Cases
 - System Manual (README from Github)
+    - Dependencies
+    - booting a chain instance
+    - booting the node service
+    - Issuing requests to the API
+    - ...
+    - shutting down
 - User Manual (derive from Help/FAQ page)
 - test results
 - List of API endpoints
@@ -243,7 +249,7 @@
 - Subsections (pending due to final implementation details):
 	- Deployment
 	- Testing: Code Coverage
-	- Sketches, what to do
+	- Add in signup sequence diagram somewhere
 
 - Fix formatting in Latex:
 	- Tables
