@@ -234,6 +234,8 @@
 
 TODOS
 - Front matter
+    - Abstract
+    - Acknowledgements
 - References & Bibliography (references are currently inline in the original markdown file)
 - Appendices
 - Subsections (pending due to final implementation details):
