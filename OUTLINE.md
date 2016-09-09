@@ -244,4 +244,5 @@ TODOS
 - Fix formatting in Latex:
 	- Tables
 	- Code snippets
-	- Figures
+	- Figures; downsize them
+	- Listings, labelled

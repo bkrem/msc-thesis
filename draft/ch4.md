@@ -5,6 +5,7 @@
 QuantiTeam broadly follows the three-tier architecture of a typical Model-View-Controller<sup>[(Krasner, Glenn E., and Stephen T. Pope. "A description of the model-view-controller user interface paradigm in the smalltalk-80 system." Journal of object oriented programming 1.3 (1988): 26-49.)](http://heaveneverywhere.com/stp/PostScript/mvc.pdf)</sup> (henceforth MVC) application with the important distinction that the roles within the MVC pattern are applied to an entire system of various applications, rather than a single application. In concrete terms, this means that blockchain represents the Model element by establishing the system's data model through the smart contracts applied to it, while the NodeJS server represents the Controller element, providing a public interface for client applications to issue requests to the blockchain and handling raw responses from the blockchain. The "View" element of the implementation is therefore interchangeable, as the RESTful API formed by the web server and the blockchain provides a uniform set of endpoints to communicate with, tying no special or unique value to the client, in this case a mobile app.
 
 ![A typical MVC Model](../diagrams/mvc.png)  
+
 Source: https://developer.chrome.com/apps/app_frameworks
 
 In order to mirror the described approach of creating a standalone unit out of the Model and Controller aspects of the system's architecture, the project's source code was structured into two directories at the highest level. The `app` directory contains the React Native client-side application, while the `chain` directory holds configurations and environment variables to run the Tendermint blockchain via the `eris` CLI, and provides the REST API server in its `js` subdirectory.  
@@ -80,11 +81,9 @@ The Linker contract, which is best described as a utility contract, is responsib
 For example, when a user creates a new task, thus spawning a new `Task` contract via the `TaskManager`, the system should be able to later identify the creator of said task. A possible solution would have been to simply let the `TaskManager` contract establish the link itself. Although being the most obvious solution to the issue, it would not have scaled well across the suite of Manager-type contracts. As the author was aware that a similar need for linkage would arise again between `Team` and `Task` contracts, allowing each Manager-type contract to implement its own linking mechanism was a notion which seemed to call for a layer of abstraction. A separate `Linker` contract was therefore established, whose sole responsibility is to create relational links between different types of factory contract instances. To achieve this, each new instance of a `User` or `Team` contract also contains a `taskAddressList` sequence array. This list is used to hold addresses (i.e. pointers) of tasks related to this instance of a user or team within the system. The `Linker` contract is then responsible for adding relevant addresses to the `taskAddressList`, an action which is performed whenever a new task is created.  
 The following sequence diagram illustrates how the system processes a user attempting to add a task to the blockchain, exemplifying how and when the `Linker` contract is invoked.
 
-!["Add Task" sequence diagram](../diagrams/addTaskSeqDiagram.png)
-**Figure x - Sequence of events for an "Add Task" action**
+![Sequence of events for an "Add Task" action](../diagrams/addTaskSeqDiagram.png)
 
-![Contracts Class Diagram](../diagrams/contractsClassDiagram.png)
-**Figure x - Full Class diagram for the system's smart contracts**
+![A full Class diagram for the system's smart contracts](../diagrams/contractsClassDiagram.png)
 
 ### 4.2.4 Deploying Validator Nodes
 **TODO: will be added upon deployment of the system this week**
