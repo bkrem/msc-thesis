@@ -84,7 +84,7 @@ UC17  |  AttachTaskFile       |  User           |  System
 ![Use Case Overview]()
 
 ## 3.4 Sketches
-To get a sense of a viable layout and structure for the client-side app, the author used rough sketches **(see Appendix X)** to visualise each view that was needed to meet the requirements. Once a convincing layout had been established for a view, the author created a static mockup in React's JSX, which could then be broken down into separate components and given dynamic properties, such as data retrieval methods, at a later point.
+To get a sense of a viable layout and structure for the client-side app, the author used rough sketches to visualise each view that was needed to meet the requirements. Once a convincing layout had been established for a view, the author created a static mockup in React's JSX, which could then be broken down into separate components and given dynamic properties, such as data retrieval methods, at a later point.
 
 ## 3.5 System Design
 The design of the system's architecture started with creating a simple deployment diagram **(fig X)**, which provided a high-level view of the system's required components and the roles they would play.  
