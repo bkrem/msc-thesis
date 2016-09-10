@@ -227,12 +227,17 @@
     - Acknowledgements
     - ToC
 - References & Bibliography (references are currently inline in the original markdown file)
+    - Kanban ref
+    - "Appendix X"
 - Appendices -> update API endpoints
 
 - Subsections (pending due to final implementation details):
 	- Deployment
 	- Testing: Code Coverage
 	- Add in signup sequence diagram somewhere
+
+- Potential cuts:
+    - Action events
 
 - Fix formatting in Latex:
 	- Tables
