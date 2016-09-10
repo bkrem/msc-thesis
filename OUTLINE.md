@@ -225,8 +225,9 @@
 - Front matter
     - Abstract
     - Acknowledgements
+    - ToC
 - References & Bibliography (references are currently inline in the original markdown file)
-- Appendices
+- Appendices -> update API endpoints
 
 - Subsections (pending due to final implementation details):
 	- Deployment
@@ -236,14 +237,13 @@
 - Fix formatting in Latex:
 	- Tables
 	- Code snippets
-	- Figures; downsize them
+	- Figures; downsize them, sectionalised numbering
 	- Listings, labelled
 
 - Code:
-    - Uploader
-    - Replace settings with logout
-    - Prettify team view
     - Make sure all 3rd party attributions are there
+    - Refactor naming
+    - Dialogs: Add Task, mark complete
 
 
 ## Bibliography
