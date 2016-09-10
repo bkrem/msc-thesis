@@ -250,17 +250,7 @@
 
 ## Appendices
 - Gantt chart
-- Sketches (given)
-- List of Requirements
 - Use Cases
-- System Manual (README from Github)
-    - Dependencies
-    - booting a chain instance
-    - booting the node service
-    - running the test suite
-    - Issuing requests to the API
-    - shutting down
 - User Manual (derive from Help/FAQ page)
 - test results
-- List of API endpoints
 - Code Examples/Snippets
