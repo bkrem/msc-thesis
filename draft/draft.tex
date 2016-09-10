@@ -1,4 +1,24 @@
-\documentclass[]{article}
+\documentclass[12pt]{report}
+
+\usepackage[
+backend=biber,
+style=ieee,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{main.bib}
+
+\usepackage{titlesec}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{10pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-70pt}{15pt}
+
+\renewcommand{\baselinestretch}{1.5}
+\lstset{breaklines=true}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -98,10 +118,7 @@
 
 \begin{document}
 
-{
-\setcounter{tocdepth}{3}
-\tableofcontents
-}
+
 \#\#
 
 -/UCL LOGO/-
@@ -165,6 +182,11 @@ September 2016
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+
 \section{Chapter 1}\label{chapter-1}
 
 \section{Introduction}\label{introduction}
@@ -217,8 +239,7 @@ client-side app for basic task/user/team management to offer a graphical
 representation of the API in a format familiar to users. - Establish a
 basic deployment of at least 4 distributed validator nodes to implement
 a true proof-of-stake consensus
-mechanism\href{http://bitfury.com/content/5-white-papers-research/pos-vs-pow-1.0.2.pdf}{PoW
-vs PoS} for the platform.
+mechanism\cite{BitFuryGroup2015} for the platform.
 
 \subsection{1.3 Personal Aims}\label{personal-aims}
 
