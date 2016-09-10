@@ -213,24 +213,6 @@
 - Future Work/Further Iterations
 - Final thoughts
 
-## Bibliography
-
-## Appendices
-- Gantt chart
-- Sketches (given)
-- List of Requirements
-- Use Cases
-- System Manual (README from Github)
-    - Dependencies
-    - booting a chain instance
-    - booting the node service
-    - Issuing requests to the API
-    - ...
-    - shutting down
-- User Manual (derive from Help/FAQ page)
-- test results
-- List of API endpoints
-- Code Examples/Snippets
 
 **Key points that need to be covered**
 - Why blockchain? -> distributed, incorruptible, irreversible "proof" of event
@@ -256,3 +238,29 @@
 	- Code snippets
 	- Figures; downsize them
 	- Listings, labelled
+
+- Code:
+    - Uploader
+    - Replace settings with logout
+    - Prettify team view
+    - Make sure all 3rd party attributions are there
+
+
+## Bibliography
+
+## Appendices
+- Gantt chart
+- Sketches (given)
+- List of Requirements
+- Use Cases
+- System Manual (README from Github)
+    - Dependencies
+    - booting a chain instance
+    - booting the node service
+    - running the test suite
+    - Issuing requests to the API
+    - shutting down
+- User Manual (derive from Help/FAQ page)
+- test results
+- List of API endpoints
+- Code Examples/Snippets
