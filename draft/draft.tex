@@ -2,8 +2,7 @@
 
 \usepackage[
 backend=biber,
-style=ieee,
-sorting=ynt
+style=ieee
 ]{biblatex}
 
 \addbibresource{main.bib}
@@ -244,7 +243,7 @@ mechanism\cite{BitFuryGroup2015} for the platform.
 \subsection{1.3 Personal Aims}\label{personal-aims}
 
 Having been a follower of the
-bitcoin\href{https://bitcoin.org/en/}{(Bitcoin)} movement for more than
+bitcoin\cite{1bitcoin} movement for more than
 two years, the author has been looking for an appropriate opportunity to
 apply the blockchain data structure, which is a key part of the
 technology underlying bitcoin, to a project of his own. This project's
@@ -254,22 +253,19 @@ provide a distributed ledger of transactions or events.
 The following points provide an overview of the author's personal aims
 for the project: - Become familiar with native mobile app development by
 utilising existing JavaScript knowledge in the context of React
-Native\href{https://facebook.github.io/react-native/}{(RN)}. - Learn how
-to write smart contracts in Solidity \emph{\href{}{REF}} that are useful
+Native\cite{2react-native}. - Learn how
+to write smart contracts in Solidity\cite{1solidity} that are useful
 in the context of the project and for existing platforms such as
-Ethereum \emph{\href{}{REF}}. - Implement a form of blockchain
+Ethereum\cite{1ethereum}. - Implement a form of blockchain
 technology, by learning how to set up, run \& maintain a a blockchain
-proficiently. - Gain a fundamental understanding of Docker
-\emph{\href{}{REF}} and how it leverages ``containerisation'' to achieve
+proficiently. - Gain a fundamental understanding of Docker\cite{1docker} and how it leverages ``containerisation'' to achieve
 straightforward deployments of development environments.
 
 \subsection{1.4 Project Management}\label{project-management}
 
 The project followed the methodology of the Unified Process (henceforth
 UP) framework for software
-development\href{http://tocs.ulb.tu-darmstadt.de/82047766.pdf}{(Jacobson,
-Ivar, et al. The unified software development process. Vol. 1. Reading:
-Addison-wesley, 1999.)}, and was thus structured in terms of iterative
+development\cite{jacobson1999unified}, and was thus structured in terms of iterative
 phases. The system was at first modeled as a whole by using a
 theoretical deployment diagram in order to gain an understanding of
 which technological entities were required to neatly encapsulate the
@@ -286,17 +282,16 @@ requirements were captured using a heuristic of what the essential
 functionality would be for the client-side application, and thus the API
 in general, in order for a user to create, manage and discuss their open
 tasks with their team. This was done by utilising the MoSCoW
-categorisation scheme \emph{\href{}{REF}}.
+categorisation scheme\cite{1moscow}.
 
-During the implementation stage of the project, a daily log (\textbf{see
-Appendix X}) was kept of the key advances and issues encountered during
+During the implementation stage of the project, a daily log was kept of the key advances and issues encountered during
 that day of development. This served as a useful tool to summarise the
 progress made, as well as providing an immediate opportunity to document
 issues that were encountered.\\
 Throughout the implementation stage, required programming work was
 broken down into separate units of work by using Github
-Issues\href{}{(REF)} and organised into a Kanban board\href{}{(REF)}
-with the help of waffle.io\href{https://waffle.io/}{(waffle.io)}.
+Issues\cite{1githubissues} and organised into a Kanban board\href{}{(REF)}
+with the help of waffle.io\cite{1waffle}.
 
 As the API continued to grow laterally, adding a multitude endpoints for
 each new domain, unit testing the API's public functions became an
@@ -305,12 +300,6 @@ handling of the still very young Solidity programming language (used to
 construct smart contracts for blockchains), any responses coming from
 the blockchain had to be rigorously tested server-side in order avoid
 silent breakages and regressions.
-
-Additionally, a Gantt chart (\textbf{see Appendix X}) was established at
-the outset of the project in order to visualise the progression of the
-project over time and to ensure the amount of work set out to be
-completed was within a realistic margin for the amount of time available
-to the author.
 
 \subsection{1.5 Report Overview}\label{report-overview}
 
@@ -361,26 +350,20 @@ Applications}\label{background-information-and-related-applications}
 
 A 2004 study by the National Research Council showed that upwards of
 40\% of high school students feel disengaged from learning and exert
-little effort on school work
-\href{http://cep-dc.org/displayDocument.cfm?DocumentID=405}{(Center on
-Education Policy 2012)}. More worryingly still, 70\% of dropouts stated
+little effort on school work\cite{Usher2013}. More worryingly still, 70\% of dropouts stated
 lack of motivation, in a 2006 study, as the key reason for their
-departure from school \href{}{(Bridgeland, J.M. et al., 2006. The Silent
-Epidemic: Perspectives of High School Dropouts)}. In liaison with these
+departure from school\cite{bridgeland2006silent}. In liaison with these
 findings, a study which tracked the educational careers of a group of
 individuals found that 23\% of those who dropped out cited a sense of
-not belonging as the reason for their departure from school
-\href{}{(Berktold et al., 1998, Table 6)}.
+not belonging as the reason for their departure from school\cite{berktold1998subsequent}.
 
 While the factors for a student's motivation (or lack of it) regarding
 their education may stem from a myriad of factors, engaging the
 individual on a social level may thus be posited as a key driver in
-motivating them to remain engaged in the process \href{}{((Johnson et
-al., 2001; Newmann, Wehlage, and Lamborn, 1992; Tinto, 1993; Wehlage,
-Rutter, Smith, Lesko, and Fernandez, 1989))}. Of course, simply being
+motivating them to remain engaged in the process\cite{johnson2001students}. Of course, simply being
 bound into a social context does not mean that the student will make
 meaningful progress regarding their work, as attendance does not
-constitute attention to what is being taught \href{}{(\emph{ibid})}.
+constitute attention to what is being taught.
 
 Whereas there is little school staff can do to ensure the attention of a
 student within a physical school, supplementing the educational process
@@ -395,15 +378,11 @@ far-off seeming concept of a high school diploma.
 ``Rewarding specific actions that students can control, such as
 completing homework, yields better results than rewarding
 accomplishments that may seem beyond their reach or out of their
-control, such as whether they earn an A grade.''\\
-\href{}{(Usher, Kober; Student Motivation - An overlooked piece of
-school reform)}
+control, such as whether they earn an A grade.''\cite{Usher2013}
 \end{quote}
 
-\textbf{Figure X} visualises a widely held theory regarding educational
-conditions that promote intellectual engagement\href{}{(Committee on
-Increasing High School Students' Engagement and Motivation to Learn \&
-National Research Council 2003)}. The proposed system would thus provide
+Figure 2.1 visualises a widely held theory regarding educational
+conditions that promote intellectual engagement\cite{CommitteeonIncreasingHighSchoolStudentsEngagementandMotivationtoLearn2003}. The proposed system would thus provide
 a shift in the educational context, providing a sense of control (teams
 register their own tasks), values \& goals (wanting to help each other
 and/or earn a higher ranking) and social connectedness (forming and
@@ -438,13 +417,10 @@ student-to-student and student-to-teacher engagement, but none were
 built in terms of a distributed, reviewable entity, such as a
 blockchain.
 
-\paragraph{\texorpdfstring{SocialX\protect\hyperlink{needsLink}{(Learning
-from peers: motivating students through reputation systems )},
-\protect\hyperlink{needsLink}{(Collaborative projects and self
-evaluation within a social reputation-based exercise-sharing system
-)}}{SocialX(Learning from peers: motivating students through reputation systems ), (Collaborative projects and self evaluation within a social reputation-based exercise-sharing system )}}\label{socialxlearning-from-peers-motivating-students-through-reputation-systems-collaborative-projects-and-self-evaluation-within-a-social-reputation-based-exercise-sharing-system}
 
-SocialX is an exercise sharing tool which enables students to earn
+\paragraph{SocialX}\label{socialx}
+
+SocialX\cite{Temperini2008}\cite{Sterbini2009} is an exercise sharing tool which enables students to earn
 reputation points, which are visible to their peers and the given
 subject's teacher, by submitting solutions to exercises. A further
 source of reputation are endorsements, which a student may receive from
@@ -467,10 +443,9 @@ defines the term ``global ranking'' as a measurement of student
 reputation across subjects/courses, whereas QuantiTeam strives for a
 truly global, decentralised ranking system.
 
-\paragraph{\texorpdfstring{WikiSpaces
-Classroom\href{https://www.wikispaces.com/content/classroom/about}{(WikiSpaces)}}{WikiSpaces Classroom(WikiSpaces)}}\label{wikispaces-classroomwikispaces}
+\paragraph{WikiSpaces}\label{wikispaces}
 
-WikiSpaces is a web app which provides a virtual classroom workspace in
+WikiSpaces\cite{1wikispaces} is a web app which provides a virtual classroom workspace in
 which teachers and students can work on written projects individually or
 in teams. Features include a social media-like feed, collaborative
 writing and commenting tools, and a project management system.
@@ -481,9 +456,9 @@ writing and commenting tools, and a project management system.
 \caption{The WikiSpaces Classroom dashboard}
 \end{figure}
 
-\paragraph{\texorpdfstring{HaikuLearning\href{https://www.haikulearning.com/}{(HaikuLearning)}}{HaikuLearning(HaikuLearning)}}\label{haikulearninghaikulearning}
+\paragraph{HaikuLearning}\label{haikulearning}
 
-HaikuLearning, similarly to WikiSpaces, is a web app which attempts to
+HaikuLearning\cite{haikulearning}, similarly to WikiSpaces, is a web app which attempts to
 emulate and enhance the classroom experience for both school teachers
 and students. It offer a unified environment to hand in assignments and
 to receive feedback \& grades, as well as enabling integrations with
@@ -513,15 +488,15 @@ Before proceeding with the following section, two frequently used
 concepts should be clearly delineated: blockchains and smart contracts.
 A blockchain is a data structure composed of a list of blocks of
 transactions, where each block is linked back to the previous block in
-the chain\href{}{(Mastering Bitcoin)}. Each block is identified by a
+the chain\cite{antonopoulos2014mastering}. Each block is identified by a
 hash, which is stored in the block's header alongside the previous
-block's hash, known as the parent block(\emph{ibid}), thus providing a
+block's hash, known as the parent block\cite{antonopoulos2014mastering}, thus providing a
 traceable, reverse-chronological chain of transactions over time.\\
 The concept of a smart contract was originally developed by Nick Szabo
 in 1997, and is usually evoked in terms of a digital protocol which
 enforces and/or verifies the performance of a contract between two or
 more
-parties\href{http://szabo.best.vwh.net/smart_contracts_idea.html}{(smart\_contracts\_idea)}.
+parties\cite{1szabo}.
 
 At the outset of the project, a key decision which had to be made was
 the choice of blockchain implementation to be used. This decision was
@@ -530,12 +505,12 @@ incompatibility between what the implementation could provide and what
 was needed, would have resulted in (at least temporary) deadlock for the
 entire project.\\
 The author's initial experimentation with
-OpenChain\href{https://www.openchain.org/}{(OpenChain)}, which seemed to
+OpenChain\cite{1openchain}, which seemed to
 offer the possibly useful ability to chain contracts to each other, was
 quickly abandoned as the available documentation was insufficiently
 detailed and partially ambiguous. This would have left the project open
 to a lot of guesswork and thus the above mentioned risk of deadlock.\\
-MultiChain\href{http://www.multichain.com/}{(MultiChain)}, on the other
+MultiChain\cite{1multichain}, on the other
 hand, was an implementation which had well-defined documentation, but it
 assumed a level of pre-existing familiarity with the API of a
 blockchain, as well as providing preciously little context as to how
@@ -543,16 +518,16 @@ smart contracts could be developed for the platform in an effective
 way.\\
 The apparent drawbacks of the two mentioned blockchain implementations
 therefore led the author to the
-Eris\href{https://erisindustries.com/}{(Eris)} platform. Eris itself
+Eris\cite{1erisindustries} platform. Eris itself
 provides a suite of tools which wrap and augment a
-Tendermint\href{http://tendermint.com/}{(Tendermint)} blockchain
+Tendermint\cite{1tendermint} blockchain
 implementation. Eris's wealth of documentation and its well-structured
 command line interface (henceforth CLI) were the deciding factors for it
 becoming the blockchain implementation of choice. The documentation
 provided not only step-by-step examples of how a developer could
 configure and deploy a blockchain, but also provided in-depth tutorials
 and examples on how to write \& deploy
-Solidity\href{http://solidity.readthedocs.io/en/latest/}{(Solidity)}
+Solidity\cite{1solidity}
 smart contracts for the platform; highly valuable for a smart contract
 novice such as the author. Furthermore, the fact that Tendermint is an
 entirely separate software project meant that there was an additional
@@ -563,15 +538,15 @@ computer science theory backing it.
 
 Considering the author's background as a JavaScript developer, the
 natural choice for a web server for the project was
-NodeJS\href{https://nodejs.org/en/}{(NodeJS)}. NodeJS provides a great
+NodeJS\cite{1node}. NodeJS provides a great
 level of flexibility and extensibility thanks to its huge ecosystem of
 open-source libraries available through its package manager,
-NPM\href{https://www.npmjs.com/}{(npm)}, thus providing an essential
+NPM\cite{1npm}, thus providing an essential
 basis to help mitigate the possibly complicated technical details of
 interfacing with a low-level blockchain.\\
 As JavaScript is an ever-evolving language, a choice had to be made as
 to whether the commonly supported
-ECMAScript\href{http://www.ecma-international.org/}{(ECMAScript)} 5
+ECMAScript\cite{1ecma} 5
 (ES5) specification should be used or the modern standard, ES6. ES5 was
 selected to provide the maximum level of compatibility for wherever the
 server is being deployed, as native support for ES6 is not widespread as
@@ -583,7 +558,7 @@ QuantiTeam's server makes use of a handful of key libraries:
 
 \paragraph{Express}\label{express}
 
-Express\href{https://expressjs.com/}{(Express)} is a minimalist
+Express\cite{1express} is a minimalist
 framework for NodeJS web servers which provides a powerful layer of
 abstraction on top of NodeJS's raw server interface. Express helped
 accelerate the development of the API, while leaving the possibility of
@@ -594,7 +569,7 @@ fine-tuning the NodeJS server itself intact.
 The eris-wrapper \& eris-logger modules were adopted from a ``Hello
 World''-style example Eris provides to showcase how a NodeJS server
 implementing their platform could be
-structured\href{https://github.com/eris-ltd/hello-eris}{(Hello Eris)}.\\
+structured\cite{1helloeris}.\\
 eris-wrapper provides a convenient abstraction of low-level bindings
 that have to take place between the NodeJS server and the Tendermint
 blockchain, while eris-logger simply sets up a simple logger with
@@ -603,7 +578,7 @@ different logging types, such as \texttt{ERROR}, \texttt{INFO} and
 
 \paragraph{Async}\label{async}
 
-Async\href{https://caolan.github.io/async/}{(Async)} is a utility
+Async\cite{1async} is a utility
 library that helps manage the flow of asynchronous functions, which are
 a common occurrence in NodeJS. Within the scope of the server, Async was
 primarily used to chain together multiple sequential interactions with
@@ -630,14 +605,14 @@ appearance, structure and behaviour.
 During the MSc's GC02 ``App Design'' course, the author and his team had
 the opportunity to build a React web application which was also required
 to run as a mobile application. This was achieved by wrapping the web
-app with the Apache Cordova\href{https://cordova.apache.org/}{(Cordova)}
+app with the Apache Cordova\cite{1cordova}
 mobile development framework. This experience revealed two key insights
 regarding the intersection between web- and mobile-based client-side
 development:\\
 Firstly, that Facebook's
-React\href{https://facebook.github.io/react/}{(React)} web development
+React\cite{1react} web development
 library, in liaison with Dan Abramov's
-Redux\href{http://redux.js.org/}{(Redux)} library for state management,
+Redux\cite{1redux} library for state management,
 could be applied almost seamlessly to the context of a mobile
 application. React's philosophy of thinking in terms of individual view
 components, together with Redux's implementation-agnostic approach to
@@ -653,8 +628,7 @@ being closer to that of a mobile browser rather than a native mobile
 app.
 
 Based on these two lessons learnt, the author decided to use Facebook's
-React Native\href{https://facebook.github.io/react-native/}{(React
-Native)} for the project, which grafts a truly native mobile development
+React Native\cite{2react-native} for the project, which grafts a truly native mobile development
 framework on top of the outstanding React library, along with the now
 familiar Redux library.\\
 React Native offers all the benefits of React (high levels of modularity
@@ -667,7 +641,7 @@ application's data by managing all of it through a centralised
 \texttt{store} object, the contents of which can be altered exclusively
 by a set of actions previously defined by the developer. This provides a
 level of clarity of how the application's state mutates over time that
-is hard to achieve in a traditional Model-View-Controller\href{}{(REF)}
+is hard to achieve in a traditional Model-View-Controller\cite{krasner1988description}
 (henceforth MVC) approach, in which many controllers have access to the
 application's state simultaneously.
 
@@ -676,7 +650,7 @@ application are the following:
 
 \paragraph{redux-thunk}\label{redux-thunk}
 
-redux-thunk\href{https://github.com/gaearon/redux-thunk}{(redux-thunk)}
+redux-thunk\cite{1thunk}
 is a helper library which enables the use of asynchronous functions as
 the aforementioned actions that affect the application's state. This is
 essential to allow control over how and when the client application
@@ -685,7 +659,7 @@ blockchain to then integrate it into its local state.
 
 \paragraph{redux-logger}\label{redux-logger}
 
-redux-logger\href{https://github.com/evgenyrodionov/redux-logger}{(redux-logger)}
+redux-logger\cite{1reduxlogger}
 supplements Redux itself by automatically logging actions and the state
 changes they trigger to the development console. This meant a
 significant amount of time could be saved during the project by avoiding
@@ -694,7 +668,7 @@ codebase with sporadic logging statements.
 
 \paragraph{tcomb-form-native}\label{tcomb-form-native}
 
-tcomb-form-native\href{https://github.com/gcanti/tcomb-form-native}{(tcomb-form-native)}
+tcomb-form-native\cite{1tcombform}
 provides a framework for forms and form validation in React Native. As
 form validation in particular can take up an inordinate amount of
 development time, this library was essential in order to keep the
@@ -715,7 +689,7 @@ integration tests on the server:
 
 \paragraph{Mocha}\label{mocha}
 
-Mocha\href{https://mochajs.org/}{(Mocha)} was chosen as the testing
+Mocha\cite{1mocha} was chosen as the testing
 framework for the project due to its specific aim of simplifying the
 testing of asynchronous JavaScript code. This clearly applied to the
 needs of the planned API which would be largely built on asynchronous
@@ -723,14 +697,14 @@ functions.
 
 \paragraph{Chai}\label{chai}
 
-Chai\href{http://chaijs.com/}{(Chai)} is an assertion library for both
+Chai\cite{1chai} is an assertion library for both
 test-driven development (TDD) and behaviour-driven development (BDD).
 More specifically, Chai's TDD \texttt{assert} function was used to keep
 test assertions simple and testable against an expected result.
 
 \paragraph{Istanbul}\label{istanbul}
 
-Istanbul\href{https://gotwarlost.github.io/istanbul/}{(Istanbul)} is a
+Istanbul\cite{1istanbul} is a
 code coverage tool which was used to gain an overview of how much of the
 API was currently covered by tests. This occurred via coverage reports,
 which were generated after every run of the test suite.
@@ -769,13 +743,13 @@ development time.
 \subsubsection{2.4.1 Requirements and Design
 Tools}\label{requirements-and-design-tools}
 
-GanttPro\href{https://ganttpro.com/}{(GanttPro)}, an online creator and
+GanttPro\cite{1ganttpro}, an online creator and
 editor for Gantt charts, was used to create a timeline for the project,
-while Google Docs\href{https://www.google.com/docs/about/}{(GoogleDocs)}
-in conjunction with draw.io\href{https://www.draw.io/}{(draw.io)} were
+while Google Docs\cite{2googledocs}
+in conjunction with draw.io\cite{1drawio} were
 used to capture requirements and create UML diagrams.\\
 This report was originally written in markdown and transposed to the
-Latex format using pandoc\href{http://pandoc.org/}{(pandoc)}.
+Latex format using pandoc\cite{1pandoc}.
 
 \subsubsection{2.4.2 Development Tools}\label{development-tools}
 
@@ -783,10 +757,10 @@ Latex format using pandoc\href{http://pandoc.org/}{(pandoc)}.
 
 In order to avoid switching between editors to get the best development
 support for disparate parts of the project's code, Github's
-Atom\href{https://atom.io/}{(Atom)} editor was chosen due to its level
+Atom\cite{1atom} editor was chosen due to its level
 of customisability and huge selection of plugins. Atom was particularly
 suited for writing React Native code thanks to Facebook's
-Nuclide\href{https://nuclide.io/}{(Nuclide)} plugin, which enables Atom
+Nuclide\cite{1nuclide} plugin, which enables Atom
 to approximate a richness of features typically only found in an
 Integrated Development Environment (IDE), by offering an in-built
 debugger, code snippets, and Facebook's own static type analyser which
@@ -794,7 +768,7 @@ is discussed below.
 
 \paragraph{Static Type Analyser}\label{static-type-analyser}
 
-Flowtype\href{https://www.flowtype.org/}{(Flowtype)}, a static type
+Flowtype\cite{1flowtype}, a static type
 analyser for JavaScript, is a further in-built feature of the Nuclide
 plugin. Flowtype allows the developer to define a type for a variable, a
 type signature for a function, and even to create custom union \&
@@ -805,25 +779,19 @@ JavaScript, where unintended type coercion is a common ailment.
 
 \paragraph{Linters}\label{linters}
 
-ESLint\href{http://eslint.org/}{(ESLint)} was chosen as the linter for
+ESLint\cite{1eslint} was chosen as the linter for
 both the React Native app and the NodeJS server, due to its support for
 detecting syntactical \& stylistic errors in both regular JavaScript and
 JSX, a mix of JavaScript and HTML used by Facebook for React.\\
-For the smart contracts, written in Solidity, the
-\texttt{solidity-linter}\href{https://atom.io/packages/linter-solidity}{(solidity-linter)}
-Atom plugin was used, which avoided a significant amount of frustration
-in comparison to waiting for errors to be detected at compile-time by
-the Solidity compiler built into Eris's tooling.
 
 \paragraph{Debugging}\label{debugging}
 
 Debugging within the project was performed in three different ways due
 to the variability of environments within the technology stack. For the
 React Native app, Google Chrome's
-DevTools\href{https://developers.google.com/web/tools/chrome-devtools/?hl=en}{(devTools)}
+DevTools\cite{1chromedevtools}
 were utilised alongside the Xcode iOS
-simulator\href{https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/Introduction/Introduction.html}{(iOS
-Simulator)} in order to interact with the app and receive log outputs
+simulator\cite{1iossimulator} in order to interact with the app and receive log outputs
 side-by-side in real-time.\\
 For the NodeJS server, the aforementioned \texttt{eris-logger} module
 was used to log API-related logging statements to the terminal.\\
@@ -837,18 +805,18 @@ excluding a possible cause if a bug was being searched for.
 
 \paragraph{Version Control}\label{version-control}
 
-The \texttt{git}\href{https://git-scm.com/}{(git)} command line utility
+The \texttt{git}\cite{1git} command line utility
 was used to manage the codebase's development over time, in conjunction
-with GitHub\href{https://github.com/}{(GitHub)} to provide a remote
+with GitHub\cite{1github} to provide a remote
 backup. For more involved \texttt{git} operations, such as merging
 branches, Atlassian's
-SourceTree\href{https://www.atlassian.com/software/sourcetree}{(SourceTree)}
+SourceTree\cite{1sourcetree}
 GUI was used to avoid mistyping complex terminal commands and thus
 potentially performing unwanted changes to the version history.
 
 \paragraph{Docker \& Shell Scripts}\label{docker-shell-scripts}
 
-Docker\href{https://www.docker.com/}{(Docker)} is a platform which
+Docker\cite{1docker} is a platform which
 allows the creation of self-contained virtual environments for software
 development, to mitigate arbitrary local differences between development
 environments. It was an essential part of the development process as
@@ -858,6 +826,8 @@ Bash shell scripts (\textbf{see Appendix X}) were constructed by the
 author in order to automate processes such as hydrating the local
 terminal environment with variables required to run the blockchain, or
 booting the Docker virtual machine and the local blockchain instance.
+
+\clearpage
 
 \section{Chapter 3}\label{chapter-3-1}
 
@@ -882,24 +852,15 @@ with the system}
 
 \subsection{3.2 Requirements}\label{requirements}
 
-In a typical software engineering project, there is a need for strong
-levels of communication between all the stakeholders involved in the
-endeavour, in order to ensure all the needs the software should meet are
-in fact met \emph{\href{}{(REF)}}. A frequent phenomenon within these
-interactions is that requirements are revealed to the development team
-in a haphazard way or are simply misinterpreted by the team
-\emph{\href{}{(REF?)}}.\\
-Fortunately these common pitfalls were a moot point within this project,
-as the act of establishing requirements was entirely focused around the
+The act of establishing requirements was entirely focused around the
 question: ``What functionality does the system require, at a minimum, to
 fulfill its stated aims?''. This provided a clear focus on what was
 absolutely needed for a minimum viable product (henceforth
-MVP)\href{https://www.techopedia.com/definition/27809/minimum-viable-product-mvp}{(MVP;
-better ref)} that an individual and/or group of individuals could use in
+MVP)\cite{ries2009minimum} that an individual and/or group of individuals could use in
 a meaningful way. This meant both functional and non-functional
 requirements were focused around three domains: tasks, users, and teams.
 The requirements were prioritised according to the MoSCoW
-system\href{https://www.dsdm.org/content/moscow-prioritisation}{(MoSCoW)},
+system\cite{1moscow},
 with requirements being ranked from ``Must Have'' through ``Should
 Have'' and ``Could Have'', with the final category being ``Won't Have
 (in this development cycle)''. The project's ``Must Have'' requirements
@@ -1280,7 +1241,7 @@ other applications.
 
 Use cases were constructed in parallel with the initial UI sketches,
 thus helping to visualise the flow of user-system interactions.\\
-\textbf{Figure xx} below represents an overview of the uses cases that
+Figure 3.4 below represents an overview of the uses cases that
 were constructed, while the detailed use cases can be reviewed in
 \textbf{Appendix X}.
 
@@ -1327,7 +1288,7 @@ properties, such as data retrieval methods, at a later point.
 \subsection{3.5 System Design}\label{system-design}
 
 The design of the system's architecture started with creating a simple
-deployment diagram \textbf{(fig X)}, which provided a high-level view of
+deployment diagram (Figure 3.5), which provided a high-level view of
 the system's required components and the roles they would play.\\
 Establishing a high-level understanding of what the system required to
 provide proficient communication between any client application and the
@@ -1336,9 +1297,9 @@ phase. Decoupling the system's functionality from the specific
 implementation with which the system may be represented to a user was a
 crucial provision to ensure maximum reusability and compatibility of the
 system, therefore following the common software engineering mantra of
-\emph{``program to an interface, not an implementation''}\href{}{(REF)}.
+\emph{``program to an interface, not an implementation''}\cite{1programtointerface}.
 Within the context of the web, the most appropriate form to follow this
-approach was by developing a RESTful\href{}{(REF)} API, thus providing a
+approach was by developing a RESTful\cite{1rest} API, thus providing a
 uniform interface of data endpoints, regardless of the client requesting
 said data.
 
@@ -1354,10 +1315,9 @@ Analysis}\label{smart-contract-analysis}
 The role of the smart contracts played in this project -- rather than
 attempting to literally track and enforce contractual obligations
 between multiple parties -- was more closely related to that of typical
-classes in object-oriented programming \emph{\href{}{(REF?)}}, with the
+classes in object-oriented programming, with the
 majority of the contracts either acting as
-factories\href{http://www.oodesign.com/factory-pattern.html}{(factory
-pattern; find better source)} for composite types or implementing
+factories\cite{gamma1995design} for composite types or implementing
 operations on these types as ``manager'' contracts.
 
 \paragraph{Factory Contracts}\label{factory-contracts}
@@ -1379,8 +1339,7 @@ store, edit and retrieve collections of type contracts.
 \paragraph{Manager Contracts}\label{manager-contracts}
 
 To avoid violating the Single Responsibility
-Principle\href{http://www.oodesign.com/single-responsibility-principle.html}{(SRP
-pattern; find better source)} of object-oriented design, there was a
+Principle\cite{martin2003agile} of object-oriented design, there was a
 need for a set of contracts which would perform operations on instances
 returned by the factory contracts. This meant there was a need for a
 \texttt{UserManager}, \texttt{TeamManager} and \texttt{TaskManager}
@@ -1470,7 +1429,7 @@ React}\label{abstracting-view-components-with-react}
 
 React takes markedly different approach to view templating compared to
 the other major web development frameworks such as Google's
-AngularJS\href{https://angularjs.org/}{(AngularJS)}. React's philosophy
+AngularJS\cite{1angular}. React's philosophy
 focuses on breaking a view down into its constituent parts to form
 reusable components. These components can then be composed in whichever
 way the developer sees fit. This level of composability comes to its
@@ -1509,8 +1468,7 @@ and that they may only take place in a single direction
 (unidirectionally).\\
 In concrete terms, Redux achieves these orderly state mutations by
 following three interdependent
-principles\href{http://redux.js.org/docs/introduction/ThreePrinciples.html}{(three
-principles)}:
+principles\cite{1redux}:
 
 \emph{Single source of truth} - All of the application's state is stored
 in a single object tree known as the \texttt{store}.
@@ -1531,11 +1489,10 @@ visualised in the following manner:
 \begin{figure}[htbp]
 \centering
 \includegraphics{../diagrams/redux.png}
-\caption{State mutations within a Redux architecture}
+\caption{State mutations within a Redux architecture\cite{1reduxibm}}
 \end{figure}
 
-Source:
-http://www.ibm.com/developerworks/library/wa-manage-state-with-redux-p1-david-geary/
+\clearpage
 
 \section{Chapter 4}\label{chapter-4-1}
 
@@ -1544,11 +1501,7 @@ http://www.ibm.com/developerworks/library/wa-manage-state-with-redux-p1-david-ge
 \subsection{4.1 System Architecture}\label{system-architecture}
 
 QuantiTeam broadly follows the three-tier architecture of a typical
-Model-View-Controller\href{http://heaveneverywhere.com/stp/PostScript/mvc.pdf}{(Krasner,
-Glenn E., and Stephen T. Pope. ``A description of the
-model-view-controller user interface paradigm in the smalltalk-80
-system.'' Journal of object oriented programming 1.3 (1988): 26-49.)}
-(henceforth MVC) application with the important distinction that the
+Model-View-Controller\cite{krasner1988description} application with the important distinction that the
 roles within the MVC pattern are applied to an entire system of various
 applications, rather than a single application. In concrete terms, this
 means that blockchain represents the Model element by establishing the
@@ -1564,10 +1517,8 @@ client, in this case a mobile app.
 \begin{figure}[htbp]
 \centering
 \includegraphics{../diagrams/mvc.png}
-\caption{A typical MVC Model}
+\caption{A typical MVC Model\cite{1mvcfigure}}
 \end{figure}
-
-Source: https://developer.chrome.com/apps/app\_frameworks
 
 In order to mirror the described approach of creating a standalone unit
 out of the Model and Controller aspects of the system's architecture,
@@ -1587,8 +1538,7 @@ Within the MVC paradigm, models represent the central structure of the
 application and ``are concerned with neither the user-interface nor
 presentation layers but instead represent unique forms of data that an
 application may
-require''\href{https://addyosmani.com/resources/essentialjsdesignpatterns/book/\#detailmvc}{(Learning
-JS Design Patterns)}.\\
+require''\cite{osmani2012learning}.\\
 The Tendermint blockchain serves as a model by defining the system's
 domain through the collection of smart contracts it holds, thus setting
 the boundaries for what kinds of data the system is able to store and
@@ -1645,9 +1595,9 @@ respectively.
 
 While JavaScript is composed entirely of objects, Solidity provides the
 \texttt{mapping} type; a data structure similar to what is commonly
-known as a hash map\href{}{(REF)}. This would have provided a sufficient
+known as a hash map. This would have provided a sufficient
 parallel to translate data formatted in JavaScript Object
-Notation\href{http://www.json.org/}{(JSON)} (henceforth JSON) into a
+Notation\cite{1json} (henceforth JSON) into a
 format digestible by Solidity contracts, were it not for the fact that
 Solidity's ability to store and perform operations on its mappings and
 arrays is limited at best. For example, storing user profiles (i.e.
@@ -1661,8 +1611,7 @@ subset of its properties which match a given criteria. This would have
 meant searching the blockchain in any non-trivial manner would have been
 highly unfeasible.\\
 To mitigate this functional bottleneck in Solidity, the author adopted
-an implementation of a SequenceArray\href{}{(\emph{Data Structures And
-Algorithm Analysis in Java, p.~97})}, which became the
+an implementation of a SequenceArray\cite{Shaffer2013}, which became the
 \texttt{SequenceArray.sol} contract. The SequenceArray provided a
 well-defined interface of methods on top of Solidity's native array and
 \texttt{mapping} types, allowing the author to focus on \emph{when} and
@@ -1687,10 +1636,7 @@ object and therefore passed as a single parameter within the client- and
 server-side JavaScript applications, the object had to be split into its
 constituent fields by the NodeJS server before it could be handed to the
 blockchain. This created what is commonly referred to as a ``code
-smell''\href{http://www.cs.wm.edu/~denys/pubs/ICSE'15-BadSmells-CRC.pdf}{(Tufano,
-Michele, et al. ``When and why your code starts to smell bad.''
-Proceedings of the 37th International Conference on Software
-Engineering-Volume 1. IEEE Press, 2015.)}, by forcing the author to
+smell''\cite{tufano2015codesmell}, by forcing the author to
 implement an excessively large amount of parameters. This made both the
 factory contracts themselves and the server's methods that deconstructed
 the initial JavaScript object for the blockchain brittle, as any change
@@ -1769,7 +1715,7 @@ of the blockchain's primary purposes within QuantiTeam is to act as
 persistent storage layer, this type of functionality was required in
 order to emulate the entity integrity provided by primary key/foreign
 key relations between tables in a relational
-database\href{https://msdn.microsoft.com/en-GB/library/ms179610.aspx}{(primaryKey/foreignKey)}.\\
+database\cite{1primarykeyforeignkey}.\\
 For example, when a user creates a new task, thus spawning a new
 \texttt{Task} contract via the \texttt{TaskManager}, the system should
 be able to later identify the creator of said task. A possible solution
@@ -1827,8 +1773,7 @@ responsibilities in concrete terms.
 Controllers can be regarded as an intermediary which sit between models
 and views, and are typically responsible for updating the model when
 changes in the view take
-place\href{https://addyosmani.com/resources/essentialjsdesignpatterns/book/\#detailmvc}{(Learning
-JS Design Patterns)}. Within QuantiTeam, the server is able to fulfill
+place\cite{osmani2012learning}. Within QuantiTeam, the server is able to fulfill
 its role as a Controller component within the system's overarching MVC
 architecture, by being the deciding factor concerning the logic executed
 between the moment an HTTP request is received and the moment a response
@@ -1843,7 +1788,7 @@ blockchain and altering the relevant \texttt{Task} contract accordingly.
 REST, which is an acronym for Representational State Transfer, is a
 commonly used web development pattern which attempts to ensure
 reliability and scalability of the web service implementing
-it\href{http://whatisrest.com/rest_constraints/index}{(REST)}. Within
+it\cite{1rest}. Within
 the context of QuantiTeam, achieving RESTfulness was key for the
 system's API, as this would help ensure the system's usefulness to any
 context of client-side implementation, rather than specifically a mobile
@@ -1855,7 +1800,7 @@ and how each applies to QuantiTeam's server-side architecture.
 
 Crucial to the creation of an implementation-agnostic REST interface is
 a separation of concerns between the client and
-server\href{http://whatisrest.com/rest_constraints/client_server}{(client-server)}.
+server\cite{1rest}.
 Strictly separating client and the server roles from each other provides
 portability and replaceability, as the underlying implementation of
 either may change without affecting the standardised form of
@@ -1872,7 +1817,7 @@ Statelessness is a key constraint within the REST design, which holds
 that each request should contain all information required by the service
 to process the request, and the service's response should contain all
 the required data to fulfill said
-request\href{http://whatisrest.com/rest_constraints/stateless}{(statelessness)}.\\
+request\cite{1rest}.\\
 Applied to QuantiTeam, the REST pattern's property of statelessness not
 only helped to decouple the system's architecture by avoiding the need
 for managing state across different applications, it was also the most
@@ -1914,7 +1859,7 @@ make a decision regarding the availability of the proposed username.
 
 Responses from the REST service being implicitly or explicitly declared
 as cacheable or non-cacheable is a further component of a RESTful
-service\href{http://whatisrest.com/rest_constraints/cache}{(cache)}, as
+service\cite{1rest}, as
 cacheable responses provide an opportunity to to optimise the amount of
 client-server communication that is needed.\\
 QuantiTeam's API currently does not provide explicit cache labels in its
@@ -1932,8 +1877,7 @@ A uniform technical interface -- which provides a generic, high-level
 method of communication across all services within a REST architecture
 -- is seen as the primary constraint which distinguishes the REST
 approach from other approaches to web service
-architectures\href{http://whatisrest.com/rest_constraints/interface_uniform_contract}{(uniform
-interface)}.\\
+architectures\cite{1rest}.\\
 For QuantiTeam, this interface was constructed by using HTTP URI paths
 to define API endpoints, which a client could then issue requests to.
 Uniformity was further enforced by creating the following semantic
@@ -1964,8 +1908,7 @@ The final constraint within the REST pattern concerns composability. A
 RESTful implementation should allow for intermediate layers, commonly
 known as middleware, to be inserted into the service without affecting
 the interface for communication in any
-way\href{http://whatisrest.com/rest_constraints/layered_system}{(layered
-system)}.\\
+way\cite{1rest}.\\
 QuantiTeam meets this constraint through its HTTP URI interface, which
 enables middleware to implement the same interface and forward a given
 request to the service itself using the same exact URI once it has
@@ -2026,10 +1969,7 @@ Implementation}\label{client-side-design-implementation}
 Within the MVC pattern, views are the component responsible for the
 graphical representation of the application's -- or in this case the
 system's -- data
-models\href{http://heaveneverywhere.com/stp/PostScript/mvc.pdf}{(Krasner,
-Glenn E., and Stephen T. Pope. ``A description of the
-model-view-controller user interface paradigm in the smalltalk-80
-system.'' Journal of object oriented programming 1.3 (1988): 26-49.)}.
+models\cite{krasner1988description}.
 Although a view may also be described as ``a visual representation of
 models that present a filtered view of the current
 state''\href{https://addyosmani.com/resources/essentialjsdesignpatterns/book/\#detailmvc}{(Learning
@@ -2065,8 +2005,7 @@ type Tab =
 
 Here Flowtype allows the definition of a \texttt{Tab} enum by using
 literal
-types\href{https://flowtype.org/docs/builtins.html\#literal-types}{(Flowtype:literal
-types)}. The \texttt{Tab} enum was useful to specify which string
+types\cite{1flowtype}. The \texttt{Tab} enum was useful to specify which string
 identifiers, each associated with a given view, were legal values in the
 \texttt{TabsView} component, which renders the navigation bar at the
 bottom of the app's viewport.
@@ -2227,7 +2166,7 @@ I/O actions within QuantiTeam are structured to enable reliable
 communication with the system's API. In abstract terms, any event within
 the client-side application which required data from or sent data to the
 blockchain, follows a pattern involving three types of Redux
-actions\href{http://redux.js.org/docs/advanced/AsyncActions.html}{(Redux:AsyncActions)}:
+actions\cite{1redux}:
 
 \emph{Request} - A Request action is dispatched the moment the
 client-side application registers an event that requires an API
@@ -2267,8 +2206,7 @@ established, meaning the author was able to trigger smart contract
 events within the blockchain via HTTP requests, the system's API was
 established and expanded via test-driven development. This meant that
 any new functions of the system would be developed in the following
-manner\href{}{(Beck, Kent. Test-driven development: by example.
-Addison-Wesley Professional, 2003.)}:
+manner\cite{beck2003test}:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2306,9 +2244,7 @@ reliable test suite within the Solidity language. Unit tests
 purposefully excluded modules' private functions to avoid fixating the
 test suite on implementation details and to avoid breaking the
 encapsulation of each
-module\href{http://data.ceh.vn/Ebook/ebooks.shahed.biz/JAVA/JUNIT/Pragmatic\%20Unit\%20Testing\%20in\%20Java\%20with\%20JUnit\%20-\%20Andrew\%20Hunt\%20\&\%20David\%20Thomas\%20-\%20The\%20Pragmatic\%20Programmer.pdf}{(Hunt,
-A., and D. Thomas. ``Pragmatic Unit Test: in Java with JUnit.'' (2003):
-65-78.)}. This allowed the author to focus on ensuring that the API's
+module\cite{hunt2003pragmatic}. This allowed the author to focus on ensuring that the API's
 components provided expected outputs to given inputs, thus implicitly
 testing the functionality of private functions which are called in the
 process.
@@ -2542,8 +2478,7 @@ described in the requirements is crucial. This would significantly aid
 driving a sense of achievement in task participants, as resolving a task
 would immediately feed back into a virtual reward scheme. Similar to
 StackOverflow's reputation
-scheme\href{http://stackoverflow.com/help/whats-reputation}{(StackOverflow
-reputation)}, QuantiTeam scores could become more meaningful the more
+scheme\cite{1reputation}, QuantiTeam scores could become more meaningful the more
 people use the system, by acting as an abstract representation of
 participation in one's team to help get collaborative work done.
 
@@ -2568,6 +2503,8 @@ the author feels that new ground has been broken in regards to personal
 programming skills and knowledge, while also hoping that this
 exploration of a blockchain's capabilities in a social context will
 inspire further endeavours along these lines in the future.
+
+\printbibliography
 
 \section{Appendix A}\label{appendix-a}
 
