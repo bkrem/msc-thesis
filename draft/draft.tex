@@ -18,6 +18,10 @@ style=ieee
 
 \renewcommand{\baselinestretch}{1.5}
 \lstset{breaklines=true}
+
+\usepackage{chngcntr}
+\counterwithin{figure}{chapter}
+
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -186,9 +190,7 @@ September 2016
 \tableofcontents
 }
 
-\section{Chapter 1}\label{chapter-1}
-
-\section{Introduction}\label{introduction}
+\chapter{Introduction}
 
 \subsection{1.1 Problem Outline}\label{problem-outline}
 
@@ -344,10 +346,8 @@ system as a whole, and offers pointers for possible future work.
 
 \clearpage
 
-\section{Chapter 2}\label{chapter-2-1}
-
-\section{Background Information and Related
-Applications}\label{background-information-and-related-applications}
+\chapter{Background Information and Related
+Applications}
 
 \subsection{2.1 Blockchains \& Dropouts}\label{blockchains-dropouts}
 
@@ -823,11 +823,8 @@ author in order to automate processes such as hydrating the local
 terminal environment with variables required to run the blockchain, or
 booting the Docker virtual machine and the local blockchain instance.
 
-\clearpage
 
-\section{Chapter 3}\label{chapter-3-1}
-
-\section{Requirements and Analysis}\label{requirements-and-analysis}
+\chapter{Requirements and Analysis}
 
 \subsection{3.1 Problem Statement}\label{problem-statement}
 
@@ -1490,9 +1487,7 @@ visualised in the following manner:
 
 \clearpage
 
-\section{Chapter 4}\label{chapter-4-1}
-
-\section{Design \& Implementation}\label{design-implementation}
+\chapter{Design \& Implementation}
 
 \subsection{4.1 System Architecture}\label{system-architecture}
 
@@ -2191,9 +2186,7 @@ clear and deterministic behaviour, as the methodology of retrieving data
 remains the same while the underlying data being operated upon may
 change.
 
-\section{Chapter 5}\label{chapter-5-1}
-
-\section{Testing}\label{testing-1}
+\chapter{Testing}
 
 \subsection{5.1 Testing Strategy}\label{testing-strategy}
 
@@ -2308,10 +2301,8 @@ simplifying any debugging that was required.
 \textbf{TODO: final coverage report will be added when implementation is
 complete}
 
-\section{Chapter 6}\label{chapter-6-1}
-
-\section{Conclusions and Project
-Evaluation}\label{conclusions-and-project-evaluation}
+\chapter{Conclusions and Project
+Evaluation}
 
 \subsection{6.1 Project Goals}\label{project-goals-1}
 
