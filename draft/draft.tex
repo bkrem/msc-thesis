@@ -123,7 +123,11 @@ copied and distributed provided the source is explicitly acknowledged.}
 September 2016
 
 \begin{abstract}
+The ability to work proficiently in collaboration with others is highly valued within a large number of social contexts. Yet, a person's ability to do so is scarcely quantifiable in any meaningful way. The goal of this project was therefore to examine the feasibility of constructing a system which can verify and quantify collaborative work. The project was set in the specific context of attempting to solve student disengagement, as the larger concept arose from this concrete problem.
 
+The project attempts to provide a high level of potential for true verification and quantification of collaborative data by utilising a distributed data structure known as a blockchain. Following an analysis of how the proposed system could be structured in terms of interactions between a client the blockchain, an API was constructed to provide as much functionality as was feasible within the time available. Additionally, a simple client-side mobile application was developed to showcase the API's functionality in a concrete manner.
+
+While the project falls short of establishing a manner to truly verify and quantify collaborative work with a distributed blockchain, it demonstrates that such an endeavour is certainly feasible given more time and expertise in the topic area, thus providing a basis for future work to create a \emph{bona fide} system for verification and quantification of team work.
 \end{abstract}
 
 \renewcommand{\abstractname}{Acknowledgements}
@@ -172,8 +176,8 @@ This project began as an attempt to address this phenomenon of student
 disengagement and, over time, developed into a wholly larger
 investigation of whether it is possible to utilise blockchain technology
 not just to form a network of re-engaged students, but as a tool for the
-verification of group-based work at large.\\
-The major goals of the project were thus twofold: in a broader sense, to
+verification and quantification of group-based work at large.\\
+The major motivations that guided the project were thus twofold: in a broader sense, to
 demonstrate how the properties of a blockchain can be leveraged in a
 social, communal context, rather than the financial contexts they are
 usually applied to, and more concretely, to create a free, open and
@@ -181,16 +185,12 @@ extensible platform for students of all ages to re-engage with their
 peers in a productive, educational manner, underpinned by a model of
 motivation which rewards collaborative work as a team.
 
-Working from this technological and philosophical objective,
-respectively, the following goals were established for the project: -
-Create a public Application Programming Interface (henceforth API) to
-allow users to interact with a blockchain in a well-defined manner,
-independent of a chosen client-side implementation. - Provide an iOS
-client-side app for basic task/user/team management to offer a graphical
-representation of the API in a format familiar to users. - Establish a
-basic deployment of at least 4 distributed validator nodes to implement
-a true proof-of-stake consensus
-mechanism\cite{BitFuryGroup2015} for the platform.
+Working from this technological and philosophical motivation,
+respectively, the following goals were established for the project:\\
+- Create a public Application Programming Interface (henceforth API) to allow users to
+interact with a blockchain in a well-defined manner, independent of a chosen client-side implementation.\\
+- Provide an iOS client-side app for basic task/user/team management to offer a graphical
+representation of the API in a format familiar to users.\\
 
 \section{1.3 Personal Aims}\label{personal-aims}
 
@@ -1914,12 +1914,6 @@ showcase the API's functionality in visual terms. This goal was achieved
 at a level satisfactory to the author, considering that the primary
 focus of the project lay in establishing the API and the stack of
 technologies backing it.\\
-The third goal was to deploy a basic network of validator nodes which
-would implement a true proof-of-stake consensus algorithm for the
-blockchain. This was a surprisingly smooth undertaking due to the high
-quality CLIs of Eris, Docker and AWS, allowing a smooth transition from
-a single local node to a truly distributed set of validator nodes for
-the blockchain.
 
 \section{6.2 Personal Aims Achieved}\label{personal-aims-achieved}
 
