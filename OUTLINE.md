@@ -229,7 +229,6 @@
     - Kanban ref
     - "Appendix X"
 - Appendices
-    - Add in signup sequence diagram, class diagram
     - Code listing
 
 - Subsections (pending due to final implementation details):
