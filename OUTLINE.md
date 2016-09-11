@@ -241,7 +241,7 @@
 - Fix formatting in Latex:
 	- Tables
 	- Code snippets
-	- Figures; downsize them, sectionalised numbering
+	- Figures; downsize them,
 	- Listings, labelled
 
 - Code:
