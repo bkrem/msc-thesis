@@ -243,7 +243,7 @@ mechanism\cite{BitFuryGroup2015} for the platform.
 \subsection{1.3 Personal Aims}\label{personal-aims}
 
 Having been a follower of the
-bitcoin\cite{1bitcoin} movement for more than
+bitcoin\footnote{https://bitcoin.org/en/} movement for more than
 two years, the author has been looking for an appropriate opportunity to
 apply the blockchain data structure, which is a key part of the
 technology underlying bitcoin, to a project of his own. This project's
@@ -256,7 +256,7 @@ utilising existing JavaScript knowledge in the context of React
 Native\cite{2react-native}. - Learn how
 to write smart contracts in Solidity\cite{1solidity} that are useful
 in the context of the project and for existing platforms such as
-Ethereum\cite{1ethereum}. - Implement a form of blockchain
+Ethereum\footnote{https://www.ethereum.org/}. - Implement a form of blockchain
 technology, by learning how to set up, run \& maintain a a blockchain
 proficiently. - Gain a fundamental understanding of Docker\cite{1docker} and how it leverages ``containerisation'' to achieve
 straightforward deployments of development environments.
@@ -290,16 +290,17 @@ progress made, as well as providing an immediate opportunity to document
 issues that were encountered.\\
 Throughout the implementation stage, required programming work was
 broken down into separate units of work by using Github
-Issues\cite{1githubissues} and organised into a Kanban board\href{}{(REF)}
-with the help of waffle.io\cite{1waffle}.
+Issues\footnote{https://developer.github.com/v3/issues/} and organised into a Kanban board\href{}{(REF)}
+with the help of waffle.io\footnote{https://waffle.io/}.
 
-As the API continued to grow laterally, adding a multitude endpoints for
-each new domain, unit testing the API's public functions became an
+As the API continued to grow, unit testing the API's public functions became an
 essential part of the project workflow. Due to the primitive error
 handling of the still very young Solidity programming language (used to
 construct smart contracts for blockchains), any responses coming from
 the blockchain had to be rigorously tested server-side in order avoid
 silent breakages and regressions.
+
+\clearpage
 
 \subsection{1.5 Report Overview}\label{report-overview}
 
@@ -340,6 +341,8 @@ functional testing.
 This chapter assesses to what extent the project's goals and the
 author's personal aims were achieved, provides a critical review of the
 system as a whole, and offers pointers for possible future work.
+
+\clearpage
 
 \section{Chapter 2}\label{chapter-2-1}
 
@@ -505,12 +508,12 @@ incompatibility between what the implementation could provide and what
 was needed, would have resulted in (at least temporary) deadlock for the
 entire project.\\
 The author's initial experimentation with
-OpenChain\cite{1openchain}, which seemed to
+OpenChain\footnote{https://www.openchain.org/}, which seemed to
 offer the possibly useful ability to chain contracts to each other, was
 quickly abandoned as the available documentation was insufficiently
 detailed and partially ambiguous. This would have left the project open
 to a lot of guesswork and thus the above mentioned risk of deadlock.\\
-MultiChain\cite{1multichain}, on the other
+MultiChain\footnote{http://www.multichain.com/}, on the other
 hand, was an implementation which had well-defined documentation, but it
 assumed a level of pre-existing familiarity with the API of a
 blockchain, as well as providing preciously little context as to how
@@ -538,15 +541,15 @@ computer science theory backing it.
 
 Considering the author's background as a JavaScript developer, the
 natural choice for a web server for the project was
-NodeJS\cite{1node}. NodeJS provides a great
+NodeJS\footnote{https://nodejs.org/en/}. NodeJS provides a great
 level of flexibility and extensibility thanks to its huge ecosystem of
 open-source libraries available through its package manager,
-NPM\cite{1npm}, thus providing an essential
+NPM\footnote{https://www.npmjs.com/}, thus providing an essential
 basis to help mitigate the possibly complicated technical details of
 interfacing with a low-level blockchain.\\
 As JavaScript is an ever-evolving language, a choice had to be made as
 to whether the commonly supported
-ECMAScript\cite{1ecma} 5
+ECMAScript\footnote{http://www.ecma-international.org/} 5
 (ES5) specification should be used or the modern standard, ES6. ES5 was
 selected to provide the maximum level of compatibility for wherever the
 server is being deployed, as native support for ES6 is not widespread as
@@ -558,7 +561,7 @@ QuantiTeam's server makes use of a handful of key libraries:
 
 \paragraph{Express}\label{express}
 
-Express\cite{1express} is a minimalist
+Express\footnote{https://expressjs.com/} is a minimalist
 framework for NodeJS web servers which provides a powerful layer of
 abstraction on top of NodeJS's raw server interface. Express helped
 accelerate the development of the API, while leaving the possibility of
@@ -569,7 +572,7 @@ fine-tuning the NodeJS server itself intact.
 The eris-wrapper \& eris-logger modules were adopted from a ``Hello
 World''-style example Eris provides to showcase how a NodeJS server
 implementing their platform could be
-structured\cite{1helloeris}.\\
+structured\footnote{https://github.com/eris-ltd/hello-eris}.\\
 eris-wrapper provides a convenient abstraction of low-level bindings
 that have to take place between the NodeJS server and the Tendermint
 blockchain, while eris-logger simply sets up a simple logger with
@@ -578,7 +581,7 @@ different logging types, such as \texttt{ERROR}, \texttt{INFO} and
 
 \paragraph{Async}\label{async}
 
-Async\cite{1async} is a utility
+Async\footnote{https://caolan.github.io/async/} is a utility
 library that helps manage the flow of asynchronous functions, which are
 a common occurrence in NodeJS. Within the scope of the server, Async was
 primarily used to chain together multiple sequential interactions with
@@ -605,12 +608,12 @@ appearance, structure and behaviour.
 During the MSc's GC02 ``App Design'' course, the author and his team had
 the opportunity to build a React web application which was also required
 to run as a mobile application. This was achieved by wrapping the web
-app with the Apache Cordova\cite{1cordova}
+app with the Apache Cordova\footnote{https://cordova.apache.org/}
 mobile development framework. This experience revealed two key insights
 regarding the intersection between web- and mobile-based client-side
 development:\\
 Firstly, that Facebook's
-React\cite{1react} web development
+React\footnote{https://facebook.github.io/react/} web development
 library, in liaison with Dan Abramov's
 Redux\cite{1redux} library for state management,
 could be applied almost seamlessly to the context of a mobile
@@ -650,7 +653,7 @@ application are the following:
 
 \paragraph{redux-thunk}\label{redux-thunk}
 
-redux-thunk\cite{1thunk}
+redux-thunk\footnote{https://github.com/gaearon/redux-thunk}
 is a helper library which enables the use of asynchronous functions as
 the aforementioned actions that affect the application's state. This is
 essential to allow control over how and when the client application
@@ -659,7 +662,7 @@ blockchain to then integrate it into its local state.
 
 \paragraph{redux-logger}\label{redux-logger}
 
-redux-logger\cite{1reduxlogger}
+redux-logger\footnote{https://github.com/evgenyrodionov/redux-logger}
 supplements Redux itself by automatically logging actions and the state
 changes they trigger to the development console. This meant a
 significant amount of time could be saved during the project by avoiding
@@ -668,7 +671,7 @@ codebase with sporadic logging statements.
 
 \paragraph{tcomb-form-native}\label{tcomb-form-native}
 
-tcomb-form-native\cite{1tcombform}
+tcomb-form-native\footnote{https://github.com/gcanti/tcomb-form-native}
 provides a framework for forms and form validation in React Native. As
 form validation in particular can take up an inordinate amount of
 development time, this library was essential in order to keep the
@@ -689,7 +692,7 @@ integration tests on the server:
 
 \paragraph{Mocha}\label{mocha}
 
-Mocha\cite{1mocha} was chosen as the testing
+Mocha\footnote{https://mochajs.org/} was chosen as the testing
 framework for the project due to its specific aim of simplifying the
 testing of asynchronous JavaScript code. This clearly applied to the
 needs of the planned API which would be largely built on asynchronous
@@ -697,14 +700,14 @@ functions.
 
 \paragraph{Chai}\label{chai}
 
-Chai\cite{1chai} is an assertion library for both
+Chai\footnote{http://chaijs.com/} is an assertion library for both
 test-driven development (TDD) and behaviour-driven development (BDD).
 More specifically, Chai's TDD \texttt{assert} function was used to keep
 test assertions simple and testable against an expected result.
 
 \paragraph{Istanbul}\label{istanbul}
 
-Istanbul\cite{1istanbul} is a
+Istanbul\footnote{https://gotwarlost.github.io/istanbul/} is a
 code coverage tool which was used to gain an overview of how much of the
 API was currently covered by tests. This occurred via coverage reports,
 which were generated after every run of the test suite.
@@ -743,13 +746,13 @@ development time.
 \subsubsection{2.4.1 Requirements and Design
 Tools}\label{requirements-and-design-tools}
 
-GanttPro\cite{1ganttpro}, an online creator and
+GanttPro\footnote{https://ganttpro.com/}, an online creator and
 editor for Gantt charts, was used to create a timeline for the project,
-while Google Docs\cite{2googledocs}
-in conjunction with draw.io\cite{1drawio} were
+while Google Docs\footnote{https://www.google.com/docs/about/}
+in conjunction with draw.io\footnote{https://www.draw.io/} were
 used to capture requirements and create UML diagrams.\\
 This report was originally written in markdown and transposed to the
-Latex format using pandoc\cite{1pandoc}.
+Latex format using pandoc\footnote{http://pandoc.org/}.
 
 \subsubsection{2.4.2 Development Tools}\label{development-tools}
 
@@ -757,10 +760,10 @@ Latex format using pandoc\cite{1pandoc}.
 
 In order to avoid switching between editors to get the best development
 support for disparate parts of the project's code, Github's
-Atom\cite{1atom} editor was chosen due to its level
+Atom\footnote{https://atom.io/} editor was chosen due to its level
 of customisability and huge selection of plugins. Atom was particularly
 suited for writing React Native code thanks to Facebook's
-Nuclide\cite{1nuclide} plugin, which enables Atom
+Nuclide\footnote{https://nuclide.io/} plugin, which enables Atom
 to approximate a richness of features typically only found in an
 Integrated Development Environment (IDE), by offering an in-built
 debugger, code snippets, and Facebook's own static type analyser which
@@ -777,21 +780,14 @@ specifications are adhered to and warns if it detects a TypeError. This
 is an incredibly useful tool for a dynamically-typed language such as
 JavaScript, where unintended type coercion is a common ailment.
 
-\paragraph{Linters}\label{linters}
-
-ESLint\cite{1eslint} was chosen as the linter for
-both the React Native app and the NodeJS server, due to its support for
-detecting syntactical \& stylistic errors in both regular JavaScript and
-JSX, a mix of JavaScript and HTML used by Facebook for React.\\
-
 \paragraph{Debugging}\label{debugging}
 
 Debugging within the project was performed in three different ways due
 to the variability of environments within the technology stack. For the
 React Native app, Google Chrome's
-DevTools\cite{1chromedevtools}
+DevTools\footnote{https://developers.google.com/web/tools/chrome-devtools/?hl=en}
 were utilised alongside the Xcode iOS
-simulator\cite{1iossimulator} in order to interact with the app and receive log outputs
+simulator\footnote{https://developer.apple.com/} in order to interact with the app and receive log outputs
 side-by-side in real-time.\\
 For the NodeJS server, the aforementioned \texttt{eris-logger} module
 was used to log API-related logging statements to the terminal.\\
@@ -805,12 +801,12 @@ excluding a possible cause if a bug was being searched for.
 
 \paragraph{Version Control}\label{version-control}
 
-The \texttt{git}\cite{1git} command line utility
+The \texttt{git}\footnote{https://git-scm.com/} command line utility
 was used to manage the codebase's development over time, in conjunction
-with GitHub\cite{1github} to provide a remote
+with GitHub\footnote{https://github.com/} to provide a remote
 backup. For more involved \texttt{git} operations, such as merging
 branches, Atlassian's
-SourceTree\cite{1sourcetree}
+SourceTree\footnote{https://www.atlassian.com/software/sourcetree}
 GUI was used to avoid mistyping complex terminal commands and thus
 potentially performing unwanted changes to the version history.
 
@@ -1429,7 +1425,7 @@ React}\label{abstracting-view-components-with-react}
 
 React takes markedly different approach to view templating compared to
 the other major web development frameworks such as Google's
-AngularJS\cite{1angular}. React's philosophy
+AngularJS\footnote{https://angularjs.org/}. React's philosophy
 focuses on breaking a view down into its constituent parts to form
 reusable components. These components can then be composed in whichever
 way the developer sees fit. This level of composability comes to its
@@ -1597,7 +1593,7 @@ While JavaScript is composed entirely of objects, Solidity provides the
 \texttt{mapping} type; a data structure similar to what is commonly
 known as a hash map. This would have provided a sufficient
 parallel to translate data formatted in JavaScript Object
-Notation\cite{1json} (henceforth JSON) into a
+Notation\footnote{http://www.json.org/} (henceforth JSON) into a
 format digestible by Solidity contracts, were it not for the fact that
 Solidity's ability to store and perform operations on its mappings and
 arrays is limited at best. For example, storing user profiles (i.e.
@@ -2478,7 +2474,7 @@ described in the requirements is crucial. This would significantly aid
 driving a sense of achievement in task participants, as resolving a task
 would immediately feed back into a virtual reward scheme. Similar to
 StackOverflow's reputation
-scheme\cite{1reputation}, QuantiTeam scores could become more meaningful the more
+scheme\footnote{http://stackoverflow.com/help/whats-reputation}, QuantiTeam scores could become more meaningful the more
 people use the system, by acting as an abstract representation of
 participation in one's team to help get collaborative work done.
 
@@ -2564,32 +2560,6 @@ root directory run the following two shell scripts:
 . ./chain-up.sh; . ./envsetup.sh
 \end{verbatim}
 
-Which should give us output similar to the following:
-
-\begin{verbatim}
-Starting "default"...
-(default) Check network to re-create if needed...
-(default) Waiting for an IP...
-Machine "default" was started.
-Waiting for SSH to be available...
-Detecting the provisioner...
-Started machines may have new IP addresses. You may need to re-run the `docker-machine env` command.
-✓ docker-machine instance has booted
-✓ eval'd local environment for docker-machine
-✓ booted chain instance
-CHAIN           ON     CONTAINER ID     DATA CONTAINER     IMAGE                          COMMAND     PORTS
-simplechain     *      8bc5938c66       0f573eb9b3         quay.io/eris/erisdb:0.11.4     [run]       0.0.0.0:1337->1337/tcp, 0.0.0.0:46656->46656/tcp, 0.0.0.0:46657->46657/tcp
-
-✓ booted the chain service
-Running QuantiTeam environment setup...
-chain_dir: /Users/<YOURNAME>/.eris/chains/simplechain
-chain_dir_this: /Users/<YOURNAME>/.eris/chains/simplechain/simplechain_full_000
-addr: 0D96023ED9C172AE89FF478F8C560741B6DCE5E4
-'host' set to docker-machine IP: 192.168.99.100
-compiler_addr:
-IDI_PORT set to 8082
-\end{verbatim}
-
 We can easily verify whether the \texttt{simplechain} instance is
 running as expected by following its log output:
 
@@ -2647,7 +2617,8 @@ which shell commands each NPM script executes.
 
 \subsection{API}\label{api}
 
-QuantiTeam's API exposes the following HTTP endpoints: - POST
+QuantiTeam's API exposes the following HTTP endpoints:\\
+- POST
 \texttt{/upload} - Upload a task related file via
 \texttt{multipart/form-data}.\\
 - POST \texttt{/user/taken} - Check whether the the username in
@@ -2663,8 +2634,10 @@ via \texttt{req.params.username}.\\
 - POST \texttt{/task} - Add a new task to the blockchain via the form
 data passed in \texttt{req.body.task} for the username in
 \texttt{req.body.username}.\\
-- GET \texttt{/team/taken/:teamname} - Check whether the teamname passed
-as \texttt{req.params.teamname} is already taken.\\
+- GET \texttt{/task/completed/:token} - Mark the task associated with
+the token passed in \texttt{req.params.token} as completed. - GET
+\texttt{/team/taken/:teamname} - Check whether the teamname passed as
+\texttt{req.params.teamname} is already taken.\\
 - POST \texttt{/team} - Add a new team to the blockchain via the form
 data passed in \texttt{req.body.form}.\\
 - GET \texttt{/team/:teamname} - Get the team profile for the teamname
