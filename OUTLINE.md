@@ -230,18 +230,8 @@
 - Appendices
     - Code listing
 
-- Subsections (pending due to final implementation details):
-	- Deployment
-	- Testing: Code Coverage
-
 - Potential cuts:
     - Action events
-
-- Fix formatting in Latex:
-	- Tables
-	- Code snippets
-	- Figures; downsize them,
-	- Listings, labelled
 
 - Code:
     - Make sure all 3rd party attributions are there

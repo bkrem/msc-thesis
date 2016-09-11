@@ -123,12 +123,12 @@ copied and distributed provided the source is explicitly acknowledged.}
 September 2016
 
 \begin{abstract}
- This is cool paper about vuvuzelas.
+
 \end{abstract}
 
 \renewcommand{\abstractname}{Acknowledgements}
 \begin{abstract}
- Thanks Mum!
+
 \end{abstract}
 
 \setcounter{tocdepth}{3}
@@ -343,7 +343,7 @@ maintaining teams, reaching out for and offering help).
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{../diagrams/educationalConditions.png}
+\includegraphics[width=0.7\textwidth]{../diagrams/educationalConditions.png}
 \caption{A theory on educational conditions that promote intellectual
 engagement}
 \end{figure}
@@ -381,7 +381,7 @@ their peers if they were inspired to reuse the student's solution.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{../screenshots/socialx.png}
+\includegraphics[width=0.8\textwidth]{../screenshots/socialx.png}
 \caption{SocialX's reputation overview}
 \end{figure}
 
@@ -405,7 +405,7 @@ writing and commenting tools, and a project management system.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{../screenshots/wikispaces.png}
+\includegraphics[width=0.8\textwidth]{../screenshots/wikispaces.png}
 \caption{The WikiSpaces Classroom dashboard}
 \end{figure}
 
@@ -428,7 +428,7 @@ other individual.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{../screenshots/haikulearning.jpg}
+\includegraphics[width=0.8\textwidth]{../screenshots/haikulearning.jpg}
 \caption{The HaikuLearning dashboard}
 \end{figure}
 
@@ -788,7 +788,7 @@ interactions within this system might look.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{../diagrams/conceptDiagram.png}
+\includegraphics[width=0.7\textwidth]{../diagrams/conceptDiagram.png}
 \caption{An early conceptual diagram demonstrating possible interactions
 with the system}
 \end{figure}
@@ -944,7 +944,7 @@ to locating and linking related contracts in such a situation.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{../diagrams/simplifiedContractsClassDiagram.png}
+\includegraphics[width=0.9\textwidth]{../diagrams/simplifiedContractsClassDiagram.png}
 \caption{A simplified class diagram to illustrate the relationships
 between Factory, Manager and Linker contracts}
 \end{figure}
@@ -1101,7 +1101,7 @@ client, in this case a mobile app.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{../diagrams/mvc.png}
+\includegraphics[width=0.6\textwidth]{../diagrams/mvc.png}
 \caption{A typical MVC Model\cite{1mvcfigure}}
 \end{figure}
 
@@ -1237,7 +1237,7 @@ fulfills this role is exemplified with the code snippet below, which is
 an extract from the \texttt{UserManager} contract's \texttt{addUser()}
 method:
 
-\begin{verbatim}
+\begin{lstlisting}
 // ...
 if (isOverwrite) {
     return 0x0;
@@ -1247,7 +1247,7 @@ if (isOverwrite) {
     return u;
 }
 // ...
-\end{verbatim}
+\end{lstlisting}
 
 The method previously checks whether the username already exists in the
 \texttt{userList} sequence array and writes the result to the
@@ -1276,7 +1276,7 @@ and use only the minimum amount of SequenceArray methods it required to
 fulfill its functions, by creating a wrapper function around the method,
 and adding additional context as required, such as logging an event:
 
-\begin{verbatim}
+\begin{lstlisting}
 contract UserManager {
     SequenceArray userList = new SequenceArray();
 
@@ -1288,7 +1288,7 @@ contract UserManager {
     }
     // ...
 }
-\end{verbatim}
+\end{lstlisting}}
 
 \paragraph{Relations: Linker Contract}\label{relations-linker-contract}
 
@@ -1406,7 +1406,7 @@ A simple example of how the server remains stateless while fulfilling
 its function as an API interface is shown in the following snippet,
 taken from the \texttt{server.js} module:
 
-\begin{verbatim}
+\begin{lstlisting}
 app.post('/user/taken', function (req, res) {
     var username = req.body.username;
 
@@ -1416,7 +1416,7 @@ app.post('/user/taken', function (req, res) {
         res.json({isTaken: isTaken});
     });
 });
-\end{verbatim}
+\end{lstlisting}
 
 This example shows the \texttt{/user/taken} API endpoint, which is
 responsible for validating the availability of usernames. When a user
@@ -1673,10 +1673,12 @@ aforementioned \texttt{Platform.OS} variable provided the opportunity to
 define standard behaviour for whichever platform the \texttt{Header}
 component was to be rendered on, as shown here:
 
-\begin{verbatim}
+\begin{lstlisting}
 let STATUS_BAR_HEIGHT = Platform.OS === 'ios' ? 20 : 25;
-let HEADER_HEIGHT = Platform.OS === 'ios' ? 44 + STATUS_BAR_HEIGHT : 56 + STATUS_BAR_HEIGHT;
-\end{verbatim}
+let HEADER_HEIGHT = Platform.OS === 'ios'
+    ? 44 + STATUS_BAR_HEIGHT
+    : 56 + STATUS_BAR_HEIGHT;
+\end{lstlisting}
 
 Here the header's height is automatically determined according to the
 current operating system's defaults, providing a clean high-level
@@ -1823,7 +1825,7 @@ The Mocha test framework -- in combination with the Chai assertion
 library's \texttt{assert} function -- were used to compare a function's
 returned result to an expected value:
 
-\begin{verbatim}
+\begin{lstlisting}
 describe("addTask", function () {
     it("adds the given task object to the chain and returns the registered task's hex address", function(done) {
         taskManager.addTask(testTask, function (error, address) {
@@ -1833,7 +1835,7 @@ describe("addTask", function () {
         });
     });
 });
-\end{verbatim}
+\end{lstlisting}
 
 The snippet above shows the unit test for the \texttt{TaskManager}
 module's public \texttt{addTask} function. Mocha's straightforward
@@ -1876,16 +1878,16 @@ object before and after any action was triggered, thus significantly
 simplifying any debugging that was required.
 
 \section{5.5 Coverage}\label{coverage}
-Test coverage reports were generated automatically following each execution of the API's test suite. A coverage summary is shown below, while the full report can be located as browsable collection of HTML files in the repository's \texttt{chain/test/coverage} directory. Appendix E shows the index page of these HTML reports to provide an overview.
+Test coverage reports were generated automatically following each execution of the API's test suite. A coverage summary is shown below, while the full report can be located as browsable collection of HTML files in the repository's \texttt{chain/test/coverage} directory. Appendix E contains extracts from the report.
 
 \begin{lstlisting}
-  35 passing (45s)
+  35 passing (46s)
 
 =============================== Coverage summary ===============================
-Statements   : 90.64% ( 426/470 ), 4 ignored
-Branches     : 56.49% ( 74/131 ), 5 ignored
-Functions    : 97.12% ( 135/139 ), 1 ignored
-Lines        : 91.22% ( 426/467 )
+Statements   : 91.28% ( 429/470 ), 7 ignored
+Branches     : 58.02% ( 76/131 ), 7 ignored
+Functions    : 98.56% ( 137/139 ), 3 ignored
+Lines        : 91.86% ( 429/467 )
 ================================================================================
 \end{lstlisting}
 
