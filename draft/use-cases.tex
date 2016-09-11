@@ -1,0 +1,183 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+% \usepackage[normalem]{ulem}
+% \useunder{\uline}{\ul}{}
+
+%\begin{table}[]
+%\centering
+\begin{longtable}{| p{.20\textwidth} | p{.80\textwidth} |}
+\hline
+Case & Signup \\ \hline
+ID & UC1 \\ \hline
+Description & A user should be able to sign up to the app \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & The User is not already logged into the app \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User downloads and opens the app on their device\\ 2) User taps "Sign up" on the app's login screen\\ 3) User enters their details in the form shown by the Signup view\\ (go to Alternative Flow if there are validation errors)\\ 4) If the user's details are successfully validated, the user is logged into\\ their new account and forwarded to the Home view\end{tabular} \\ \hline
+Post Conditions & None \\ \hline
+Alternative Flow & If validation fails at step 3, the user is notified of the reason for the failed attempt by being shown a popup dialog and asked to try again \\ \hline
+ &  \\ \hline
+Case & Login \\ \hline
+ID & UC2 \\ \hline
+Description & A user must be able to log into the app \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & The User is not already logged into the app \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User opens the app on their device\\ 2) User enters their username and password into the Login view's form\\ (go to Alternative Flow if there are validation errors)\\ 3) If the user's details are successfully validated, the user is logged into\\ their account and forwarded to the Home view\end{tabular} \\ \hline
+Post Conditions & None \\ \hline
+Alternative Flow & If validation fails at step 2, the user is notified of the reason for the failed attempt by being shown a popup dialog and asked to try again \\ \hline
+ &  \\ \hline
+Case & AddTask \\ \hline
+ID & UC3 \\ \hline
+Description & A user must be able to add a task to be tracked by the system \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & The user is logged into the app \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to the "Tasks" view via the navigation bar\\ 2) User taps "Add Task" action button, is redirected to "Add Task" view\\ 3) User enters the name, description and usernames of any team\\ members involved in the task\\ 4) User taps "Add" and receives confirmation whether the task was\\ successfully added or not\end{tabular} \\ \hline
+Post Conditions & The specified task is registered on the blockchain \\ \hline
+Alternative Flow & None \\ \hline
+ &  \\ \hline
+Case & ViewTasks \\ \hline
+ID & UC4 \\ \hline
+Description & A User should be able to see an overview of the tasks they are currently involved/have previously completed, and inspect each task's details \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User is logged in \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to the Tasks view via the navigation bar, the system\\ shows a list of tasks under the headers "To Do" or "Completed"\\ (go to Alternative Flow if no tasks related to this user can be found)\\ 2) User taps an individual task in the list and is forwarded to the\\ TaskDetail view\end{tabular} \\ \hline
+Post Conditions & None \\ \hline
+Alternative Flow & If the User has no tasks associated to them, an empty list is rendered with a note stating that no tasks were found \\ \hline
+ &  \\ \hline
+Case & TaskComment \\ \hline
+ID & UC5 \\ \hline
+Description & A User should be able to comment on a specific task \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & At least one task related to this User \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to Tasks view via the navigation bar and taps the task\\ in the list they wish to comment on\\ 2) User is shown the TaskDetail view, in which they are able to enter a\\ comment into the provided comment form\\ 3) User taps the submit action button\\ 4) The system displays the newly added comment\end{tabular} \\ \hline
+Post Conditions & The comment is associated to said task and displayed alongside it \\ \hline
+Alternative Flow & If the comment fails to be registered for any reason, the user is informed of this via a popup dialog and asked to try again \\ \hline
+ &  \\ \hline
+Case & OptOutOfTask \\ \hline
+ID & UC6 \\ \hline
+Description & Any team member should be able to opt out of a task they were enrolled in if they are not in fact involved in it \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User has been enrolled into a task by another team member \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to Tasks view via the navigation bar and taps the task\\ in the list they wish to opt-out of\\ 2) In the TaskDetail view, the user taps the "Remove me from this task"\\ action button and confirms the wanted action in a popup dialog\\ (go to Alternative Flow if User does not confirm)\\ 3) User receives confirmation that they have been removed from the task\\ and is redirected to the Tasks view\end{tabular} \\ \hline
+Post Conditions & The user is removed from the task's participants list and it is no longer shown in their task overview \\ \hline
+Alternative Flow & If the User does not confirm that they should be removed from the task, they are simply returned to the underlying TaskDetail view \\ \hline
+ &  \\ \hline
+Case & CheckTaskCompletion \\ \hline
+ID & UC7 \\ \hline
+Description & For a given task, a team member should be able to see how many other team members have completed the task if they are registered as participants \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & The task involved multiple participants from a team \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to Tasks view via the navigation bar and taps the task\\ in the list they wish to inspect\\ 2) User is able to see a completion count or percentage, indicating how\\ many other participants have yet to confirm their completion of the task\end{tabular} \\ \hline
+Post Conditions & None \\ \hline
+Alternative Flow & None \\ \hline
+ &  \\ \hline
+Case & ExternalLinkToTask \\ \hline
+ID & UC8 \\ \hline
+Description & A User should be able to provide public links to their completed tasks and general profile \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & The User has completed tasks associated with their account \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to Tasks view via the navigation bar, scrolls to the\\ "Completed" section, and taps the task in the list they wish to inspect\\ 2) In the TaskDetail view, the User taps the "Create link to this task"\\ action button\\ 3) A public link to the task is copied to the device's clipboard\end{tabular} \\ \hline
+Post Conditions & Device's clipboard contains a link to the given task \\ \hline
+Alternative Flow & None \\ \hline
+ &  \\ \hline
+Case & CreateTeam \\ \hline
+ID & UC9 \\ \hline
+Description & A User should be able to start a new team by adding other members via their usernames \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User is not already part of a team \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to the Team view via the navigation bar\\ 2) As the User is not part of a team yet, they are shown a "Create Team"\\ button and a hint inviting them to use it\\ 3) User taps "Create Team" and is forwarded to a form to enter team-\\related details\\ 4) User enters a team name and other usernames to add these users to\\ the team-to-be\\ 5) User taps "Create" action button and is shown a confirmation dialog\\ whether the team creation was successful or not\\ (go to Alternative Flow for usernames that are already part of a team)\end{tabular} \\ \hline
+Post Conditions & New team with the specified details and members is registered on the blockchain \\ \hline
+Alternative Flow & If the team creation fails for any reason, the User is informed of this in the dialog instead of receiving a confirmation. If chosen usernames are already assiocated with another team, the dialog indicates which usernames are affected \\ \hline
+ &  \\ \hline
+Case & CheckTeamScore \\ \hline
+ID & UC10 \\ \hline
+Description & A User should be able to see their team's current global ranking \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User is member of a team \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to the Team view via the navigation bar\\ 2) The team's current ranking is displayed in the team's overview section\end{tabular} \\ \hline
+Post Conditions & None \\ \hline
+Alternative Flow & None \\ \hline
+ &  \\ \hline
+Case & RequestHelp \\ \hline
+ID & UC11 \\ \hline
+Description & A User can request help for a task from other task participants \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User is enrolled in a task \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to Tasks view via the navigation bar and taps the task\\ in the list they wish to request help for\\ 2) User taps the "Request Help" action button\\ 3) User is shown confirmation of help request being registered and other\\ task participants are notified of the help request\end{tabular} \\ \hline
+Post Conditions & A "help request" push notification has been sent to all other task participants \\ \hline
+Alternative Flow & If the request fails for any reason or there are no other participants within the task, the user is informed of this via a popup dialog \\ \hline
+ &  \\ \hline
+Case & OfferHelp \\ \hline
+ID & UC12 \\ \hline
+Description & A User may offer help to the rest of the participants without a specific request being present \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User is enrolled in a task \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to Tasks view via the navigation bar and taps the task\\ in the list they wish to offer help for\\ 2) User taps "Offer Help" action button\\ 3) User is shown confirmation of help offer being registered, other task\\ participants are notified of the help offer\end{tabular} \\ \hline
+Post Conditions & A "help offer" push notification has been sent to all other task participants \\ \hline
+Alternative Flow & If the request fails for any reason or there are no other participants within the task, the user is informed of this via a popup dialog \\ \hline
+ &  \\ \hline
+Case & MuteNotifications \\ \hline
+ID & UC13 \\ \hline
+Description & A User should be able to mute help request and help offer notifications \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & None \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to the Profile view and taps Settings icon\\ 2) User moves the "Mute Help Notifications" slider to "ON"\end{tabular} \\ \hline
+Post Conditions & User no longer receives notifications for help requests or help offers \\ \hline
+Alternative Flow & None \\ \hline
+ &  \\ \hline
+Case & EditAccount \\ \hline
+ID & UC14 \\ \hline
+Description & A User can edit their account details after signing up \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User has an account on the app \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to the Profile view and taps Settings icon\\ 2) User taps "Edit Account Details" action button\\ 3) User is forwarded to the EditAccount view in which the current details\\ are displayed and each field can be edited\\ 4) User taps "Save" action button and receives confirmation that the\\ changes have been applied\end{tabular} \\ \hline
+Post Conditions & The changes to the User profile are registered in the blockchain \\ \hline
+Alternative Flow & If saving the proposed changes fails for any reason, the User is informed via a popup dialog \\ \hline
+ &  \\ \hline
+Case & SetProfilePicture \\ \hline
+ID & UC15 \\ \hline
+Description & A User can edit their profile picture which appears to other Users \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User has an account on the app \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to the Profile view and taps Settings icon\\ 2) User taps "Set Profile Picture" action button\\ 3) User is asked to select a picture from the device's photo gallery\\ 4) User taps "Set" and is redirected to the Profile view in order to confirm\\ the change has taken place\end{tabular} \\ \hline
+Post Conditions & The Users image is locally stored within the app and displayed alongside their profile \\ \hline
+Alternative Flow & If setting the profile picture fails for any reason, the User is informed via a popup dialog \\ \hline
+ &  \\ \hline
+Case & DeleteAccount \\ \hline
+ID & UC16 \\ \hline
+Description & A User is able to delete their account \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User has an account on the app \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to the Profile view and taps Settings icon\\ 2) User taps "Delete My Account" action button\\ 3) User is asked to confirm the proposed action in a popup dialog window\\ 4) User taps "Confirm", upon which they are logged out and shown the\\ app's login view (go to Alternate Flow for non-confirmation)\end{tabular} \\ \hline
+Post Conditions & The User no longer appears within the app and their account is removed from the blockchain \\ \hline
+Alternative Flow & If the User taps "Abort" in the dialog window, the dialog window disappears and no other action is taken \\ \hline
+ &  \\ \hline
+Case & AttachTaskFile \\ \hline
+ID & UC17 \\ \hline
+Description & User is able to upload attachments related to their tasks \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User has an account on the app \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User opens a browser and navigates to the web server's address\\ 2) User enters their task token previously provided by the mobile app\\ 3) User selects the file to be attached to the task associated with the\\ task token\\ 4) User taps "Confirm", upon which they are shown a confirmation that\\ the file has been attached (go to Alternate Flow for non-confirmation)\end{tabular} \\ \hline
+Post Conditions & The chosen file is stored in the blockchain and linked to the task identified via the task token \\ \hline
+Alternative Flow & If the user fails to select a file or enters an invalid task token, they are informed of this via a dialog window \\ \hline
+%\end{tabular}%
+}
+\caption{Use Cases}
+\label{use-cases}
+\end{longtable}
