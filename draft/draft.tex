@@ -1,26 +1,4 @@
-\documentclass[12pt]{report}
-
-\usepackage[
-backend=biber,
-style=ieee
-]{biblatex}
-
-\addbibresource{main.bib}
-
-\usepackage{titlesec}
-\usepackage{listings}
-\usepackage{booktabs}
-\usepackage[normalem]{ulem}
-\useunder{\uline}{\ul}{}
-\titleformat{\chapter}[display]
-{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{10pt}{\Huge}
-\titlespacing*{\chapter}{0pt}{-70pt}{15pt}
-
-\renewcommand{\baselinestretch}{1.5}
-\lstset{breaklines=true}
-
-\usepackage{chngcntr}
-\counterwithin{figure}{chapter}
+\include{meta}
 
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
@@ -121,10 +99,25 @@ style=ieee
 
 \begin{document}
 
+\maketitle
+\makedeclaration
 
-\#\#
+\begin{abstract}
+ This is cool paper about vuvuzelas.
+\end{abstract}
 
--/UCL LOGO/-
+\renewcommand{\abstractname}{Acknowledgements}
+\begin{abstract}
+ Thanks Mum!
+\end{abstract}
+
+\setcounter{tocdepth}{3}
+% Setting this higher means you get contents entries for
+%  more minor section headers.
+
+\tableofcontents
+\listoffigures
+\listoftables
 
 \section{University College London}\label{university-college-london}
 
@@ -148,25 +141,6 @@ except where explicitly indicated in the text. The report may be freely
 copied and distributed provided the source is explicitly acknowledged.}
 
 September 2016
-
-
-\section{Abstract}\label{abstract}
-
-\emph{TODO}
-
-\section{Acknowledgements}\label{acknowledgements}
-
-\emph{TODO}
-
-\section{List of Figures}\label{list-of-figures}
-
-\emph{TODO}
-
-
-{
-\setcounter{tocdepth}{3}
-\tableofcontents
-}
 
 \chapter{Introduction}
 
@@ -1213,8 +1187,7 @@ other applications.
 Use cases were constructed in parallel with the initial UI sketches,
 thus helping to visualise the flow of user-system interactions.\\
 Figure 3.4 below represents an overview of the uses cases that
-were constructed, while the detailed use cases can be reviewed in
-\textbf{Appendix X}.
+were constructed, while the detailed use cases can be reviewed in Appendix B.
 
 \begin{longtable}[]{@{}llll@{}}
 \toprule
@@ -1707,24 +1680,14 @@ responsible for adding relevant addresses to the
 task is created.\\
 The following sequence diagram illustrates how the system processes a
 user attempting to add a task to the blockchain, exemplifying how and
-when the \texttt{Linker} contract is invoked.
+when the \texttt{Linker} contract is invoked.\\
+Appendix A contains a further sequence diagram and a full class diagram for the system's smart contracts.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics{../diagrams/addTaskSeqDiagram.png}
 \caption{Sequence of events for an ``Add Task'' action}
 \end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics{../diagrams/contractsClassDiagram.png}
-\caption{A full Class diagram for the system's smart contracts}
-\end{figure}
-
-\subsection{4.2.4 Deploying Validator
-Nodes}\label{deploying-validator-nodes}
-
-\textbf{TODO: will be added upon deployment of the system this week}
 
 \section{4.3 Server Design \&
 Implementation}\label{server-design-implementation}
@@ -2045,8 +2008,7 @@ frequency of use attribute. From a variability perspective, the
 \texttt{Header} component is high-level and agnostic to specific
 implementation details. For example, the header's \texttt{leftItem} and
 \texttt{rightItem} attributes, representing placeholders for specific
-buttons, can be implemented by using a text-based or icon-based button,
-as shown in (\textbf{TODO shown in appendix X}). This permits for
+buttons, can be implemented by using a text-based or icon-based button. This permits for
 concrete instances of the \texttt{Header} component to apply the button
 layout most suitable for a given situation. For example, a ``Settings''
 button is commonly identifiable as a cog icon, whereas the ``Add Task''
@@ -2237,10 +2199,8 @@ module's public \texttt{addTask} function. Mocha's straightforward
 support for asynchronous JavaScript is nicely exemplified here. The
 asynchronous function's callback parameters (\texttt{error,\ address})
 are checked, after which \texttt{done()} is declared, indicating to
-Mocha that no further values are being awaited for this unit test.\\
-API data was provided to the unit tests via mocked objects where
-required, an example of which can be found in \textbf{Appendix X} for
-the \texttt{TeamManager} unit tests.
+Mocha that no further values are being awaited for this unit test. API data was provided to the unit tests via mocked objects where
+required.
 
 \section{5.3 Integration Testing}\label{integration-testing}
 
@@ -2472,7 +2432,23 @@ inspire further endeavours along these lines in the future.
 \printbibliography
 
 \appendix
+\chapter{Additional Diagrams}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{../diagrams/signupSeqDiagram.png}
+\caption{Sequence of events for a ``Signup'' action}
+\end{figure}
+
+\begin{sidewaysfigure}[ht]
+\centering
+\includegraphics{../diagrams/contractsClassDiagram.png}
+\caption{A full Class diagram for the system's smart contracts}
+\end{sidewaysfigure}
+
 \chapter{Use Cases}
+
+\include{use-cases}
 
 
 \chapter{System Manual}
@@ -2622,5 +2598,6 @@ simply run:
 
 
 \chapter{User Manual}
+
 
 \end{document}
