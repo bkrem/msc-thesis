@@ -149,41 +149,19 @@ copied and distributed provided the source is explicitly acknowledged.}
 
 September 2016
 
-\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
-
-\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
 \section{Abstract}\label{abstract}
 
 \emph{TODO}
 
-\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
-
-\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
-
 \section{Acknowledgements}\label{acknowledgements}
 
 \emph{TODO}
-
-\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
-
-\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
-
-\section{Contents}\label{contents}
-
-\emph{ToC TODO}
 
 \section{List of Figures}\label{list-of-figures}
 
 \emph{TODO}
 
-\section{Abbreviations}\label{abbreviations}
-
-\emph{TODO}
-
-\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
-
-\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
 {
 \setcounter{tocdepth}{3}
@@ -192,7 +170,7 @@ September 2016
 
 \chapter{Introduction}
 
-\subsection{1.1 Problem Outline}\label{problem-outline}
+\section{1.1 Problem Outline}\label{problem-outline}
 
 Motivation is the key to human action. Without it, the source of any
 action performed is likely to be grounded in external pressures rather
@@ -216,7 +194,7 @@ collaborative work could also double as a useful metric of team work
 skills to refer back to at a later point in time, filling a gap for a
 skill that is currently not quantifiable or verifiable on paper.
 
-\subsection{1.2 Project Goals}\label{project-goals}
+\section{1.2 Project Goals}\label{project-goals}
 
 This project began as an attempt to address this phenomenon of student
 disengagement and, over time, developed into a wholly larger
@@ -242,7 +220,7 @@ basic deployment of at least 4 distributed validator nodes to implement
 a true proof-of-stake consensus
 mechanism\cite{BitFuryGroup2015} for the platform.
 
-\subsection{1.3 Personal Aims}\label{personal-aims}
+\section{1.3 Personal Aims}\label{personal-aims}
 
 Having been a follower of the
 bitcoin\footnote{https://bitcoin.org/en/} movement for more than
@@ -263,7 +241,7 @@ technology, by learning how to set up, run \& maintain a a blockchain
 proficiently. - Gain a fundamental understanding of Docker\cite{1docker} and how it leverages ``containerisation'' to achieve
 straightforward deployments of development environments.
 
-\subsection{1.4 Project Management}\label{project-management}
+\section{1.4 Project Management}\label{project-management}
 
 The project followed the methodology of the Unified Process (henceforth
 UP) framework for software
@@ -304,7 +282,7 @@ silent breakages and regressions.
 
 \clearpage
 
-\subsection{1.5 Report Overview}\label{report-overview}
+\section{1.5 Report Overview}\label{report-overview}
 
 \paragraph{Chapter 1}\label{chapter-1-1}
 
@@ -349,7 +327,7 @@ system as a whole, and offers pointers for possible future work.
 \chapter{Background Information and Related
 Applications}
 
-\subsection{2.1 Blockchains \& Dropouts}\label{blockchains-dropouts}
+\section{2.1 Blockchains \& Dropouts}\label{blockchains-dropouts}
 
 A 2004 study by the National Research Council showed that upwards of
 40\% of high school students feel disengaged from learning and exert
@@ -409,7 +387,7 @@ the ability to refer back to said tasks at a later point in time to
 demonstrate their teamwork skills, therefore making a scarcely
 confirmable skill set auditable.
 
-\subsection{2.2 Previous Work/Existing
+\section{2.2 Previous Work/Existing
 Applications}\label{previous-workexisting-applications}
 
 This section gives an overview of related work within the context of
@@ -482,10 +460,10 @@ other individual.
 \caption{The HaikuLearning dashboard}
 \end{figure}
 
-\subsection{2.3 Programming Languages and
+\section{2.3 Programming Languages and
 Libraries}\label{programming-languages-and-libraries}
 
-\subsubsection{2.3.1 Blockchain}\label{blockchain}
+\subsection{2.3.1 Blockchain}\label{blockchain}
 
 Before proceeding with the following section, two frequently used
 concepts should be clearly delineated: blockchains and smart contracts.
@@ -537,7 +515,7 @@ entirely separate software project meant that there was an additional
 repository of documentation for this specific type of blockchain and the
 computer science theory backing it.
 
-\subsubsection{2.3.2 Server-side}\label{server-side}
+\subsection{2.3.2 Server-side}\label{server-side}
 
 Considering the author's background as a JavaScript developer, the
 natural choice for a web server for the project was
@@ -587,7 +565,7 @@ a common occurrence in NodeJS. Within the scope of the server, Async was
 primarily used to chain together multiple sequential interactions with
 the blockchain.
 
-\subsubsection{2.3.3 Client-side}\label{client-side}
+\subsection{2.3.3 Client-side}\label{client-side}
 
 The platform chosen for the client-side representation of the system was
 that of a mobile application. While building a web application would
@@ -678,7 +656,7 @@ development time, this library was essential in order to keep the
 project on track given the severe time constraints in relation to its
 size.
 
-\subsubsection{2.3.4 Testing}\label{testing}
+\subsection{2.3.4 Testing}\label{testing}
 
 Composing unit tests for each public function of the system's API was an
 essential part of the development process, especially as the Tendermint
@@ -712,7 +690,7 @@ code coverage tool which was used to gain an overview of how much of the
 API was currently covered by tests. This occurred via coverage reports,
 which were generated after every run of the test suite.
 
-\subsubsection{2.3.5 Databases: SQL vs NoSQL vs
+\subsection{2.3.5 Databases: SQL vs NoSQL vs
 Blockchain}\label{databases-sql-vs-nosql-vs-blockchain}
 
 Using a blockchain as the pivotal data structure backing the system
@@ -741,9 +719,9 @@ blockchain, as choosing to add a further form of database would likely
 have been significantly more bug-prone and costly in terms of
 development time.
 
-\subsection{2.4 Tooling}\label{tooling}
+\section{2.4 Tooling}\label{tooling}
 
-\subsubsection{2.4.1 Requirements and Design
+\subsection{2.4.1 Requirements and Design
 Tools}\label{requirements-and-design-tools}
 
 GanttPro\footnote{https://ganttpro.com/}, an online creator and
@@ -754,7 +732,7 @@ used to capture requirements and create UML diagrams.\\
 This report was originally written in markdown and transposed to the
 Latex format using pandoc\footnote{http://pandoc.org/}.
 
-\subsubsection{2.4.2 Development Tools}\label{development-tools}
+\subsection{2.4.2 Development Tools}\label{development-tools}
 
 \paragraph{Editor}\label{editor}
 
@@ -826,7 +804,7 @@ booting the Docker virtual machine and the local blockchain instance.
 
 \chapter{Requirements and Analysis}
 
-\subsection{3.1 Problem Statement}\label{problem-statement}
+\section{3.1 Problem Statement}\label{problem-statement}
 
 As outlined in chapters 1 \& 2, the key problems the project was trying
 to solve the way in which students relate to their school work on an
@@ -843,7 +821,7 @@ interactions within this system might look.
 with the system}
 \end{figure}
 
-\subsection{3.2 Requirements}\label{requirements}
+\section{3.2 Requirements}\label{requirements}
 
 The act of establishing requirements was entirely focused around the
 question: ``What functionality does the system require, at a minimum, to
@@ -1218,7 +1196,7 @@ Should\strut
 \caption{Non-Functional Requirements}
 \end{figure}
 
-\subsection{3.3 Use Cases}\label{use-cases}
+\section{3.3 Use Cases}\label{use-cases}
 
 To remain realistic in regards to the allotted time for the project, use
 cases were aimed at providing a full exploration of the API rather than
@@ -1269,7 +1247,7 @@ UC17 & AttachTaskFile & User & System\tabularnewline
 \caption{Use Case Overview}
 \end{figure}
 
-\subsection{3.4 Sketches}\label{sketches}
+\section{3.4 Sketches}\label{sketches}
 
 To get a sense of a viable layout and structure for the client-side app,
 the author used rough sketches to visualise each view that was needed to
@@ -1278,7 +1256,7 @@ a view, the author created a static mockup in React's JSX, which could
 then be broken down into separate components and given dynamic
 properties, such as data retrieval methods, at a later point.
 
-\subsection{3.5 System Design}\label{system-design}
+\section{3.5 System Design}\label{system-design}
 
 The design of the system's architecture started with creating a simple
 deployment diagram (Figure 3.5), which provided a high-level view of
@@ -1302,7 +1280,7 @@ said data.
 \caption{Deployment diagram showing the system's main components}
 \end{figure}
 
-\subsubsection{3.5.1 Smart Contract
+\subsection{3.5.1 Smart Contract
 Analysis}\label{smart-contract-analysis}
 
 The role of the smart contracts played in this project -- rather than
@@ -1364,7 +1342,7 @@ be observed from the outside. Solidity does, fortunately, provide an
 an \texttt{event} where required and listening for it server-side, where
 logging the events was a trivial matter.
 
-\subsubsection{3.5.2 Server-side Analysis}\label{server-side-analysis}
+\subsection{3.5.2 Server-side Analysis}\label{server-side-analysis}
 
 \paragraph{API Router}\label{api-router}
 
@@ -1415,7 +1393,7 @@ a legitimate task associated to it. The use of tokens therefore prevents
 automated spam and enables the identification of users uploading
 material which may be malicious or illegal in nature.
 
-\subsubsection{3.5.3 Client-side Analysis}\label{client-side-analysis}
+\subsection{3.5.3 Client-side Analysis}\label{client-side-analysis}
 
 \paragraph{Abstracting view components with
 React}\label{abstracting-view-components-with-react}
@@ -1489,7 +1467,7 @@ visualised in the following manner:
 
 \chapter{Design \& Implementation}
 
-\subsection{4.1 System Architecture}\label{system-architecture}
+\section{4.1 System Architecture}\label{system-architecture}
 
 QuantiTeam broadly follows the three-tier architecture of a typical
 Model-View-Controller\cite{krasner1988description} application with the important distinction that the
@@ -1520,10 +1498,10 @@ configurations and environment variables to run the Tendermint
 blockchain via the \texttt{eris} CLI, and provides the REST API server
 in its \texttt{js} subdirectory.
 
-\subsection{4.2 Blockchain Design \&
+\section{4.2 Blockchain Design \&
 Implementation}\label{blockchain-design-implementation}
 
-\subsubsection{4.2.1 The Model}\label{the-model}
+\subsection{4.2.1 The Model}\label{the-model}
 
 Within the MVC paradigm, models represent the central structure of the
 application and ``are concerned with neither the user-interface nor
@@ -1535,7 +1513,7 @@ domain through the collection of smart contracts it holds, thus setting
 the boundaries for what kinds of data the system is able to store and
 what kind of operations can be performed on the data.
 
-\subsubsection{4.2.2 Working with Solidity}\label{working-with-solidity}
+\subsection{4.2.2 Working with Solidity}\label{working-with-solidity}
 
 To put a number of the design decisions made during the construction of
 the blockchain's smart contracts into perspective, some context
@@ -1609,7 +1587,7 @@ well-defined interface of methods on top of Solidity's native array and
 \emph{why} data should be manipulated or searched, rather than
 \emph{how} these operations are performed.
 
-\subsubsection{4.2.3 Smart Contracts}\label{smart-contracts}
+\subsection{4.2.3 Smart Contracts}\label{smart-contracts}
 
 \paragraph{Data: Factory Contracts}\label{data-factory-contracts}
 
@@ -1743,12 +1721,12 @@ when the \texttt{Linker} contract is invoked.
 \caption{A full Class diagram for the system's smart contracts}
 \end{figure}
 
-\subsubsection{4.2.4 Deploying Validator
+\subsection{4.2.4 Deploying Validator
 Nodes}\label{deploying-validator-nodes}
 
 \textbf{TODO: will be added upon deployment of the system this week}
 
-\subsection{4.3 Server Design \&
+\section{4.3 Server Design \&
 Implementation}\label{server-design-implementation}
 
 As touched upon in the server-side analysis, the REST API server's role
@@ -1759,7 +1737,7 @@ to adhere to principles of both the MVC and REST design patterns,
 followed by an exploration how the server performs its bridging
 responsibilities in concrete terms.
 
-\subsubsection{4.3.1 The Controller}\label{the-controller}
+\subsection{4.3.1 The Controller}\label{the-controller}
 
 Controllers can be regarded as an intermediary which sit between models
 and views, and are typically responsible for updating the model when
@@ -1774,7 +1752,7 @@ blockchain. For example, the event of a user marking a task as
 ``Completed'' is persisted by the server forwarding this change to the
 blockchain and altering the relevant \texttt{Task} contract accordingly.
 
-\subsubsection{4.3.2 RESTfulness}\label{restfulness}
+\subsection{4.3.2 RESTfulness}\label{restfulness}
 
 REST, which is an acronym for Representational State Transfer, is a
 commonly used web development pattern which attempts to ensure
@@ -1952,10 +1930,10 @@ transformation functions; in this case \texttt{hex2str} to decode the
 hexadecimal string, followed by \texttt{JSON.parse} to convert the
 string back into its original form: a JavaScript array.
 
-\subsection{4.4 Client-side Design \&
+\section{4.4 Client-side Design \&
 Implementation}\label{client-side-design-implementation}
 
-\subsubsection{4.4.1 The View}\label{the-view}
+\subsection{4.4.1 The View}\label{the-view}
 
 Within the MVC pattern, views are the component responsible for the
 graphical representation of the application's -- or in this case the
@@ -1971,7 +1949,7 @@ representation of the blockchain's models, it also contains its own
 local state and therefore deviates from the typical description of an
 MVC pattern's view.
 
-\subsubsection{4.4.2 JavaScript: Emulating Strict
+\subsection{4.4.2 JavaScript: Emulating Strict
 Typing}\label{javascript-emulating-strict-typing}
 
 One of the key elements in designing and implementing a well-defined
@@ -2045,7 +2023,7 @@ from from the blockchain via the API. The payload includes a
 should be a Unix timestamp and is therefore expected to be of the type
 \texttt{number}.
 
-\subsubsection{4.4.3 React: Common
+\subsection{4.4.3 React: Common
 Components}\label{react-common-components}
 
 As explained in chapter 3, React's approach towards view components aims
@@ -2105,7 +2083,7 @@ trivial abstraction, but it provided the author with a useful mechanism
 to avoid unnecessary code reuse and redefinition in a number of cases,
 keeping the \texttt{Header} component more transparent and less verbose.
 
-\subsubsection{4.4.4 Redux: UI and I/O}\label{redux-ui-and-io}
+\subsection{4.4.4 Redux: UI and I/O}\label{redux-ui-and-io}
 
 To apply the Redux philosophy to QuantiTeam, actions and reducers were
 modularised into a schema which follows the system's data domain (users,
@@ -2188,7 +2166,7 @@ change.
 
 \chapter{Testing}
 
-\subsection{5.1 Testing Strategy}\label{testing-strategy}
+\section{5.1 Testing Strategy}\label{testing-strategy}
 
 Once the required communication abilities for the system had been
 established, meaning the author was able to trigger smart contract
@@ -2221,7 +2199,7 @@ with modular unit tests, then moving onto integration tests for the API
 as a whole, and concluding with functional testing from the perspective
 of the client-side GUI.
 
-\subsection{5.2 Unit Testing}\label{unit-testing}
+\section{5.2 Unit Testing}\label{unit-testing}
 
 Within QuantiTeam, unit tests are focused on providing extensive
 coverage for all public API functions (known in JavaScript as ``exported
@@ -2264,7 +2242,7 @@ API data was provided to the unit tests via mocked objects where
 required, an example of which can be found in \textbf{Appendix X} for
 the \texttt{TeamManager} unit tests.
 
-\subsection{5.3 Integration Testing}\label{integration-testing}
+\section{5.3 Integration Testing}\label{integration-testing}
 
 Integration tests were implemented in a similar manner to the system's
 unit tests, but were focused on providing a full examination of the
@@ -2282,7 +2260,7 @@ suite of API tests which examined the API's outputs for given input
 parameters, ensuring that its constituent parts integrated with one
 another as expected.
 
-\subsection{5.4 Functional Testing}\label{functional-testing}
+\section{5.4 Functional Testing}\label{functional-testing}
 
 As the blockchain and server had been tested rigorously with both unit
 tests and integration tests, functional testing efforts could be focused
@@ -2296,7 +2274,7 @@ testing stage, by letting the author easily examine the app's state
 object before and after any action was triggered, thus significantly
 simplifying any debugging that was required.
 
-\subsection{5.5 Coverage}\label{coverage}
+\section{5.5 Coverage}\label{coverage}
 
 \textbf{TODO: final coverage report will be added when implementation is
 complete}
@@ -2304,7 +2282,7 @@ complete}
 \chapter{Conclusions and Project
 Evaluation}
 
-\subsection{6.1 Project Goals}\label{project-goals-1}
+\section{6.1 Project Goals}\label{project-goals-1}
 
 At the outset of this project, the author intentionally defined the
 goals at a level which would be challenging, even possibly unfeasible,
@@ -2330,7 +2308,7 @@ quality CLIs of Eris, Docker and AWS, allowing a smooth transition from
 a single local node to a truly distributed set of validator nodes for
 the blockchain.
 
-\subsection{6.2 Personal Aims Achieved}\label{personal-aims-achieved}
+\section{6.2 Personal Aims Achieved}\label{personal-aims-achieved}
 
 The following section reiterates each personal aim set out by the
 author, providing commentary on whether the aim has been achieved and in
@@ -2373,9 +2351,9 @@ what way.
   along with its dependencies into a single unit, a container.
 \end{itemize}
 
-\subsection{6.3 Critical Evaluation}\label{critical-evaluation}
+\section{6.3 Critical Evaluation}\label{critical-evaluation}
 
-\subsubsection{6.3.1 Scope Feasibility}\label{scope-feasibility}
+\subsection{6.3.1 Scope Feasibility}\label{scope-feasibility}
 
 The author feels that the project's scope was challenging but
 appropriate overall for the timeframe available, considering that the
@@ -2391,7 +2369,7 @@ meaning a number of ``Should Have'' and ``Could Have'' requirements
 which would have enhanced the API's capabilities significantly had to be
 omitted due to time constraints.
 
-\subsubsection{6.3.2 Suitability of Chosen
+\subsection{6.3.2 Suitability of Chosen
 Technologies}\label{suitability-of-chosen-technologies}
 
 \paragraph{Solidity Contracts \& Eris
@@ -2439,7 +2417,7 @@ Flowtype was a powerful addition to the client-side app, allowing the
 author to reason about the app's data domain in a more explicit,
 type-safe manner.
 
-\subsection{6.4 Future Work}\label{future-work}
+\section{6.4 Future Work}\label{future-work}
 
 \paragraph{Verifiability}\label{verifiability}
 
@@ -2479,7 +2457,7 @@ Yet, this brings with it its own complications regarding data privacy
 and security, as the ability to identify an individual's location at a
 given moment in time can easily be utilised in malicious ways.
 
-\subsection{6.5 Final Thoughts}\label{final-thoughts}
+\section{6.5 Final Thoughts}\label{final-thoughts}
 
 The significant challenges of this project - both anticipated and
 unanticipated -- were clear to the author from the outset, making the
