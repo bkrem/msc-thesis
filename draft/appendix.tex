@@ -1,0 +1,694 @@
+\appendix
+\chapter{Design and Implementation Diagrams}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{../diagrams/signupSeqDiagram.png}
+\caption{Sequence of events for a ``Signup'' action}
+\end{figure}
+
+\begin{sidewaysfigure}[ht]
+\centering
+\includegraphics{../diagrams/contractsClassDiagram.png}
+\caption{A full Class diagram for the system's smart contracts}
+\end{sidewaysfigure}
+
+\chapter{Use Cases}
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+% \usepackage[normalem]{ulem}
+% \useunder{\uline}{\ul}{}
+
+%\begin{table}[]
+%\centering
+\begin{longtable}{| p{.20\textwidth} | p{.80\textwidth} |}
+\hline
+Case & Signup \\ \hline
+ID & UC1 \\ \hline
+Description & A user should be able to sign up to the app \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & The User is not already logged into the app \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User downloads and opens the app on their device\\ 2) User taps "Sign up" on the app's login screen\\ 3) User enters their details in the form shown by the Signup view\\ (go to Alternative Flow if there are validation errors)\\ 4) If the user's details are successfully validated, the user is logged into\\ their new account and forwarded to the Home view\end{tabular} \\ \hline
+Post Conditions & None \\ \hline
+Alternative Flow & If validation fails at step 3, the user is notified of the reason for the failed attempt by being shown a popup dialog and asked to try again \\ \hline
+ &  \\ \hline
+Case & Login \\ \hline
+ID & UC2 \\ \hline
+Description & A user must be able to log into the app \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & The User is not already logged into the app \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User opens the app on their device\\ 2) User enters their username and password into the Login view's form\\ (go to Alternative Flow if there are validation errors)\\ 3) If the user's details are successfully validated, the user is logged into\\ their account and forwarded to the Home view\end{tabular} \\ \hline
+Post Conditions & None \\ \hline
+Alternative Flow & If validation fails at step 2, the user is notified of the reason for the failed attempt by being shown a popup dialog and asked to try again \\ \hline
+ &  \\ \hline
+Case & AddTask \\ \hline
+ID & UC3 \\ \hline
+Description & A user must be able to add a task to be tracked by the system \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & The user is logged into the app \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to the "Tasks" view via the navigation bar\\ 2) User taps "Add Task" action button, is redirected to "Add Task" view\\ 3) User enters the name, description and usernames of any team\\ members involved in the task\\ 4) User taps "Add" and receives confirmation whether the task was\\ successfully added or not\end{tabular} \\ \hline
+Post Conditions & The specified task is registered on the blockchain \\ \hline
+Alternative Flow & None \\ \hline
+ &  \\ \hline
+Case & ViewTasks \\ \hline
+ID & UC4 \\ \hline
+Description & A User should be able to see an overview of the tasks they are currently involved/have previously completed, and inspect each task's details \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User is logged in \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to the Tasks view via the navigation bar, the system\\ shows a list of tasks under the headers "To Do" or "Completed"\\ (go to Alternative Flow if no tasks related to this user can be found)\\ 2) User taps an individual task in the list and is forwarded to the\\ TaskDetail view\end{tabular} \\ \hline
+Post Conditions & None \\ \hline
+Alternative Flow & If the User has no tasks associated to them, an empty list is rendered with a note stating that no tasks were found \\ \hline
+ &  \\ \hline
+Case & TaskComment \\ \hline
+ID & UC5 \\ \hline
+Description & A User should be able to comment on a specific task \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & At least one task related to this User \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to Tasks view via the navigation bar and taps the task\\ in the list they wish to comment on\\ 2) User is shown the TaskDetail view, in which they are able to enter a\\ comment into the provided comment form\\ 3) User taps the submit action button\\ 4) The system displays the newly added comment\end{tabular} \\ \hline
+Post Conditions & The comment is associated to said task and displayed alongside it \\ \hline
+Alternative Flow & If the comment fails to be registered for any reason, the user is informed of this via a popup dialog and asked to try again \\ \hline
+ &  \\ \hline
+Case & OptOutOfTask \\ \hline
+ID & UC6 \\ \hline
+Description & Any team member should be able to opt out of a task they were enrolled in if they are not in fact involved in it \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User has been enrolled into a task by another team member \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to Tasks view via the navigation bar and taps the task\\ in the list they wish to opt-out of\\ 2) In the TaskDetail view, the user taps the "Remove me from this task"\\ action button and confirms the wanted action in a popup dialog\\ (go to Alternative Flow if User does not confirm)\\ 3) User receives confirmation that they have been removed from the task\\ and is redirected to the Tasks view\end{tabular} \\ \hline
+Post Conditions & The user is removed from the task's participants list and it is no longer shown in their task overview \\ \hline
+Alternative Flow & If the User does not confirm that they should be removed from the task, they are simply returned to the underlying TaskDetail view \\ \hline
+ &  \\ \hline
+Case & CheckTaskCompletion \\ \hline
+ID & UC7 \\ \hline
+Description & For a given task, a team member should be able to see how many other team members have completed the task if they are registered as participants \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & The task involved multiple participants from a team \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to Tasks view via the navigation bar and taps the task\\ in the list they wish to inspect\\ 2) User is able to see a completion count or percentage, indicating how\\ many other participants have yet to confirm their completion of the task\end{tabular} \\ \hline
+Post Conditions & None \\ \hline
+Alternative Flow & None \\ \hline
+ &  \\ \
+Case & ExternalLinkToTask \\ \hline
+ID & UC8 \\ \hline
+Description & A User should be able to provide public links to their completed tasks and general prhlineofile \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & The User has completed tasks associated with their account \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to Tasks view via the navigation bar, scrolls to the\\ "Completed" section, and taps the task in the list they wish to inspect\\ 2) In the TaskDetail view, the User taps the "Create link to this task"\\ action button\\ 3) A public link to the task is copied to the device's clipboard\end{tabular} \\ \hline
+Post Conditions & Device's clipboard contains a link to the given task \\ \hline
+Alternative Flow & None \\ \hline
+ &  \\ \hline
+Case & CreateTeam \\ \hline
+ID & UC9 \\ \hline
+Description & A User should be able to start a new team by adding other members via their usernames \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User is not already part of a team \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to the Team view via the navigation bar\\ 2) As the User is not part of a team yet, they are shown a "Create Team"\\ button and a hint inviting them to use it\\ 3) User taps "Create Team" and is forwarded to a form to enter team-\\related details\\ 4) User enters a team name and other usernames to add these users to\\ the team-to-be\\ 5) User taps "Create" action button and is shown a confirmation dialog\\ whether the team creation was successful or not\\ (go to Alternative Flow for usernames that are already part of a team)\end{tabular} \\ \hline
+Post Conditions & New team with the specified details and members is registered on the blockchain \\ \hline
+Alternative Flow & If the team creation fails for any reason, the User is informed of this in the dialog instead of receiving a confirmation. If chosen usernames are already assiocated with another team, the dialog indicates which usernames are affected \\ \hline
+ &  \\ \hline
+Case & CheckTeamScore \\ \hline
+ID & UC10 \\ \hline
+Description & A User should be able to see their team's current global ranking \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User is member of a team \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to the Team view via the navigation bar\\ 2) The team's current ranking is displayed in the team's overview section\end{tabular} \\ \hline
+Post Conditions & None \\ \hline
+Alternative Flow & None \\ \hline
+ &  \\ \hline
+Case & RequestHelp \\ \hline
+ID & UC11 \\ \hline
+Description & A User can request help for a task from other task participants \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User is enrolled in a task \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to Tasks view via the navigation bar and taps the task\\ in the list they wish to request help for\\ 2) User taps the "Request Help" action button\\ 3) User is shown confirmation of help request being registered and other\\ task participants are notified of the help request\end{tabular} \\ \hline
+Post Conditions & A "help request" push notification has been sent to all other task participants \\ \hline
+Alternative Flow & If the request fails for any reason or there are no other participants within the task, the user is informed of this via a popup dialog \\ \hline
+ &  \\ \hline
+Case & OfferHelp \\ \hline
+ID & UC12 \\ \hline
+Description & A User may offer help to the rest of the participants without a specific request being present \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User is enrolled in a task \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to Tasks view via the navigation bar and taps the task\\ in the list they wish to offer help for\\ 2) User taps "Offer Help" action button\\ 3) User is shown confirmation of help offer being registered, other task\\ participants are notified of the help offer\end{tabular} \\ \hline
+Post Conditions & A "help offer" push notification has been sent to all other task participants \\ \hline
+Alternative Flow & If the request fails for any reason or there are no other participants within the task, the user is informed of this via a popup dialog \\ \hline
+ &  \\ \hline
+Case & MuteNotifications \\ \hline
+ID & UC13 \\ \hline
+Description & A User should be able to mute help request and help offer notifications \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & None \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to the Profile view and taps Settings icon\\ 2) User moves the "Mute Help Notifications" slider to "ON"\end{tabular} \\ \hline
+Post Conditions & User no longer receives notifications for help requests or help offers \\ \hline
+Alternative Flow & None \\ \hline
+ &  \\ \hline
+Case & EditAccount \\ \hline
+ID & UC14 \\ \hline
+Description & A User can edit their account details after signing up \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User has an account on the app \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to the Profile view and taps Settings icon\\ 2) User taps "Edit Account Details" action button\\ 3) User is forwarded to the EditAccount view in which the current details\\ are displayed and each field can be edited\\ 4) User taps "Save" action button and receives confirmation that the\\ changes have been applied\end{tabular} \\ \hline
+Post Conditions & The changes to the User profile are registered in the blockchain \\ \hline
+Alternative Flow & If saving the proposed changes fails for any reason, the User is informed via a popup dialog \\ \hline
+ &  \\ \hline
+Case & SetProfilePicture \\ \hline
+ID & UC15 \\ \hline
+Description & A User can edit their profile picture which appears to other Users \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User has an account on the app \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to the Profile view and taps Settings icon\\ 2) User taps "Set Profile Picture" action button\\ 3) User is asked to select a picture from the device's photo gallery\\ 4) User taps "Set" and is redirected to the Profile view in order to confirm\\ the change has taken place\end{tabular} \\ \hline
+Post Conditions & The Users image is locally stored within the app and displayed alongside their profile \\ \hline
+Alternative Flow & If setting the profile picture fails for any reason, the User is informed via a popup dialog \\ \hline
+ &  \\ \hline
+Case & DeleteAccount \\ \hline
+ID & UC16 \\ \hline
+Description & A User is able to delete their account \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User has an account on the app \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User navigates to the Profile view and taps Settings icon\\ 2) User taps "Delete My Account" action button\\ 3) User is asked to confirm the proposed action in a popup dialog window\\ 4) User taps "Confirm", upon which they are logged out and shown the\\ app's login view (go to Alternate Flow for non-confirmation)\end{tabular} \\ \hline
+Post Conditions & The User no longer appears within the app and their account is removed from the blockchain \\ \hline
+Alternative Flow & If the User taps "Abort" in the dialog window, the dialog window disappears and no other action is taken \\ \hline
+ &  \\ \hline
+Case & AttachTaskFile \\ \hline
+ID & UC17 \\ \hline
+Description & User is able to upload attachments related to their tasks \\ \hline
+Primary Actor & User \\ \hline
+Secondary Actor & System \\ \hline
+Preconditions & User has an account on the app \\ \hline
+Main Flow & \begin{tabular}[c]{@{}l@{}}1) User opens a browser and navigates to the web server's address\\ 2) User enters their task token previously provided by the mobile app\\ 3) User selects the file to be attached to the task associated with the\\ task token\\ 4) User taps "Confirm", upon which they are shown a confirmation that\\ the file has been attached (go to Alternate Flow for non-confirmation)\end{tabular} \\ \hline
+Post Conditions & The chosen file is stored in the blockchain and linked to the task identified via the task token \\ \hline
+Alternative Flow & If the user fails to select a file or enters an invalid task token, they are informed of this via a dialog window \\ \hline
+%\end{tabular}%
+}
+\caption{Use Cases}
+\label{use-cases}
+\end{longtable}
+
+
+\chapter{System Manual}
+\section{Installation}\label{installation}
+
+\paragraph{Dependencies}\label{dependencies}
+
+The following dependencies are required to run a local development
+instance of QuantiTeam's
+\href{https://github.com/tendermint/tendermint}{Tendermint} blockchain:
+- \href{https://www.docker.com/}{Docker} CLI - \texttt{docker} (\&
+\texttt{docker-machine} on OSX).\\
+- \href{https://erisindustries.com/}{Eris} CLI - \texttt{eris} provides
+a wrapper and toolchain around the Tendermint blockchain and is used
+extensively.\\
+- \href{https://nodejs.org/en/}{Node.js} - v4.x upwards.\\
+- \href{https://www.npmjs.com/}{NPM} - QuantiTeam relies on NPM scripts
+to run tests and various other tasks.
+
+To install the project's Node.js dependencies, ensure your present
+working directory (\texttt{pwd}) is \texttt{quantiteam/chain} and run:
+
+\begin{verbatim}
+npm install
+\end{verbatim}
+
+\paragraph{Setting up}\label{setting-up}
+
+First, let's move into QuantiTeam's API directory with the following
+command:
+
+\begin{verbatim}
+cd chain
+\end{verbatim}
+
+Creating a local dev \texttt{simplechain}:\\
+- Automatically: Run \texttt{simplechain.sh} in the repository's root
+directory, which should start logging the chain's activities after
+setup.\\
+- Manually: Follow Eris's brief
+\href{https://docs.erisindustries.com/tutorials/chain-making/}{tutorial}.
+
+\subsection{Running a local development
+chain}\label{running-a-local-development-chain}
+
+Assuming we now have a functioning \texttt{simplechain} instance, let's
+boot it up and configure some local environment variables. In the repo's
+root directory run the following two shell scripts:
+
+\begin{verbatim}
+. ./chain-up.sh; . ./envsetup.sh
+\end{verbatim}
+
+We can easily verify whether the \texttt{simplechain} instance is
+running as expected by following its log output:
+
+\begin{verbatim}
+npm run chainlog
+\end{verbatim}
+
+\subsection{Running the Node.js chain
+service}\label{running-the-node.js-chain-service}
+
+Now that we have a local development chain running which we can interact
+with, let's spin up the chain service which will act as our API router
+to interface with the local chain itself.
+
+\paragraph{Deploying contracts}\label{deploying-contracts}
+
+First, let's compile and deploy our Solidity smart contracts in the
+\texttt{contracts} directory:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# `$addr` should be defined from previously running `envsetup.sh`}
+\KeywordTok{npm} \NormalTok{run compile -- }\OtherTok{$addr}
+\end{Highlighting}
+\end{Shaded}
+
+Anytime a change is made to the smart contracts, \texttt{compile} should
+be run to deploy these changes to the running \texttt{simplechain}
+instance.
+
+\paragraph{Running tests}\label{running-tests}
+
+Next, we'll want to run QuantiTeam's test suite to ensure everything is
+working as expected:
+
+\begin{verbatim}
+npm test
+\end{verbatim}
+
+This should also provide a coverage report once all unit tests have run.
+
+\paragraph{Booting the service}\label{booting-the-service}
+
+The chain service itself can be built \& booted simply with:
+
+\begin{verbatim}
+npm run build
+\end{verbatim}
+
+Anytime a change is made to the node server, \texttt{build} should be
+run as it builds the new service container via \texttt{docker} and
+replaces it with the previous one via \texttt{eris}.\\
+Please refer to \texttt{package.json} for more detailed insights into
+which shell commands each NPM script executes.
+
+\subsection{API}\label{api}
+
+QuantiTeam's API exposes the following HTTP endpoints:\\
+- POST
+\texttt{/upload} - Upload a task related file via
+\texttt{multipart/form-data}.\\
+- POST \texttt{/user/taken} - Check whether the the username in
+\texttt{req.body.username} is already taken.\\
+- POST \texttt{/user/signup} - Sign up a new user with the form data
+passed in \texttt{req.body}.\\
+- POST \texttt{/user/login} - Log in an existing user with the form data
+passed in \texttt{req.body}.\\
+- GET \texttt{/user/profile/:username} - Get the profile of the username
+passed via \texttt{req.params.username}.\\
+- GET \texttt{/tasks/:username} - Get the tasks of the username passed
+via \texttt{req.params.username}.\\
+- POST \texttt{/task} - Add a new task to the blockchain via the form
+data passed in \texttt{req.body.task} for the username in
+\texttt{req.body.username}.\\
+- GET \texttt{/task/completed/:token} - Mark the task associated with
+the token passed in \texttt{req.params.token} as completed. - GET
+\texttt{/team/taken/:teamname} - Check whether the teamname passed as
+\texttt{req.params.teamname} is already taken.\\
+- POST \texttt{/team} - Add a new team to the blockchain via the form
+data passed in \texttt{req.body.form}.\\
+- GET \texttt{/team/:teamname} - Get the team profile for the teamname
+passed as \texttt{req.params.teamname}.\\
+- POST \texttt{/team/add-member} - Add a new member to a team with the
+form data passed in \texttt{req.body.form}.
+
+\subsection{Shutting down}\label{shutting-down}
+
+To shut down the local chain and the \texttt{docker-machine} instance,
+simply run:
+
+\begin{verbatim}
+. ./chain-down.sh
+\end{verbatim}
+
+
+\chapter{User Manual}
+\section{Introduction}\label{introduction}
+
+This user manual provides instructions on how to use QuantiTeam's mobile
+app, which serves as a basic showcase of the system's current features
+and its API in the context of a real application, as well as the web
+uploader which can be used to attach text files to tasks registered in
+the mobile app.
+
+\section{Registration}\label{registration}
+
+\subsection{Login}\label{login}
+
+Upon opening the app, the user is greeted with QuantiTeam's login view.
+If the user has previously created an account in the QuantiTeam
+blockchain, they can simply enter their username and password, followed
+by a tap on ``Login'' to be forwarded to their task overview. If the
+login fails for any reason, the user is informed via dialog window.
+
+
+\subsection{Signup}\label{signup}
+
+If this is the first time using QuantiTeam, the user can tap on ``Sign
+up here'' under the login form. This forwards the user to a signup form,
+requiring details such as a name, email, username, and password. Once
+the user is happy with their entries, tapping ``Sign up'' will validate
+the entered information. If mandatory fields have been left blank, the
+app will notify the user by marking them red. If the entered username is
+already taken or the entered passwords don't match, the user will be
+informed via a dialog window.
+
+\section{Team}\label{team}
+
+\subsection{Creating a Team}\label{creating-a-team}
+
+Using the navigation bar at the bottom of the app, the user can navigate
+to the ``Team'' tab. If the user is currently not part of a team, the
+main view will contain instructions on how to create a team. By tapping
+``Create Team'' in the app's header, the user is forwarded to a simple
+text entry where they can enter their chosen team name and tap ``Create
+Team'' again.\\
+After a short delay to a account for the event being registered in a
+transaction block within the blockchain, the user should receive
+confirmation whether creating the team succeeded.
+
+When navigating back to the team overview tab, the user should now see
+their team's details, as well as a list of team members. Instead of
+``Create Team'', the header now contains an ``Add Member'' action
+button.
+
+\subsection{Adding Members}\label{adding-members}
+
+To add a member to their team, a user can tap ``Add Member'' in the
+header of the app's ``Team'' tab. This forwards the user to a text entry
+where they are able to enter the username of another QuantiTeam user.
+After entering a username, the user taps the ``Add Member'' button and,
+after a short delay to register the transaction in the blockchain,
+receives confirmation whether adding the user to their team was
+successful or not.
+
+When navigating back to the team overview tab, the user should now see
+the new member in the list of team members.
+
+\section{Tasks}\label{tasks}
+
+Using the navigation bar at the bottom of the app, the user can navigate
+to the ``Tasks'' tab. By pulling downwards on the screen, the user can
+refresh the list of existing tasks if any are currently registered to
+their username in the blockchain.
+
+\subsection{Adding a Task}\label{adding-a-task}
+
+To add a task, the user can tap ``Add Task'' in the app's header, which
+forwards the user to a task form. Here the user is able to enter a title
+and short description of the task they want to register in the
+QuantiTeam blockchain, as well as set the status of the task as ``To
+Do'' or ``Completed''. After filling in these details, tapping the ``Add
+Task'' button attempts to register the new task in the blockchain.
+
+Upon returning to the ``Tasks'' tab via the back-arrow icon in the app's
+header, the user can refresh the task list, which should now display the
+newly registered task.
+
+\subsection{Inspecting a Task}\label{inspecting-a-task}
+
+When tapping a task in the task list, the user is forwarded to detailed
+overview of the task. Here the user can inspect the task's details.
+
+\subsection{Marking a Task as
+Complete}\label{marking-a-task-as-complete}
+
+Once a task has been completed, the user is able to mark it as complete
+in the blockchain. This can be done by tapping a specific task in the
+task list, followed by a tap on the ``Mark as complete'' button in the
+detailed task view.
+
+\section{Profile}\label{profile}
+
+\subsection{Inspecting the User
+Profile}\label{inspecting-the-user-profile}
+
+Using the navigation bar at the bottom of the app, the user can navigate
+to the ``Me'' tab. Here the user is able to see their details, such as
+their name, username and email address.
+
+\subsection{Logging out}\label{logging-out}
+
+To log out of the mobile app, the user can tap on ``Log out'' in the
+app's header within the ``Me'' tab. This resets the app's state and
+returns the user to the ``Login'' view.
+
+\section{Attachments}\label{attachments}
+
+A user is able to attach text files related to a task via the web
+uploader.
+
+\subsection{Prerequisites}\label{prerequisites}
+
+To add a text file attachment to the blockchain, the user requires a
+task token, which can be copied from a task's ``Token'' field in the
+task detail view within the mobile app.
+
+\subsection{Attaching Text Files to a
+Task}\label{attaching-text-files-to-a-task}
+
+When opening a browser window and navigating to the QuantiTeam web
+server, the user is shown a file attachment form. The user can enter the
+previously copied task token and select a text (\texttt{.txt}) file to
+attach to the task associated with the token. After tapping submit, the
+user receives confirmation whether attaching the file was successful.
+Multiple files can be attached to a single task.
+
+
+\chapter{Test Coverage Overview}
+
+\begin{sidewaysfigure}[ht]
+\centering
+\includegraphics{../screenshots/coverage-root.png}
+\includegraphics{../screenshots/coverage-js.png}
+\includegraphics{../screenshots/coverage-util.png}
+\caption{Coverage report extracts}
+\end{sidewaysfigure}
+
+
+\chapter{Code Extracts}
+The following section contains extracts from the project's code base which were explicitly mentioned in the main text or showcase key functionalities within the system.
+
+\section{envsetup.sh}
+\lstset{
+language=Bash,
+basicstyle={\small\ttfamily}
+}
+\begin{lstlisting}
+#!/usr/bin/env bash
+
+# This script should be run to configure `docker-machine`'s environment within the
+# terminal session, as well as to set up local environment variables which
+# simplify the usage of `eris` drastically, such as the chain directory ($chain_dir)
+# and the address of the contract owner ($addr) if a contract is to be deployed onto the chain.
+
+echo "Running QuantiTeam environment setup..."
+
+# Set references to the chain & account
+chain_dir=$HOME/.eris/chains/simplechain
+chain_dir_this=$chain_dir/simplechain_full_000
+echo "chain_dir: ${chain_dir}"
+echo "chain_dir_this: ${chain_dir_this}"
+
+# Isolate the account address into a variable
+addr=$(cat $chain_dir/addresses.csv|grep simplechain_full_000|cut -d ',' -f 1)
+echo "addr: ${addr}"
+
+# Set up local variables for `docker-machine`
+eval $(docker-machine env)
+# Set the $host variable to the IP of the running docker-machine container
+host=$(docker-machine ip)
+echo "'host' set to docker-machine IP: ${host}"
+
+# Get the IP address for the local compiler
+compiler_addr=$(eris services inspect compilers NetworkSettings.IPAddress)
+echo "compiler_addr: ${compiler_addr}"
+
+# Set the port for the node app to listen to for requests by querying the eris service for the port
+export IDI_PORT=$( eris services ports idi|cut -d ":" -f 2 )
+echo "IDI_PORT set to ${IDI_PORT}"
+\end{lstlisting}
+
+\section{Task.sol}
+\lstset{language=java}
+\begin{lstlisting}
+import "SequenceArray.sol";
+
+contract Task {
+
+    bytes32 public id; // immutable
+    bytes32 public title; // mutable
+    bytes32 public desc; // mutable
+    bytes32 public status; // mutable
+    bytes32 public complete; // mutable
+    bytes32 public reward; // immutable
+    bytes32 public participants; // mutable
+    bytes32 public creator; // immutable
+    bytes32 public createdAt; // immutable
+    bytes32 public token; // immutable
+
+    SequenceArray attachments = new SequenceArray();
+
+    // Constructor
+    function Task(
+        bytes32 _id,
+        bytes32 _title,
+        bytes32 _desc,
+        bytes32 _status,
+        bytes32 _complete,
+        bytes32 _reward,
+        bytes32 _participants,
+        bytes32 _creator,
+        bytes32 _createdAt,
+        bytes32 _token) {
+        id = _id;
+        title = _title;
+        desc = _desc;
+        status = _status;
+        complete = _complete;
+        reward = _reward;
+        participants = _participants;
+        creator = _creator;
+        createdAt = _createdAt;
+        token = _token;
+    }
+
+    function associateWithFile(bytes32 fileHash) returns (bool isOverwrite) {
+        isOverwrite = attachments.insert(fileHash, this);
+        return isOverwrite;
+    }
+
+    function markComplete(bytes32 _status) returns (bool success) {
+        status = _status;
+        success = true;
+        return success;
+    }
+}
+\end{lstlisting}
+
+
+\section{chainUtils.js}
+\lstset{language=java}
+\begin{lstlisting}
+/*
+ * Some handy utility functions to handle data coming off the blockchain.
+ */
+
+var util = require('util');
+var EventEmitter = require('events');
+var eris = require(__libs+'/eris/eris-wrapper');
+
+/* istanbul ignore next */
+var chainUtils = {
+
+
+    /**
+     * createContractEventHandler - Creates an event handler
+     * for `contract` to log any `ActionEvent` events triggered
+     * within the contract.
+     *
+     * @param  {Object} contract description
+     * @param  {Object} log      description
+     * @return {null}          description
+     */
+    createContractEventHandler: function (contract, log) {
+        // Set up event emitter
+        function ChainEventEmitter () {
+            EventEmitter.call(this);
+        }
+        util.inherits(ChainEventEmitter, EventEmitter);
+        var chainEvents = new ChainEventEmitter();
+
+        contract.ActionEvent(
+            function (error, eventSub) {
+                if (error)
+                    throw error;
+            },
+            function (error, event) {
+                if (event) {
+                    var eventString = eris.hex2str(event.args.actionType);
+
+                    log.info("***CONTRACT EVENT:***\n", eventString);
+                    chainEvents.emit(eventString, event.args);
+                }
+            });
+    },
+
+    /**
+     * extractInt - Extracts an integer from a `uint`/`int` Solidity type value.
+     *
+     * @param  {Object} bcObject The blockchain object to be extracted from.
+     * @return {int}             The extracted integer.
+     */
+    extractInt: function (bcObject) {
+        return bcObject['c'][0];
+    },
+
+    /**
+     * extractIntFromArray - Extracts an integer from a `uint`/`int` Solidity
+     * type value nested inside an array.
+     *
+     * @param  {Object} bcObject The blockchain object to be extracted from.
+     * @param  {int} index    Index position of the int in the array.
+     * @return {int}          The extracted integer.
+     */
+    extractIntFromArray: function (bcObject, index) {
+        return bcObject[index]['c'][0];
+    },
+
+    /**
+     * marshalForChain - Takes an object, iterates its own properties and
+     * encodes them as hexadecimal strings so they can be fed into Solidity
+     * contracts easily.
+     *
+     * @param  {Object} obj The object to be marshalled.
+     * @return {Object} hexObj `obj` with hexadecimal-encoded properties
+     */
+    marshalForChain: function (obj) {
+        var hexObj = {};
+
+        for (var prop in obj) {
+            if ({}.hasOwnProperty.call(obj, prop)) {
+                var val = obj[prop];
+
+                if (Number.isInteger(val)) {
+                    val = String(val);
+                } else if (Array.isArray(val)) {
+                    val = JSON.stringify(val);
+                } else if (typeof val !== "string") {
+                    throw new Error("Error at marshalForChain: " + prop + ":" + val + " is not a string.");
+                }
+                hexObj[prop] = eris.str2hex(val);
+            }
+        }
+
+        return hexObj;
+    }
+};
+
+module.exports = chainUtils;
+\end{lstlisting}
