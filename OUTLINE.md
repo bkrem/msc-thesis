@@ -226,8 +226,7 @@
     - Abstract
     - Acknowledgements
 - References & Bibliography (references are currently inline in the original markdown file)
-    - Kanban ref
-    - "Appendix X"
+    - **Kanban ref**
 - Appendices
     - Code listing
 

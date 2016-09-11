@@ -1,5 +1,5 @@
 # Introduction
-This user manual provides instructions on how to use QuantiTeam's mobile app, which serves as a basic showcase of the system's current features and its API in the context of a real application.  
+This user manual provides instructions on how to use QuantiTeam's mobile app, which serves as a basic showcase of the system's current features and its API in the context of a real application, as well as the web uploader which can be used to attach text files to tasks registered in the mobile app.  
 
 # Registration
 ## Login
@@ -22,5 +22,33 @@ To add a member to their team, a user can tap "Add Member" in the header of the 
 When navigating back to the team overview tab, the user should now see the new member in the list of team members.
 
 # Tasks
+Using the navigation bar at the bottom of the app, the user can navigate to the "Tasks" tab. By pulling downwards on the screen, the user can refresh the list of existing tasks if any are currently registered to their username in the blockchain.
 
-# Logging out
+## Adding a Task
+To add a task, the user can tap "Add Task" in the app's header, which forwards the user to a task form. Here the user is able to enter a title and short description of the task they want to register in the QuantiTeam blockchain, as well as set the status of the task as "To Do" or "Completed". After filling in these details, tapping the "Add Task" button attempts to register the new task in the blockchain.
+
+Upon returning to the "Tasks" tab via the back-arrow icon in the app's header, the user can refresh the task list, which should now display the newly registered task.
+
+## Inspecting a Task
+When tapping a task in the task list, the user is forwarded to detailed overview of the task. Here the user can inspect the task's details.
+
+## Marking a Task as Complete
+Once a task has been completed, the user is able to mark it as complete in the blockchain. This can be done by tapping a specific task in the task list, followed by a tap on the "Mark as complete" button in the detailed task view.
+
+
+# Profile
+## Inspecting the User Profile
+Using the navigation bar at the bottom of the app, the user can navigate to the "Me" tab. Here the user is able to see their details, such as their name, username and email address.
+
+## Logging out
+To log out of the mobile app, the user can tap on "Log out" in the app's header within the "Me" tab. This resets the app's state and returns the user to the "Login" view.
+
+
+# Attachments
+A user is able to attach text files related to a task via the web uploader.
+
+## Prerequisites
+To add a text file attachment to the blockchain, the user requires a task token, which can be copied from a task's "Token" field in the task detail view within the mobile app.
+
+## Attaching Text Files to a Task
+When opening a browser window and navigating to the QuantiTeam web server, the user is shown a file attachment form. The user can enter the previously copied task token and select a text (`.txt`) file to attach to the task associated with the token. After tapping submit, the user receives confirmation whether attaching the file was successful. Multiple files can be attached to a single task.

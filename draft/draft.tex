@@ -99,26 +99,6 @@
 
 \begin{document}
 
-\maketitle
-\makedeclaration
-
-\begin{abstract}
- This is cool paper about vuvuzelas.
-\end{abstract}
-
-\renewcommand{\abstractname}{Acknowledgements}
-\begin{abstract}
- Thanks Mum!
-\end{abstract}
-
-\setcounter{tocdepth}{3}
-% Setting this higher means you get contents entries for
-%  more minor section headers.
-
-\tableofcontents
-\listoffigures
-\listoftables
-
 \section{University College London}\label{university-college-london}
 
 \subsubsection{Department of Computer
@@ -141,6 +121,24 @@ except where explicitly indicated in the text. The report may be freely
 copied and distributed provided the source is explicitly acknowledged.}
 
 September 2016
+
+\begin{abstract}
+ This is cool paper about vuvuzelas.
+\end{abstract}
+
+\renewcommand{\abstractname}{Acknowledgements}
+\begin{abstract}
+ Thanks Mum!
+\end{abstract}
+
+\setcounter{tocdepth}{3}
+% Setting this higher means you get contents entries for
+%  more minor section headers.
+
+\tableofcontents
+\listoffigures
+\listoftables
+
 
 \chapter{Introduction}
 
@@ -770,7 +768,7 @@ development, to mitigate arbitrary local differences between development
 environments. It was an essential part of the development process as
 Eris's tooling leverages Docker heavily to deploy blockchain
 instances.\\
-Bash shell scripts (\textbf{see Appendix X}) were constructed by the
+Bash shell scripts (see Appendix F) were constructed by the
 author in order to automate processes such as hydrating the local
 terminal environment with variables required to run the blockchain, or
 booting the Docker virtual machine and the local blockchain instance.
@@ -816,359 +814,9 @@ API, blockchain or development environment). The ``Should Have'' and
 ``Could Have'' categories therefore largely express targets for more
 sophisticated future iterations of the system.
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-\begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
-ID\strut
-\end{minipage} & \begin{minipage}[b]{0.64\columnwidth}\raggedright\strut
-Functional Requirements\strut
-\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedright\strut
-Category\strut
-\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright\strut
-MoSCoW Priority\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ1\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Users should be able to sign up by providing simply a username, password
-and, optionally, an email address\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Account registration\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Must\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ2\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Users should be able to login using a username and password\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Login\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Must\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ3\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Any team member should be able to register a task for their team on the
-network, by specifying team members involved\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Tasks\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Must\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ4\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Any team member is able to view both outstanding and completed
-tasks\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Tasks\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Must\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ5\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-If user is not a member of a team, they should be able to start a new
-team by adding other members via their usernames\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Team\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Must\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ6\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Upon resolution the task reward should be added to the participants'
-scores automatically and immediately\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Tasks\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Must\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ7\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Users should be able to issue a request to join an existing team or
-create a new one upon signup\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Account registration\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Should\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ8\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Users should receive sign up confirmation to verify email address\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Account registration\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Should\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ9\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Any team member should be able to opt out of a task they were entered
-for if they are not in fact involved\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Tasks\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Should\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ10\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Each team member can see how many other members have completed a given
-task without identities being revealed in the process\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Tasks\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Should\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ11\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Individuals should be able to provide public links to their completed
-tasks and general profile\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Tasks\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Should\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ12\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Users should be able to see their team's current global ranking\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Team\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Should\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ13\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Users should be able to recover their password if they have forgotten
-it\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Login\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Should\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ14\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Users should be able to view incomplete tasks their involved in and past
-completed tasks\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Tasks\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Should\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ15\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Users should be able to upload attachments related to their tasks\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Tasks\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Should\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ16\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Tasks should automatically resolve to status ``Complete'' once all
-participants have completed them\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Tasks\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Should\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ17\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Users should be able to edit their account details after signing up
-(email address, password);\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-User\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Should\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ18\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Users should be able to delete their account\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Settings\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Should\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ19\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-An individual can request help for a task from other task
-participants\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Team\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Could\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ20\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Members may offer help to the rest of the team without a specific
-request being present, to speed up any potential rendez-vous\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Team\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Could\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ21\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Once a rendez-vous occurs, the parties involved should be able to chat
-with each other\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Team\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Could\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ22\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Team members should be notified via a mobile alert if a help request
-affects them\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Team\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Could\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ23\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Users could be able to upload a profile picture\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-User\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Could\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-FRQ24\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
-Users should be able to mute help request and help offer
-notifications\strut
-\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
-Settings\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Could\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
+\include{functional-requirements}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics{}
-\caption{Functional Requirements}
-\end{figure}
-
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-\begin{minipage}[b]{0.05\columnwidth}\raggedright\strut
-ID\strut
-\end{minipage} & \begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
-Non-Functional Requirements\strut
-\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\raggedright\strut
-Category\strut
-\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
-MoSCoW Priority\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
-NFRQ1\strut
-\end{minipage} & \begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
-A User who is not logged in is prevented from accessing the app\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-Security\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-Must\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
-NFRQ2\strut
-\end{minipage} & \begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
-The system shall store all user passwords in the blockchain in an
-encrypted format\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-Security\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-Must\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
-NFRQ3\strut
-\end{minipage} & \begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
-The app should provide offline sync, saving any state changes made
-during a period of no-connection\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-Persistence\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-Should\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
-NFRQ4\strut
-\end{minipage} & \begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
-A team member should be able to signal a task as complete within a
-maximum of 1\textasciitilde{}2 UI interactions\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-Tasks\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-Should\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
-NFRQ5\strut
-\end{minipage} & \begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
-The system should accomodate for at least 1,000 teams\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-Capacity\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-Should\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
-NFRQ6\strut
-\end{minipage} & \begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
-The system should accomodate for at least 100,000 tasks\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-Capacity\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-Should\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
-NFRQ7\strut
-\end{minipage} & \begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
-The system should log in a user within approximately 5 seconds\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-UX\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-Should\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.05\columnwidth}\raggedright\strut
-NFRQ8\strut
-\end{minipage} & \begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
-The system shall respond to any interaction in no more than 10
-seconds\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-UX\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-Should\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics{}
-\caption{Non-Functional Requirements}
-\end{figure}
+\include{nonfunctional-requirements}
 
 \section{3.3 Use Cases}\label{use-cases}
 
@@ -1186,7 +834,7 @@ other applications.
 
 Use cases were constructed in parallel with the initial UI sketches,
 thus helping to visualise the flow of user-system interactions.\\
-Figure 3.4 below represents an overview of the uses cases that
+The table below represents an overview of the uses cases that
 were constructed, while the detailed use cases can be reviewed in Appendix B.
 
 \begin{longtable}[]{@{}llll@{}}
@@ -1212,13 +860,8 @@ UC15 & SetProfilePicture & User & System\tabularnewline
 UC16 & DeleteAccount & User & System\tabularnewline
 UC17 & AttachTaskFile & User & System\tabularnewline
 \bottomrule
-\end{longtable}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics{}
 \caption{Use Case Overview}
-\end{figure}
+\end{longtable}
 
 \section{3.4 Sketches}\label{sketches}
 
@@ -1232,7 +875,7 @@ properties, such as data retrieval methods, at a later point.
 \section{3.5 System Design}\label{system-design}
 
 The design of the system's architecture started with creating a simple
-deployment diagram (Figure 3.5), which provided a high-level view of
+deployment diagram (Figure 3.2), which provided a high-level view of
 the system's required components and the roles they would play.\\
 Establishing a high-level understanding of what the system required to
 provide proficient communication between any client application and the
@@ -1567,12 +1210,10 @@ well-defined interface of methods on top of Solidity's native array and
 The blockchain's factory contracts were a straightforward undertaking,
 both in regards of design and implementation, as their only role was to
 return a new instance of the contract, which would then be handled by
-the associated manager contracted. This meant the factory contract would
-simply contain its required fields and a constructor, as shown in
-\textbf{Appendix X}.
+the associated manager contracted.
 
 Solidity's inability to process an externally passed JavaScript object
-is nicely exemplified here, due to the sheer verbosity of the
+is nicely exemplified by the \texttt{Task.sol} factory contract (see Appendix F), due to the sheer verbosity of the
 constructor function. While a task could be encapsulated as a single
 object and therefore passed as a single parameter within the client- and
 server-side JavaScript applications, the object had to be split into its
@@ -1860,7 +1501,7 @@ that were laid out in chapter 3. This was achieved by use of a
 The pipeline function was defined within the utility module
 \texttt{chainUtils.js} as
 \texttt{marshalForChain(\textless{}data-object\textgreater{})}, which
-can be reviewed in full in \textbf{Appendix X}. The function takes its
+can be reviewed in full in Appendix F. The function takes its
 \texttt{\textless{}data-object\textgreater{}} parameter, identifies the
 type of each object property (e.g.
 \texttt{Array.isArray(\textless{}property\textgreater{})}) and
@@ -2235,9 +1876,19 @@ object before and after any action was triggered, thus significantly
 simplifying any debugging that was required.
 
 \section{5.5 Coverage}\label{coverage}
+Test coverage reports were generated automatically following each execution of the API's test suite. A coverage summary is shown below, while the full report can be located as browsable collection of HTML files in the repository's \texttt{chain/test/coverage} directory. Appendix E shows the index page of these HTML reports to provide an overview.
 
-\textbf{TODO: final coverage report will be added when implementation is
-complete}
+\begin{lstlisting}
+  35 passing (45s)
+
+=============================== Coverage summary ===============================
+Statements   : 90.64% ( 426/470 ), 4 ignored
+Branches     : 56.49% ( 74/131 ), 5 ignored
+Functions    : 97.12% ( 135/139 ), 1 ignored
+Lines        : 91.22% ( 426/467 )
+================================================================================
+\end{lstlisting}
+
 
 \chapter{Conclusions and Project
 Evaluation}
@@ -2431,173 +2082,6 @@ inspire further endeavours along these lines in the future.
 
 \printbibliography
 
-\appendix
-\chapter{Additional Diagrams}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics{../diagrams/signupSeqDiagram.png}
-\caption{Sequence of events for a ``Signup'' action}
-\end{figure}
-
-\begin{sidewaysfigure}[ht]
-\centering
-\includegraphics{../diagrams/contractsClassDiagram.png}
-\caption{A full Class diagram for the system's smart contracts}
-\end{sidewaysfigure}
-
-\chapter{Use Cases}
-
-\include{use-cases}
-
-
-\chapter{System Manual}
-\section{Installation}\label{installation}
-
-\paragraph{Dependencies}\label{dependencies}
-
-The following dependencies are required to run a local development
-instance of QuantiTeam's
-\href{https://github.com/tendermint/tendermint}{Tendermint} blockchain:
-- \href{https://www.docker.com/}{Docker} CLI - \texttt{docker} (\&
-\texttt{docker-machine} on OSX).\\
-- \href{https://erisindustries.com/}{Eris} CLI - \texttt{eris} provides
-a wrapper and toolchain around the Tendermint blockchain and is used
-extensively.\\
-- \href{https://nodejs.org/en/}{Node.js} - v4.x upwards.\\
-- \href{https://www.npmjs.com/}{NPM} - QuantiTeam relies on NPM scripts
-to run tests and various other tasks.
-
-To install the project's Node.js dependencies, ensure your present
-working directory (\texttt{pwd}) is \texttt{quantiteam/chain} and run:
-
-\begin{verbatim}
-npm install
-\end{verbatim}
-
-\paragraph{Setting up}\label{setting-up}
-
-First, let's move into QuantiTeam's API directory with the following
-command:
-
-\begin{verbatim}
-cd chain
-\end{verbatim}
-
-Creating a local dev \texttt{simplechain}:\\
-- Automatically: Run \texttt{simplechain.sh} in the repository's root
-directory, which should start logging the chain's activities after
-setup.\\
-- Manually: Follow Eris's brief
-\href{https://docs.erisindustries.com/tutorials/chain-making/}{tutorial}.
-
-\subsection{Running a local development
-chain}\label{running-a-local-development-chain}
-
-Assuming we now have a functioning \texttt{simplechain} instance, let's
-boot it up and configure some local environment variables. In the repo's
-root directory run the following two shell scripts:
-
-\begin{verbatim}
-. ./chain-up.sh; . ./envsetup.sh
-\end{verbatim}
-
-We can easily verify whether the \texttt{simplechain} instance is
-running as expected by following its log output:
-
-\begin{verbatim}
-npm run chainlog
-\end{verbatim}
-
-\subsection{Running the Node.js chain
-service}\label{running-the-node.js-chain-service}
-
-Now that we have a local development chain running which we can interact
-with, let's spin up the chain service which will act as our API router
-to interface with the local chain itself.
-
-\paragraph{Deploying contracts}\label{deploying-contracts}
-
-First, let's compile and deploy our Solidity smart contracts in the
-\texttt{contracts} directory:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# `$addr` should be defined from previously running `envsetup.sh`}
-\KeywordTok{npm} \NormalTok{run compile -- }\OtherTok{$addr}
-\end{Highlighting}
-\end{Shaded}
-
-Anytime a change is made to the smart contracts, \texttt{compile} should
-be run to deploy these changes to the running \texttt{simplechain}
-instance.
-
-\paragraph{Running tests}\label{running-tests}
-
-Next, we'll want to run QuantiTeam's test suite to ensure everything is
-working as expected:
-
-\begin{verbatim}
-npm test
-\end{verbatim}
-
-This should also provide a coverage report once all unit tests have run.
-
-\paragraph{Booting the service}\label{booting-the-service}
-
-The chain service itself can be built \& booted simply with:
-
-\begin{verbatim}
-npm run build
-\end{verbatim}
-
-Anytime a change is made to the node server, \texttt{build} should be
-run as it builds the new service container via \texttt{docker} and
-replaces it with the previous one via \texttt{eris}.\\
-Please refer to \texttt{package.json} for more detailed insights into
-which shell commands each NPM script executes.
-
-\subsection{API}\label{api}
-
-QuantiTeam's API exposes the following HTTP endpoints:\\
-- POST
-\texttt{/upload} - Upload a task related file via
-\texttt{multipart/form-data}.\\
-- POST \texttt{/user/taken} - Check whether the the username in
-\texttt{req.body.username} is already taken.\\
-- POST \texttt{/user/signup} - Sign up a new user with the form data
-passed in \texttt{req.body}.\\
-- POST \texttt{/user/login} - Log in an existing user with the form data
-passed in \texttt{req.body}.\\
-- GET \texttt{/user/profile/:username} - Get the profile of the username
-passed via \texttt{req.params.username}.\\
-- GET \texttt{/tasks/:username} - Get the tasks of the username passed
-via \texttt{req.params.username}.\\
-- POST \texttt{/task} - Add a new task to the blockchain via the form
-data passed in \texttt{req.body.task} for the username in
-\texttt{req.body.username}.\\
-- GET \texttt{/task/completed/:token} - Mark the task associated with
-the token passed in \texttt{req.params.token} as completed. - GET
-\texttt{/team/taken/:teamname} - Check whether the teamname passed as
-\texttt{req.params.teamname} is already taken.\\
-- POST \texttt{/team} - Add a new team to the blockchain via the form
-data passed in \texttt{req.body.form}.\\
-- GET \texttt{/team/:teamname} - Get the team profile for the teamname
-passed as \texttt{req.params.teamname}.\\
-- POST \texttt{/team/add-member} - Add a new member to a team with the
-form data passed in \texttt{req.body.form}.
-
-\subsection{Shutting down}\label{shutting-down}
-
-To shut down the local chain and the \texttt{docker-machine} instance,
-simply run:
-
-\begin{verbatim}
-. ./chain-down.sh
-\end{verbatim}
-
-
-\chapter{User Manual}
-
+\include{appendix}
 
 \end{document}
