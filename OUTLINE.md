@@ -223,10 +223,7 @@
 
 ## TODOS
 - Front matter
-    - Abstract
-    - Acknowledgements
-- References & Bibliography (references are currently inline in the original markdown file)
-    - **Kanban ref**
+
 - Appendices
     - Code listing
 
@@ -237,13 +234,3 @@
     - Make sure all 3rd party attributions are there
     - Refactor naming
     - Dialogs: Add Task, mark complete
-
-
-## Bibliography
-
-## Appendices
-- Gantt chart
-- Use Cases
-- User Manual (derive from Help/FAQ page)
-- test results
-- Code Examples/Snippets

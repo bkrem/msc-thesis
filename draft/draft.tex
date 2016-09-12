@@ -99,43 +99,18 @@
 
 \begin{document}
 
-\section{University College London}\label{university-college-london}
+\include{frontmatter}
 
-\subsubsection{Department of Computer
-Science}\label{department-of-computer-science}
-
-\subsection{MSc Summer Project Report}\label{msc-summer-project-report}
-
-\section{QuantiTeam: Blockchain architecture as a medium to verify
-collaborative
-work}\label{quantiteam-blockchain-architecture-as-a-medium-to-verify-collaborative-work}
-
-\subsection{A Feasibility Study}\label{a-feasibility-study}
-
-\emph{Author:} Benjamin Kremer\\
-\emph{Supervisor:} Dr.~Ghita Kouadri Mostefaoui
-
-\emph{This report is submitted as part requirement for the MSc Computer
-Science degree at UCL. It is substantially the result of my own work
-except where explicitly indicated in the text. The report may be freely
-copied and distributed provided the source is explicitly acknowledged.}
-
-September 2016
-
-\begin{abstract}
-The ability to work proficiently in collaboration with others is highly valued within a large number of social contexts. Yet, a person's ability to do so is scarcely quantifiable in any meaningful way. The goal of this project was therefore to examine the feasibility of constructing a system which can verify and quantify collaborative work. The project was set in the specific context of attempting to solve student disengagement, as the larger concept arose from this concrete problem.
-
-The project attempts to provide a high level of potential for true verification and quantification of collaborative data by utilising a distributed data structure known as a blockchain. Following an analysis of how the proposed system could be structured in terms of interactions between a client the blockchain, an API was constructed to provide as much functionality as was feasible within the time available. Additionally, a simple client-side mobile application was developed to showcase the API's functionality in a concrete manner.
-
-While the project falls short of establishing a manner to truly verify and quantify collaborative work with a distributed blockchain, it demonstrates that such an endeavour is certainly feasible given more time and expertise in the topic area, thus providing a basis for future work to create a \emph{bona fide} system for verification and quantification of team work.
-\end{abstract}
+\include{abstract}
 
 \renewcommand{\abstractname}{Acknowledgements}
 \begin{abstract}
+First and foremost, I would like to thank my supervisor, Dr. Ghita Kouadri Mostefaoui for her continuous guidance throughout this project. I would also like to thank my family, my flatmates, and Kimeshan Naidoo \& Aditya Mukherjee in particular for their continuous support.
 
+I owe a special thank you to Zach Ramsay from Eris Industries, whose enthusiasm for what I was trying to achieve provided a wealth of motivation.
 \end{abstract}
 
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{2}
 % Setting this higher means you get contents entries for
 %  more minor section headers.
 
@@ -173,7 +148,7 @@ skill that is currently not quantifiable or verifiable on paper.
 \section{1.2 Project Goals}\label{project-goals}
 
 This project began as an attempt to address this phenomenon of student
-disengagement and, over time, developed into a wholly larger
+disengagement and, over time, developed into a larger
 investigation of whether it is possible to utilise blockchain technology
 not just to form a network of re-engaged students, but as a tool for the
 verification and quantification of group-based work at large.\\
@@ -186,11 +161,13 @@ peers in a productive, educational manner, underpinned by a model of
 motivation which rewards collaborative work as a team.
 
 Working from this technological and philosophical motivation,
-respectively, the following goals were established for the project:\\
-- Create a public Application Programming Interface (henceforth API) to allow users to
-interact with a blockchain in a well-defined manner, independent of a chosen client-side implementation.\\
-- Provide an iOS client-side app for basic task/user/team management to offer a graphical
-representation of the API in a format familiar to users.\\
+respectively, the following goals were established for the project:
+\begin{itemize}
+\item Create a public Application Programming Interface (henceforth API) to allow users to
+interact with a blockchain in a well-defined manner, independent of a chosen client-side implementation.
+\item Provide an iOS client-side app for basic task, user, and team management to offer a graphical
+representation of the API in a format familiar to non-technical individuals.
+\end{itemize}
 
 \section{1.3 Personal Aims}\label{personal-aims}
 
@@ -203,21 +180,21 @@ goal of verifiability of team work fits a blockchain's ability to
 provide a distributed ledger of transactions or events.
 
 The following points provide an overview of the author's personal aims
-for the project: - Become familiar with native mobile app development by
-utilising existing JavaScript knowledge in the context of React
-Native\cite{2react-native}. - Learn how
-to write smart contracts in Solidity\cite{1solidity} that are useful
-in the context of the project and for existing platforms such as
-Ethereum\footnote{https://www.ethereum.org/}. - Implement a form of blockchain
-technology, by learning how to set up, run \& maintain a a blockchain
-proficiently. - Gain a fundamental understanding of Docker\cite{1docker} and how it leverages ``containerisation'' to achieve
-straightforward deployments of development environments.
+for the project:
+\begin{itemize}
+\item Become familiar with native mobile app development by
+utilising existing JavaScript knowledge in the context of React Native\cite{2react-native}.
+\item Learn how to write smart contracts in Solidity\cite{1solidity} that are useful
+in the context of the project and for existing platforms such as Ethereum\footnote{https://www.ethereum.org/}.
+\item Implement a form of blockchain technology, by learning how to set up, run \& maintain a blockchain proficiently.
+\item Gain a fundamental understanding of Docker\cite{1docker} and how it leverages ``containerisation'' to achieve straightforward deployments of development environments.
+\end{itemize}
 
 \section{1.4 Project Management}\label{project-management}
 
-The project followed the methodology of the Unified Process (henceforth
+The project followed the methodology of the Unified Process\cite{jacobson1999unified} (henceforth
 UP) framework for software
-development\cite{jacobson1999unified}, and was thus structured in terms of iterative
+development, and was thus structured in terms of iterative
 phases. The system was at first modeled as a whole by using a
 theoretical deployment diagram in order to gain an understanding of
 which technological entities were required to neatly encapsulate the
@@ -242,53 +219,50 @@ progress made, as well as providing an immediate opportunity to document
 issues that were encountered.\\
 Throughout the implementation stage, required programming work was
 broken down into separate units of work by using Github
-Issues\footnote{https://developer.github.com/v3/issues/} and organised into a Kanban board\href{}{(REF)}
-with the help of waffle.io\footnote{https://waffle.io/}.
+Issues\footnote{https://developer.github.com/v3/issues/} and organised into a Kanban\cite{1kanban} board with the help of waffle.io\footnote{https://waffle.io/}.
 
 As the API continued to grow, unit testing the API's public functions became an
 essential part of the project workflow. Due to the primitive error
 handling of the still very young Solidity programming language (used to
-construct smart contracts for blockchains), any responses coming from
+construct smart contracts for the blockchain), any responses coming from
 the blockchain had to be rigorously tested server-side in order avoid
 silent breakages and regressions.
 
-\clearpage
-
 \section{1.5 Report Overview}\label{report-overview}
 
-\paragraph{Chapter 1}\label{chapter-1-1}
+\subsubsection{Chapter 1}\label{chapter-1-1}
 
 This chapter outlines the problem addressed by the project, as well as
 stating its goals, the author's personal aims, and the approach to
 managing the project.
 
-\paragraph{Chapter 2}\label{chapter-2}
+\subsubsection{Chapter 2}\label{chapter-2}
 
 This chapter establishes context for the stated problem domain, surveys
 previous work either directly or tangentially related to the project,
 and provides an overview of the programming languages, libraries and
 development tools used within the project.
 
-\paragraph{Chapter 3}\label{chapter-3}
+\subsubsection{Chapter 3}\label{chapter-3}
 
 This chapter specifies the project's requirements and their associated
 use cases, whilst also assessing the system's architecture by analysing
 each major component of the its technology stack.
 
-\paragraph{Chapter 4}\label{chapter-4}
+\subsubsection{Chapter 4}\label{chapter-4}
 
 This chapter details the key features and patterns that make up
 QuantiTeam's implementation, assessing the blockchain, the server and
 the client-side app in turn.
 
-\paragraph{Chapter 5}\label{chapter-5}
+\subsubsection{Chapter 5}\label{chapter-5}
 
 This chapter explains the approach of test-driven development used for
 the project, as well as outlining how the system was tested at different
 levels of granularity, using unit tests, integration tests, and
 functional testing.
 
-\paragraph{Chapter 6}\label{chapter-6}
+\subsubsection{Chapter 6}\label{chapter-6}
 
 This chapter assesses to what extent the project's goals and the
 author's personal aims were achieved, provides a critical review of the
@@ -325,7 +299,7 @@ between the individual student's aims and that of the educator. By
 establishing a system in which collaborative work is directly linked to
 both an individual and social reward, students are able to focus on a
 more immediate \& manageable target than an abstract and potentially
-far-off seeming concept of a high school diploma.
+far-off seeming concept of, for example, a high school diploma.
 
 \begin{quote}
 ``Rewarding specific actions that students can control, such as
@@ -371,19 +345,19 @@ built in terms of a distributed, reviewable entity, such as a
 blockchain.
 
 
-\paragraph{SocialX}\label{socialx}
-
-SocialX\cite{Temperini2008}\cite{Sterbini2009} is an exercise sharing tool which enables students to earn
-reputation points, which are visible to their peers and the given
-subject's teacher, by submitting solutions to exercises. A further
-source of reputation are endorsements, which a student may receive from
-their peers if they were inspired to reuse the student's solution.
+\subsubsection{SocialX}\label{socialx}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.8\textwidth]{../screenshots/socialx.png}
 \caption{SocialX's reputation overview}
 \end{figure}
+
+SocialX\cite{Temperini2008}\cite{Sterbini2009} is an exercise sharing tool which enables students to earn
+reputation points, which are visible to their peers and the given
+subject's teacher, by submitting solutions to exercises. A further
+source of reputation are endorsements, which a student may receive from
+their peers if they were inspired to reuse the student's solution.
 
 SocialX differs to QuantiTeam in three key ways: firstly, reputation
 within SocialX is calculated according to factors which involve the
@@ -396,12 +370,7 @@ defines the term ``global ranking'' as a measurement of student
 reputation across subjects/courses, whereas QuantiTeam strives for a
 truly global, decentralised ranking system.
 
-\paragraph{WikiSpaces}\label{wikispaces}
-
-WikiSpaces\cite{1wikispaces} is a web app which provides a virtual classroom workspace in
-which teachers and students can work on written projects individually or
-in teams. Features include a social media-like feed, collaborative
-writing and commenting tools, and a project management system.
+\subsubsection{WikiSpaces}\label{wikispaces}
 
 \begin{figure}[htbp]
 \centering
@@ -409,11 +378,22 @@ writing and commenting tools, and a project management system.
 \caption{The WikiSpaces Classroom dashboard}
 \end{figure}
 
-\paragraph{HaikuLearning}\label{haikulearning}
+WikiSpaces\cite{1wikispaces} is a web app which provides a virtual classroom workspace in
+which teachers and students can work on written projects individually or
+in teams. Features include a social media-like feed, collaborative
+writing and commenting tools, and a project management system.
+
+\subsubsection{HaikuLearning}\label{haikulearning}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{../screenshots/haikulearning.jpg}
+\caption{The HaikuLearning dashboard}
+\end{figure}
 
 HaikuLearning\cite{haikulearning}, similarly to WikiSpaces, is a web app which attempts to
 emulate and enhance the classroom experience for both school teachers
-and students. It offer a unified environment to hand in assignments and
+and students. It offers a unified environment to hand in assignments and
 to receive feedback \& grades, as well as enabling integrations with
 Google Apps for extensibility.
 
@@ -426,12 +406,6 @@ by team members themselves and contextual information regarding the
 progress or completion of a user's tasks cannot be monitored by any
 other individual.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.8\textwidth]{../screenshots/haikulearning.jpg}
-\caption{The HaikuLearning dashboard}
-\end{figure}
-
 \section{2.3 Programming Languages and
 Libraries}\label{programming-languages-and-libraries}
 
@@ -439,8 +413,7 @@ Libraries}\label{programming-languages-and-libraries}
 
 Before proceeding with the following section, two frequently used
 concepts should be clearly delineated: blockchains and smart contracts.
-A blockchain is a data structure composed of a list of blocks of
-transactions, where each block is linked back to the previous block in
+A blockchain is a data structure composed of a list of grouped transactions, known as blocks, where each block is linked back to the previous block in
 the chain\cite{antonopoulos2014mastering}. Each block is identified by a
 hash, which is stored in the block's header alongside the previous
 block's hash, known as the parent block\cite{antonopoulos2014mastering}, thus providing a
@@ -484,8 +457,7 @@ Solidity\cite{1solidity}
 smart contracts for the platform; highly valuable for a smart contract
 novice such as the author. Furthermore, the fact that Tendermint is an
 entirely separate software project meant that there was an additional
-repository of documentation for this specific type of blockchain and the
-computer science theory backing it.
+repository of documentation for this specific type of blockchain and the computer science it is based on.
 
 \subsection{2.3.2 Server-side}\label{server-side}
 
@@ -509,7 +481,7 @@ a humble web server.
 
 QuantiTeam's server makes use of a handful of key libraries:
 
-\paragraph{Express}\label{express}
+\subsubsection{Express}\label{express}
 
 Express\footnote{https://expressjs.com/} is a minimalist
 framework for NodeJS web servers which provides a powerful layer of
@@ -517,7 +489,7 @@ abstraction on top of NodeJS's raw server interface. Express helped
 accelerate the development of the API, while leaving the possibility of
 fine-tuning the NodeJS server itself intact.
 
-\paragraph{eris-wrapper \& eris-logger}\label{eris-wrapper-eris-logger}
+\subsubsection{eris-wrapper \& eris-logger}\label{eris-wrapper-eris-logger}
 
 The eris-wrapper \& eris-logger modules were adopted from a ``Hello
 World''-style example Eris provides to showcase how a NodeJS server
@@ -525,11 +497,11 @@ implementing their platform could be
 structured\footnote{https://github.com/eris-ltd/hello-eris}.\\
 eris-wrapper provides a convenient abstraction of low-level bindings
 that have to take place between the NodeJS server and the Tendermint
-blockchain, while eris-logger simply sets up a simple logger with
+blockchain, while eris-logger simplifies setting up a logger with
 different logging types, such as \texttt{ERROR}, \texttt{INFO} and
 \texttt{DEBUG}.
 
-\paragraph{Async}\label{async}
+\subsubsection{Async}\label{async}
 
 Async\footnote{https://caolan.github.io/async/} is a utility
 library that helps manage the flow of asynchronous functions, which are
@@ -581,11 +553,10 @@ being closer to that of a mobile browser rather than a native mobile
 app.
 
 Based on these two lessons learnt, the author decided to use Facebook's
-React Native\cite{2react-native} for the project, which grafts a truly native mobile development
+React Native\cite{2react-native} for the project, which grafts a native mobile development
 framework on top of the outstanding React library, along with the now
 familiar Redux library.\\
-React Native offers all the benefits of React (high levels of modularity
-\& encapsulation, composability) while allowing the developer to hook
+React Native offers all the benefits of React while allowing the developer to hook
 into events and effects of the native mobile operating system. This
 means that transitioning between views smoothly or sending a push
 notification, for example, becomes a trivial undertaking.\\
@@ -601,7 +572,7 @@ application's state simultaneously.
 Further libraries which play a key role within the client-side
 application are the following:
 
-\paragraph{redux-thunk}\label{redux-thunk}
+\subsubsection{redux-thunk}\label{redux-thunk}
 
 redux-thunk\footnote{https://github.com/gaearon/redux-thunk}
 is a helper library which enables the use of asynchronous functions as
@@ -610,7 +581,7 @@ essential to allow control over how and when the client application
 sends data to the blockchain, and how it fetches data from the
 blockchain to then integrate it into its local state.
 
-\paragraph{redux-logger}\label{redux-logger}
+\subsubsection{redux-logger}\label{redux-logger}
 
 redux-logger\footnote{https://github.com/evgenyrodionov/redux-logger}
 supplements Redux itself by automatically logging actions and the state
@@ -619,7 +590,7 @@ significant amount of time could be saved during the project by avoiding
 the need for a custom logger implementation, or worse yet, littering the
 codebase with sporadic logging statements.
 
-\paragraph{tcomb-form-native}\label{tcomb-form-native}
+\subsubsection{tcomb-form-native}\label{tcomb-form-native}
 
 tcomb-form-native\footnote{https://github.com/gcanti/tcomb-form-native}
 provides a framework for forms and form validation in React Native. As
@@ -632,15 +603,14 @@ size.
 
 Composing unit tests for each public function of the system's API was an
 essential part of the development process, especially as the Tendermint
-blockchain was able to report errors within its own processes to the
-NodeJS server only in the most rudimentary of terms. This meant that if
+blockchain was able to report errors within its own processes only in the most rudimentary of terms. This meant that if
 no testing suite was in place, silent breakages and undefined behaviour
 were likely to occur as the API grew.
 
 The following JavaScript libraries were used to implement unit \&
 integration tests on the server:
 
-\paragraph{Mocha}\label{mocha}
+\subsubsection{Mocha}\label{mocha}
 
 Mocha\footnote{https://mochajs.org/} was chosen as the testing
 framework for the project due to its specific aim of simplifying the
@@ -648,14 +618,14 @@ testing of asynchronous JavaScript code. This clearly applied to the
 needs of the planned API which would be largely built on asynchronous
 functions.
 
-\paragraph{Chai}\label{chai}
+\subsubsection{Chai}\label{chai}
 
 Chai\footnote{http://chaijs.com/} is an assertion library for both
 test-driven development (TDD) and behaviour-driven development (BDD).
-More specifically, Chai's TDD \texttt{assert} function was used to keep
+Chai's TDD \texttt{assert} function was used to keep
 test assertions simple and testable against an expected result.
 
-\paragraph{Istanbul}\label{istanbul}
+\subsubsection{Istanbul}\label{istanbul}
 
 Istanbul\footnote{https://gotwarlost.github.io/istanbul/} is a
 code coverage tool which was used to gain an overview of how much of the
@@ -701,12 +671,12 @@ editor for Gantt charts, was used to create a timeline for the project,
 while Google Docs\footnote{https://www.google.com/docs/about/}
 in conjunction with draw.io\footnote{https://www.draw.io/} were
 used to capture requirements and create UML diagrams.\\
-This report was originally written in markdown and transposed to the
+This report was originally written in Markdown and transposed to the
 Latex format using pandoc\footnote{http://pandoc.org/}.
 
 \subsection{2.4.2 Development Tools}\label{development-tools}
 
-\paragraph{Editor}\label{editor}
+\subsubsection{Editor}\label{editor}
 
 In order to avoid switching between editors to get the best development
 support for disparate parts of the project's code, Github's
@@ -719,7 +689,7 @@ Integrated Development Environment (IDE), by offering an in-built
 debugger, code snippets, and Facebook's own static type analyser which
 is discussed below.
 
-\paragraph{Static Type Analyser}\label{static-type-analyser}
+\subsubsection{Static Type Analyser}\label{static-type-analyser}
 
 Flowtype\cite{1flowtype}, a static type
 analyser for JavaScript, is a further in-built feature of the Nuclide
@@ -728,9 +698,9 @@ type signature for a function, and even to create custom union \&
 intersection types. Flowtype then checks whether the defined type
 specifications are adhered to and warns if it detects a TypeError. This
 is an incredibly useful tool for a dynamically-typed language such as
-JavaScript, where unintended type coercion is a common ailment.
+JavaScript, where unintended type coercion is a common issue.
 
-\paragraph{Debugging}\label{debugging}
+\subsubsection{Debugging}\label{debugging}
 
 Debugging within the project was performed in three different ways due
 to the variability of environments within the technology stack. For the
@@ -749,7 +719,7 @@ provided a sanity check to ensure that the chain was performing the
 expected operations when instructed to do so by the NodeJS server,
 excluding a possible cause if a bug was being searched for.
 
-\paragraph{Version Control}\label{version-control}
+\subsubsection{Version Control}\label{version-control}
 
 The \texttt{git}\footnote{https://git-scm.com/} command line utility
 was used to manage the codebase's development over time, in conjunction
@@ -760,7 +730,7 @@ SourceTree\footnote{https://www.atlassian.com/software/sourcetree}
 GUI was used to avoid mistyping complex terminal commands and thus
 potentially performing unwanted changes to the version history.
 
-\paragraph{Docker \& Shell Scripts}\label{docker-shell-scripts}
+\subsubsection{Docker \& Shell Scripts}\label{docker-shell-scripts}
 
 Docker\cite{1docker} is a platform which
 allows the creation of self-contained virtual environments for software
@@ -778,20 +748,20 @@ booting the Docker virtual machine and the local blockchain instance.
 
 \section{3.1 Problem Statement}\label{problem-statement}
 
-As outlined in chapters 1 \& 2, the key problems the project was trying
-to solve the way in which students relate to their school work on an
-everyday basis, as well as investigating the feasibility of a system
-which uses a distributed blockchain data structure to verify and store
-data about events which represent collaborative work.\\
-The conceptual diagram below shows how the basic components and
-interactions within this system might look.
-
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.7\textwidth]{../diagrams/conceptDiagram.png}
 \caption{An early conceptual diagram demonstrating possible interactions
 with the system}
 \end{figure}
+
+As outlined in chapters 1 \& 2, the key problem the project attempts
+to solve is the way in which students relate to their school work on an
+everyday basis by investigating the feasibility of a system
+which uses a distributed blockchain data structure to verify and store
+data about events which represent collaborative work.\\
+Figure 3.1 shows how the basic components and
+interactions within this system might look.
 
 \section{3.2 Requirements}\label{requirements}
 
@@ -815,7 +785,6 @@ API, blockchain or development environment). The ``Should Have'' and
 sophisticated future iterations of the system.
 
 \include{functional-requirements}
-
 \include{nonfunctional-requirements}
 
 \section{3.3 Use Cases}\label{use-cases}
@@ -907,14 +876,14 @@ majority of the contracts either acting as
 factories\cite{gamma1995design} for composite types or implementing
 operations on these types as ``manager'' contracts.
 
-\paragraph{Factory Contracts}\label{factory-contracts}
+\subsubsection{Factory Contracts}\label{factory-contracts}
 
 In order to define composite types, known in Solidity as
 \texttt{struct}s, a contract was defined for each domain of the system
 as revealed by the requirements. This meant there was a need for
 \texttt{User}, \texttt{Team} and \texttt{Task} contracts.
 
-\paragraph{Data Structure Contract}\label{data-structure-contract}
+\subsubsection{Data Structure Contract}\label{data-structure-contract}
 
 Solidity -- as a young and constantly developing language for smart
 contracts -- does not currently provide a way to iterate over storage
@@ -923,7 +892,7 @@ which approximates what is usually known as a hash map, is also
 non-iterable. This meant a custom data structure contract was needed to
 store, edit and retrieve collections of type contracts.
 
-\paragraph{Manager Contracts}\label{manager-contracts}
+\subsubsection{Manager Contracts}\label{manager-contracts}
 
 To avoid violating the Single Responsibility
 Principle\cite{martin2003agile} of object-oriented design, there was a
@@ -932,7 +901,7 @@ returned by the factory contracts. This meant there was a need for a
 \texttt{UserManager}, \texttt{TeamManager} and \texttt{TaskManager}
 contract.
 
-\paragraph{Linker Contract}\label{linker-contract}
+\subsubsection{Linker Contract}\label{linker-contract}
 
 The previously discussed decision to encapsulate all data generated by
 the system within the blockchain led to an issue of data relations
@@ -949,18 +918,9 @@ to locating and linking related contracts in such a situation.
 between Factory, Manager and Linker contracts}
 \end{figure}
 
-\paragraph{Action Events}\label{action-events}
-
-Solidity's lack of any real logging capabilities meant there needed to
-be consideration in regard to how function calls within contracts could
-be observed from the outside. Solidity does, fortunately, provide an
-\texttt{event} type, which opened up the possibility of triggering such
-an \texttt{event} where required and listening for it server-side, where
-logging the events was a trivial matter.
-
 \subsection{3.5.2 Server-side Analysis}\label{server-side-analysis}
 
-\paragraph{API Router}\label{api-router}
+\subsubsection{API Router}\label{api-router}
 
 Once the structure of the smart contracts had been established, the
 analysis of the server-side implementation quickly revealed that the
@@ -974,12 +934,12 @@ data travelling between the client-side application and the blockchain,
 acting as a \emph{de facto} middleman. In more concrete terms, this
 would involve calling relevant contract methods on the blockchain when a
 certain API endpoint was requested and transforming data between
-hexadecimal and UTF-8, for example. This is necessary due to Solidity's
+hexadecimal and UTF-8 encoding, for example. This is necessary due to Solidity's
 poor support for strings at the time of writing, meaning that all
 strings would have to be encoded into 32-byte fields of hexadecimal,
 known in Solidity as the \texttt{bytes32} type.
 
-\paragraph{Uploader}\label{uploader}
+\subsubsection{Uploader}\label{uploader}
 
 Meeting the requirement of letting task participants attach files
 related to the their tasks was trickier than anticipated, as choosing to
@@ -1011,7 +971,7 @@ material which may be malicious or illegal in nature.
 
 \subsection{3.5.3 Client-side Analysis}\label{client-side-analysis}
 
-\paragraph{Abstracting view components with
+\subsubsection{Abstracting view components with
 React}\label{abstracting-view-components-with-react}
 
 React takes markedly different approach to view templating compared to
@@ -1021,8 +981,7 @@ focuses on breaking a view down into its constituent parts to form
 reusable components. These components can then be composed in whichever
 way the developer sees fit. This level of composability comes to its
 full potential in React Native, as it enables the abstraction of common
-UI components within a mobile app, providing ample opportunity to even
-reuse said components across different platforms. The decision to
+UI components within a mobile app, providing ample opportunity to reuse said components even across different platforms. The decision to
 abstract a given component was therefore made according to the following
 criteria, ordered by highest weighting first:
 
@@ -1036,12 +995,12 @@ single time, in a single place within the app.
 
 \emph{Cross-platform potential} - A secondary consideration was whether
 the abstraction would be useful across platforms, i.e.~between iOS and
-Android. For the initial iteration of QuantiTeam which would only focus
-on iOS this aspect was less significant than the frequency of use, but
+Android. For the initial iteration of QuantiTeam, which would only focus
+on iOS, this aspect was less significant than the frequency of use, but
 it played a significant role in keeping the client-side application open
 to extension at a later point nonetheless.
 
-\paragraph{Managing state with Redux}\label{managing-state-with-redux}
+\subsubsection{Managing state with Redux}\label{managing-state-with-redux}
 
 While considering the responsibilities that a client-side implementation
 would have to fulfill to meet the established requirements, it also
@@ -1049,7 +1008,7 @@ became clear that even for a simple implementation there was a
 considerable amount of application state that would have to be managed
 by the client. Besides being the most common choice within React Native
 applications, the Redux library provides a well-structured approach to
-state management, derived from the philosophy behind the Elm programming
+state management, derived from the philosophy behind the Elm\footnote{http://elm-lang.org/} programming
 language. Redux ensures that events which mutate state are well-defined
 and that they may only take place in a single direction
 (unidirectionally).\\
@@ -1085,6 +1044,12 @@ visualised in the following manner:
 
 \section{4.1 System Architecture}\label{system-architecture}
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{../diagrams/mvc.png}
+\caption{A typical MVC Model\cite{1mvcfigure}}
+\end{figure}
+
 QuantiTeam broadly follows the three-tier architecture of a typical
 Model-View-Controller\cite{krasner1988description} application with the important distinction that the
 roles within the MVC pattern are applied to an entire system of various
@@ -1093,26 +1058,11 @@ means that blockchain represents the Model element by establishing the
 system's data model through the smart contracts applied to it, while the
 NodeJS server represents the Controller element, providing a public
 interface for client applications to issue requests to the blockchain
-and handling raw responses from the blockchain. The ``View'' element of
+and handling raw responses from the blockchain. The View element of
 the implementation is therefore interchangeable, as the RESTful API
 formed by the web server and the blockchain provides a uniform set of
 endpoints to communicate with, tying no special or unique value to the
 client, in this case a mobile app.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.6\textwidth]{../diagrams/mvc.png}
-\caption{A typical MVC Model\cite{1mvcfigure}}
-\end{figure}
-
-In order to mirror the described approach of creating a standalone unit
-out of the Model and Controller aspects of the system's architecture,
-the project's source code was structured into two directories at the
-highest level. The \texttt{app} directory contains the React Native
-client-side application, while the \texttt{chain} directory holds
-configurations and environment variables to run the Tendermint
-blockchain via the \texttt{eris} CLI, and provides the REST API server
-in its \texttt{js} subdirectory.
 
 \section{4.2 Blockchain Design \&
 Implementation}\label{blockchain-design-implementation}
@@ -1136,7 +1086,7 @@ the blockchain's smart contracts into perspective, some context
 regarding the current capabilities of the Solidity programming language
 is required.
 
-\paragraph{Strings and Numbers}\label{strings-and-numbers}
+\subsubsection{Strings and Numbers}\label{strings-and-numbers}
 
 As was briefly touched upon in chapter 3, Solidity is still in its
 infancy. This meant that some data types such as strings, had to be
@@ -1172,7 +1122,7 @@ the NodeJS server using the \texttt{eris-wrapper} library module's
 \texttt{str2hex()} (string-to-hex) function, and decoded using its
 \texttt{hex2str()} (hex-to-string) function.
 
-\paragraph{Arrays and Objects}\label{arrays-and-objects}
+\subsubsection{Arrays and Objects}\label{arrays-and-objects}
 
 A further hindrance imposed by Solidity was its poor support for arrays
 and its lack of objects, also known as lists and dictionaries,
@@ -1205,7 +1155,7 @@ well-defined interface of methods on top of Solidity's native array and
 
 \subsection{4.2.3 Smart Contracts}\label{smart-contracts}
 
-\paragraph{Data: Factory Contracts}\label{data-factory-contracts}
+\subsubsection{Data: Factory Contracts}\label{data-factory-contracts}
 
 The blockchain's factory contracts were a straightforward undertaking,
 both in regards of design and implementation, as their only role was to
@@ -1227,7 +1177,7 @@ to a factory contract's fields had cascading effects throughout the API,
 thus creating an unnecessary opportunity for bugs to appear if
 refactoring was not done in a meticulous manner.
 
-\paragraph{Operations: Manager
+\subsubsection{Operations: Manager
 Contracts}\label{operations-manager-contracts}
 
 As a contract type, Manager contracts are chiefly responsible for
@@ -1290,7 +1240,7 @@ contract UserManager {
 }
 \end{lstlisting}}
 
-\paragraph{Relations: Linker Contract}\label{relations-linker-contract}
+\subsubsection{Relations: Linker Contract}\label{relations-linker-contract}
 
 The Linker contract, which is best described as a utility contract, is
 responsible for linking together instances of factory contracts. As one
@@ -1360,7 +1310,7 @@ blockchain and altering the relevant \texttt{Task} contract accordingly.
 
 REST, which is an acronym for Representational State Transfer, is a
 commonly used web development pattern which attempts to ensure
-reliability and scalability of the web service implementing
+reliability and scalability for the web service implementing
 it\cite{1rest}. Within
 the context of QuantiTeam, achieving RESTfulness was key for the
 system's API, as this would help ensure the system's usefulness to any
@@ -1369,7 +1319,7 @@ paradigm.\\
 This subsection therefore describes the properties of a RESTful service
 and how each applies to QuantiTeam's server-side architecture.
 
-\paragraph{Client-Server Dichotomy}\label{client-server-dichotomy}
+\subsubsection{Client-Server Dichotomy}\label{client-server-dichotomy}
 
 Crucial to the creation of an implementation-agnostic REST interface is
 a separation of concerns between the client and
@@ -1384,7 +1334,7 @@ the React Native client app, which requests data from the server and
 then decides how to represent said data to the user within its local
 state.
 
-\paragraph{Stateless}\label{stateless}
+\subsubsection{Stateless}\label{stateless}
 
 Statelessness is a key constraint within the REST design, which holds
 that each request should contain all information required by the service
@@ -1428,7 +1378,7 @@ returns an \texttt{isTaken} boolean which is written to the \texttt{res}
 response object, thus providing all data necessary for the client to
 make a decision regarding the availability of the proposed username.
 
-\paragraph{Cacheable}\label{cacheable}
+\subsubsection{Cacheable}\label{cacheable}
 
 Responses from the REST service being implicitly or explicitly declared
 as cacheable or non-cacheable is a further component of a RESTful
@@ -1444,7 +1394,7 @@ Implicit caching takes place within the React Native client-side app,
 which retrieves and then locally retains static information such as the
 user's profile data, for example.
 
-\paragraph{Uniform Interface}\label{uniform-interface}
+\subsubsection{Uniform Interface}\label{uniform-interface}
 
 A uniform technical interface -- which provides a generic, high-level
 method of communication across all services within a REST architecture
@@ -1475,7 +1425,7 @@ the system is thus able to guarantee a high level of independence from
 concrete implementation details, as the requirements and formatting of
 HTTP do not vary across implementation contexts.
 
-\paragraph{Layered System}\label{layered-system}
+\subsubsection{Layered System}\label{layered-system}
 
 The final constraint within the REST pattern concerns composability. A
 RESTful implementation should allow for intermediate layers, commonly
@@ -1545,8 +1495,7 @@ system's -- data
 models\cite{krasner1988description}.
 Although a view may also be described as ``a visual representation of
 models that present a filtered view of the current
-state''\href{https://addyosmani.com/resources/essentialjsdesignpatterns/book/\#detailmvc}{(Learning
-JS Design Patterns)}, the parallels between the MVC pattern and
+state''\cite{osmani2012learning}, the parallels between the MVC pattern and
 QuantiTeam's structure become somewhat less applicable. While the
 client-side React Native app does of course act as a filtered graphical
 representation of the blockchain's models, it also contains its own
@@ -1603,17 +1552,9 @@ The snippet above shows how Flowtype enabled the author to define what
 type primitives a \texttt{User} object's fields should adhere to. This
 significantly reduced bug frequency, both within the app and the API
 itself, by catching inadvertent type coercions or possibly undefined
-values before the app's runtime environment was even entered.\\
-Furthermore, the \texttt{User} type exemplifies how Flowtype allows a
-differentiation between mandatory (\texttt{username}) and optional
-(\texttt{teamname?}) fields, adding an element of flexibility where
-needed. For example, the \texttt{address?} field cannot be defined at
-the time a \texttt{User}-type object is instantiated in the client-side
-application, as the hexadecimal address for the User contract can only
-be returned to the client once the user has been registered in the
-blockchain post-instantiation.
+values before the app's runtime environment was even entered.
 
-Finally, Flowtype elevated the ability to define actions and the
+Flowtype elevated the ability to define actions and the
 expected types of their payloads in a more fine-grained manner compared
 to regular JavaScript, by enabling the author to add type constraints to
 variables and functions where needed.
@@ -1637,7 +1578,7 @@ how the two component attributes discussed in chapter 3, namely
 frequency/variability of use and cross-platform potential, were applied
 to QuantiTeam's React components.
 
-\paragraph{Frequency \& Variability of
+\subsubsection{Frequency \& Variability of
 Use}\label{frequency-variability-of-use}
 
 A component which encapsulates both these attributes is the
@@ -1657,7 +1598,7 @@ action button has no commonly identifiable icon, and therefore benefits
 from simply displaying text to disambiguate what action the button will
 perform if tapped.
 
-\paragraph{Cross-Platform Potential}\label{cross-platform-potential}
+\subsubsection{Cross-Platform Potential}\label{cross-platform-potential}
 
 The flexibility of the app header's button layouts also comes into play
 regarding the component's potential for reuse across differing mobile
@@ -1717,7 +1658,7 @@ representation of the system's API, the vast majority of actions were of
 the more complex asynchronous I/O-bound type, required to interact with
 the HTTP API.
 
-\paragraph{Synchronous UI Actions}\label{synchronous-ui-actions}
+\subsubsection{Synchronous UI Actions}\label{synchronous-ui-actions}
 
 UI actions within QuantiTeam are utilised to regulate animations and
 transitions within the application's UI and are limited to manipulating
@@ -1734,7 +1675,7 @@ is displayed until this action is triggered. This exemplifies how Redux
 imbues the application's UI state with precise controls and succinct
 behaviour if actions are used effectively.
 
-\paragraph{Asynchronous I/O Actions}\label{asynchronous-io-actions}
+\subsubsection{Asynchronous I/O Actions}\label{asynchronous-io-actions}
 
 I/O actions within QuantiTeam are structured to enable reliable
 communication with the system's API. In abstract terms, any event within
@@ -1776,7 +1717,7 @@ change.
 Once the required communication abilities for the system had been
 established, meaning the author was able to trigger smart contract
 events within the blockchain via HTTP requests, the system's API was
-established and expanded via test-driven development. This meant that
+constructed and expanded via test-driven development. This meant that
 any new functions of the system would be developed in the following
 manner\cite{beck2003test}:
 
@@ -1883,7 +1824,7 @@ Test coverage reports were generated automatically following each execution of t
 \begin{lstlisting}
   35 passing (46s)
 
-=============================== Coverage summary ===============================
+============================== Coverage summary ==============================
 Statements   : 91.28% ( 429/470 ), 7 ignored
 Branches     : 58.02% ( 76/131 ), 7 ignored
 Functions    : 98.56% ( 137/139 ), 3 ignored
@@ -1979,7 +1920,7 @@ omitted due to time constraints.
 \subsection{6.3.2 Suitability of Chosen
 Technologies}\label{suitability-of-chosen-technologies}
 
-\paragraph{Solidity Contracts \& Eris
+\subsubsection{Solidity Contracts \& Eris
 Tooling}\label{solidity-contracts-eris-tooling}
 
 It took the author a considerable amount of time to become accustomed
@@ -1995,7 +1936,7 @@ author to avoid significant amounts of time being wasted by the amount
 of trial-and-error experimentation that would have been required to run
 a Tendermint blockchain from scratch.
 
-\paragraph{NodeJS \& Express}\label{nodejs-express}
+\subsubsection{NodeJS \& Express}\label{nodejs-express}
 
 NodeJS in combination with the Express framework, which added a powerful
 level of abstraction, were the perfect choice to build the system's API
@@ -2005,7 +1946,7 @@ immediately mock up some functionality for the server and refactor in
 confidence until a suitable production-level implementation was
 established.
 
-\paragraph{React Native, Redux \&
+\subsubsection{React Native, Redux \&
 Flowtype}\label{react-native-redux-flowtype}
 
 React Native was as effective as the author had hoped within the scope
@@ -2026,35 +1967,32 @@ type-safe manner.
 
 \section{6.4 Future Work}\label{future-work}
 
-\paragraph{Verifiability}\label{verifiability}
+\subsubsection{Verifiability}\label{verifiability}
 
 In Section 6.1, the author referred to the system's current
 implementation as being naïve in its current state. This attribution
 stems from the fact that the system currently has no means of providing
 true verifiability for collaborative work in the way, for example, a
-cryptographic hash may verify an entity or individual. While QuantiTeam
-hashes new text files and compares them to the ones already present in
-the blockchain, a coercive user simply has the ability to upload an
-unrelated file and mark the associated task as completed. The system is
+cryptographic hash may verify an entity or individual. The system is
 therefore naïve in the sense of being unaware of the possibility of
 coercive agents interacting with it. QuantiTeam therefore lays the
 groundwork for a system maintaining verified data on collaborative work
 in a distributed manner, but has a long way to go to truly achieve this
 ideal.
 
-\paragraph{Ranking}\label{ranking}
+\subsubsection{Ranking}\label{ranking}
 
 In order to drive motivation to engage with the system on a continual
 basis, providing a global ranking system in future iterations as
 described in the requirements is crucial. This would significantly aid
 driving a sense of achievement in task participants, as resolving a task
-would immediately feed back into a virtual reward scheme. Similar to
+would immediately feed back into a reward scheme. Similar to
 StackOverflow's reputation
 scheme\footnote{http://stackoverflow.com/help/whats-reputation}, QuantiTeam scores could become more meaningful the more
 people use the system, by acting as an abstract representation of
 participation in one's team to help get collaborative work done.
 
-\paragraph{Location Data}\label{location-data}
+\subsubsection{Location Data}\label{location-data}
 
 From a perspective of extensibility, QuantiTeam could be expanded to
 include geolocation data related to users and tasks, thus providing a
